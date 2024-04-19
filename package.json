@@ -1,0 +1,19 @@
+{
+  "name": "world-countries-app",
+  "version": "1.0.0",
+  "description": "Geography World Countries Application",
+  "default": "index.html",
+  "scripts": {
+    "start": "parcel index.html",
+    "build": "parcel build index.html --dist-dir ./dist"
+  },
+  "author": "Dmytro Solovei",
+  "license": "ISC",
+  "devDependencies": {
+    "parcel": "^2.12.0",
+    "process": "^0.11.10"
+  },
+  "dependencies": {
+    "leaflet": "^1.9.4"
+  }
+}

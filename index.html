@@ -1,0 +1,166 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta
+      name="viewport"
+      content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no"
+    />
+    <meta name="description" content="World Countries And Quizzes" />
+    <meta name="author" content="Dmytro Solovei" />
+    <title>World Countries And Quizzes</title>
+    <link href="css/styles.css" rel="stylesheet" />
+    <link href="css/treeselectjs.css" rel="stylesheet" />
+    <link
+      rel="icon"
+      type="image/png"
+      sizes="32x32"
+      href="assets/img/globe.png"
+    />
+    <link
+      rel="stylesheet"
+      href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css"
+      integrity="sha256-p4NxAoJBhIIN+hmNHrzRCf9tD/miZyoHS5obTRR9BMY="
+      crossorigin=""
+    />
+    <script src="https://cdn.maptiler.com/maptiler-sdk-js/v1.2.0/maptiler-sdk.umd.js"></script>
+    <link
+      href="https://fonts.googleapis.com/css2?family=Merriweather&amp;family=Montserrat&amp;family=Sacramento&amp;display=swap"
+      rel="stylesheet"
+    />
+    <script
+      src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"
+      integrity="sha256-20nQCchB9co0qIjJZRGuk2/Z9VM+kNiyxNV1lvTlZBo="
+      crossorigin=""
+    ></script>
+    <script
+      src="https://use.fontawesome.com/releases/v6.3.0/js/all.js"
+      crossorigin="anonymous"
+    ></script>
+  </head>
+  <body class="sb-nav-fixed">
+    <nav class="sb-topnav navbar navbar-expand navbar-dark bg-dark">
+      <div class="navbar-logo-lang">
+        <!-- Navbar Brand-->
+        <a class="navbar-brand ps-3" href="index.html"
+          ><img
+            class="logo hover-effect"
+            src="assets/img/globe.png"
+            alt="Globe Logo"
+            style="height: 35px; width: 35px"
+        /></a>
+        <span
+          class="logo-countries"
+          style="
+            color: #85c1e9;
+            font-family: 'Sacramento', 'Garamond', cursive;
+            font-size: 1.5rem;
+            margin-left: 5px;
+            margin-right: 5px;
+          "
+          >Countries</span
+        >
+      </div>
+
+      <!-- Sidebar Toggle-->
+      <button
+        class="btn btn-link btn-sm order-1 order-lg-0 me-4 me-lg-0"
+        id="sidebarToggle"
+        href="#!"
+      >
+        <i class="fas fa-bars"></i>
+      </button>
+      <!-- Navbar Search-->
+      <div
+        id="tree-select-countries"
+        class="d-md-inline-block form-inline ms-auto me-0 me-md-3 my-2 my-md-0"
+      ></div>
+      <div class="language-select">
+        <select id="language-selector">
+          <option value="en">ENG</option>
+          <option value="ua">УКР</option>
+        </select>
+      </div>
+      <!-- Navbar-->
+      <ul class="navbar-nav ms-auto ms-md-0 me-3 me-lg-4">
+        <li class="nav-item dropdown">
+          <a
+            class="nav-link dropdown-toggle"
+            id="navbarDropdown"
+            href="#"
+            role="button"
+            data-bs-toggle="dropdown"
+            aria-expanded="false"
+            ><i class="fas fa-user fa-fw"></i
+          ></a>
+          <ul
+            class="dropdown-menu dropdown-menu-end"
+            aria-labelledby="navbarDropdown"
+          >
+            <li><a class="dropdown-item" href="#!">Settings</a></li>
+            <li><a class="dropdown-item" href="#!">Activity Log</a></li>
+            <li><hr class="dropdown-divider" /></li>
+            <li><a class="dropdown-item" href="#!">About</a></li>
+          </ul>
+        </li>
+      </ul>
+    </nav>
+    <div id="layoutSidenav">
+      <div id="layoutSidenav_nav">
+        <nav class="sb-sidenav accordion sb-sidenav-dark" id="sidenavAccordion">
+          <div class="sort-up-down">
+            <div class="sort">
+              <span
+                data-sort="asc"
+                id="sb-sidenav-sort"
+                style="padding-left: 5px; cursor: pointer"
+                >Sort: &#8645;</span
+              >
+              <span
+                id="sb-sidenav-up"
+                style="padding-left: 5px; padding-right: 5px; cursor: pointer"
+                >Up: &uarr;</span
+              >
+              <span
+                id="sb-sidenav-down"
+                style="padding-left: 5px; padding-right: 5px; cursor: pointer"
+                >Down: &darr;</span
+              >
+            </div>
+          </div>
+          <div class="sb-sidenav-menu">
+            <div class="nav"></div>
+          </div>
+          <div class="sb-sidenav-footer">
+            <img src="./assets/img/logo.png" style="height: 1.7rem" />
+            <span class="small"
+              ><em
+                >©
+                <script>
+                  document.write(new Date().getFullYear());
+                </script>
+                , Dmytro Solovei</em
+              ></span
+            >
+          </div>
+        </nav>
+      </div>
+      <div id="layoutSidenav_content">
+        <main>
+          <div
+            id="map"
+            style="position: fixed"
+            class="container-fluid px-4"
+          ></div>
+        </main>
+      </div>
+    </div>
+    <script
+      src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/js/bootstrap.bundle.min.js"
+      crossorigin="anonymous"
+    ></script>
+    <script src="js/treeselectjs.umd.js"></script>
+    <script type="module" src="js/controller.js"></script>
+  </body>
+</html>
