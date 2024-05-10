@@ -59,7 +59,7 @@ class sideNavigationView {
         country.name.common
       ]
     }<br>
-    <a class="side-navigation-country-link hover-effect" style="color:#85C1E9;" href="https://${
+    <a class="side-navigation-country-link hover-effect" style="color:#85C1E9; text-decoration: none;" href="https://${
       model.worldCountries.language === "ua" ? "uk" : "en"
     }.wikipedia.org/wiki/${
       localization[model.worldCountries.language]["countries"][

@@ -226,7 +226,16 @@ class mapView {
             " " +
             localization[model.worldCountries.language]["people"]
           : " -"
-      }</span><br />`);
+      }</span><br />
+      <a class="side-navigation-country-link hover-effect" style="color:#85C1E9; text-decoration: none;" href="https://${
+        model.worldCountries.language === "ua" ? "uk" : "en"
+      }.wikipedia.org/wiki/${
+        localization[model.worldCountries.language]["countries"][
+          country.name.common
+        ]
+      }" target="_blank" rel="external">${
+        localization[model.worldCountries.language]["Wikipedia"]
+      }</a>`);
       this._markers.push(marker);
     });
   }
