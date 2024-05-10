@@ -4,13 +4,16 @@ import sideNavigationView from "./views/sideNavigationView.js";
 import countriesSelectView from "./views/countriesSelectView.js";
 import languageSelectView from "./views/languageSelectView.js";
 import topNavigationView from "./views/topNavigationView.js";
+import quiz from "./views/quiz.js";
+import aboutView from "./views/aboutView.js";
 import { localization } from "./localization/ua.js";
 import { GEOGRAPHICAL_CENTER } from "./config.js";
 import { DEFAULT_ZOOM_LEVEL } from "./config.js";
 import { sortData } from "./helpers.js";
 const init = function () {
-  initSideBar();
   mapView.addHandlerRender(mapCountriesMarkerRender);
+  topNavigationView.initSideBar();
+  translateAllElements();
   sideNavigationView.addHandlerRender(sideNavigationCountriesRender);
   sideNavigationView.addSortCountriesHandler(countriesSortHandler);
   sideNavigationView.addMoveUpCountriesHandler();
@@ -18,15 +21,84 @@ const init = function () {
   countriesSelectView.addHandlerRender(countriesSelectRender);
   countriesSelectView.countriesSelectionHandler(countriesSelectionHandler);
   languageSelectView.addHandlerSelect(languageSelectHandler);
-  // resetLocalStorageOnCloseTab();
+  topNavigationView.addHandlerWorldMapClick(worldMapHandlerClick);
+  topNavigationView.addHandlerAboutClick(aboutProjectHandlerClick);
+  topNavigationView.addHandlerQuizClick(quizSelectionHandler);
+  saveCurrentLanguageHandler();
+  loadWindow();
+};
+
+const loadWindow = function () {
+  const savedWindow = localStorage.getItem("currentWindow");
+  if (savedWindow) {
+    switch (savedWindow) {
+      case "map":
+        loadWorldMap();
+        break;
+      case "about-project":
+        loadAboutProject();
+        break;
+      default:
+        loadQuiz(savedWindow);
+        break;
+    }
+  } else {
+    loadWorldMap();
+  }
+};
+
+const loadWorldMap = function () {
+  quiz.hideQuiz();
+  aboutView.hideAboutProject();
+  mapView.setMapView(GEOGRAPHICAL_CENTER, DEFAULT_ZOOM_LEVEL);
+  mapView.showMap();
+  mapView.invalidateSize();
+  topNavigationView.showSideNavigation();
+  topNavigationView.enableSideBarToggle();
+};
+
+const loadAboutProject = function () {
+  mapView.hideMap();
+  quiz.hideQuiz();
+  aboutView.showAboutProjectInfo();
+  topNavigationView.hideSideNavigation();
+  topNavigationView.disableSideBarToggle();
+};
+
+const loadQuiz = function (quizId) {
+  topNavigationView.hideSideNavigation();
+  aboutView.hideAboutProject();
+  quiz.initQuiz(quizId, mapView, sideNavigationView, topNavigationView);
+  topNavigationView.disableSideBarToggle();
+};
+
+const worldMapHandlerClick = function () {
+  loadWorldMap();
+};
+
+const aboutProjectHandlerClick = function () {
+  loadAboutProject();
+};
+
+const quizSelectionHandler = function (quizId) {
+  loadQuiz(quizId);
+};
+
+const translateAllElements = function () {
+  sideNavigationView.translateSortMoveElements();
+  topNavigationView.translateElements();
+  quiz.translateElements();
+  aboutView.translateElements();
+  mapView.translateElements();
 };
 
 const languageSelectHandler = function (language) {
   model.worldCountries.language = language;
+  model.loadAllCountries();
+  saveLanguage(language);
   sortData(model.worldCountries.countries);
   sortData(model.worldCountries.selectedCountries);
-  sideNavigationView.translateSortMoveElements();
-  mapView.translateElements();
+  translateAllElements();
   renderAll();
 };
 
@@ -94,31 +166,14 @@ const sideNavigationCountriesRender = function () {
   );
 };
 
-const resetLocalStorageOnCloseTab = function () {
-  window.addEventListener("beforeunload", function (e) {
-    e.preventDefault();
-    this.localStorage.removeItem("countries");
-  });
+const saveLanguage = function (language) {
+  this.localStorage.setItem("language", language);
 };
 
-const initSideBar = function () {
-  window.addEventListener("DOMContentLoaded", (event) => {
-    // Toggle the side navigation
-    const sidebarToggle = document.body.querySelector("#sidebarToggle");
-    if (sidebarToggle) {
-      if (localStorage.getItem("sb|sidebar-toggle") === "true") {
-        document.body.classList.toggle("sb-sidenav-toggled");
-      }
-      sidebarToggle.addEventListener("click", (event) => {
-        event.preventDefault();
-        document.body.classList.toggle("sb-sidenav-toggled");
-        mapView.invalidateSize();
-        localStorage.setItem(
-          "sb|sidebar-toggle",
-          document.body.classList.contains("sb-sidenav-toggled")
-        );
-      });
-    }
+const saveCurrentLanguageHandler = function () {
+  window.addEventListener("beforeunload", function () {
+    const currentLanguage = document.querySelector("#language-selector").value;
+    saveLanguage(currentLanguage);
   });
 };
 

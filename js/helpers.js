@@ -68,3 +68,12 @@ export const sortData = function (data, direction = "asc") {
     return direction === "asc" ? result : -result;
   });
 };
+
+export const getRandomInt = function (
+  min = 0,
+  max = model.worldCountries.countries.length - 1
+) {
+  min = Math.ceil(min);
+  max = Math.floor(max);
+  return Math.floor(Math.random() * (max - min + 1)) + min;
+};

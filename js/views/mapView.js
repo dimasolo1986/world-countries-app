@@ -1,6 +1,8 @@
 import { GEOGRAPHICAL_CENTER } from "../config.js";
 import { DEFAULT_ZOOM_LEVEL } from "../config.js";
 import { COUNTRIES_GEO } from "../data/countries.geo.js";
+import { WAR_AGGRESSOR_COUNTRIES } from "../config.js";
+import { WAR_AGGRESSOR_SUPPORTER_COUNTRIES } from "../config.js";
 import { localization } from "../localization/ua.js";
 import * as model from "../model.js";
 
@@ -9,6 +11,7 @@ class mapView {
   _errorMessage = "Failed to load map!";
   _map;
   _capitalMarker;
+  _developmentPlaceMarker;
   _countryBoundary;
   _markers = [];
 
@@ -27,6 +30,7 @@ class mapView {
           "Tiles &copy; Esri &mdash; Source: Esri, DeLorme, NAVTEQ, USGS, Intermap, iPC, NRCAN, Esri Japan, METI, Esri China (Hong Kong), Esri (Thailand), TomTom, 2012",
       }
     ).addTo(this._map);
+    this.addDevelopmentPlaceMarker();
     this._addResetZoomToMap();
   }
 
@@ -64,6 +68,8 @@ class mapView {
       resetZoom.textContent =
         localization[model.worldCountries.language]["Reset"];
     }
+    this.removeDevelopmentPlaceMarker();
+    this.addDevelopmentPlaceMarker();
   }
 
   invalidateSize() {
@@ -73,6 +79,14 @@ class mapView {
   clearMap() {
     this._map.remove();
     this._parentElement.innerHTML = "";
+  }
+
+  hideMap() {
+    this._parentElement.classList.add("not-displayed");
+  }
+
+  showMap() {
+    this._parentElement.classList.remove("not-displayed");
   }
 
   addHandlerRender(handler) {
@@ -95,6 +109,21 @@ class mapView {
       this._capitalMarker = L.marker(latLon)
         .addTo(this._map)
         .bindTooltip(capital);
+  }
+
+  addDevelopmentPlaceMarker() {
+    this._developmentPlaceMarker = L.marker([51.52, 30.75])
+      .bindTooltip(
+        localization[model.worldCountries.language][
+          "Slavutych, Ukraine - birthplace of the project"
+        ]
+      )
+      .addTo(this._map);
+  }
+
+  removeDevelopmentPlaceMarker() {
+    if (this._developmentPlaceMarker)
+      this._map.removeLayer(this._developmentPlaceMarker);
   }
 
   removeCapitalMarker() {
@@ -149,7 +178,22 @@ class mapView {
           localization[model.worldCountries.language]["countries"][
             country.name.common
           ]
-        }</span> <br />
+        }</span> <br />${
+        WAR_AGGRESSOR_COUNTRIES.includes(country.name.common)
+          ? `<span style="color: red">${
+              localization[model.worldCountries.language]["War Aggressor"]
+            }</span><br>`
+          : ""
+      }
+        ${
+          WAR_AGGRESSOR_SUPPORTER_COUNTRIES.includes(country.name.common)
+            ? `<span style="color: red">${
+                localization[model.worldCountries.language][
+                  "Aggressor Supporter"
+                ]
+              }</span><br>`
+            : ""
+        }
         <span>${
           localization[model.worldCountries.language]["Capital"]
         }: </span><span style="font-weight:bold">${

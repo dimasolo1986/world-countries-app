@@ -7,11 +7,15 @@
       name="viewport"
       content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no"
     />
-    <meta name="description" content="World Countries And Quizzes" />
-    <meta name="author" content="Dmytro Solovei" />
+    <meta
+      name="description"
+      content="World Countries And Quizzes, Світові Країни Та Вікторини"
+    />
+    <meta name="author" content="Dmytro Solovei, Дмитро Соловей" />
     <title>World Countries And Quizzes</title>
     <link href="css/styles.css" rel="stylesheet" />
     <link href="css/treeselectjs.css" rel="stylesheet" />
+    <link rel="stylesheet" href="./css/quiz_style.css" />
     <link
       rel="icon"
       type="image/png"
@@ -24,7 +28,6 @@
       integrity="sha256-p4NxAoJBhIIN+hmNHrzRCf9tD/miZyoHS5obTRR9BMY="
       crossorigin=""
     />
-    <script src="https://cdn.maptiler.com/maptiler-sdk-js/v1.2.0/maptiler-sdk.umd.js"></script>
     <link
       href="https://fonts.googleapis.com/css2?family=Merriweather&amp;family=Montserrat&amp;family=Sacramento&amp;display=swap"
       rel="stylesheet"
@@ -55,11 +58,11 @@
           style="
             color: #85c1e9;
             font-family: 'Sacramento', 'Garamond', cursive;
-            font-size: 1.5rem;
+            font-size: 1.6rem;
             margin-left: 5px;
             margin-right: 5px;
           "
-          >Countries</span
+          >World Countries</span
         >
       </div>
 
@@ -78,7 +81,7 @@
       ></div>
       <div class="language-select">
         <select id="language-selector">
-          <option value="en">ENG</option>
+          <option selected value="en">ENG</option>
           <option value="ua">УКР</option>
         </select>
       </div>
@@ -97,11 +100,90 @@
           <ul
             class="dropdown-menu dropdown-menu-end"
             aria-labelledby="navbarDropdown"
+            style="font-size: 1.1rem"
           >
-            <li><a class="dropdown-item" href="#!">Settings</a></li>
-            <li><a class="dropdown-item" href="#!">Activity Log</a></li>
+            <li id="world-map-li" style="cursor: pointer">
+              <span style="margin-left: 5px">🌍</span>
+              <a
+                id="world-map-link"
+                style="font-family: cursive; display: inline"
+                class="dropdown-item"
+                href="#!"
+                >World Map</a
+              >
+            </li>
             <li><hr class="dropdown-divider" /></li>
-            <li><a class="dropdown-item" href="#!">About</a></li>
+            <li>
+              <a
+                data-quiz="flag-by-country-name-quiz"
+                id="flag-by-country-name-quiz-link"
+                class="dropdown-item"
+                style="font-family: cursive; display: inline"
+                href="#!"
+                >Flag By Country Name Quiz</a
+              >
+            </li>
+            <li>
+              <a
+                data-quiz="flag-by-capital-quiz"
+                id="flag-by-capital-quiz-link"
+                class="dropdown-item"
+                style="font-family: cursive; display: inline"
+                href="#!"
+                >Flag By Country Capital Quiz</a
+              >
+            </li>
+            <li>
+              <a
+                data-quiz="country-name-by-capital-quiz"
+                id="country-name-by-capital-quiz-link"
+                class="dropdown-item"
+                style="font-family: cursive; display: inline"
+                href="#!"
+                >Country Name By Capital Quiz</a
+              >
+            </li>
+            <li>
+              <a
+                data-quiz="capital-by-country-name-quiz"
+                id="capital-by-country-name-quiz-link"
+                class="dropdown-item"
+                style="font-family: cursive; display: inline"
+                href="#!"
+                >Capital By Country Name Quiz</a
+              >
+            </li>
+            <li>
+              <a
+                data-quiz="country-name-by-flag-quiz"
+                id="country-name-by-flag-quiz-link"
+                class="dropdown-item"
+                style="font-family: cursive; display: inline"
+                href="#!"
+                >Country Name By Flag Quiz</a
+              >
+            </li>
+            <li>
+              <a
+                data-quiz="country-capital-by-flag-quiz"
+                id="country-capital-by-flag-quiz-link"
+                class="dropdown-item"
+                style="font-family: cursive; display: inline"
+                href="#!"
+                >Country Capital By Flag Quiz</a
+              >
+            </li>
+            <li><hr class="dropdown-divider" /></li>
+            <li id="about-li" style="cursor: pointer">
+              <span style="margin-left: 5px">📰</span>
+              <a
+                id="about"
+                class="dropdown-item"
+                style="font-family: cursive; display: inline"
+                href="#!"
+                >About Project</a
+              >
+            </li>
           </ul>
         </li>
       </ul>
@@ -133,7 +215,13 @@
             <div class="nav"></div>
           </div>
           <div class="sb-sidenav-footer">
-            <img src="./assets/img/logo.png" style="height: 1.7rem" />
+            <a
+              href="https://dimasolo.pythonanywhere.com"
+              target="_blank"
+              rel="external"
+              style="text-decoration: none"
+              ><img src="./assets/img/logo.png" style="height: 1.7rem" />
+            </a>
             <span class="small"
               ><em
                 >©
@@ -153,6 +241,307 @@
             style="position: fixed"
             class="container-fluid px-4"
           ></div>
+          <div id="quiz" class="container-fluid px-4 not-displayed">
+            <div
+              class="quiz-heading"
+              style="text-align: center; margin-top: 10px"
+            >
+              <div class="heading">Guess Flag By Country Name Quiz</div>
+            </div>
+            <div style="text-align: center">
+              <div class="countries-container">
+                <select class="countries-selector" style="font-family: cursive">
+                  <option value="Only Independent Countries">
+                    Only Independent Countries
+                  </option>
+                  <option value="All Countries">All Countries</option>
+                </select>
+              </div>
+              <div class="score-container">
+                <span style="font-family: cursive" class="score-name"
+                  >SCORE:
+                </span>
+                <span class="score">0</span>
+              </div>
+              <div class="question-container">
+                <span class="question-current-number">1</span>
+                <span class="question-delimeter" style="font-weight: normal"
+                  >of</span
+                >
+                <span class="question-all-number">35</span>
+                <span
+                  class="finished-quiz not-displayed"
+                  style="font-weight: bold; color: red; margin-left: 5px"
+                  >Finished</span
+                >
+              </div>
+              <br />
+              <div class="question-country-container">
+                <span class="question-country"></span>
+                <img class="question-img-country not-displayed" />
+              </div>
+            </div>
+
+            <section class="wrapper">
+              <div class="container-fostrap">
+                <div class="content">
+                  <div class="container">
+                    <div class="row">
+                      <div class="col-xs-6 col-sm-6 column">
+                        <div class="card">
+                          <a class="img-card">
+                            <img class="flag-option" />
+                            <div class="country-option not-displayed"></div>
+                          </a>
+                        </div>
+                      </div>
+                      <div class="col-xs-6 col-sm-6 column">
+                        <div class="card">
+                          <a class="img-card">
+                            <img class="flag-option" />
+                            <div class="country-option not-displayed"></div>
+                          </a>
+                        </div>
+                      </div>
+                      <div class="col-xs-6 col-sm-6 column">
+                        <div class="card">
+                          <a class="img-card">
+                            <img class="flag-option" />
+                            <div class="country-option not-displayed"></div>
+                          </a>
+                        </div>
+                      </div>
+                      <div class="col-xs-6 col-sm-6 column">
+                        <div class="card">
+                          <a class="img-card">
+                            <img class="flag-option" />
+                            <div class="country-option not-displayed"></div>
+                          </a>
+                        </div>
+                      </div>
+                      <div class="control-buttons">
+                        <button type="button" class="btn btn-warning return">
+                          RETURN TO MAP
+                        </button>
+                        <button
+                          disabled
+                          type="button"
+                          class="btn btn-success next"
+                        >
+                          NEXT QUESTION
+                        </button>
+                        <button
+                          disabled
+                          type="button"
+                          class="btn btn-danger start"
+                        >
+                          START AGAIN
+                        </button>
+                        <button type="button" class="btn btn-primary finish">
+                          FINISH QUIZ
+                        </button>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </section>
+          </div>
+          <div
+            id="about-project"
+            class="container-fluid px-4 not-displayed"
+            style="text-align: justify"
+          >
+            <p id="stand-with-ukraine" style="margin-top: 5px">
+              <a
+                href="https://vshymanskyy.github.io/StandWithUkraine"
+                title="Stand With Ukraine"
+                target="_blank"
+                rel="external"
+                ><img
+                  width="100%"
+                  src="https://raw.githubusercontent.com/vshymanskyy/StandWithUkraine/main/banner2-direct.svg"
+              /></a>
+            </p>
+            <p class="about-ukraine-help-description" style="display: inline">
+              You can support Ukraine in the fight against Russia's military
+              aggression:
+            </p>
+            <a
+              class="about-ukraine-help-link"
+              href="https://savelife.in.ua/en/"
+              target="_blank"
+              rel="external"
+              >Come Back Alive</a
+            >
+            <p class="about-heading">
+              <span
+                class="about-project-name"
+                style="
+                  font-weight: bold;
+                  font-size: 1.2rem;
+                  font-family: cursive;
+                "
+                >World Countries And Quizzes</span
+              >
+              -
+              <span class="about-project-description"
+                >project which is developed for learning Geography and World
+                Countries.</span
+              >
+            </p>
+            <p class="about-info">
+              Here you can find all countries of the world on a map, brief
+              information about selected countries, links to Wikipedia pages of
+              a specific country. It is also possible to take various quizzes.
+            </p>
+            <p class="about-developer" style="display: inline">
+              Project was created by Software Developer from Ukraine -
+            </p>
+            <a
+              class="about-developer-link"
+              href="https://dimasolo.pythonanywhere.com/en/home"
+              target="_blank"
+              rel="external"
+              >Dmytro Solovei</a
+            >
+            <br />
+            <p
+              class="about-developer-email-description"
+              style="display: inline"
+            >
+              You can reach me by e-mail:
+            </p>
+            <a
+              class="about-developer-email-link"
+              href="mailto:solovei.dmytro@gmail.com"
+              >solovei.dmytro@gmail.com</a
+            >
+            <br />
+            <p class="about-map-library" style="display: inline">
+              Used Map Library:
+            </p>
+            <a
+              class="about-map-library-link"
+              href="https://leafletjs.com/"
+              target="_blank"
+              rel="external"
+              >Leaflet</a
+            >
+            <p
+              class="about-available-quizzes"
+              style="
+                font-weight: bold;
+                font-size: 1.5rem;
+                margin-top: 5px;
+                font-family: cursive;
+              "
+            >
+              Quizzes:
+            </p>
+            <p class="about-flag-by-country-quiz">
+              <span
+                class="about-flag-by-country-quiz-name"
+                style="
+                  font-weight: bold;
+                  font-size: 1.2rem;
+                  font-family: cursive;
+                "
+                >Flag By Country Name Quiz</span
+              >
+              -
+              <span class="about-flag-by-country-quiz-description"
+                >Guess the country's flag from the suggested country name. The
+                quiz contains 35 questions. Get 100 points for each correct
+                answer.</span
+              >
+            </p>
+            <p class="about-country-name-by-flag-quiz">
+              <span
+                class="about-country-name-by-flag-quiz-name"
+                style="
+                  font-weight: bold;
+                  font-size: 1.2rem;
+                  font-family: cursive;
+                "
+                >Country Name By Flag Quiz</span
+              >
+              -
+              <span class="about-country-name-by-flag-quiz-description"
+                >Guess the country's name from the suggested country flag image.
+                The quiz contains 35 questions. Get 100 points for each correct
+                answer.</span
+              >
+            </p>
+            <p class="about-country-name-by-capital-quiz">
+              <span
+                class="about-country-name-by-capital-quiz-name"
+                style="
+                  font-weight: bold;
+                  font-size: 1.2rem;
+                  font-family: cursive;
+                "
+                >Country Name By Capital Quiz</span
+              >
+              -
+              <span class="about-country-name-by-capital-quiz-description"
+                >Guess the country's name from the suggested country capital.
+                The quiz contains 35 questions. Get 100 points for each correct
+                answer.</span
+              >
+            </p>
+            <p class="about-capital-by-country-name-quiz">
+              <span
+                class="about-capital-by-country-name-quiz-name"
+                style="
+                  font-weight: bold;
+                  font-size: 1.2rem;
+                  font-family: cursive;
+                "
+                >Capital By Country Name Quiz</span
+              >
+              -
+              <span class="about-capital-by-country-name-quiz-description"
+                >Guess the country's capital from the suggested country name.
+                The quiz contains 35 questions. Get 100 points for each correct
+                answer.</span
+              >
+            </p>
+            <p class="about-country-capital-by-flag-quiz">
+              <span
+                class="about-country-capital-by-flag-quiz-name"
+                style="
+                  font-weight: bold;
+                  font-size: 1.2rem;
+                  font-family: cursive;
+                "
+                >Country Capital By Flag Quiz</span
+              >
+              -
+              <span class="about-country-capital-by-flag-quiz-description"
+                >Guess the country's capital from the suggested country flag
+                image. The quiz contains 35 questions. Get 100 points for each
+                correct answer.</span
+              >
+            </p>
+            <p class="about-flag-by-country-capital-quiz">
+              <span
+                class="about-flag-by-country-capital-quiz-name"
+                style="
+                  font-weight: bold;
+                  font-size: 1.2rem;
+                  font-family: cursive;
+                "
+                >Flag By Country Capital Quiz</span
+              >
+              -
+              <span class="about-flag-by-country-capital-description"
+                >Guess the country's flag from the suggested country's capital.
+                The quiz contains 35 questions. Get 100 points for each correct
+                answer.</span
+              >
+            </p>
+          </div>
         </main>
       </div>
     </div>

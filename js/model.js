@@ -1,9 +1,5 @@
-import { ALL_COUNTRIES_ENDPOINT } from "./config.js";
-import { AJAX } from "./helpers.js";
 import { sortData } from "./helpers.js";
 import { COUNTRIES } from "./data/countries.js";
-
-export const countriesEN = [...COUNTRIES];
 
 export const worldCountries = {
   language: "en",
@@ -12,13 +8,24 @@ export const worldCountries = {
 };
 
 const init = function () {
+  loadLanguage();
   loadAllCountries();
 };
 
+const loadLanguage = function () {
+  const language = localStorage.getItem("language");
+  if (language) {
+    worldCountries.language = language;
+  } else {
+    worldCountries.language = "en";
+  }
+  document.querySelector("#language-selector").value = language;
+};
+
 export const loadAllCountries = function () {
-  sortData(countriesEN);
-  worldCountries.countries = countriesEN;
-  worldCountries.selectedCountries = countriesEN;
+  sortData(COUNTRIES);
+  worldCountries.countries = COUNTRIES;
+  worldCountries.selectedCountries = COUNTRIES;
 };
 
 init();

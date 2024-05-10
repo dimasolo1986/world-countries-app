@@ -10659,7 +10659,7 @@ export const COUNTRIES = [
   },
   {
     name: {
-      common: "Åland Islands",
+      common: "Aland Islands",
       official: "Åland Islands",
       nativeName: {
         swe: {

@@ -253,7 +253,7 @@ export const localization = {
       Yemen: "Ємен",
       Zambia: "Замбія",
       Zimbabwe: "Зімбабве",
-      "Åland Islands": "Аландські острови",
+      "Aland Islands": "Аландські острови",
     },
     capitals: {
       Canberra: "Канберра",
@@ -452,7 +452,7 @@ export const localization = {
       Kingstown: "Кінгстаун",
       Basseterre: "Бастер",
       Castries: "Кастрі",
-      Belgrade: "Белграда",
+      Belgrade: "Белград",
       Damascus: "Дамаск",
       Singapore: "Сінгапур",
       Bratislava: "Братислава",
@@ -502,9 +502,72 @@ export const localization = {
       "Sri Jayawardenepura Kotte": "Коломбо",
       Tokyo: "Токіо",
     },
+    of: "з",
+    SCORE: "РАХУНОК: ",
+    "Guess Flag": "Вгадай Прапор:",
+    "RETURN TO MAP": "ПОВЕРНУТИСЯ НА МАПУ",
+    "START AGAIN": "ПОЧАТИ ЗНОВУ",
+    "NEXT QUESTION": "НАСТУПНЕ ПИТАННЯ",
+    "FINISH QUIZ": "ЗАКІНЧИТИ ВІКТОРИНУ",
+    "Are you sure you want to leave this quiz? Current quiz data will not be saved!":
+      "Ви впевнені, що бажаєте залишити цей тест? Поточні дані вікторини не будуть збережені!",
+    "Only Independent Countries": "Тільки незалежні країни",
+    "All Countries": "Всі країни",
+    "Guess Flag By Country Name Quiz":
+      "Вікторина Вгадай Прапор За Назвою Країни",
+    "Guess Country Name By Flag Quiz":
+      "Вікторина Вгадай Назву Країни За Прапором",
+    "Guess Country Capital By Flag Quiz":
+      "Вікторина Вгадай Столицю Країни За Прапором",
+    "Guess Flag By Country Capital Quiz":
+      "Вікторина Вгадай Прапор За Столицею Країни",
+    "Guess Country Name By Capital Quiz":
+      "Вікторина Вгадай Назву Країни За Столицею Країни",
+    "Guess Capital By Country Name Quiz":
+      "Вікторина Вгадай Столицю За Назвою Країни",
+    "War Aggressor": "Країна Агресор",
+    "Aggressor Supporter": "Прибічник Агресора",
+    "Flag By Country Name Quiz": "Вікторина Прапор За Назвою Країни",
+    "Country Name By Flag Quiz": "Вікторина Назва Країни За Прапором",
+    "Country Capital By Flag Quiz": "Вікторина Столиця Країни За Прапором",
+    "Flag By Country Capital Quiz": "Вікторина Прапор За Столицею Країни",
+    "Country Name By Capital Quiz": "Вікторина Назва Країни За Столицею Країни",
+    "Capital By Country Name Quiz": "Вікторина Столиця Країни За Назвою Країни",
+    "About Project": "Про Проект",
+    "Slavutych, Ukraine - birthplace of the project":
+      "Славутич, Україна - місце народження проекту",
+    "World Countries And Quizzes": "Світові Країни Та Вікторини",
+    "project which is developed for learning Geography and World Countries.":
+      "це проект, який розроблений для вивчення Географії та Країн Світу.",
+    "Here you can find all countries of the world on a map, brief information about selected countries, links to Wikipedia pages of a specific country. It is also possible to take various quizzes.":
+      "Тут ви можете знайти всі країни світу на мапі, коротку інформацію про обрані країни, посилання на сторінки Вікіпедії певної країни. Також є можливість пройти різні вікторини.",
+    "Guess the country's flag from the suggested country name. The quiz contains 35 questions. Get 100 points for each correct answer.":
+      "Відгадайте прапор країни за запропонованою назвою країни. Вікторина містить 35 питань. За кожну правильну відповідь отримуйте 100 балів.",
+    "Guess the country's name from the suggested country flag image. The quiz contains 35 questions. Get 100 points for each correct answer.":
+      "Відгадайте назву країни за запропонованим зображенням прапора країни. Вікторина містить 35 питань. За кожну правильну відповідь отримуйте 100 балів.",
+    "Guess the country's capital from the suggested country flag image. The quiz contains 35 questions. Get 100 points for each correct answer.":
+      "Відгадайте столицю країни за запропонованим зображенням прапора країни. Вікторина містить 35 питань. За кожну правильну відповідь отримуйте 100 балів.",
+    "Guess the country's flag from the suggested country's capital. The quiz contains 35 questions. Get 100 points for each correct answer.":
+      "Відгадайте прапор країни за запропонованою столицею країни. Вікторина містить 35 питань. За кожну правильну відповідь отримуйте 100 балів.",
+    "Guess the country's name from the suggested country capital. The quiz contains 35 questions. Get 100 points for each correct answer.":
+      "Відгадайте назву країни за запропонованою столицею країни. Вікторина містить 35 питань. За кожну правильну відповідь отримуйте 100 балів.",
+    "Guess the country's capital from the suggested country name. The quiz contains 35 questions. Get 100 points for each correct answer.":
+      "Відгадайте столицю країни за запропонованою назвою країни. Вікторина містить 35 питань. За кожну правильну відповідь отримуйте 100 балів.",
+    "Project was created by Software Developer from Ukraine -":
+      "Проект створений програмістом з України -",
+    "You can support Ukraine in the fight against Russia's military aggression:":
+      "Ви можете підтримати Україну в боротьбі з військовою агресією Росії:",
+    "Quizzes:": "Вікторини:",
+    "Dmytro Solovei": "Дмитро Соловей",
+    "You can reach me by e-mail:":
+      "Ви можете зв'язатися зі мною електронною поштою:",
+    "Come Back Alive": "Повернись Живим",
     "All Countries": "Всі Країни",
     "Search Or Select Counties...": "Пошук або вибір країни...",
-    "Countries selected": "Вибрані країни",
+    Selected: "Вибрані",
+    "World Map": "Світова Мапа",
+    "Used Map Library:": "Використана бібліотека мап:",
+    Finished: "Закінчено",
     Countries: "Країни",
     Wikipedia: "Вікіпедія",
     Reset: "Скинути",
@@ -803,7 +866,7 @@ export const localization = {
       Yemen: "Yemen",
       Zambia: "Zambia",
       Zimbabwe: "Zimbabwe",
-      "Åland Islands": "Åland Islands",
+      "Aland Islands": "Aland Islands",
     },
     capitals: {
       Canberra: "Canberra",
@@ -1052,9 +1115,65 @@ export const localization = {
       "Sri Jayawardenepura Kotte": "Sri Jayawardenepura Kotte",
       Tokyo: "Tokyo",
     },
+    SCORE: "SCORE:",
+    of: "of",
+    "Guess Flag": "Guess Flag:",
+    "RETURN TO MAP": "RETURN TO MAP",
+    "START AGAIN": "START AGAIN",
+    "Guess Flag By Country Name Quiz": "Guess Flag By Country Name Quiz",
+    "Guess Country Name By Flag Quiz": "Guess Country Name By Flag Quiz",
+    "Guess Country Capital By Flag Quiz": "Guess Country Capital By Flag Quiz",
+    "Guess Flag By Country Capital Quiz": "Guess Flag By Country Capital Quiz",
+    "Guess Country Name By Capital Quiz": "Guess Country Name By Capital Quiz",
+    "Guess Capital By Country Name Quiz": "Guess Capital By Country Name Quiz",
+    "Are you sure you want to leave this quiz? Current quiz data will not be saved!":
+      "Are you sure you want to leave this quiz? Current quiz data will not be saved!",
+    "Only Independent Countries": "Only Independent Countries",
+    "All Countries": "All Countries",
+    "NEXT QUESTION": "NEXT QUESTION",
+    "FINISH QUIZ": "FINISH QUIZ",
+    "Flag By Country Name Quiz": "Flag By Country Name Quiz",
     "All Countries": "All Countries",
     "Search Or Select Counties...": "Search Or Select Counties...",
-    "Countries selected": "Countries selected",
+    Selected: "Selected",
+    "War Aggressor": "War Aggressor",
+    "Aggressor Supporter": "Aggressor Supporter",
+    "About Project": "About Project",
+    "World Countries And Quizzes": "World Countries And Quizzes",
+    "project which is developed for learning Geography and World Countries.":
+      "project which is developed for learning Geography and World Countries.",
+    "Here you can find all countries of the world on a map, brief information about selected countries, links to Wikipedia pages of a specific country. It is also possible to take various quizzes.":
+      "Here you can find all countries of the world on a map, brief information about selected countries, links to Wikipedia pages of a specific country. It is also possible to take various quizzes.",
+    "Guess the country's flag from the suggested country name. The quiz contains 35 questions. Get 100 points for each correct answer.":
+      "Guess the country's flag from the suggested country name. The quiz contains 35 questions. Get 100 points for each correct answer.",
+    "Guess the country's name from the suggested country flag image. The quiz contains 35 questions. Get 100 points for each correct answer.":
+      "Guess the country's name from the suggested country flag image. The quiz contains 35 questions. Get 100 points for each correct answer.",
+    "Guess the country's capital from the suggested country flag image. The quiz contains 35 questions. Get 100 points for each correct answer.":
+      "Guess the country's capital from the suggested country flag image. The quiz contains 35 questions. Get 100 points for each correct answer.",
+    "Guess the country's flag from the suggested country's capital. The quiz contains 35 questions. Get 100 points for each correct answer.":
+      "Guess the country's flag from the suggested country's capital. The quiz contains 35 questions. Get 100 points for each correct answer.",
+    "Guess the country's name from the suggested country capital. The quiz contains 35 questions. Get 100 points for each correct answer.":
+      "Guess the country's name from the suggested country capital. The quiz contains 35 questions. Get 100 points for each correct answer.",
+    "Guess the country's capital from the suggested country name. The quiz contains 35 questions. Get 100 points for each correct answer.":
+      "Guess the country's capital from the suggested country name. The quiz contains 35 questions. Get 100 points for each correct answer.",
+    "Project was created by Software Developer from Ukraine -":
+      "Project was created by Software Developer from Ukraine -",
+    "You can support Ukraine in the fight against Russia's military aggression:":
+      "You can support Ukraine in the fight against Russia's military aggression:",
+    "Dmytro Solovei": "Dmytro Solovei",
+    "You can reach me by e-mail:": "You can reach me by e-mail:",
+    "Country Name By Flag Quiz": "Country Name By Flag Quiz",
+    "Country Capital By Flag Quiz": "Country Capital By Flag Quiz",
+    "Flag By Country Capital Quiz": "Flag By Country Capital Quiz",
+    "Country Name By Capital Quiz": "Country Name By Capital Quiz",
+    "Capital By Country Name Quiz": "Capital By Country Name Quiz",
+    "Come Back Alive": "Come Back Alive",
+    "Slavutych, Ukraine - birthplace of the project":
+      "Slavutych, Ukraine - birthplace of the project",
+    "Quizzes:": "Quizzes:",
+    "World Map": "World Map",
+    "Used Map Library:": "Used Map Library:",
+    Finished: "Finished",
     Countries: "Countries",
     Wikipedia: "Wikipedia",
     Reset: "Reset",

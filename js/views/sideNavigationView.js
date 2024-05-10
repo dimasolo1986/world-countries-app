@@ -1,11 +1,11 @@
-import { GEOGRAPHICAL_CENTER } from "../config.js";
-import { DEFAULT_ZOOM_LEVEL } from "../config.js";
 import mapView from "./mapView.js";
 import * as model from "../model.js";
 import { localization } from "../localization/ua.js";
 import { defineZoomLevelByCountryArea } from "../helpers.js";
+import { GEOGRAPHICAL_CENTER, DEFAULT_ZOOM_LEVEL } from "../config.js";
 class sideNavigationView {
   _parentElement = document.querySelector(".sb-sidenav-menu .nav");
+  _sideNavigation = document.querySelector(".sb-sidenav");
   _sortElement = document.querySelector("#sb-sidenav-sort");
   _moveUpElement = document.querySelector("#sb-sidenav-up");
   _moveDownElement = document.querySelector("#sb-sidenav-down");
@@ -58,15 +58,17 @@ class sideNavigationView {
       localization[model.worldCountries.language]["countries"][
         country.name.common
       ]
-    }<br><a class="side-navigation-country-link hover-effect" style="color:#85C1E9;" href="https://${
+    }<br>
+    <a class="side-navigation-country-link hover-effect" style="color:#85C1E9;" href="https://${
       model.worldCountries.language === "ua" ? "uk" : "en"
     }.wikipedia.org/wiki/${
       localization[model.worldCountries.language]["countries"][
         country.name.common
       ]
-    }" target="_blank">${
+    }" target="_blank" rel="external">${
       localization[model.worldCountries.language]["Wikipedia"]
-    }</a></div>`;
+    }</a>
+   </div>`;
   }
 
   _removeAllSelection() {
@@ -77,29 +79,43 @@ class sideNavigationView {
 
   addContryClickHandler(countryElement, country) {
     const countryClickFunction = function (e) {
-      this._removeAllSelection();
-      countryElement.classList.add(
-        "selected-side-navigation-country-container"
-      );
-      this._selectedCountry = country;
-      const target = e.target;
-      if (!target.classList.contains("side-navigation-country-link")) {
-        const zoomLevel = defineZoomLevelByCountryArea(country.area);
-        mapView.setMapView(
-          country.latlng ? country.latlng : country.capitalInfo.latlng,
-          zoomLevel
+      if (
+        countryElement.classList.contains(
+          "selected-side-navigation-country-container"
+        )
+      ) {
+        countryElement.classList.remove(
+          "selected-side-navigation-country-container"
         );
+        this._selectedCountry = undefined;
         mapView.removeCapitalMarker();
         mapView.removeCountryBoundary();
-        mapView.addCountryBoundary(country);
-        mapView.addCapitalMarker(
-          country.capitalInfo?.latlng,
-          country.capital
-            ? localization[model.worldCountries.language]["capitals"][
-                country.capital[0]
-              ]
-            : ""
+        mapView.setMapView(GEOGRAPHICAL_CENTER, DEFAULT_ZOOM_LEVEL);
+      } else {
+        this._removeAllSelection();
+        countryElement.classList.add(
+          "selected-side-navigation-country-container"
         );
+        this._selectedCountry = country;
+        const target = e.target;
+        if (!target.classList.contains("side-navigation-country-link")) {
+          const zoomLevel = defineZoomLevelByCountryArea(country.area);
+          mapView.setMapView(
+            country.latlng ? country.latlng : country.capitalInfo.latlng,
+            zoomLevel
+          );
+          mapView.removeCapitalMarker();
+          mapView.removeCountryBoundary();
+          mapView.addCountryBoundary(country);
+          mapView.addCapitalMarker(
+            country.capitalInfo?.latlng,
+            country.capital
+              ? localization[model.worldCountries.language]["capitals"][
+                  country.capital[0]
+                ]
+              : ""
+          );
+        }
       }
     };
     countryElement.addEventListener("click", countryClickFunction.bind(this));
@@ -111,6 +127,14 @@ class sideNavigationView {
 
   _clearSideNavigation() {
     this._parentElement.innerHTML = "";
+  }
+
+  hideSideNavigation() {
+    this._sideNavigation.classList.add("not-displayed");
+  }
+
+  showSideNavigation() {
+    document.body.classList.remove("sb-sidenav-toggled");
   }
 
   renderSideNavigationCountries(worldCountries) {

@@ -10,13 +10,30 @@ class countriesSelectView {
     this._treeSelect = new Treeselect({
       parentHtmlContainer: this._parentElement,
       placeholder: this._placeholder,
-      tagsCountText: "Countries selected",
+      tagsCountText: "Selected",
       showTags: false,
-      showCount: true,
-      openLevel: 1,
+      showCount: false,
+      openLevel: 2,
       value: [],
       options: [],
     });
+  }
+
+  buildCountriesObject(worldCountries) {
+    const countriesObject = {};
+    worldCountries.countries.forEach((element) => {
+      const country =
+        localization[model.worldCountries.language]["countries"][
+          element.name.common
+        ];
+      const firstCountryLetter = country.charAt(0);
+      if (firstCountryLetter in countriesObject) {
+        countriesObject[firstCountryLetter].push(country);
+      } else {
+        countriesObject[firstCountryLetter] = [country];
+      }
+    });
+    return countriesObject;
   }
 
   renderOptions(worldCountries) {
@@ -24,18 +41,21 @@ class countriesSelectView {
       {
         name: localization[model.worldCountries.language]["All Countries"],
         value: localization[model.worldCountries.language]["All Countries"],
-        children: worldCountries.countries.map((country) => {
-          return {
-            name: localization[model.worldCountries.language]["countries"][
-              country.name.common
-            ],
-            value:
-              localization[model.worldCountries.language]["countries"][
-                country.name.common
-              ],
-            children: [],
-          };
-        }),
+        children: Object.entries(this.buildCountriesObject(worldCountries)).map(
+          (entry) => {
+            return {
+              name: entry[0],
+              value: entry[0],
+              children: entry[1].map((entry) => {
+                return {
+                  name: entry,
+                  value: entry,
+                  children: [],
+                };
+              }),
+            };
+          }
+        ),
       },
     ];
     this._treeSelect.options = options;
@@ -44,7 +64,7 @@ class countriesSelectView {
         "Search Or Select Counties..."
       ];
     this._treeSelect.tagsCountText =
-      localization[model.worldCountries.language]["Countries selected"];
+      localization[model.worldCountries.language]["Selected"];
     this._treeSelect.mount();
   }
 
