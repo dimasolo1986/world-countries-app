@@ -3435,7 +3435,7 @@ fieldset:disabled .btn {
 }
 
 .dropdown-menu li:hover {
-  background-color: #e9ecef;
+  background-color: azure;
 }
 .dropdown-menu {
   --bs-dropdown-zindex: 1000;
