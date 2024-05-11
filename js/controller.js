@@ -168,7 +168,7 @@ const sideNavigationCountriesRender = function () {
 };
 
 const saveLanguage = function (language) {
-  this.localStorage.setItem("language", language);
+  localStorage.setItem("language", language);
 };
 
 const saveCurrentLanguageHandler = function () {
