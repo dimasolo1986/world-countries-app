@@ -111,6 +111,21 @@ class mapView {
         .bindTooltip(capital);
   }
 
+  showMarkerPopup(latLon) {
+    const marker = this._markers.find(
+      (marker) =>
+        marker.getLatLng().lat === latLon[0] &&
+        marker.getLatLng().lng === latLon[1]
+    );
+    if (marker) {
+      marker.openPopup();
+    }
+  }
+
+  closeAllPopup() {
+    this._map.closePopup();
+  }
+
   addDevelopmentPlaceMarker() {
     this._developmentPlaceMarker = L.marker([51.52, 30.75])
       .bindTooltip(
@@ -132,6 +147,7 @@ class mapView {
 
   _removeAllMarkersFromMap() {
     this._markers.forEach((marker) => this._map.removeLayer(marker));
+    this._markers = [];
     this.removeCapitalMarker();
     this.removeCountryBoundary();
   }

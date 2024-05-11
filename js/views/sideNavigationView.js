@@ -90,6 +90,7 @@ class sideNavigationView {
         this._selectedCountry = undefined;
         mapView.removeCapitalMarker();
         mapView.removeCountryBoundary();
+        mapView.closeAllPopup();
         mapView.setMapView(GEOGRAPHICAL_CENTER, DEFAULT_ZOOM_LEVEL);
       } else {
         this._removeAllSelection();
@@ -107,6 +108,9 @@ class sideNavigationView {
           mapView.removeCapitalMarker();
           mapView.removeCountryBoundary();
           mapView.addCountryBoundary(country);
+          mapView.showMarkerPopup(
+            country.latlng ? country.latlng : country.capitalInfo.latlng
+          );
           mapView.addCapitalMarker(
             country.capitalInfo?.latlng,
             country.capital
