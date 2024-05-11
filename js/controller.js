@@ -20,6 +20,7 @@ const init = function () {
   sideNavigationView.addMoveDownCountriesHandler();
   countriesSelectView.addHandlerRender(countriesSelectRender);
   countriesSelectView.countriesSelectionHandler(countriesSelectionHandler);
+  languageSelectView.init();
   languageSelectView.addHandlerSelect(languageSelectHandler);
   topNavigationView.addHandlerWorldMapClick(worldMapHandlerClick);
   topNavigationView.addHandlerAboutClick(aboutProjectHandlerClick);
