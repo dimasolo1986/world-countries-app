@@ -12,8 +12,3 @@ export const COUNTRY_CAPITAL_BY_COUNTRY_NAME_QUIZ =
   "capital-by-country-name-quiz";
 export const DEFAULT_RIGHT_SCORE = 100;
 export const WAR_AGGRESSOR_COUNTRIES = ["Russia"];
-export const WAR_AGGRESSOR_SUPPORTER_COUNTRIES = [
-  "Iran",
-  "North Korea",
-  "Belarus",
-];

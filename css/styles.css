@@ -11614,9 +11614,7 @@ body,
 }
 
 #layoutSidenav_content {
-  background-repeat: no-repeat;
-  background-attachment: fixed;
-  background-image: linear-gradient(#eef2f2, white);
+  background-color: #eef2f2;
 }
 
 #about-project {

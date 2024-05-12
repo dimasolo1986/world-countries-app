@@ -2,7 +2,6 @@ import { GEOGRAPHICAL_CENTER } from "../config.js";
 import { DEFAULT_ZOOM_LEVEL } from "../config.js";
 import { COUNTRIES_GEO } from "../data/countries.geo.js";
 import { WAR_AGGRESSOR_COUNTRIES } from "../config.js";
-import { WAR_AGGRESSOR_SUPPORTER_COUNTRIES } from "../config.js";
 import { localization } from "../localization/ua.js";
 import * as model from "../model.js";
 
@@ -201,15 +200,6 @@ class mapView {
             }</span><br>`
           : ""
       }
-        ${
-          WAR_AGGRESSOR_SUPPORTER_COUNTRIES.includes(country.name.common)
-            ? `<span style="color: red">${
-                localization[model.worldCountries.language][
-                  "Aggressor Supporter"
-                ]
-              }</span><br>`
-            : ""
-        }
         <span>${
           localization[model.worldCountries.language]["Capital"]
         }: </span><span style="font-weight:bold">${
