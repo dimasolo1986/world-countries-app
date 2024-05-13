@@ -68,6 +68,16 @@ class countriesSelectView {
     this._treeSelect.mount();
   }
 
+  disableCountriesSelect() {
+    this._treeSelect.disabled = true;
+    this._treeSelect.mount();
+  }
+
+  enableCountriesSelect() {
+    this._treeSelect.disabled = false;
+    this._treeSelect.mount();
+  }
+
   countriesSelectionHandler(handler) {
     this._treeSelect.srcElement.addEventListener("input", (event) => {
       handler(event.detail);

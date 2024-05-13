@@ -42,7 +42,13 @@ class Quiz {
 
   _quizType;
 
-  initQuiz(quizId, mapView, sideNavigationView, topNavigationView) {
+  initQuiz(
+    quizId,
+    mapView,
+    sideNavigationView,
+    topNavigationView,
+    countriesSelectView
+  ) {
     this._quizType = quizId;
     mapView.hideMap();
     this._countriesSelector.value = "Only Independent Countries";
@@ -51,7 +57,8 @@ class Quiz {
     this.returnToMapButtonHandler(
       mapView,
       sideNavigationView,
-      topNavigationView
+      topNavigationView,
+      countriesSelectView
     );
     this.countriesSelectHandler();
     this.finishQuizHandler();
@@ -456,7 +463,12 @@ class Quiz {
     }
   }
 
-  returnToMap(mapView, sideNavigationView, topNavigationView) {
+  returnToMap(
+    mapView,
+    sideNavigationView,
+    topNavigationView,
+    countriesSelectView
+  ) {
     if (
       confirm(
         `${
@@ -472,11 +484,17 @@ class Quiz {
       mapView.invalidateSize();
       sideNavigationView.showSideNavigation();
       topNavigationView.enableSideBarToggle();
+      countriesSelectView.enableCountriesSelect();
       localStorage.setItem("currentWindow", "map");
     }
   }
 
-  returnToMapButtonHandler(mapView, sideNavigationView, topNavigationView) {
+  returnToMapButtonHandler(
+    mapView,
+    sideNavigationView,
+    topNavigationView,
+    countriesSelectView
+  ) {
     if (!this._returnToMapListenerAdded) {
       this._returnToMap.addEventListener(
         "click",
@@ -484,7 +502,8 @@ class Quiz {
           this,
           mapView,
           sideNavigationView,
-          topNavigationView
+          topNavigationView,
+          countriesSelectView
         )
       );
       this._returnToMapListenerAdded = true;
