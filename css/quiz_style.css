@@ -195,3 +195,9 @@ h1.heading {
     width: 65%;
   }
 }
+
+@media (min-width: 1024px) {
+  .img-card > img {
+    width: 40%;
+  }
+}
