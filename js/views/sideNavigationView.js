@@ -79,10 +79,12 @@ class sideNavigationView {
 
   addContryClickHandler(countryElement, country) {
     const countryClickFunction = function (e) {
+      const target = e.target;
       if (
         countryElement.classList.contains(
           "selected-side-navigation-country-container"
-        )
+        ) &&
+        !target.classList.contains("side-navigation-country-link")
       ) {
         countryElement.classList.remove(
           "selected-side-navigation-country-container"
@@ -93,13 +95,12 @@ class sideNavigationView {
         mapView.closeAllPopup();
         mapView.setMapView(GEOGRAPHICAL_CENTER, DEFAULT_ZOOM_LEVEL);
       } else {
-        this._removeAllSelection();
-        countryElement.classList.add(
-          "selected-side-navigation-country-container"
-        );
-        this._selectedCountry = country;
-        const target = e.target;
         if (!target.classList.contains("side-navigation-country-link")) {
+          this._removeAllSelection();
+          countryElement.classList.add(
+            "selected-side-navigation-country-container"
+          );
+          this._selectedCountry = country;
           const zoomLevel = defineZoomLevelByCountryArea(country.area);
           mapView.setMapView(
             country.latlng ? country.latlng : country.capitalInfo.latlng,
