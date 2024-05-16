@@ -19,7 +19,7 @@ class mapView {
   }
 
   _createMap(latLon, defaultZoomLevel = DEFAULT_ZOOM_LEVEL) {
-    this._map = L.map("map", { minZoom: DEFAULT_ZOOM_LEVEL })
+    this._map = L.map("map", { minZoom: DEFAULT_ZOOM_LEVEL, zoomSnap: 0.25 })
       .fitWorld()
       .setView(latLon, defaultZoomLevel);
     L.tileLayer(
