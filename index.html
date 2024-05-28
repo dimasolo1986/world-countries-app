@@ -169,6 +169,15 @@
                 >Country Capital By Flag Quiz</a
               >
             </li>
+            <li style="cursor: pointer" id="country-on-map-li">
+              <a
+                data-quiz="country-on-map-quiz"
+                id="country-on-map-quiz-link"
+                class="dropdown-item"
+                style="display: inline"
+                >Country On Map Quiz</a
+              >
+            </li>
             <li><hr class="dropdown-divider" /></li>
             <li id="about-li" style="cursor: pointer">
               <span style="margin-left: 5px">📰</span>
@@ -233,6 +242,105 @@
             style="position: fixed; background-color: #99d9f2"
             class="container-fluid px-4"
           ></div>
+          <div id="mapQuiz" class="not-displayed">
+            <div
+              style="
+                height: 30vh;
+                overflow: auto;
+                scrollbar-width: thin;
+                display: grid;
+                align-items: center;
+              "
+            >
+              <div
+                class="quiz-heading-map"
+                style="text-align: center; display: block"
+              >
+                <div class="heading-map">Guess Country On Map Quiz</div>
+              </div>
+              <div style="text-align: center; margin-top: 10px">
+                <div class="score-container-map">
+                  <span class="score-name-map">SCORE: </span>
+                  <span class="score-map">0</span>
+                </div>
+                <div class="question-container-map">
+                  <span class="question-current-number-map">1</span>
+                  <span
+                    class="question-delimeter-map"
+                    style="font-weight: normal"
+                    >of</span
+                  >
+                  <span class="question-all-number-map">35</span>
+                  <span
+                    class="finished-quiz-map not-displayed"
+                    style="font-weight: bold; color: red; margin-left: 5px"
+                    >Finished</span
+                  >
+                  <span
+                    class="correct-incorrect-quiz-map not-displayed"
+                    style="
+                      font-weight: bold;
+                      color: darkgreen;
+                      margin-left: 5px;
+                    "
+                  ></span>
+                </div>
+                <br />
+                <div class="question-country-container-map">
+                  <span class="question-country-map"></span>
+                </div>
+              </div>
+
+              <section class="wrapper-map">
+                <div class="container-fostrap">
+                  <div class="content">
+                    <div class="container">
+                      <div class="row">
+                        <div class="control-buttons">
+                          <button
+                            disabled
+                            type="button"
+                            class="btn btn-success next-map"
+                          >
+                            NEXT QUESTION
+                          </button>
+                          <button
+                            type="button"
+                            class="btn btn-warning return-map"
+                          >
+                            RETURN TO MAP
+                          </button>
+                          <button
+                            disabled
+                            type="button"
+                            class="btn btn-danger start-map"
+                          >
+                            START AGAIN
+                          </button>
+                          <button
+                            type="button"
+                            class="btn btn-primary finish-map"
+                          >
+                            FINISH QUIZ
+                          </button>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </section>
+            </div>
+            <div
+              id="mapCountriesQuiz"
+              style="
+                position: fixed;
+                background-color: #79aed0;
+                height: 70vh;
+                width: 100vw;
+                border-top: 1px solid black;
+              "
+            ></div>
+          </div>
           <div id="quiz" class="container-fluid px-4 not-displayed">
             <div
               class="quiz-heading"
@@ -495,6 +603,19 @@
               <span class="about-flag-by-country-capital-description"
                 >Guess the country's flag from the suggested country's capital.
                 The quiz contains 35 questions. Get 100 points for each correct
+                answer.</span
+              >
+            </p>
+            <p class="about-country-on-map-quiz">
+              <span
+                class="about-country-on-map-name"
+                style="font-weight: bold; font-size: 1.2rem"
+                >Country On Map Quiz</span
+              >
+              -
+              <span class="about-country-on-map-description"
+                >Guess the country on the map from the suggested country name.
+                The quiz contains 35 questions. Get 300 points for each correct
                 answer.</span
               >
             </p>

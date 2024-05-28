@@ -6,6 +6,7 @@ class topNavigationView {
   _logoCountriesElement = document.querySelector(".logo-countries");
   _worldMapLink = document.querySelector("#world-map-link");
   _worldMapLi = document.querySelector("#world-map-li");
+  _countryOnMapLi = document.querySelector("#country-on-map-li");
   _flagByCountryNameQuizLink = document.querySelector(
     "#flag-by-country-name-quiz-link"
   );
@@ -24,6 +25,7 @@ class topNavigationView {
   _countryCapitalByCountryNameQuizLink = document.querySelector(
     "#capital-by-country-name-quiz-link"
   );
+  _countryOnMapQuizLink = document.querySelector("#country-on-map-quiz-link");
   _aboutLink = document.querySelector("#about");
   _aboutLi = document.querySelector("#about-li");
 
@@ -61,6 +63,17 @@ class topNavigationView {
         handler(quizType);
       }
     );
+    this._countryOnMapQuizLink.addEventListener("click", function () {
+      const quizType = this.dataset.quiz;
+      localStorage.setItem("currentWindow", quizType);
+      handler(quizType);
+    });
+    this._countryOnMapLi.addEventListener("click", function (e) {
+      if (e.target.id === "country-on-map-li") {
+        localStorage.setItem("currentWindow", "country-on-map-quiz");
+        handler("country-on-map-quiz");
+      }
+    });
   }
 
   addHandlerWorldMapClick(handler) {
@@ -119,6 +132,9 @@ class topNavigationView {
       localization[model.worldCountries.language][
         "Capital By Country Name Quiz"
       ]
+    }`;
+    this._countryOnMapQuizLink.textContent = `${
+      localization[model.worldCountries.language]["Country On Map Quiz"]
     }`;
     this._aboutLink.textContent = `${
       localization[model.worldCountries.language]["About Project"]

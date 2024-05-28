@@ -5,10 +5,12 @@ import countriesSelectView from "./views/countriesSelectView.js";
 import languageSelectView from "./views/languageSelectView.js";
 import topNavigationView from "./views/topNavigationView.js";
 import quiz from "./views/quiz.js";
+import mapQuiz from "./views/mapQuiz.js";
 import aboutView from "./views/aboutView.js";
 import { localization } from "./localization/ua.js";
 import { GEOGRAPHICAL_CENTER } from "./config.js";
 import { DEFAULT_ZOOM_LEVEL } from "./config.js";
+import { COUNTRY_ON_MAP_QUIZ } from "./config.js";
 import { sortData } from "./helpers.js";
 const init = function () {
   mapView.addHandlerRender(mapCountriesMarkerRender);
@@ -50,6 +52,7 @@ const loadWindow = function () {
 
 const loadWorldMap = function () {
   quiz.hideQuiz();
+  mapQuiz.hideQuiz();
   aboutView.hideAboutProject();
   countriesSelectView.enableCountriesSelect();
   mapView.setMapView(GEOGRAPHICAL_CENTER, DEFAULT_ZOOM_LEVEL);
@@ -62,6 +65,7 @@ const loadWorldMap = function () {
 const loadAboutProject = function () {
   mapView.hideMap();
   quiz.hideQuiz();
+  mapQuiz.hideQuiz();
   countriesSelectView.disableCountriesSelect();
   aboutView.showAboutProjectInfo();
   topNavigationView.hideSideNavigation();
@@ -72,13 +76,26 @@ const loadQuiz = function (quizId) {
   topNavigationView.hideSideNavigation();
   countriesSelectView.disableCountriesSelect();
   aboutView.hideAboutProject();
-  quiz.initQuiz(
-    quizId,
-    mapView,
-    sideNavigationView,
-    topNavigationView,
-    countriesSelectView
-  );
+  if (quizId === COUNTRY_ON_MAP_QUIZ) {
+    quiz.hideQuiz();
+    mapView.hideMap();
+    mapQuiz.showQuiz();
+    mapQuiz.initQuiz(
+      mapView,
+      sideNavigationView,
+      topNavigationView,
+      countriesSelectView
+    );
+  } else {
+    mapQuiz.hideQuiz();
+    quiz.initQuiz(
+      quizId,
+      mapView,
+      sideNavigationView,
+      topNavigationView,
+      countriesSelectView
+    );
+  }
   topNavigationView.disableSideBarToggle();
 };
 
@@ -100,6 +117,7 @@ const translateAllElements = function () {
   quiz.translateElements();
   aboutView.translateElements();
   mapView.translateElements();
+  mapQuiz.translateElements();
 };
 
 const languageSelectHandler = function (language) {

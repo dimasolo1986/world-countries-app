@@ -525,6 +525,7 @@ export const localization = {
       "Вікторина Вгадай Назву Країни За Столицею Країни",
     "Guess Capital By Country Name Quiz":
       "Вікторина Вгадай Столицю За Назвою Країни",
+    "Guess Country On Map Quiz": "Вікторина Знайди Країну На Мапі",
     "War Aggressor": "Країна Агресор",
     "Aggressor Supporter": "Прибічник Агресора",
     "Flag By Country Name Quiz": "Вікторина Прапор За Назвою Країни",
@@ -533,7 +534,10 @@ export const localization = {
     "Flag By Country Capital Quiz": "Вікторина Прапор За Столицею Країни",
     "Country Name By Capital Quiz": "Вікторина Назва Країни За Столицею Країни",
     "Capital By Country Name Quiz": "Вікторина Столиця Країни За Назвою Країни",
+    "Country On Map Quiz": "Вікторина Країна На Мапі",
     "About Project": "Про Проект",
+    Correct: "Вірно",
+    Incorrect: "Невірно",
     "Slavutych, Ukraine - birthplace of the project":
       "Славутич, Україна - місце народження проекту",
     "World Countries And Quizzes": "Світові Країни Та Вікторини",
@@ -553,6 +557,8 @@ export const localization = {
       "Відгадайте назву країни за запропонованою столицею країни. Вікторина містить 35 питань. За кожну правильну відповідь отримуйте 100 балів.",
     "Guess the country's capital from the suggested country name. The quiz contains 35 questions. Get 100 points for each correct answer.":
       "Відгадайте столицю країни за запропонованою назвою країни. Вікторина містить 35 питань. За кожну правильну відповідь отримуйте 100 балів.",
+    "Guess the country on the map from the suggested country name. The quiz contains 35 questions. Get 300 points for each correct answer.":
+      "Відгадайте розташування країни на світовій мапі за запропонованою назвою країни. Вікторина містить 35 питань. За кожну правильну відповідь отримуйте 300 балів.",
     "Project was created by Software Developer from Ukraine -":
       "Проект створений програмістом з України -",
     "You can support Ukraine in the fight against Russia's military aggression:":
@@ -1133,6 +1139,8 @@ export const localization = {
     "NEXT QUESTION": "NEXT QUESTION",
     "FINISH QUIZ": "FINISH QUIZ",
     "Flag By Country Name Quiz": "Flag By Country Name Quiz",
+    "Country On Map Quiz": "Country On Map Quiz",
+    "Guess Country On Map Quiz": "Guess Country On Map Quiz",
     "All Countries": "All Countries",
     "Search Or Select Counties...": "Search Or Select Counties...",
     Selected: "Selected",
@@ -1156,6 +1164,8 @@ export const localization = {
       "Guess the country's name from the suggested country capital. The quiz contains 35 questions. Get 100 points for each correct answer.",
     "Guess the country's capital from the suggested country name. The quiz contains 35 questions. Get 100 points for each correct answer.":
       "Guess the country's capital from the suggested country name. The quiz contains 35 questions. Get 100 points for each correct answer.",
+    "Guess the country on the map from the suggested country name. The quiz contains 35 questions. Get 300 points for each correct answer.":
+      "Guess the country on the map from the suggested country name. The quiz contains 35 questions. Get 300 points for each correct answer.",
     "Project was created by Software Developer from Ukraine -":
       "Project was created by Software Developer from Ukraine -",
     "You can support Ukraine in the fight against Russia's military aggression:":
@@ -1171,6 +1181,8 @@ export const localization = {
     "Slavutych, Ukraine - birthplace of the project":
       "Slavutych, Ukraine - birthplace of the project",
     "Quizzes:": "Quizzes:",
+    Correct: "Correct",
+    Incorrect: "Incorrect",
     "World Map": "World Map",
     "Used Map Library:": "Used Map Library:",
     Finished: "Finished",

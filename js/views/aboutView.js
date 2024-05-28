@@ -45,6 +45,12 @@ class aboutView {
   _aboutCountryCapitalByCountryNameQuizDescription = document.querySelector(
     ".about-capital-by-country-name-quiz-description"
   );
+  _aboutCountryOnMapQuizName = document.querySelector(
+    ".about-country-on-map-name"
+  );
+  _aboutCountryOnMapQuizDescription = document.querySelector(
+    ".about-country-on-map-description"
+  );
   _aboutDeveloper = document.querySelector(".about-developer");
   _aboutDeveloperLink = document.querySelector(".about-developer-link");
   _aboutDeveloperEmailDescription = document.querySelector(
@@ -139,6 +145,9 @@ class aboutView {
         "Capital By Country Name Quiz"
       ]
     }`;
+    this._aboutCountryOnMapQuizName.textContent = `${
+      localization[model.worldCountries.language]["Country On Map Quiz"]
+    }`;
     this._aboutCountryCapitalByCountryNameQuizDescription.textContent = `${
       localization[model.worldCountries.language][
         "Guess the country's capital from the suggested country name. The quiz contains 35 questions. Get 100 points for each correct answer."
@@ -162,6 +171,11 @@ class aboutView {
     this._aboutFalgByCountryCapitalQuizDescription.textContent = `${
       localization[model.worldCountries.language][
         "Guess the country's flag from the suggested country's capital. The quiz contains 35 questions. Get 100 points for each correct answer."
+      ]
+    }`;
+    this._aboutCountryOnMapQuizDescription.textContent = `${
+      localization[model.worldCountries.language][
+        "Guess the country on the map from the suggested country name. The quiz contains 35 questions. Get 300 points for each correct answer."
       ]
     }`;
     this._aboutUkraineHelpDescription.textContent = `${

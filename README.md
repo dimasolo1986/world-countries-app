@@ -19,3 +19,5 @@ Used Map Library: [Leaflet](https://leafletjs.com/)
 <b>Country Capital By Flag Quiz<b> - Guess the country's capital from the suggested country flag image. The quiz contains 35 questions. Get 100 points for each correct answer.
 
 <b>Flag By Country Capital Quiz<b> - Guess the country's flag from the suggested country's capital. The quiz contains 35 questions. Get 100 points for each correct answer.
+
+<b>Country On Map Quiz<b> - Guess the country on the map from the suggested country name. The quiz contains 35 questions. Get 300 points for each correct answer.

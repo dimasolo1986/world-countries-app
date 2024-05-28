@@ -17,6 +17,12 @@ body {
   width: 100%;
 }
 
+.wrapper-map {
+  display: table;
+  height: 5vh;
+  width: 100%;
+}
+
 .container-fostrap {
   display: table-cell;
   text-align: center;
@@ -112,7 +118,9 @@ h1.heading {
 }
 
 .score-container,
-.question-container {
+.score-container-map,
+.question-container,
+.question-container-map {
   height: 100px;
   display: inline;
   margin-right: 10px;
@@ -124,11 +132,13 @@ h1.heading {
   font-weight: bold;
 }
 
-.score {
+.score,
+.score-map {
   color: darkgreen;
 }
 
-.question-country {
+.question-country,
+.question-country-map {
   font-weight: bold;
   font-size: 2rem;
 }
@@ -150,14 +160,16 @@ h1.heading {
   margin-top: 5px;
 }
 
-.heading {
+.heading,
+.heading-map {
   font-weight: bold;
   font-size: 1.5rem;
   color: cornflowerblue;
   font-family: Cambria, Cochin, Georgia, Times, "Times New Roman", serif;
 }
 
-.question-country-container {
+.question-country-container,
+.question-country-container-map {
   margin-top: 10px;
   color: darkblue;
 }
@@ -170,7 +182,8 @@ h1.heading {
   font-family: Cambria, Cochin, Georgia, Times, "Times New Roman", serif;
 }
 
-.question-img-country {
+.question-img-country,
+.question-img-country-map {
   width: 100px;
   height: 50px;
   border: solid 1px black;
@@ -199,5 +212,74 @@ h1.heading {
 @media (min-width: 1024px) {
   .img-card > img {
     width: 40%;
+  }
+}
+
+@media (min-height: 200px) and (max-height: 550px) {
+  .heading-map {
+    font-size: 1rem;
+    display: none;
+  }
+}
+
+@media (min-height: 550px) {
+  .heading-map {
+    display: block;
+  }
+}
+
+@media (min-height: 200px) and (max-height: 550px) {
+  .score-container-map,
+  .question-container-map {
+    font-size: 0.8rem;
+  }
+}
+
+@media (min-height: 200px) and (max-height: 550px) {
+  .question-country-map {
+    font-size: 1.2rem;
+  }
+}
+
+@media (min-height: 200px) and (max-height: 550px) {
+  .next-map,
+  .return-map,
+  .start-map,
+  .finish-map {
+    font-size: 0.6rem;
+  }
+}
+
+@media (min-height: 1024px) {
+  .heading-map {
+    font-size: 2.5rem;
+  }
+}
+
+@media (min-height: 1024px) {
+  .heading-map {
+    display: block;
+  }
+}
+
+@media (min-height: 1024px) {
+  .score-container-map,
+  .question-container-map {
+    font-size: 1.5rem;
+  }
+}
+
+@media (min-height: 1024px) {
+  .question-country-map {
+    font-size: 2.5rem;
+  }
+}
+
+@media (min-height: 1024px) {
+  .next-map,
+  .return-map,
+  .start-map,
+  .finish-map {
+    font-size: 1rem;
   }
 }
