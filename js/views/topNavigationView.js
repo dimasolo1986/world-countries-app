@@ -43,6 +43,7 @@ class topNavigationView {
   }
 
   initItemMenuStyle() {
+    this.resetItemMenuStyle();
     const currentWindow = sessionStorage.getItem("currentWindow");
     if (currentWindow) {
       switch (currentWindow) {
