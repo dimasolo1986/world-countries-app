@@ -28,6 +28,12 @@ const init = function () {
   topNavigationView.addHandlerAboutClick(aboutProjectHandlerClick);
   topNavigationView.addHandlerQuizClick(quizSelectionHandler);
   topNavigationView.initItemMenuStyle();
+  aboutView.addReturnToMapHandlerClick(
+    mapView,
+    sideNavigationView,
+    topNavigationView,
+    countriesSelectView
+  );
   saveCurrentLanguageHandler();
   loadWindow();
 };

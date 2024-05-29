@@ -1,5 +1,6 @@
 import { localization } from "../localization/ua.js";
 import * as model from "../model.js";
+import { GEOGRAPHICAL_CENTER, DEFAULT_ZOOM_LEVEL } from "../config.js";
 class aboutView {
   _parentElement = document.querySelector("#about-project");
   _aboutHeading = document.querySelector(".about-heading");
@@ -61,6 +62,47 @@ class aboutView {
   );
   _aboutUkraineHelpLink = document.querySelector(".about-ukraine-help-link");
   _aboutMapLibrary = document.querySelector(".about-map-library");
+  _aboutReturnToMap = document.querySelector(".return-about");
+
+  _returnToMapListenerAdded = false;
+
+  returnToMap(
+    mapView,
+    sideNavigationView,
+    topNavigationView,
+    countriesSelectView
+  ) {
+    this.hideAboutProject();
+    mapView.setMapView(GEOGRAPHICAL_CENTER, DEFAULT_ZOOM_LEVEL);
+    mapView.showMap();
+    mapView.invalidateSize();
+    sideNavigationView.showSideNavigation();
+    topNavigationView.enableSideBarToggle();
+    countriesSelectView.enableCountriesSelect();
+    sessionStorage.setItem("currentWindow", "map");
+    topNavigationView.initItemMenuStyle();
+  }
+
+  addReturnToMapHandlerClick(
+    mapView,
+    sideNavigationView,
+    topNavigationView,
+    countriesSelectView
+  ) {
+    if (!this._returnToMapListenerAdded) {
+      this._aboutReturnToMap.addEventListener(
+        "click",
+        this.returnToMap.bind(
+          this,
+          mapView,
+          sideNavigationView,
+          topNavigationView,
+          countriesSelectView
+        )
+      );
+      this._returnToMapListenerAdded = true;
+    }
+  }
 
   showAboutProjectInfo() {
     this.showAboutProject();
@@ -75,6 +117,9 @@ class aboutView {
   }
 
   translateElements() {
+    this._aboutReturnToMap.textContent = `${
+      localization[model.worldCountries.language]["RETURN TO MAP"]
+    }`;
     this._aboutProjectName.textContent = `${
       localization[model.worldCountries.language]["World Countries And Quizzes"]
     }`;
