@@ -27,6 +27,7 @@ const init = function () {
   topNavigationView.addHandlerWorldMapClick(worldMapHandlerClick);
   topNavigationView.addHandlerAboutClick(aboutProjectHandlerClick);
   topNavigationView.addHandlerQuizClick(quizSelectionHandler);
+  topNavigationView.initItemMenuStyle();
   saveCurrentLanguageHandler();
   loadWindow();
 };

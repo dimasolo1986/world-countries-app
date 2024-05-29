@@ -1,12 +1,19 @@
 import * as model from "../model.js";
 import { localization } from "../localization/ua.js";
+import {
+  FLAG_BY_COUNTRY_NAME_QUIZ,
+  COUNTRY_NAME_BY_FLAG_QUIZ,
+  COUNTRY_CAPITAL_BY_FLAG_QUIZ,
+  FLAG_BY_COUNTRY_CAPITAL_QUIZ,
+  COUNTRY_NAME_BY_CAPITAL_QUIZ,
+  COUNTRY_CAPITAL_BY_COUNTRY_NAME_QUIZ,
+  COUNTRY_ON_MAP_QUIZ,
+} from "../config.js";
 class topNavigationView {
   _parentElement = document.querySelector(".sb-topnav");
   _sidebarToggle = document.body.querySelector("#sidebarToggle");
   _logoCountriesElement = document.querySelector(".logo-countries");
   _worldMapLink = document.querySelector("#world-map-link");
-  _worldMapLi = document.querySelector("#world-map-li");
-  _countryOnMapLi = document.querySelector("#country-on-map-li");
   _flagByCountryNameQuizLink = document.querySelector(
     "#flag-by-country-name-quiz-link"
   );
@@ -27,83 +34,139 @@ class topNavigationView {
   );
   _countryOnMapQuizLink = document.querySelector("#country-on-map-quiz-link");
   _aboutLink = document.querySelector("#about");
-  _aboutLi = document.querySelector("#about-li");
+  _dropdownMenuElements = document.querySelectorAll(".dropdown-menu li");
+
+  resetItemMenuStyle() {
+    this._dropdownMenuElements.forEach(
+      (item) => (item.style.backgroundColor = "white")
+    );
+  }
+
+  initItemMenuStyle() {
+    const currentWindow = sessionStorage.getItem("currentWindow");
+    if (currentWindow) {
+      switch (currentWindow) {
+        case "map":
+          this._worldMapLink.closest("li").style.backgroundColor = "lightgrey";
+          break;
+        case "about-project":
+          this._aboutLink.closest("li").style.backgroundColor = "lightgrey";
+          break;
+        case FLAG_BY_COUNTRY_NAME_QUIZ:
+          this._flagByCountryNameQuizLink.closest("li").style.backgroundColor =
+            "lightgrey";
+          break;
+        case COUNTRY_NAME_BY_FLAG_QUIZ:
+          this._countryNameByFlagQuizLink.closest("li").style.backgroundColor =
+            "lightgrey";
+          break;
+        case COUNTRY_CAPITAL_BY_FLAG_QUIZ:
+          this._countryCapitalByFlagQuizLink.closest(
+            "li"
+          ).style.backgroundColor = "lightgrey";
+          break;
+        case FLAG_BY_COUNTRY_CAPITAL_QUIZ:
+          this._flagByCountryCapitalQuizLink.closest(
+            "li"
+          ).style.backgroundColor = "lightgrey";
+          break;
+        case COUNTRY_NAME_BY_CAPITAL_QUIZ:
+          this._countryNameByCapitalQuizLink.closest(
+            "li"
+          ).style.backgroundColor = "lightgrey";
+          break;
+        case COUNTRY_CAPITAL_BY_COUNTRY_NAME_QUIZ:
+          this._countryCapitalByCountryNameQuizLink.closest(
+            "li"
+          ).style.backgroundColor = "lightgrey";
+          break;
+        case COUNTRY_ON_MAP_QUIZ:
+          this._countryOnMapQuizLink.closest("li").style.backgroundColor =
+            "lightgrey";
+          break;
+      }
+    } else {
+      this._worldMapLink.closest("li").style.backgroundColor = "lightgrey";
+    }
+  }
 
   addHandlerQuizClick(handler) {
-    this._flagByCountryNameQuizLink.addEventListener("click", function () {
-      const quizType = this.dataset.quiz;
+    const handlerQuizClick = function (link) {
+      const quizType = link.dataset.quiz;
+      this.resetItemMenuStyle();
+      link.closest("li").style.backgroundColor = "lightgrey";
       sessionStorage.setItem("currentWindow", quizType);
       handler(quizType);
-    });
-    this._countryNameByFlagQuizLink.addEventListener("click", function () {
-      const quizType = this.dataset.quiz;
-      sessionStorage.setItem("currentWindow", quizType);
-      handler(quizType);
-    });
-    this._countryCapitalByFlagQuizLink.addEventListener("click", function () {
-      const quizType = this.dataset.quiz;
-      sessionStorage.setItem("currentWindow", quizType);
-      handler(quizType);
-    });
-    this._flagByCountryCapitalQuizLink.addEventListener("click", function () {
-      const quizType = this.dataset.quiz;
-      sessionStorage.setItem("currentWindow", quizType);
-      handler(quizType);
-    });
-    this._countryNameByCapitalQuizLink.addEventListener("click", function () {
-      const quizType = this.dataset.quiz;
-      sessionStorage.setItem("currentWindow", quizType);
-      handler(quizType);
-    });
-    this._countryCapitalByCountryNameQuizLink.addEventListener(
-      "click",
-      function () {
-        const quizType = this.dataset.quiz;
-        sessionStorage.setItem("currentWindow", quizType);
-        handler(quizType);
-      }
-    );
-    this._countryOnMapQuizLink.addEventListener("click", function () {
-      const quizType = this.dataset.quiz;
-      sessionStorage.setItem("currentWindow", quizType);
-      handler(quizType);
-    });
-    this._countryOnMapLi.addEventListener("click", function (e) {
-      if (e.target.id === "country-on-map-li") {
-        sessionStorage.setItem("currentWindow", "country-on-map-quiz");
-        handler("country-on-map-quiz");
-      }
-    });
+    };
+    this._flagByCountryNameQuizLink
+      .closest("li")
+      .addEventListener(
+        "click",
+        handlerQuizClick.bind(this, this._flagByCountryNameQuizLink)
+      );
+    this._countryNameByFlagQuizLink
+      .closest("li")
+      .addEventListener(
+        "click",
+        handlerQuizClick.bind(this, this._countryNameByFlagQuizLink)
+      );
+    this._countryCapitalByFlagQuizLink
+      .closest("li")
+      .addEventListener(
+        "click",
+        handlerQuizClick.bind(this, this._countryCapitalByFlagQuizLink)
+      );
+    this._flagByCountryCapitalQuizLink
+      .closest("li")
+      .addEventListener(
+        "click",
+        handlerQuizClick.bind(this, this._flagByCountryCapitalQuizLink)
+      );
+    this._countryNameByCapitalQuizLink
+      .closest("li")
+      .addEventListener(
+        "click",
+        handlerQuizClick.bind(this, this._countryNameByCapitalQuizLink)
+      );
+    this._countryCapitalByCountryNameQuizLink
+      .closest("li")
+      .addEventListener(
+        "click",
+        handlerQuizClick.bind(this, this._countryCapitalByCountryNameQuizLink)
+      );
+    this._countryOnMapQuizLink
+      .closest("li")
+      .addEventListener(
+        "click",
+        handlerQuizClick.bind(this, this._countryOnMapQuizLink)
+      );
   }
 
   addHandlerWorldMapClick(handler) {
-    this._worldMapLink.addEventListener("click", function (e) {
-      if (e.target.id === "world-map-link") {
-        sessionStorage.setItem("currentWindow", "map");
-        handler();
-      }
-    });
-    this._worldMapLi.addEventListener("click", function (e) {
-      if (e.target.id === "world-map-li") {
-        sessionStorage.setItem("currentWindow", "map");
-        handler();
-      }
-    });
+    const handlerWorldMapClick = function (link) {
+      this.resetItemMenuStyle();
+      link.closest("li").style.backgroundColor = "lightgrey";
+      sessionStorage.setItem("currentWindow", "map");
+      handler();
+    };
+    this._worldMapLink
+      .closest("li")
+      .addEventListener(
+        "click",
+        handlerWorldMapClick.bind(this, this._worldMapLink)
+      );
   }
 
   addHandlerAboutClick(handler) {
-    this._aboutLink.addEventListener("click", function (e) {
-      if (e.target.id === "about") {
-        sessionStorage.setItem("currentWindow", "about-project");
-        handler();
-      }
-    });
-    this._aboutLi.addEventListener("click", function (e) {
-      if (e.target.id === "about-li") {
-        sessionStorage.setItem("currentWindow", "about-project");
-        handler();
-      }
-    });
+    const handlerAboutClick = function (link) {
+      this.resetItemMenuStyle();
+      link.closest("li").style.backgroundColor = "lightgrey";
+      sessionStorage.setItem("currentWindow", "about-project");
+      handler();
+    };
+    this._aboutLink
+      .closest("li")
+      .addEventListener("click", handlerAboutClick.bind(this, this._aboutLink));
   }
 
   translateElements() {
