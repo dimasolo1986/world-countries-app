@@ -106,7 +106,7 @@ class MapQuiz {
       sideNavigationView.showSideNavigation();
       topNavigationView.enableSideBarToggle();
       countriesSelectView.enableCountriesSelect();
-      localStorage.setItem("currentWindow", "map");
+      sessionStorage.setItem("currentWindow", "map");
     }
   }
 

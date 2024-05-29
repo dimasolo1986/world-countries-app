@@ -32,45 +32,45 @@ class topNavigationView {
   addHandlerQuizClick(handler) {
     this._flagByCountryNameQuizLink.addEventListener("click", function () {
       const quizType = this.dataset.quiz;
-      localStorage.setItem("currentWindow", quizType);
+      sessionStorage.setItem("currentWindow", quizType);
       handler(quizType);
     });
     this._countryNameByFlagQuizLink.addEventListener("click", function () {
       const quizType = this.dataset.quiz;
-      localStorage.setItem("currentWindow", quizType);
+      sessionStorage.setItem("currentWindow", quizType);
       handler(quizType);
     });
     this._countryCapitalByFlagQuizLink.addEventListener("click", function () {
       const quizType = this.dataset.quiz;
-      localStorage.setItem("currentWindow", quizType);
+      sessionStorage.setItem("currentWindow", quizType);
       handler(quizType);
     });
     this._flagByCountryCapitalQuizLink.addEventListener("click", function () {
       const quizType = this.dataset.quiz;
-      localStorage.setItem("currentWindow", quizType);
+      sessionStorage.setItem("currentWindow", quizType);
       handler(quizType);
     });
     this._countryNameByCapitalQuizLink.addEventListener("click", function () {
       const quizType = this.dataset.quiz;
-      localStorage.setItem("currentWindow", quizType);
+      sessionStorage.setItem("currentWindow", quizType);
       handler(quizType);
     });
     this._countryCapitalByCountryNameQuizLink.addEventListener(
       "click",
       function () {
         const quizType = this.dataset.quiz;
-        localStorage.setItem("currentWindow", quizType);
+        sessionStorage.setItem("currentWindow", quizType);
         handler(quizType);
       }
     );
     this._countryOnMapQuizLink.addEventListener("click", function () {
       const quizType = this.dataset.quiz;
-      localStorage.setItem("currentWindow", quizType);
+      sessionStorage.setItem("currentWindow", quizType);
       handler(quizType);
     });
     this._countryOnMapLi.addEventListener("click", function (e) {
       if (e.target.id === "country-on-map-li") {
-        localStorage.setItem("currentWindow", "country-on-map-quiz");
+        sessionStorage.setItem("currentWindow", "country-on-map-quiz");
         handler("country-on-map-quiz");
       }
     });
@@ -79,13 +79,13 @@ class topNavigationView {
   addHandlerWorldMapClick(handler) {
     this._worldMapLink.addEventListener("click", function (e) {
       if (e.target.id === "world-map-link") {
-        localStorage.setItem("currentWindow", "map");
+        sessionStorage.setItem("currentWindow", "map");
         handler();
       }
     });
     this._worldMapLi.addEventListener("click", function (e) {
       if (e.target.id === "world-map-li") {
-        localStorage.setItem("currentWindow", "map");
+        sessionStorage.setItem("currentWindow", "map");
         handler();
       }
     });
@@ -94,13 +94,13 @@ class topNavigationView {
   addHandlerAboutClick(handler) {
     this._aboutLink.addEventListener("click", function (e) {
       if (e.target.id === "about") {
-        localStorage.setItem("currentWindow", "about-project");
+        sessionStorage.setItem("currentWindow", "about-project");
         handler();
       }
     });
     this._aboutLi.addEventListener("click", function (e) {
       if (e.target.id === "about-li") {
-        localStorage.setItem("currentWindow", "about-project");
+        sessionStorage.setItem("currentWindow", "about-project");
         handler();
       }
     });
@@ -165,13 +165,13 @@ class topNavigationView {
   initSideBar = function () {
     window.addEventListener("DOMContentLoaded", (event) => {
       if (this._sidebarToggle) {
-        if (localStorage.getItem("sb|sidebar-toggle") === "true") {
+        if (sessionStorage.getItem("sb|sidebar-toggle") === "true") {
           document.body.classList.toggle("sb-sidenav-toggled");
         }
         this._sidebarToggle.addEventListener("click", (event) => {
           event.preventDefault();
           document.body.classList.toggle("sb-sidenav-toggled");
-          localStorage.setItem(
+          sessionStorage.setItem(
             "sb|sidebar-toggle",
             document.body.classList.contains("sb-sidenav-toggled")
           );

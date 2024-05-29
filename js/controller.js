@@ -32,7 +32,7 @@ const init = function () {
 };
 
 const loadWindow = function () {
-  const savedWindow = localStorage.getItem("currentWindow");
+  const savedWindow = sessionStorage.getItem("currentWindow");
   if (savedWindow) {
     switch (savedWindow) {
       case "map":
