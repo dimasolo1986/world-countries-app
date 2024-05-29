@@ -165,9 +165,6 @@ class topNavigationView {
   initSideBar = function () {
     window.addEventListener("DOMContentLoaded", (event) => {
       if (this._sidebarToggle) {
-        if (sessionStorage.getItem("sb|sidebar-toggle") === "true") {
-          document.body.classList.toggle("sb-sidenav-toggled");
-        }
         this._sidebarToggle.addEventListener("click", (event) => {
           event.preventDefault();
           document.body.classList.toggle("sb-sidenav-toggled");
