@@ -11622,6 +11622,22 @@ body,
   padding: 10px;
 }
 
+.dropdown-menu {
+  font-size: 1.1rem;
+}
+
 .dropdown-menu a {
   font-family: Cambria, Cochin, Georgia, Times, "Times New Roman", serif;
+}
+
+@media (min-width: 100px) and (max-width: 450px) {
+  .dropdown-menu {
+    font-size: 0.8rem;
+  }
+}
+
+@media (min-height: 100px) and (max-height: 450px) {
+  .dropdown-menu {
+    font-size: 0.9rem;
+  }
 }

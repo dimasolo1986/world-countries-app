@@ -203,7 +203,18 @@ class MapQuiz {
       ).addTo(this._map);
       this._addResetZoomToMap();
       this.addCountryBoundaries();
+      this.resetTranslateHandler();
     }
+  }
+
+  resetTranslateHandler() {
+    window.addEventListener("DOMContentLoaded", () => {
+      const resetZoom = document.querySelector(".reset-zoom-map-quiz");
+      if (resetZoom) {
+        resetZoom.textContent =
+          localization[model.worldCountries.language]["Reset"];
+      }
+    });
   }
 
   selectRandomCountry() {
@@ -333,7 +344,7 @@ class MapQuiz {
     (function () {
       const control = new L.Control({ position: "topleft" });
       control.onAdd = function (map) {
-        const resetZoom = L.DomUtil.create("a", "resetzoom");
+        const resetZoom = L.DomUtil.create("a", "reset-zoom-map-quiz");
         resetZoom.innerHTML = "Reset";
         resetZoom.style.cursor = "pointer";
         resetZoom.style.textDecoration = "none";
@@ -359,15 +370,18 @@ class MapQuiz {
 
   showQuiz() {
     this._quizElement.classList.remove("not-displayed");
-    this._mapElement.classList.remove("not-displayed");
   }
 
   hideQuiz() {
     this._quizElement.classList.add("not-displayed");
-    this._mapElement.classList.add("not-displayed");
   }
 
   translateElements() {
+    const resetZoom = document.querySelector(".reset-zoom-map-quiz");
+    if (resetZoom) {
+      resetZoom.textContent =
+        localization[model.worldCountries.language]["Reset"];
+    }
     this._quizHeading.textContent = `${
       localization[model.worldCountries.language]["Guess Country On Map Quiz"]
     }`;
