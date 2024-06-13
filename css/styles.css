@@ -11583,8 +11583,8 @@ body,
 }
 
 #tree-select-countries {
-  min-width: 15vw;
-  max-width: 30vw;
+  min-width: 40vw;
+  max-width: 42vw;
 }
 
 .sort {

@@ -65,7 +65,11 @@ const loadWorldMap = function () {
   mapView.setMapView(GEOGRAPHICAL_CENTER, DEFAULT_ZOOM_LEVEL);
   mapView.showMap();
   mapView.invalidateSize();
-  topNavigationView.showSideNavigation();
+  if (window.screen.width < 650) {
+    topNavigationView.hideSideNavigation();
+  } else {
+    topNavigationView.showSideNavigation();
+  }
   topNavigationView.enableSideBarToggle();
 };
 
