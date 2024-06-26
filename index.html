@@ -61,6 +61,70 @@
     ></script>
   </head>
   <body class="sb-nav-fixed">
+    <!-- Modal -->
+    <div
+      class="modal fade"
+      id="quizResultModal"
+      tabindex="-1"
+      aria-labelledby="quizModalResultLabel"
+      aria-hidden="true"
+    >
+      <div class="modal-dialog modal-dialog-centered">
+        <div class="modal-content" style="background-color: #f7fafd">
+          <div class="modal-header">
+            <h1
+              class="modal-title fs-5"
+              id="quizModalResultLabel"
+              style="font-weight: bold; color: cornflowerblue"
+            >
+              Quiz Result
+            </h1>
+            <button
+              type="button"
+              class="btn-close"
+              data-bs-dismiss="modal"
+              aria-label="Close"
+            ></button>
+          </div>
+          <div class="modal-body">
+            <span
+              class="score-name-result"
+              style="font-weight: bold; font-style: italic"
+              >SCORE:
+            </span>
+            <span
+              class="score-result"
+              style="color: darkgreen; font-weight: bold; font-style: italic"
+              >0</span
+            >
+            <span class="score-result-points" style="font-style: italic"
+              >Points</span
+            >
+            <div class="result-right-answers">
+              <span
+                class="right-answers-number"
+                style="font-weight: bold; color: darkgreen; font-style: italic"
+                >0</span
+              >
+              <span class="right-answers-text" style="font-style: italic"
+                >Correct answers out of</span
+              >
+              <span class="answered-number" style="font-style: italic">35</span>
+            </div>
+          </div>
+          <div class="modal-footer">
+            <button
+              id="quizResultCloseButton"
+              type="button"
+              class="btn btn-secondary"
+              data-bs-dismiss="modal"
+            >
+              Close
+            </button>
+          </div>
+        </div>
+      </div>
+    </div>
     <nav class="sb-topnav navbar navbar-expand navbar-dark bg-dark">
       <div class="navbar-logo-lang">
         <!-- Navbar Brand-->

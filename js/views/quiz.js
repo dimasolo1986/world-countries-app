@@ -2,6 +2,7 @@ import * as model from "../model.js";
 import { localization } from "../localization/ua.js";
 import { getRandomInt } from "../helpers.js";
 import { DEFAULT_RIGHT_SCORE } from "../config.js";
+import { showQuizResultWindow } from "../helpers.js";
 import { GEOGRAPHICAL_CENTER, DEFAULT_ZOOM_LEVEL } from "../config.js";
 import {
   FLAG_BY_COUNTRY_NAME_QUIZ,
@@ -13,6 +14,16 @@ import {
 } from "../config.js";
 class Quiz {
   _quizElement = document.querySelector("#quiz");
+  _quizResultModalLabel = document.querySelector("#quizModalResultLabel");
+  _quizResultModalButton = document.querySelector("#quizResultCloseButton");
+  _quizResultScoreName = document.querySelector(".score-name-result");
+  _quizResultScore = document.querySelector(".score-result");
+  _quizResultScorePoints = document.querySelector(".score-result-points");
+  _quizResultRightAnswersText = document.querySelector(".right-answers-text");
+  _quizResultRightAnswersNumber = document.querySelector(
+    ".right-answers-number"
+  );
+  _quizResultAnsweredNumber = document.querySelector(".answered-number");
   _quizHeading = document.querySelector(".heading");
   _questionContainer = document.querySelector(".question-container");
   _questionCountry = document.querySelector(".question-country");
@@ -119,6 +130,7 @@ class Quiz {
         cardOption.classList.remove("right-answer");
       });
       this.disableCardOptions();
+      this.showResultWindow();
     };
     if (!this._finishQuizListenerAdded) {
       this._finishQuiz.addEventListener("click", finishQuiz.bind(this));
@@ -240,6 +252,7 @@ class Quiz {
       this._startQuiz.disabled = false;
       this._finishQuiz.disabled = true;
       this._finishedQuizLabel.classList.remove("not-displayed");
+      this.showResultWindow();
     }
     this.disableCardOptions();
   }
@@ -402,8 +415,22 @@ class Quiz {
       this._finishQuiz.disabled = true;
       this._startQuiz.disabled = false;
       this._finishedQuizLabel.classList.remove("not-displayed");
+      this.showResultWindow();
     }
     this.enableCardOptions();
+  }
+
+  showResultWindow() {
+    this._quizResultScore.textContent = this._scoreValue.textContent;
+    this._quizResultAnsweredNumber.textContent =
+      this._questionCurrentNumber.textContent;
+    if (+this._scoreValue.textContent !== 0) {
+      this._quizResultRightAnswersNumber.textContent =
+        +this._scoreValue.textContent / DEFAULT_RIGHT_SCORE;
+    } else {
+      this._quizResultRightAnswersNumber.textContent = "0";
+    }
+    showQuizResultWindow();
   }
 
   renderCountryQuestion() {
@@ -627,6 +654,21 @@ class Quiz {
           ];
       });
     }
+    this._quizResultModalLabel.textContent = `${
+      localization[model.worldCountries.language]["Quiz Result"]
+    }`;
+    this._quizResultModalButton.textContent = `${
+      localization[model.worldCountries.language]["Close"]
+    }`;
+    this._quizResultScoreName.textContent = `${
+      localization[model.worldCountries.language]["SCORE"]
+    }`;
+    this._quizResultScorePoints.textContent = `${
+      localization[model.worldCountries.language]["Points"]
+    }`;
+    this._quizResultRightAnswersText.textContent = `${
+      localization[model.worldCountries.language]["Correct answers out of"]
+    }`;
   }
 
   showQuiz() {
