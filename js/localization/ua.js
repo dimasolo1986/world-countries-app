@@ -538,6 +538,7 @@ export const localization = {
     "About Project": "Про Проект",
     Correct: "Вірно",
     Incorrect: "Невірно",
+    MENU: "МЕНЮ",
     "Slavutych, Ukraine - birthplace of the project":
       "Славутич, Україна - місце народження проекту",
     "World Countries And Quizzes": "Світові Країни Та Вікторини",
@@ -1190,6 +1191,7 @@ export const localization = {
     "Quiz Result": "Quiz Result",
     "Correct answers out of": "Correct answers out of",
     Close: "Close",
+    MENU: "MENU",
     Incorrect: "Incorrect",
     "World Map": "World Map",
     "Used Map Library:": "Used Map Library:",

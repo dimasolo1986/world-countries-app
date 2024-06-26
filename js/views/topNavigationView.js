@@ -12,6 +12,7 @@ import {
 class topNavigationView {
   _parentElement = document.querySelector(".sb-topnav");
   _sidebarToggle = document.body.querySelector("#sidebarToggle");
+  _menuLink = document.querySelector("#navbarDropdown");
   _logoCountriesElement = document.querySelector(".logo-countries");
   _worldMapLink = document.querySelector("#world-map-link");
   _flagByCountryNameQuizLink = document.querySelector(
@@ -205,6 +206,9 @@ class topNavigationView {
     }`;
     this._worldMapLink.textContent = `${
       localization[model.worldCountries.language]["World Map"]
+    }`;
+    this._menuLink.textContent = `${
+      localization[model.worldCountries.language]["MENU"]
     }`;
   }
 
