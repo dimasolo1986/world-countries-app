@@ -8,6 +8,7 @@ import { COUNTRIES_GEO } from "../data/countries.geo.js";
 import { getRandomInt } from "../helpers.js";
 import { localization } from "../localization/ua.js";
 import { showQuizResultWindow } from "../helpers.js";
+import { currentDateTime } from "../helpers.js";
 class MapQuiz {
   _mapElement = document.querySelector("#mapCountriesQuiz");
   _quizElement = document.querySelector("#mapQuiz");
@@ -46,6 +47,7 @@ class MapQuiz {
   );
   _map;
   _country;
+  _statisticView;
   _countries = [];
   _countryBondaries = [];
   _alreadyCountrySelected = false;
@@ -58,10 +60,12 @@ class MapQuiz {
 
   initQuiz(
     mapView,
+    statisticView,
     sideNavigationView,
     topNavigationView,
     countriesSelectView
   ) {
+    this._statisticView = statisticView;
     this.clearQuiz();
     this.resetCountryBoundaries();
     this.createCountries();
@@ -104,6 +108,7 @@ class MapQuiz {
     this._quizResultAnsweredNumber.textContent =
       this._questionCurrentNumber.textContent;
     this._quizResultRatingStar.textContent = "";
+    let rating = 0;
     if (+this._scoreValue.textContent !== 0) {
       const score = +this._scoreValue.textContent / DEFAULT_RIGHT_MAP_SCORE;
       const scorePersentage =
@@ -122,20 +127,25 @@ class MapQuiz {
         for (let index = 0; index < 1; index++) {
           this._quizResultRatingStar.textContent += "⭐";
         }
+        rating = 1;
       } else if (scorePersentage > 25 && scorePersentage <= 50) {
         for (let index = 0; index < 2; index++) {
           this._quizResultRatingStar.textContent += "⭐";
         }
+        rating = 2;
       } else if (scorePersentage > 50 && scorePersentage < 75) {
         for (let index = 0; index < 3; index++) {
           this._quizResultRatingStar.textContent += "⭐";
         }
+        rating = 3;
       } else {
         for (let index = 0; index < 4; index++) {
           this._quizResultRatingStar.textContent += "⭐";
         }
+        rating = 4;
       }
     } else {
+      rating = 0;
       this._quizResultRightAnswersNumber.textContent = "0";
       this._quizResultProgressSuccess.textContent = 0;
       this._quizResultProgressSuccess.style.width = `${0}%`;
@@ -149,6 +159,13 @@ class MapQuiz {
       );
       this._quizResultRatingStar.textContent = "0️⃣";
     }
+    const statistic = {
+      quizType: "country-on-map-quiz",
+      dateTime: currentDateTime(),
+      rating: rating,
+      score: +this._scoreValue.textContent,
+    };
+    this._statisticView.addNewStatistic(statistic);
     showQuizResultWindow();
   }
 
@@ -312,9 +329,11 @@ class MapQuiz {
   addCountryBoundaries() {
     const context = this;
     const showResult = showQuizResultWindow;
+    const dateTime = currentDateTime;
     const addCountryBoundariesClickHandler = function (
       context,
       showResult,
+      dateTime,
       countryBoundary,
       countryCode
     ) {
@@ -366,6 +385,7 @@ class MapQuiz {
         context._quizResultScore.textContent = context._scoreValue.textContent;
         context._quizResultAnsweredNumber.textContent =
           context._questionCurrentNumber.textContent;
+        let rating = 0;
         if (+context._scoreValue.textContent !== 0) {
           const score = +context._scoreValue.textContent / 300;
           const scorePersentage =
@@ -391,20 +411,25 @@ class MapQuiz {
             for (let index = 0; index < 1; index++) {
               context._quizResultRatingStar.textContent += "⭐";
             }
+            rating = 1;
           } else if (scorePersentage > 25 && scorePersentage <= 50) {
             for (let index = 0; index < 2; index++) {
               context._quizResultRatingStar.textContent += "⭐";
             }
+            rating = 2;
           } else if (scorePersentage > 50 && scorePersentage < 75) {
             for (let index = 0; index < 3; index++) {
               context._quizResultRatingStar.textContent += "⭐";
             }
+            rating = 3;
           } else {
             for (let index = 0; index < 4; index++) {
               context._quizResultRatingStar.textContent += "⭐";
             }
+            rating = 4;
           }
         } else {
+          rating = 0;
           context._quizResultRightAnswersNumber.textContent = "0";
           context._quizResultProgressSuccess.textContent = 0;
           context._quizResultProgressSuccess.style.width = `${0}%`;
@@ -418,6 +443,13 @@ class MapQuiz {
           );
           context._quizResultRatingStar.textContent = "0️⃣";
         }
+        const statistic = {
+          quizType: "country-on-map-quiz",
+          dateTime: dateTime(),
+          rating: rating,
+          score: +context._scoreValue.textContent,
+        };
+        context._statisticView.addNewStatistic(statistic);
         showResult();
       }
       context._alreadyCountrySelected = true;
@@ -437,6 +469,7 @@ class MapQuiz {
               addCountryBoundariesClickHandler(
                 context,
                 showResult,
+                dateTime,
                 countryBoundary,
                 feature.properties.country_a2
               );

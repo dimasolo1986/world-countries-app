@@ -11618,7 +11618,8 @@ body,
   background-color: #eef2f2;
 }
 
-#about-project {
+#about-project,
+#statistic-quizzes {
   padding: 10px;
 }
 
@@ -11642,6 +11643,7 @@ body,
   }
 }
 
-.modal-content {
+.modal-content,
+#statistic-quizzes {
   font-family: Cambria, Cochin, Georgia, Times, "Times New Roman", serif;
 }

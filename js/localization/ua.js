@@ -580,6 +580,12 @@ export const localization = {
     Points: "Балів",
     "CORRECT ANSWERS:": "ПРАВИЛЬНІ ВІДПОВІДІ:",
     "RATING:": "РЕЙТИНГ:",
+    "Quiz Passing Statistics": "Статистика Проходження Вікторин",
+    "Quiz Passing Statistics (last 50 records)":
+      "Статистика Проходження Вікторин (останні 50 записів)",
+    "There Are No Quiz Passing Statistics...":
+      "Немає статистики проходження вікторин...",
+    Data: "Дата:",
     Close: "Закрити",
     Wikipedia: "Вікіпедія",
     Reset: "Скинути",
@@ -1153,6 +1159,7 @@ export const localization = {
     "All Countries": "All Countries",
     "Search Or Select Counties...": "Search Or Select Counties...",
     Selected: "Selected",
+    Data: "Data:",
     "War Aggressor": "War Aggressor",
     "Aggressor Supporter": "Aggressor Supporter",
     "About Project": "About Project",
@@ -1192,6 +1199,11 @@ export const localization = {
     "Quizzes:": "Quizzes:",
     Correct: "Correct",
     "Quiz Result": "Quiz Result",
+    "Quiz Passing Statistics": "Quiz Passing Statistics",
+    "Quiz Passing Statistics (last 50 records)":
+      "Quiz Passing Statistics (last 50 records)",
+    "There Are No Quiz Passing Statistics...":
+      "There Are No Quiz Passing Statistics...",
     Close: "Close",
     MENU: "MENU",
     Incorrect: "Incorrect",

@@ -35,6 +35,7 @@ class topNavigationView {
   );
   _countryOnMapQuizLink = document.querySelector("#country-on-map-quiz-link");
   _aboutLink = document.querySelector("#about");
+  _statisticLink = document.querySelector("#statistic");
   _dropdownMenuElements = document.querySelectorAll(".dropdown-menu li");
 
   resetItemMenuStyle() {
@@ -53,6 +54,9 @@ class topNavigationView {
           break;
         case "about-project":
           this._aboutLink.closest("li").style.backgroundColor = "lightgrey";
+          break;
+        case "statistic":
+          this._statisticLink.closest("li").style.backgroundColor = "lightgrey";
           break;
         case FLAG_BY_COUNTRY_NAME_QUIZ:
           this._flagByCountryNameQuizLink.closest("li").style.backgroundColor =
@@ -171,6 +175,21 @@ class topNavigationView {
       .addEventListener("click", handlerAboutClick.bind(this, this._aboutLink));
   }
 
+  addHandlerStatisticClick(handler) {
+    const handlerStatisticClick = function (link) {
+      this.resetItemMenuStyle();
+      link.closest("li").style.backgroundColor = "lightgrey";
+      sessionStorage.setItem("currentWindow", "statistic");
+      handler();
+    };
+    this._statisticLink
+      .closest("li")
+      .addEventListener(
+        "click",
+        handlerStatisticClick.bind(this, this._statisticLink)
+      );
+  }
+
   translateElements() {
     this._flagByCountryNameQuizLink.textContent = `${
       localization[model.worldCountries.language]["Flag By Country Name Quiz"]
@@ -203,6 +222,9 @@ class topNavigationView {
     }`;
     this._aboutLink.textContent = `${
       localization[model.worldCountries.language]["About Project"]
+    }`;
+    this._statisticLink.textContent = `${
+      localization[model.worldCountries.language]["Quiz Passing Statistics"]
     }`;
     this._worldMapLink.textContent = `${
       localization[model.worldCountries.language]["World Map"]

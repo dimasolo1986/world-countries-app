@@ -299,6 +299,13 @@
               >
             </li>
             <li><hr class="dropdown-divider" /></li>
+            <li id="statistic-li" style="cursor: pointer">
+              <span style="margin-left: 5px">📝</span>
+              <a id="statistic" class="dropdown-item" style="display: inline"
+                >Quiz Passing Statistics</a
+              >
+            </li>
+            <li><hr class="dropdown-divider" /></li>
             <li id="about-li" style="cursor: pointer">
               <span style="margin-left: 5px">📰</span>
               <a id="about" class="dropdown-item" style="display: inline"
@@ -742,6 +749,23 @@
                 answer.</span
               >
             </p>
+          </div>
+          <div
+            id="statistic-quizzes"
+            class="container-fluid px-4 not-displayed"
+            style="color: #6495ed; overflow: auto"
+          >
+            <button type="button" class="btn btn-warning return-statistic">
+              RETURN TO MAP
+            </button>
+            <p class="statistic-heading">
+              <span
+                class="statistic-name"
+                style="font-weight: bold; font-size: 1.2rem"
+                >Quiz Passing Statistics (last 50 records)</span
+              >
+            </p>
+            <div class="statistic-data" style="color: black"></div>
           </div>
         </main>
       </div>

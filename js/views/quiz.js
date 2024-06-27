@@ -12,6 +12,7 @@ import {
   COUNTRY_NAME_BY_CAPITAL_QUIZ,
   COUNTRY_CAPITAL_BY_COUNTRY_NAME_QUIZ,
 } from "../config.js";
+import { currentDateTime } from "../helpers.js";
 class Quiz {
   _quizElement = document.querySelector("#quiz");
   _quizResultModalLabel = document.querySelector("#quizModalResultLabel");
@@ -48,6 +49,7 @@ class Quiz {
   _countries;
   _questionCountrySelected;
   _randomCountries = [];
+  _statisticView;
 
   _returnToMapListenerAdded = false;
   _cardListenerAdded = false;
@@ -61,10 +63,12 @@ class Quiz {
   initQuiz(
     quizId,
     mapView,
+    statisticView,
     sideNavigationView,
     topNavigationView,
     countriesSelectView
   ) {
+    this._statisticView = statisticView;
     this._quizType = quizId;
     mapView.hideMap();
     this._countriesSelector.value = "Only Independent Countries";
@@ -430,6 +434,7 @@ class Quiz {
     this._quizResultAnsweredNumber.textContent =
       this._questionCurrentNumber.textContent;
     this._quizResultRatingStar.textContent = "";
+    let rating = 0;
     if (+this._scoreValue.textContent !== 0) {
       const score = +this._scoreValue.textContent / DEFAULT_RIGHT_SCORE;
       const scorePersentage =
@@ -448,20 +453,25 @@ class Quiz {
         for (let index = 0; index < 1; index++) {
           this._quizResultRatingStar.textContent += "⭐";
         }
+        rating = 1;
       } else if (scorePersentage > 25 && scorePersentage <= 50) {
         for (let index = 0; index < 2; index++) {
           this._quizResultRatingStar.textContent += "⭐";
         }
+        rating = 2;
       } else if (scorePersentage > 50 && scorePersentage < 75) {
         for (let index = 0; index < 3; index++) {
           this._quizResultRatingStar.textContent += "⭐";
         }
+        rating = 3;
       } else {
         for (let index = 0; index < 4; index++) {
           this._quizResultRatingStar.textContent += "⭐";
         }
+        rating = 4;
       }
     } else {
+      rating = 0;
       this._quizResultRightAnswersNumber.textContent = "0";
       this._quizResultProgressSuccess.textContent = 0;
       this._quizResultProgressSuccess.style.width = `${0}%`;
@@ -475,6 +485,13 @@ class Quiz {
       );
       this._quizResultRatingStar.textContent = "0️⃣";
     }
+    const statistic = {
+      quizType: this._quizType,
+      dateTime: currentDateTime(),
+      rating: rating,
+      score: +this._scoreValue.textContent,
+    };
+    this._statisticView.addNewStatistic(statistic);
     showQuizResultWindow();
   }
 

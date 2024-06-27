@@ -68,11 +68,13 @@ class aboutView {
 
   returnToMap(
     mapView,
+    statisticView,
     sideNavigationView,
     topNavigationView,
     countriesSelectView
   ) {
     this.hideAboutProject();
+    statisticView.hideStatistic();
     mapView.setMapView(GEOGRAPHICAL_CENTER, DEFAULT_ZOOM_LEVEL);
     mapView.showMap();
     mapView.invalidateSize();
@@ -85,6 +87,7 @@ class aboutView {
 
   addReturnToMapHandlerClick(
     mapView,
+    statisticView,
     sideNavigationView,
     topNavigationView,
     countriesSelectView
@@ -95,6 +98,7 @@ class aboutView {
         this.returnToMap.bind(
           this,
           mapView,
+          statisticView,
           sideNavigationView,
           topNavigationView,
           countriesSelectView
