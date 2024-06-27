@@ -24,6 +24,11 @@ class Quiz {
     ".right-answers-number"
   );
   _quizResultAnsweredNumber = document.querySelector(".answered-number");
+  _quizResultAnsweredOutOf = document.querySelector(".right-answers-out-of");
+  _quizResultProgressSuccess = document.querySelector("#progress-success");
+  _quizResultProgressFailed = document.querySelector("#progress-failed");
+  _quizResultRatingText = document.querySelector(".rating-text");
+  _quizResultRatingStar = document.querySelector(".rating-star");
   _quizHeading = document.querySelector(".heading");
   _questionContainer = document.querySelector(".question-container");
   _questionCountry = document.querySelector(".question-country");
@@ -424,11 +429,51 @@ class Quiz {
     this._quizResultScore.textContent = this._scoreValue.textContent;
     this._quizResultAnsweredNumber.textContent =
       this._questionCurrentNumber.textContent;
+    this._quizResultRatingStar.textContent = "";
     if (+this._scoreValue.textContent !== 0) {
-      this._quizResultRightAnswersNumber.textContent =
-        +this._scoreValue.textContent / DEFAULT_RIGHT_SCORE;
+      const score = +this._scoreValue.textContent / DEFAULT_RIGHT_SCORE;
+      const scorePersentage =
+        (score * 100) / +this._questionCurrentNumber.textContent;
+      this._quizResultRightAnswersNumber.textContent = score;
+      this._quizResultProgressSuccess.textContent = score;
+      this._quizResultProgressSuccess.style.width = `${scorePersentage}%`;
+      this._quizResultProgressSuccess.setAttribute("aria-valuenow", `${score}`);
+      const failed = +this._questionCurrentNumber.textContent - score;
+      this._quizResultProgressFailed.textContent = failed;
+      this._quizResultProgressFailed.style.width = `${
+        (failed * 100) / +this._questionCurrentNumber.textContent
+      }%`;
+      this._quizResultProgressFailed.setAttribute("aria-valuenow", `${failed}`);
+      if (scorePersentage >= 0 && scorePersentage <= 25) {
+        for (let index = 0; index < 1; index++) {
+          this._quizResultRatingStar.textContent += "⭐";
+        }
+      } else if (scorePersentage > 25 && scorePersentage <= 50) {
+        for (let index = 0; index < 2; index++) {
+          this._quizResultRatingStar.textContent += "⭐";
+        }
+      } else if (scorePersentage > 50 && scorePersentage < 75) {
+        for (let index = 0; index < 3; index++) {
+          this._quizResultRatingStar.textContent += "⭐";
+        }
+      } else {
+        for (let index = 0; index < 4; index++) {
+          this._quizResultRatingStar.textContent += "⭐";
+        }
+      }
     } else {
       this._quizResultRightAnswersNumber.textContent = "0";
+      this._quizResultProgressSuccess.textContent = 0;
+      this._quizResultProgressSuccess.style.width = `${0}%`;
+      this._quizResultProgressSuccess.setAttribute("aria-valuenow", "0");
+      this._quizResultProgressFailed.textContent =
+        this._questionCurrentNumber.textContent;
+      this._quizResultProgressFailed.style.width = `${100}%`;
+      this._quizResultProgressFailed.setAttribute(
+        "aria-valuenow",
+        `${this._questionCurrentNumber.textContent}`
+      );
+      this._quizResultRatingStar.textContent = "0️⃣";
     }
     showQuizResultWindow();
   }
@@ -667,7 +712,13 @@ class Quiz {
       localization[model.worldCountries.language]["Points"]
     }`;
     this._quizResultRightAnswersText.textContent = `${
-      localization[model.worldCountries.language]["Correct answers out of"]
+      localization[model.worldCountries.language]["CORRECT ANSWERS:"]
+    }`;
+    this._quizResultAnsweredOutOf.textContent = `${
+      localization[model.worldCountries.language]["of"]
+    }`;
+    this._quizResultRatingText.textContent = `${
+      localization[model.worldCountries.language]["RATING:"]
     }`;
   }
 

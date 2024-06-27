@@ -21,6 +21,11 @@ class MapQuiz {
     ".right-answers-number"
   );
   _quizResultAnsweredNumber = document.querySelector(".answered-number");
+  _quizResultAnsweredOutOf = document.querySelector(".right-answers-out-of");
+  _quizResultProgressSuccess = document.querySelector("#progress-success");
+  _quizResultProgressFailed = document.querySelector("#progress-failed");
+  _quizResultRatingText = document.querySelector(".rating-text");
+  _quizResultRatingStar = document.querySelector(".rating-star");
   _quizHeading = document.querySelector(".heading-map");
   _questionContainer = document.querySelector(".question-container-map");
   _questionCountry = document.querySelector(".question-country-map");
@@ -98,11 +103,51 @@ class MapQuiz {
     this._quizResultScore.textContent = this._scoreValue.textContent;
     this._quizResultAnsweredNumber.textContent =
       this._questionCurrentNumber.textContent;
+    this._quizResultRatingStar.textContent = "";
     if (+this._scoreValue.textContent !== 0) {
-      this._quizResultRightAnswersNumber.textContent =
-        +this._scoreValue.textContent / DEFAULT_RIGHT_MAP_SCORE;
+      const score = +this._scoreValue.textContent / DEFAULT_RIGHT_MAP_SCORE;
+      const scorePersentage =
+        (score * 100) / +this._questionCurrentNumber.textContent;
+      this._quizResultRightAnswersNumber.textContent = score;
+      this._quizResultProgressSuccess.textContent = score;
+      this._quizResultProgressSuccess.style.width = `${scorePersentage}%`;
+      this._quizResultProgressSuccess.setAttribute("aria-valuenow", `${score}`);
+      const failed = +this._questionCurrentNumber.textContent - score;
+      this._quizResultProgressFailed.textContent = failed;
+      this._quizResultProgressFailed.style.width = `${
+        (failed * 100) / +this._questionCurrentNumber.textContent
+      }%`;
+      this._quizResultProgressFailed.setAttribute("aria-valuenow", `${failed}`);
+      if (scorePersentage >= 0 && scorePersentage <= 25) {
+        for (let index = 0; index < 1; index++) {
+          this._quizResultRatingStar.textContent += "⭐";
+        }
+      } else if (scorePersentage > 25 && scorePersentage <= 50) {
+        for (let index = 0; index < 2; index++) {
+          this._quizResultRatingStar.textContent += "⭐";
+        }
+      } else if (scorePersentage > 50 && scorePersentage < 75) {
+        for (let index = 0; index < 3; index++) {
+          this._quizResultRatingStar.textContent += "⭐";
+        }
+      } else {
+        for (let index = 0; index < 4; index++) {
+          this._quizResultRatingStar.textContent += "⭐";
+        }
+      }
     } else {
       this._quizResultRightAnswersNumber.textContent = "0";
+      this._quizResultProgressSuccess.textContent = 0;
+      this._quizResultProgressSuccess.style.width = `${0}%`;
+      this._quizResultProgressSuccess.setAttribute("aria-valuenow", "0");
+      this._quizResultProgressFailed.textContent =
+        this._questionCurrentNumber.textContent;
+      this._quizResultProgressFailed.style.width = `${100}%`;
+      this._quizResultProgressFailed.setAttribute(
+        "aria-valuenow",
+        `${this._questionCurrentNumber.textContent}`
+      );
+      this._quizResultRatingStar.textContent = "0️⃣";
     }
     showQuizResultWindow();
   }
@@ -216,6 +261,7 @@ class MapQuiz {
       this._map = L.map("mapCountriesQuiz", {
         minZoom: defaultZoomLevel,
         zoomSnap: 0.25,
+        worldCopyJump: true,
       })
         .fitWorld()
         .setView(latLon, defaultZoomLevel);
@@ -321,10 +367,56 @@ class MapQuiz {
         context._quizResultAnsweredNumber.textContent =
           context._questionCurrentNumber.textContent;
         if (+context._scoreValue.textContent !== 0) {
-          context._quizResultRightAnswersNumber.textContent =
-            +context._scoreValue.textContent / 300;
+          const score = +context._scoreValue.textContent / 300;
+          const scorePersentage =
+            (score * 100) / +context._questionCurrentNumber.textContent;
+          context._quizResultRatingStar.textContent = "";
+          context._quizResultRightAnswersNumber.textContent = score;
+          context._quizResultProgressSuccess.textContent = score;
+          context._quizResultProgressSuccess.style.width = `${scorePersentage}%`;
+          context._quizResultProgressSuccess.setAttribute(
+            "aria-valuenow",
+            `${score}`
+          );
+          const failed = +context._questionCurrentNumber.textContent - score;
+          context._quizResultProgressFailed.textContent = failed;
+          context._quizResultProgressFailed.style.width = `${
+            (failed * 100) / +context._questionCurrentNumber.textContent
+          }%`;
+          context._quizResultProgressFailed.setAttribute(
+            "aria-valuenow",
+            `${failed}`
+          );
+          if (scorePersentage >= 0 && scorePersentage <= 25) {
+            for (let index = 0; index < 1; index++) {
+              context._quizResultRatingStar.textContent += "⭐";
+            }
+          } else if (scorePersentage > 25 && scorePersentage <= 50) {
+            for (let index = 0; index < 2; index++) {
+              context._quizResultRatingStar.textContent += "⭐";
+            }
+          } else if (scorePersentage > 50 && scorePersentage < 75) {
+            for (let index = 0; index < 3; index++) {
+              context._quizResultRatingStar.textContent += "⭐";
+            }
+          } else {
+            for (let index = 0; index < 4; index++) {
+              context._quizResultRatingStar.textContent += "⭐";
+            }
+          }
         } else {
           context._quizResultRightAnswersNumber.textContent = "0";
+          context._quizResultProgressSuccess.textContent = 0;
+          context._quizResultProgressSuccess.style.width = `${0}%`;
+          context._quizResultProgressSuccess.setAttribute("aria-valuenow", "0");
+          context._quizResultProgressFailed.textContent =
+            context._questionCurrentNumber.textContent;
+          context._quizResultProgressFailed.style.width = `${100}%`;
+          context._quizResultProgressFailed.setAttribute(
+            "aria-valuenow",
+            `${context._questionCurrentNumber.textContent}`
+          );
+          context._quizResultRatingStar.textContent = "0️⃣";
         }
         showResult();
       }
@@ -465,7 +557,13 @@ class MapQuiz {
       localization[model.worldCountries.language]["Points"]
     }`;
     this._quizResultRightAnswersText.textContent = `${
-      localization[model.worldCountries.language]["Correct answers out of"]
+      localization[model.worldCountries.language]["CORRECT ANSWERS:"]
+    }`;
+    this._quizResultAnsweredOutOf.textContent = `${
+      localization[model.worldCountries.language]["of"]
+    }`;
+    this._quizResultRatingText.textContent = `${
+      localization[model.worldCountries.language]["RATING:"]
     }`;
   }
 }
