@@ -89,6 +89,6 @@ export const showQuizResultWindow = function () {
 export const currentDateTime = function () {
   const d = new Date();
   const date = d.toISOString().split("T")[0];
-  const time = d.toTimeString().split(" ")[0].replace(/:/g, "-");
+  const time = d.toTimeString().split(" ")[0];
   return `${date} ${time}`;
 };

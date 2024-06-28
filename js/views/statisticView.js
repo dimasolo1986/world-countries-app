@@ -84,7 +84,29 @@ class statisticView {
         }`;
         const quizScoreData = document.createElement("span");
         quizScoreData.classList.add("quiz-score-value");
-        quizScoreData.textContent = statistic.score;
+        quizScoreData.style.color = "darkgreen";
+        quizScoreData.style.fontWeight = "bold";
+        quizScoreData.textContent = " " + statistic.score;
+        const quizCorrectAnswersText = document.createElement("span");
+        quizCorrectAnswersText.classList.add("quiz-correct-answers-text");
+        quizCorrectAnswersText.textContent = `${
+          localization[model.worldCountries.language]["CORRECT ANSWERS:"]
+        }`;
+        const quizCorrectAnswersNumber = document.createElement("span");
+        quizCorrectAnswersNumber.classList.add("quiz-correct-answers-number");
+        quizCorrectAnswersNumber.style.color = "darkgreen";
+        quizCorrectAnswersNumber.textContent =
+          " " + statistic.rightAnswers + " ";
+        const quizCorrectAnswersDelimeter = document.createElement("span");
+        quizCorrectAnswersDelimeter.classList.add(
+          "quiz-correct-answers-delimeter"
+        );
+        quizCorrectAnswersDelimeter.textContent = `${
+          localization[model.worldCountries.language]["of"]
+        }`;
+        const quizAnsweredNumber = document.createElement("span");
+        quizAnsweredNumber.classList.add("quiz-answered-number");
+        quizAnsweredNumber.textContent = " " + statistic.answeredNumber;
         const quiz = statistic.quizType;
         quizType.dataset.type = quiz;
         const quizRatingText = document.createElement("span");
@@ -96,7 +118,7 @@ class statisticView {
         quizRatingValue.classList.add("quiz-rating-value");
         const rating = +statistic.rating;
         if (rating === 0) {
-          quizRatingValue.textContent = "0️⃣";
+          quizRatingValue.textContent = "☆";
         } else {
           for (let index = 0; index < rating; index++) {
             quizRatingValue.textContent += "⭐";
@@ -141,7 +163,7 @@ class statisticView {
           case COUNTRY_CAPITAL_BY_COUNTRY_NAME_QUIZ:
             quizType.textContent = `${
               localization[model.worldCountries.language][
-                "Country Capital By Country Name Quiz"
+                "Capital By Country Name Quiz"
               ]
             }`;
             break;
@@ -157,6 +179,8 @@ class statisticView {
         space2.textContent = " | ";
         const space3 = document.createElement("span");
         space3.textContent = " | ";
+        const space4 = document.createElement("span");
+        space4.textContent = " | ";
         this._statisticData.appendChild(quizIndex);
         this._statisticData.appendChild(quizType);
         this._statisticData.appendChild(space1);
@@ -165,6 +189,11 @@ class statisticView {
         this._statisticData.appendChild(quizScoreText);
         this._statisticData.appendChild(quizScoreData);
         this._statisticData.appendChild(space3);
+        this._statisticData.appendChild(quizCorrectAnswersText);
+        this._statisticData.appendChild(quizCorrectAnswersNumber);
+        this._statisticData.appendChild(quizCorrectAnswersDelimeter);
+        this._statisticData.appendChild(quizAnsweredNumber);
+        this._statisticData.appendChild(space4);
         this._statisticData.appendChild(quizRatingText);
         this._statisticData.appendChild(quizRatingValue);
         this._statisticData.appendChild(document.createElement("br"));
@@ -271,7 +300,7 @@ class statisticView {
           case COUNTRY_CAPITAL_BY_COUNTRY_NAME_QUIZ:
             quiz.textContent = `${
               localization[model.worldCountries.language][
-                "Country Capital By Country Name Quiz"
+                "Capital By Country Name Quiz"
               ]
             }`;
             break;
@@ -298,6 +327,26 @@ class statisticView {
       quizRatingTexts.forEach((ratingText) => {
         ratingText.textContent = `${
           localization[model.worldCountries.language]["RATING:"]
+        }`;
+      });
+    }
+    const quizCorrectAnswersTexts = this._statisticData.querySelectorAll(
+      ".quiz-correct-answers-text"
+    );
+    if (quizCorrectAnswersTexts) {
+      quizCorrectAnswersTexts.forEach((correctAnswersText) => {
+        correctAnswersText.textContent = `${
+          localization[model.worldCountries.language]["CORRECT ANSWERS:"]
+        }`;
+      });
+    }
+    const quizCorrectAnswersDelimeters = this._statisticData.querySelectorAll(
+      ".quiz-correct-answers-delimeter"
+    );
+    if (quizCorrectAnswersDelimeters) {
+      quizCorrectAnswersDelimeters.forEach((correctAnswersDelimeter) => {
+        correctAnswersDelimeter.textContent = `${
+          localization[model.worldCountries.language]["of"]
         }`;
       });
     }

@@ -483,13 +483,15 @@ class Quiz {
         "aria-valuenow",
         `${this._questionCurrentNumber.textContent}`
       );
-      this._quizResultRatingStar.textContent = "0️⃣";
+      this._quizResultRatingStar.textContent = "☆";
     }
     const statistic = {
       quizType: this._quizType,
       dateTime: currentDateTime(),
       rating: rating,
       score: +this._scoreValue.textContent,
+      rightAnswers: +this._quizResultRightAnswersNumber.textContent,
+      answeredNumber: +this._questionCurrentNumber.textContent,
     };
     this._statisticView.addNewStatistic(statistic);
     showQuizResultWindow();

@@ -157,13 +157,15 @@ class MapQuiz {
         "aria-valuenow",
         `${this._questionCurrentNumber.textContent}`
       );
-      this._quizResultRatingStar.textContent = "0️⃣";
+      this._quizResultRatingStar.textContent = "☆";
     }
     const statistic = {
       quizType: "country-on-map-quiz",
       dateTime: currentDateTime(),
       rating: rating,
       score: +this._scoreValue.textContent,
+      rightAnswers: +this._quizResultRightAnswersNumber.textContent,
+      answeredNumber: +this._questionCurrentNumber.textContent,
     };
     this._statisticView.addNewStatistic(statistic);
     showQuizResultWindow();
@@ -441,13 +443,15 @@ class MapQuiz {
             "aria-valuenow",
             `${context._questionCurrentNumber.textContent}`
           );
-          context._quizResultRatingStar.textContent = "0️⃣";
+          context._quizResultRatingStar.textContent = "☆";
         }
         const statistic = {
           quizType: "country-on-map-quiz",
           dateTime: dateTime(),
           rating: rating,
           score: +context._scoreValue.textContent,
+          rightAnswers: +context._quizResultRightAnswersNumber.textContent,
+          answeredNumber: +context._questionCurrentNumber.textContent,
         };
         context._statisticView.addNewStatistic(statistic);
         showResult();
