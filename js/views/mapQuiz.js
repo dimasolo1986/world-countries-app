@@ -138,11 +138,16 @@ class MapQuiz {
           this._quizResultRatingStar.textContent += "⭐";
         }
         rating = 3;
-      } else {
+      } else if (scorePersentage >= 75 && scorePersentage <= 95) {
         for (let index = 0; index < 4; index++) {
           this._quizResultRatingStar.textContent += "⭐";
         }
         rating = 4;
+      } else {
+        for (let index = 0; index < 5; index++) {
+          this._quizResultRatingStar.textContent += "⭐";
+        }
+        rating = 5;
       }
     } else {
       rating = 0;
@@ -424,11 +429,16 @@ class MapQuiz {
               context._quizResultRatingStar.textContent += "⭐";
             }
             rating = 3;
-          } else {
+          } else if (scorePersentage >= 75 && scorePersentage <= 95) {
             for (let index = 0; index < 4; index++) {
               context._quizResultRatingStar.textContent += "⭐";
             }
             rating = 4;
+          } else {
+            for (let index = 0; index < 5; index++) {
+              context._quizResultRatingStar.textContent += "⭐";
+            }
+            rating = 5;
           }
         } else {
           rating = 0;

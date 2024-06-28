@@ -504,6 +504,7 @@ export const localization = {
     },
     of: "з",
     SCORE: "РАХУНОК: ",
+    Score: "Рахунок: ",
     "Guess Flag": "Вгадай Прапор:",
     "RETURN TO MAP": "ПОВЕРНУТИСЯ НА МАПУ",
     "START AGAIN": "ПОЧАТИ ЗНОВУ",
@@ -579,12 +580,16 @@ export const localization = {
     "Quiz Result": "Результат Вікторини",
     Points: "Балів",
     "CORRECT ANSWERS:": "ПРАВИЛЬНІ ВІДПОВІДІ:",
+    "Correct Answers:": "Правильні Відповіді:",
     "RATING:": "РЕЙТИНГ:",
+    "Rating:": "Рейтинг:",
     "Quiz Passing Statistics": "Статистика Проходження Вікторин",
     "Quiz Passing Statistics (last 50 records)":
       "Статистика Проходження Вікторин (останні 50 записів)",
     "There Are No Quiz Passing Statistics...":
       "Немає статистики проходження вікторин...",
+    "Quiz Passing Statistics shows the last 50 quiz scores and ratings that were passed.":
+      "Статистика Проходження Вікторин показує результати та оцінки останніх 50 пройдених вікторин.",
     Data: "Дата:",
     Close: "Закрити",
     Wikipedia: "Вікіпедія",
@@ -1135,8 +1140,11 @@ export const localization = {
     },
     Points: "Points",
     SCORE: "SCORE:",
+    Score: "Score:",
     "CORRECT ANSWERS:": "CORRECT ANSWERS:",
+    "Correct Answers:": "Correct Answers:",
     "RATING:": "RATING:",
+    "Rating:": "Rating:",
     of: "of",
     "Guess Flag": "Guess Flag:",
     "RETURN TO MAP": "RETURN TO MAP",
@@ -1150,6 +1158,8 @@ export const localization = {
     "Are you sure you want to leave this quiz? Current quiz data will not be saved!":
       "Are you sure you want to leave this quiz? Current quiz data will not be saved!",
     "Only Independent Countries": "Only Independent Countries",
+    "Quiz Passing Statistics shows the last 50 quiz scores and ratings that were passed.":
+      "Quiz Passing Statistics shows the last 50 quiz scores and ratings that were passed.",
     "All Countries": "All Countries",
     "NEXT QUESTION": "NEXT QUESTION",
     "FINISH QUIZ": "FINISH QUIZ",

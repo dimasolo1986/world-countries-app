@@ -80,7 +80,7 @@ class statisticView {
         const quizScoreText = document.createElement("span");
         quizScoreText.classList.add("quiz-score-text");
         quizScoreText.textContent = `${
-          localization[model.worldCountries.language]["SCORE"]
+          localization[model.worldCountries.language]["Score"]
         }`;
         const quizScoreData = document.createElement("span");
         quizScoreData.classList.add("quiz-score-value");
@@ -90,7 +90,7 @@ class statisticView {
         const quizCorrectAnswersText = document.createElement("span");
         quizCorrectAnswersText.classList.add("quiz-correct-answers-text");
         quizCorrectAnswersText.textContent = `${
-          localization[model.worldCountries.language]["CORRECT ANSWERS:"]
+          localization[model.worldCountries.language]["Correct Answers:"]
         }`;
         const quizCorrectAnswersNumber = document.createElement("span");
         quizCorrectAnswersNumber.classList.add("quiz-correct-answers-number");
@@ -112,7 +112,7 @@ class statisticView {
         const quizRatingText = document.createElement("span");
         quizRatingText.classList.add("quiz-rating-text");
         quizRatingText.textContent = `${
-          localization[model.worldCountries.language]["RATING:"]
+          localization[model.worldCountries.language]["Rating:"]
         }`;
         const quizRatingValue = document.createElement("span");
         quizRatingValue.classList.add("quiz-rating-value");
@@ -317,7 +317,7 @@ class statisticView {
     if (quizScoreTexts) {
       quizScoreTexts.forEach((scoreText) => {
         scoreText.textContent = `${
-          localization[model.worldCountries.language]["SCORE"]
+          localization[model.worldCountries.language]["Score"]
         }`;
       });
     }
@@ -326,7 +326,7 @@ class statisticView {
     if (quizRatingTexts) {
       quizRatingTexts.forEach((ratingText) => {
         ratingText.textContent = `${
-          localization[model.worldCountries.language]["RATING:"]
+          localization[model.worldCountries.language]["Rating:"]
         }`;
       });
     }
@@ -336,7 +336,7 @@ class statisticView {
     if (quizCorrectAnswersTexts) {
       quizCorrectAnswersTexts.forEach((correctAnswersText) => {
         correctAnswersText.textContent = `${
-          localization[model.worldCountries.language]["CORRECT ANSWERS:"]
+          localization[model.worldCountries.language]["Correct Answers:"]
         }`;
       });
     }

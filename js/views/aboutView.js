@@ -5,6 +5,7 @@ class aboutView {
   _parentElement = document.querySelector("#about-project");
   _aboutHeading = document.querySelector(".about-heading");
   _aboutInfo = document.querySelector(".about-info");
+  _aboutStatistic = document.querySelector(".statistic-info");
   _aboutProjectName = document.querySelector(".about-project-name");
   _aboutProjectDescription = document.querySelector(
     ".about-project-description"
@@ -234,6 +235,11 @@ class aboutView {
     }`;
     this._aboutMapLibrary.textContent = `${
       localization[model.worldCountries.language]["Used Map Library:"]
+    }`;
+    this._aboutStatistic.textContent = `${
+      localization[model.worldCountries.language][
+        "Quiz Passing Statistics shows the last 50 quiz scores and ratings that were passed."
+      ]
     }`;
   }
 }
