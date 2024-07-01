@@ -47,6 +47,8 @@ class MapQuiz {
   );
   _map;
   _country;
+  _countryMarker;
+  _timeout;
   _statisticView;
   _countries = [];
   _countryBondaries = [];
@@ -67,6 +69,7 @@ class MapQuiz {
   ) {
     this._statisticView = statisticView;
     this.clearQuiz();
+    this.clearTimeout();
     this.resetCountryBoundaries();
     this.createCountries();
     this.createMap(GEOGRAPHICAL_CENTER);
@@ -83,6 +86,10 @@ class MapQuiz {
     this.finishQuizHandler();
     this.nextButtonHandler();
     this.startQuizHandler();
+  }
+
+  clearTimeout() {
+    clearTimeout(this._timeout);
   }
 
   invalidateSize() {
@@ -227,6 +234,7 @@ class MapQuiz {
 
   finishQuizHandler() {
     const finishQuiz = function () {
+      this.clearTimeout();
       this._countries = [];
       this._finishedQuiz = true;
       this._startQuiz.disabled = false;
@@ -255,6 +263,7 @@ class MapQuiz {
 
   nextQuestionClickHandler() {
     this._map.setView(GEOGRAPHICAL_CENTER, 1.2);
+    this.clearTimeout();
     this._correctIncorrectQuizAnswer.classList.add("not-displayed");
     this._alreadyCountrySelected = false;
     this.resetCountryBoundaries();
@@ -327,6 +336,7 @@ class MapQuiz {
   }
 
   resetCountryBoundaries() {
+    if (this._countryMarker) this._map.removeLayer(this._countryMarker);
     this._countryBondaries.forEach((item) => {
       item.resetStyle();
       item.setStyle({ fillColor: "#3388ff", fillOpacity: 0.3 });
@@ -379,6 +389,24 @@ class MapQuiz {
             fillColor: "red",
             fillOpacity: 1,
           });
+          const countryCoordinates = context._country.latlng
+            ? context._country.latlng
+            : context._country.capitalInfo.latlng;
+          if (countryCoordinates) {
+            context._timeout = setTimeout(() => {
+              context._countryMarker = L.popup()
+                .setLatLng(countryCoordinates)
+                .setContent(
+                  `<p style="font-weight:bold; color:darkgreen">${
+                    localization[model.worldCountries.language]["countries"][
+                      context._country.name.common
+                    ]
+                  }</p>`
+                )
+                .openOn(context._map);
+              context._map.setView(countryCoordinates, 4.5);
+            }, 650);
+          }
         }
       }
       const currentQuestionNumber = +context._questionCurrentNumber.textContent;
@@ -502,6 +530,7 @@ class MapQuiz {
   }
 
   clearQuiz() {
+    this.clearTimeout();
     this._correctIncorrectQuizAnswer.classList.add("not-displayed");
     this._countries = [];
     this._scoreValue.textContent = 0;

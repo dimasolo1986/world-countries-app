@@ -5758,7 +5758,7 @@ export const COUNTRIES = [
         common: "科威特",
       },
     },
-    latlng: [29.5, 45.75],
+    latlng: [29.22, 47.38],
     landlocked: false,
     borders: ["IRQ", "SAU"],
     area: 17818,
@@ -9850,7 +9850,7 @@ export const COUNTRIES = [
         common: "斐济",
       },
     },
-    latlng: [17.7134, 178.065],
+    latlng: [-17.7134, 178.065],
     landlocked: false,
     area: 18272,
     demonyms: {
