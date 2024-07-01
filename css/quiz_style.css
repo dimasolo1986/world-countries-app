@@ -245,7 +245,8 @@ h1.heading {
   .next-map,
   .return-map,
   .start-map,
-  .finish-map {
+  .finish-map,
+  .do-not-know-map {
     font-size: 0.6rem;
   }
 }
@@ -279,7 +280,8 @@ h1.heading {
   .next-map,
   .return-map,
   .start-map,
-  .finish-map {
+  .finish-map,
+  .do-not-know-map {
     font-size: 1rem;
   }
 }

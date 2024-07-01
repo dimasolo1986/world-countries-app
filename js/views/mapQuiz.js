@@ -38,6 +38,7 @@ class MapQuiz {
   _startQuiz = document.querySelector(".start-map");
   _nextQuestion = document.querySelector(".next-map");
   _finishQuiz = document.querySelector(".finish-map");
+  _doNotKnowAnswer = document.querySelector(".do-not-know-map");
   _finishedQuizLabel = document.querySelector(".finished-quiz-map");
   _returnToMap = document.querySelector(".return-map");
   _scoreElement = document.querySelector(".score-name-map");
@@ -59,6 +60,7 @@ class MapQuiz {
   _finishQuizListenerAdded = false;
   _returnToMapListenerAdded = false;
   _startQuizListenerAdded = false;
+  _doNotKnowAnswerAdded = false;
 
   initQuiz(
     mapView,
@@ -85,6 +87,7 @@ class MapQuiz {
     );
     this.finishQuizHandler();
     this.nextButtonHandler();
+    this.doNotKnowAnswerHandler();
     this.startQuizHandler();
   }
 
@@ -104,6 +107,7 @@ class MapQuiz {
       this.createCountries();
       this.selectRandomCountry();
       this.renderCountryQuestion();
+      this._doNotKnowAnswer.disabled = false;
     };
     if (!this._startQuizListenerAdded) {
       this._startQuiz.addEventListener("click", startQuiz.bind(this));
@@ -239,6 +243,7 @@ class MapQuiz {
       this._finishedQuiz = true;
       this._startQuiz.disabled = false;
       this._nextQuestion.disabled = true;
+      this._doNotKnowAnswer.disabled = true;
       this._finishQuiz.disabled = true;
       this._finishedQuizLabel.classList.remove("not-displayed");
       this._correctIncorrectQuizAnswer.classList.add("not-displayed");
@@ -255,31 +260,56 @@ class MapQuiz {
     if (!this._nextQuestionListenerAdded) {
       this._nextQuestion.addEventListener(
         "click",
-        this.nextQuestionClickHandler.bind(this)
+        this.nextQuestionClickHandler.bind(this, this._nextQuestion)
       );
       this._nextQuestionListenerAdded = true;
     }
   }
 
-  nextQuestionClickHandler() {
+  nextQuestionClickHandler(target) {
     this._map.setView(GEOGRAPHICAL_CENTER, 1.2);
     this.clearTimeout();
     this._correctIncorrectQuizAnswer.classList.add("not-displayed");
     this._alreadyCountrySelected = false;
     this.resetCountryBoundaries();
     this._country = undefined;
+    if (
+      target === this._doNotKnowAnswer &&
+      +this._questionCurrentNumber.textContent ===
+        +this._questionsAllNumber.textContent
+    ) {
+      this._doNotKnowAnswer.disabled = true;
+      this._nextQuestion.disabled = true;
+      this._finishQuiz.disabled = true;
+      this._startQuiz.disabled = false;
+      this._finishedQuizLabel.classList.remove("not-displayed");
+      this.showResultWindow();
+      return;
+    }
     this._nextQuestion.disabled = true;
+    this._doNotKnowAnswer.disabled = false;
     const currentQuestionNumber = this.updateCurrentQuestionNumber();
     const questionsAllNumber = +this._questionsAllNumber.textContent;
     if (currentQuestionNumber <= questionsAllNumber) {
       this.selectRandomCountry();
       this.renderCountryQuestion();
     } else {
+      this._doNotKnowAnswer.disabled = true;
       this._nextQuestion.disabled = true;
       this._finishQuiz.disabled = true;
       this._startQuiz.disabled = false;
       this._finishedQuizLabel.classList.remove("not-displayed");
       this.showResultWindow();
+    }
+  }
+
+  doNotKnowAnswerHandler() {
+    if (!this._doNotKnowAnswerAdded) {
+      this._doNotKnowAnswer.addEventListener(
+        "click",
+        this.nextQuestionClickHandler.bind(this, this._doNotKnowAnswer)
+      );
+      this._doNotKnowAnswerAdded = true;
     }
   }
 
@@ -356,6 +386,7 @@ class MapQuiz {
     ) {
       if (context._finishedQuiz) return;
       context._nextQuestion.disabled = false;
+      context._doNotKnowAnswer.disabled = true;
       if (context._country.cca2 === countryCode) {
         if (!context._alreadyCountrySelected) {
           const currentScore = +context._scoreValue.textContent;
@@ -537,6 +568,7 @@ class MapQuiz {
     this._questionCurrentNumber.textContent = 1;
     this._finishedQuizLabel.classList.add("not-displayed");
     this._alreadyCountrySelected = false;
+    this._doNotKnowAnswer.disabled = false;
     this._finishQuiz.disabled = false;
     this._nextQuestion.disabled = true;
     this._startQuiz.disabled = true;
@@ -600,6 +632,9 @@ class MapQuiz {
     }`;
     this._finishQuiz.textContent = `${
       localization[model.worldCountries.language]["FINISH QUIZ"]
+    }`;
+    this._doNotKnowAnswer.textContent = `${
+      localization[model.worldCountries.language]["DO NOT KNOW ANSWER"]
     }`;
     this._startQuiz.textContent = `${
       localization[model.worldCountries.language]["START AGAIN"]

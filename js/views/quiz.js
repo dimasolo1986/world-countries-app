@@ -41,6 +41,7 @@ class Quiz {
   _startQuiz = document.querySelector(".start");
   _nextQuestion = document.querySelector(".next");
   _finishQuiz = document.querySelector(".finish");
+  _doNotKnowAnswer = document.querySelector(".do-not-know");
   _finishedQuizLabel = document.querySelector(".finished-quiz");
   _returnToMap = document.querySelector(".return");
   _scoreElement = document.querySelector(".score-name");
@@ -56,6 +57,7 @@ class Quiz {
   _finishQuizListenerAdded = false;
   _nextQuestionListenerAdded = false;
   _startQuizListenerAdded = false;
+  _doNotKnowAnswerAdded = false;
   _countriesSelectorListenerAdded = false;
 
   _quizType;
@@ -83,6 +85,7 @@ class Quiz {
     this.countriesSelectHandler();
     this.finishQuizHandler();
     this.nextButtonHandler();
+    this.doNotKnowAnswerHandler();
     this.startQuizHandler();
     this.selectRandomCountries();
     this.renderCountryQuestion();
@@ -116,6 +119,7 @@ class Quiz {
       this.renderCountryCards();
       this._startQuiz.disabled = true;
       this._finishQuiz.disabled = false;
+      this._doNotKnowAnswer.disabled = false;
       this._finishedQuizLabel.classList.add("not-displayed");
       this._cardOptionsElements.forEach((cardOption) => {
         cardOption.classList.remove("wrong-answer");
@@ -133,6 +137,7 @@ class Quiz {
       this._startQuiz.disabled = false;
       this._nextQuestion.disabled = true;
       this._finishQuiz.disabled = true;
+      this._doNotKnowAnswer.disabled = true;
       this._finishedQuizLabel.classList.remove("not-displayed");
       this._cardOptionsElements.forEach((cardOption) => {
         cardOption.classList.remove("wrong-answer");
@@ -254,6 +259,7 @@ class Quiz {
       });
     }
     this._nextQuestion.disabled = false;
+    this._doNotKnowAnswer.disabled = true;
     const currentQuestionNumber = +this._questionCurrentNumber.textContent;
     const questionsAllNumber = +this._questionsAllNumber.textContent;
     if (currentQuestionNumber === questionsAllNumber) {
@@ -296,11 +302,21 @@ class Quiz {
     return currentQuestionNumber;
   }
 
+  doNotKnowAnswerHandler() {
+    if (!this._doNotKnowAnswerAdded) {
+      this._doNotKnowAnswer.addEventListener(
+        "click",
+        this.nextQuestionClickHandler.bind(this, this._doNotKnowAnswer)
+      );
+      this._doNotKnowAnswerAdded = true;
+    }
+  }
+
   nextButtonHandler() {
     if (!this._nextQuestionListenerAdded) {
       this._nextQuestion.addEventListener(
         "click",
-        this.nextQuestionClickHandler.bind(this)
+        this.nextQuestionClickHandler.bind(this, this._nextQuestion)
       );
       this._nextQuestionListenerAdded = true;
     }
@@ -340,6 +356,7 @@ class Quiz {
     this._randomCountries = [];
     this._scoreValue.textContent = 0;
     this._questionCurrentNumber.textContent = 1;
+    this._doNotKnowAnswer.disabled = false;
     this._finishQuiz.disabled = false;
     this._nextQuestion.disabled = true;
     this._startQuiz.disabled = true;
@@ -406,13 +423,27 @@ class Quiz {
     this.enableCardOptions();
   }
 
-  nextQuestionClickHandler() {
+  nextQuestionClickHandler(target) {
+    if (
+      target === this._doNotKnowAnswer &&
+      +this._questionCurrentNumber.textContent ===
+        +this._questionsAllNumber.textContent
+    ) {
+      this._doNotKnowAnswer.disabled = true;
+      this._nextQuestion.disabled = true;
+      this._finishQuiz.disabled = true;
+      this._startQuiz.disabled = false;
+      this._finishedQuizLabel.classList.remove("not-displayed");
+      this.showResultWindow();
+      return;
+    }
     this._randomCountries = [];
     this._cardOptionsElements.forEach((cardOption) => {
       cardOption.classList.remove("wrong-answer");
       cardOption.classList.remove("right-answer");
     });
     this._nextQuestion.disabled = true;
+    this._doNotKnowAnswer.disabled = false;
     const currentQuestionNumber = this.updateCurrentQuestionNumber();
     const questionsAllNumber = +this._questionsAllNumber.textContent;
     if (currentQuestionNumber <= questionsAllNumber) {
@@ -420,6 +451,7 @@ class Quiz {
       this.renderCountryQuestion();
       this.renderCountryCards();
     } else {
+      this._doNotKnowAnswer.disabled = true;
       this._nextQuestion.disabled = true;
       this._finishQuiz.disabled = true;
       this._startQuiz.disabled = false;
@@ -624,6 +656,9 @@ class Quiz {
     }`;
     this._startQuiz.textContent = `${
       localization[model.worldCountries.language]["START AGAIN"]
+    }`;
+    this._doNotKnowAnswer.textContent = `${
+      localization[model.worldCountries.language]["DO NOT KNOW ANSWER"]
     }`;
     this._scoreElement.textContent = `${
       localization[model.worldCountries.language]["SCORE"]
