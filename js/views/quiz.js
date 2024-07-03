@@ -97,10 +97,12 @@ class Quiz {
     const countriesSelector = function () {
       if (this._countriesSelector.value === "Only Independent Countries") {
         this._countries = this._countries.filter(
-          (country) => country.independent
+          (country) => country.independent && country.capital
         );
       } else {
-        this._countries = model.worldCountries.countries.slice();
+        this._countries = model.worldCountries.countries
+          .slice()
+          .filter((country) => country.capital);
       }
     };
     if (!this._countriesSelectorListenerAdded) {
@@ -326,9 +328,11 @@ class Quiz {
     if (this._countriesSelector.value === "Only Independent Countries") {
       this._countries = model.worldCountries.countries
         .slice()
-        .filter((country) => country.independent);
+        .filter((country) => country.independent && country.capital);
     } else {
-      this._countries = model.worldCountries.countries.slice();
+      this._countries = model.worldCountries.countries
+        .slice()
+        .filter((country) => country.capital);
     }
     this._cardOptionsElements.forEach((cardOption) => {
       cardOption.classList.remove("wrong-answer");
