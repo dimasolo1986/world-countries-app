@@ -69,11 +69,13 @@ class countriesSelectView {
   }
 
   disableCountriesSelect() {
+    this._parentElement.style.opacity = 0.65;
     this._treeSelect.disabled = true;
     this._treeSelect.mount();
   }
 
   enableCountriesSelect() {
+    this._parentElement.style.opacity = 1;
     this._treeSelect.disabled = false;
     this._treeSelect.mount();
   }
