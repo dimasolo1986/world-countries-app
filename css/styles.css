@@ -11608,6 +11608,7 @@ body,
 .language-select {
   font-size: 0.8rem;
   margin-left: 8px;
+  margin-right: 4px;
 }
 
 .not-displayed {
