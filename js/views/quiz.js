@@ -73,7 +73,7 @@ class Quiz {
     this._statisticView = statisticView;
     this._quizType = quizId;
     mapView.hideMap();
-    this._countriesSelector.value = "Only Independent Countries";
+    this._countriesSelector.value = "Difficulty: Normal";
     this.clearQuiz();
     this.showQuiz();
     this.returnToMapButtonHandler(
@@ -95,15 +95,10 @@ class Quiz {
 
   countriesSelectHandler() {
     const countriesSelector = function () {
-      if (this._countriesSelector.value === "Only Independent Countries") {
-        this._countries = this._countries.filter(
-          (country) => country.independent && country.capital
-        );
-      } else {
-        this._countries = model.worldCountries.countries
-          .slice()
-          .filter((country) => country.capital);
-      }
+      this.clearQuiz();
+      this.selectRandomCountries();
+      this.renderCountryQuestion();
+      this.renderCountryCards();
     };
     if (!this._countriesSelectorListenerAdded) {
       this._countriesSelector.addEventListener(
@@ -325,14 +320,74 @@ class Quiz {
   }
 
   clearQuiz() {
-    if (this._countriesSelector.value === "Only Independent Countries") {
+    if (this._countriesSelector.value === "Difficulty: Normal") {
+      this._questionsAllNumber.textContent = "35";
       this._countries = model.worldCountries.countries
         .slice()
         .filter((country) => country.independent && country.capital);
-    } else {
+    } else if (this._countriesSelector.value === "Difficulty: Hard") {
+      this._questionsAllNumber.textContent = "35";
       this._countries = model.worldCountries.countries
         .slice()
         .filter((country) => country.capital);
+    } else if (this._countriesSelector.value === "Difficulty: Very Easy") {
+      this._questionsAllNumber.textContent = "10";
+      const europe = model.worldCountries.countries
+        .slice()
+        .filter(
+          (country) => country.region === "Europe" && country.area > 30000
+        );
+      const africa = model.worldCountries.countries
+        .slice()
+        .filter(
+          (country) => country.region === "Africa" && country.area > 1000000
+        );
+      const asia = model.worldCountries.countries
+        .slice()
+        .filter(
+          (country) => country.region === "Asia" && country.area > 1000000
+        );
+      const america = model.worldCountries.countries
+        .slice()
+        .filter(
+          (country) => country.region === "Americas" && country.area > 700000
+        );
+      const oceania = model.worldCountries.countries
+        .slice()
+        .filter(
+          (country) => country.region === "Oceania" && country.area > 1000000
+        );
+      this._countries = [
+        ...europe,
+        ...asia,
+        ...africa,
+        ...america,
+        ...oceania,
+      ].filter((country) => {
+        return (
+          country.capital &&
+          country.independent &&
+          country.region !== "Antarctic" &&
+          country.subregion !== "Caribbean" &&
+          country.subregion !== "Central America" &&
+          country.subregion !== "Western Africa" &&
+          country.subregion !== "Middle Africa"
+        );
+      });
+    } else {
+      this._questionsAllNumber.textContent = "15";
+      this._countries = model.worldCountries.countries
+        .slice()
+        .filter(
+          (country) =>
+            country.capital &&
+            country.independent &&
+            country.region !== "Oceania" &&
+            country.region !== "Antarctic" &&
+            country.subregion !== "Caribbean" &&
+            country.subregion !== "Central America" &&
+            country.area > 250000
+        );
     }
     this._cardOptionsElements.forEach((cardOption) => {
       cardOption.classList.remove("wrong-answer");

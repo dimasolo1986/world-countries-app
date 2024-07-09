@@ -135,7 +135,7 @@ class aboutView {
     }`;
     this._aboutInfo.textContent = `${
       localization[model.worldCountries.language][
-        "Here you can find all countries of the world on a map, brief information about selected countries, links to Wikipedia pages of a specific country. It is also possible to take various quizzes."
+        "Here you can find all countries of the world on a map, brief information about selected countries, links to Wikipedia pages of a specific country. It is also possible to take various quizzes with specific difficulty levels: Very Easy, Easy, Normal, Hard."
       ]
     }`;
     this._aboutAvailableQuizzes.textContent = `${

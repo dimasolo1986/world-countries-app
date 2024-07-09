@@ -484,11 +484,23 @@
             </div>
             <div style="text-align: center">
               <div class="countries-container">
-                <select class="countries-selector">
-                  <option value="Only Independent Countries">
-                    Only Independent Countries
+                <select
+                  class="countries-selector form-select form-select-sm"
+                  style="
+                    width: fit-content;
+                    display: inline-block;
+                    font-weight: bolder;
+                    border-color: black;
+                  "
+                >
+                  <option value="Difficulty: Very Easy">
+                    Difficulty: Very Easy
                   </option>
-                  <option value="All Countries">All Countries</option>
+                  <option value="Difficulty: Easy">Difficulty: Easy</option>
+                  <option value="Difficulty: Normal" selected>
+                    Difficulty: Normal
+                  </option>
+                  <option value="Difficulty: Hard">Difficulty: Hard</option>
                 </select>
               </div>
               <div class="score-container">
@@ -630,7 +642,8 @@
             <p class="about-info">
               Here you can find all countries of the world on a map, brief
               information about selected countries, links to Wikipedia pages of
-              a specific country. It is also possible to take various quizzes.
+              a specific country. It is also possible to take various quizzes
+              with specific difficulty levels: Very Easy, Easy, Normal, Hard.
             </p>
             <p class="statistic-info">
               Quiz Passing Statistics shows the last 50 quiz scores and ratings

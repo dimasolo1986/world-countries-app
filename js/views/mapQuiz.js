@@ -557,7 +557,13 @@ class MapQuiz {
   createCountries() {
     this._countries = model.worldCountries.countries
       .slice()
-      .filter((country) => country.independent && country.area > 15000);
+      .filter(
+        (country) =>
+          country.independent &&
+          country.area > 15000 &&
+          country.subregion !== "Polynesia" &&
+          country.subregion !== "Melanesia"
+      );
   }
 
   clearQuiz() {

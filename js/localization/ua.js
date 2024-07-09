@@ -539,14 +539,18 @@ export const localization = {
     "About Project": "Про Проект",
     Correct: "Вірно",
     Incorrect: "Невірно",
+    "Difficulty: Normal": "Складність: Середня",
+    "Difficulty: Easy": "Складність: Легко",
+    "Difficulty: Very Easy": "Складність: Дуже Легко",
+    "Difficulty: Hard": "Складність: Важко",
     MENU: "МЕНЮ",
     "Slavutych, Ukraine - birthplace of the project":
       "Славутич, Україна - місце народження проекту",
     "World Countries And Quizzes": "Світові Країни Та Вікторини",
     "project which is developed for learning Geography and World Countries.":
       "це проект, який розроблений для вивчення Географії та Країн Світу.",
-    "Here you can find all countries of the world on a map, brief information about selected countries, links to Wikipedia pages of a specific country. It is also possible to take various quizzes.":
-      "Тут ви можете знайти всі країни світу на мапі, коротку інформацію про обрані країни, посилання на сторінки Вікіпедії певної країни. Також є можливість пройти різні вікторини.",
+    "Here you can find all countries of the world on a map, brief information about selected countries, links to Wikipedia pages of a specific country. It is also possible to take various quizzes with specific difficulty levels: Very Easy, Easy, Normal, Hard.":
+      "Тут ви можете знайти всі країни світу на мапі, коротку інформацію про обрані країни, посилання на сторінки Вікіпедії певної країни. Також є можливість пройти різні вікторини з певними рівнями складності: Дуже Легко, Легко, Нормально, Важко.",
     "Guess the country's flag from the suggested country name. The quiz contains 35 questions. Get 100 points for each correct answer.":
       "Відгадайте прапор країни за запропонованою назвою країни. Вікторина містить 35 питань. За кожну правильну відповідь отримуйте 100 балів.",
     "Guess the country's name from the suggested country flag image. The quiz contains 35 questions. Get 100 points for each correct answer.":
@@ -1177,8 +1181,8 @@ export const localization = {
     "World Countries And Quizzes": "World Countries And Quizzes",
     "project which is developed for learning Geography and World Countries.":
       "project which is developed for learning Geography and World Countries.",
-    "Here you can find all countries of the world on a map, brief information about selected countries, links to Wikipedia pages of a specific country. It is also possible to take various quizzes.":
-      "Here you can find all countries of the world on a map, brief information about selected countries, links to Wikipedia pages of a specific country. It is also possible to take various quizzes.",
+    "Here you can find all countries of the world on a map, brief information about selected countries, links to Wikipedia pages of a specific country. It is also possible to take various quizzes with specific difficulty levels: Very Easy, Easy, Normal, Hard.":
+      "Here you can find all countries of the world on a map, brief information about selected countries, links to Wikipedia pages of a specific country. It is also possible to take various quizzes with specific difficulty levels: Very Easy, Easy, Normal, Hard.",
     "Guess the country's flag from the suggested country name. The quiz contains 35 questions. Get 100 points for each correct answer.":
       "Guess the country's flag from the suggested country name. The quiz contains 35 questions. Get 100 points for each correct answer.",
     "Guess the country's name from the suggested country flag image. The quiz contains 35 questions. Get 100 points for each correct answer.":
@@ -1220,6 +1224,10 @@ export const localization = {
     "DO NOT KNOW ANSWER": "DO NOT KNOW ANSWER",
     Incorrect: "Incorrect",
     "World Map": "World Map",
+    "Difficulty: Normal": "Difficulty: Normal",
+    "Difficulty: Easy": "Difficulty: Easy",
+    "Difficulty: Very Easy": "Difficulty: Very Easy",
+    "Difficulty: Hard": "Difficulty: Hard",
     "Used Map Library:": "Used Map Library:",
     Finished: "Finished",
     Countries: "Countries",
