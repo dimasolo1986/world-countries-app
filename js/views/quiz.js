@@ -324,12 +324,19 @@ class Quiz {
       this._questionsAllNumber.textContent = "35";
       this._countries = model.worldCountries.countries
         .slice()
-        .filter((country) => country.independent && country.capital);
+        .filter(
+          (country) =>
+            country.independent &&
+            country.capital &&
+            country.name.common !== "Russia"
+        );
     } else if (this._countriesSelector.value === "Difficulty: Hard") {
       this._questionsAllNumber.textContent = "35";
       this._countries = model.worldCountries.countries
         .slice()
-        .filter((country) => country.capital);
+        .filter(
+          (country) => country.capital && country.name.common !== "Russia"
+        );
     } else if (this._countriesSelector.value === "Difficulty: Very Easy") {
       this._questionsAllNumber.textContent = "10";
       const europe = model.worldCountries.countries
@@ -371,7 +378,8 @@ class Quiz {
           country.subregion !== "Caribbean" &&
           country.subregion !== "Central America" &&
           country.subregion !== "Western Africa" &&
-          country.subregion !== "Middle Africa"
+          country.subregion !== "Middle Africa" &&
+          country.name.common !== "Russia"
         );
       });
     } else {
@@ -386,6 +394,7 @@ class Quiz {
             country.region !== "Antarctic" &&
             country.subregion !== "Caribbean" &&
             country.subregion !== "Central America" &&
+            country.name.common !== "Russia" &&
             country.area > 250000
         );
     }

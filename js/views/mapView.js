@@ -42,7 +42,8 @@ class mapView {
       const control = new L.Control({ position: "topleft" });
       control.onAdd = function (map) {
         const resetZoom = L.DomUtil.create("a", "resetzoom");
-        resetZoom.innerHTML = "Reset";
+        resetZoom.innerHTML =
+          localization[model.worldCountries.language]["Reset"];
         resetZoom.style.cursor = "pointer";
         resetZoom.style.textDecoration = "none";
         resetZoom.style.background = "white";
