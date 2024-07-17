@@ -213,7 +213,16 @@ class mapView {
               country.capital[0]
             ]
           : " "
-      }</span><br />
+      }</span>
+      <br />
+       <span>${
+         localization[model.worldCountries.language]["Independent"]
+       }: </span><span>${
+        country.independent
+          ? localization[model.worldCountries.language]["Yes"]
+          : localization[model.worldCountries.language]["No"]
+      }</span>
+      <br />
         <span>${localization[model.worldCountries.language]["Region"]}: ${
         country.region
           ? localization[model.worldCountries.language][country.region]
