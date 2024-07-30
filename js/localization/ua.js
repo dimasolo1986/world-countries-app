@@ -182,7 +182,7 @@ export const localization = {
       Portugal: "Португалія",
       "Puerto Rico": "Пуерто-Рико",
       Qatar: "Катар",
-      "Republic of the Congo": "Демократична Республіка Конго",
+      "Republic of the Congo": "Республіка Конго",
       Romania: "Румунія",
       Russia: "Росія",
       Rwanda: "Руанда",
