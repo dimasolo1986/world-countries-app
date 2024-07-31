@@ -184,9 +184,9 @@ class mapView {
         .addTo(this._map)
         .bindPopup(
           L.popup({
-            maxWidth: 200,
-            minWidth: 200,
-            maxHeight: 200,
+            maxWidth: 210,
+            minWidth: 210,
+            maxHeight: 210,
             autoClose: true,
             closeOnClick: true,
             className: `${country.name.common}-popup`,
@@ -198,13 +198,24 @@ class mapView {
           localization[model.worldCountries.language]["countries"][
             country.name.common
           ]
-        }</span> <br />${
-        WAR_AGGRESSOR_COUNTRIES.includes(country.name.common)
-          ? `<span style="color: red">${
-              localization[model.worldCountries.language]["War Aggressor"]
-            }</span><br>`
-          : ""
-      }
+        }</span> <br />
+        ${
+          country.coatOfArms.png
+            ? `<img src="${
+                country.coatOfArms.png
+              }" style="width:30px; height:30px; margin-top: 3px;">
+        <span style="font-weight:bold; margin-top: 3px;">${
+          localization[model.worldCountries.language]["Coat Of Arms"]
+        }</span> <br />`
+            : ""
+        }
+        ${
+          WAR_AGGRESSOR_COUNTRIES.includes(country.name.common)
+            ? `<span style="color: red">${
+                localization[model.worldCountries.language]["War Aggressor"]
+              }</span><br>`
+            : ""
+        }
         <span>${
           localization[model.worldCountries.language]["Capital"]
         }: </span><span style="font-weight:bold">${
