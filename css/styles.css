@@ -11648,3 +11648,9 @@ body,
 #statistic-quizzes {
   font-family: Cambria, Cochin, Georgia, Times, "Times New Roman", serif;
 }
+
+.country-info-modal-body {
+  scrollbar-width: thin;
+  font-size: 0.95rem;
+  line-height: 1.3;
+}

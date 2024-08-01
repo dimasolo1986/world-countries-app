@@ -193,22 +193,17 @@ class mapView {
           })
         ).setPopupContent(`<img src="${
         country.flags.png
-      }" style="width:30px; height:20px; border: 1px solid black;">
+      }" style="width:30px; height:20px; border: 1px solid black;"> ${
+        country.coatOfArms.png
+          ? `<img src="${country.coatOfArms.png}" style="width:30px; height:30px; margin-left: 3px;">`
+          : ""
+      }
         <span style="font-weight:bold">${
           localization[model.worldCountries.language]["countries"][
             country.name.common
           ]
         }</span> <br />
-        ${
-          country.coatOfArms.png
-            ? `<img src="${
-                country.coatOfArms.png
-              }" style="width:30px; height:30px; margin-top: 3px;">
-        <span style="font-weight:bold; margin-top: 3px;">${
-          localization[model.worldCountries.language]["Coat Of Arms"]
-        }</span> <br />`
-            : ""
-        }
+       
         ${
           WAR_AGGRESSOR_COUNTRIES.includes(country.name.common)
             ? `<span style="color: red">${

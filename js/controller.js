@@ -21,6 +21,7 @@ const init = function () {
   sideNavigationView.addSortCountriesHandler(countriesSortHandler);
   sideNavigationView.addMoveUpCountriesHandler();
   sideNavigationView.addMoveDownCountriesHandler();
+  sideNavigationView.addCountryInfoModalClickHandler();
   countriesSelectView.addHandlerRender(countriesSelectRender);
   countriesSelectView.countriesSelectionHandler(countriesSelectionHandler);
   languageSelectView.init();
@@ -158,6 +159,7 @@ const quizSelectionHandler = function (quizId) {
 
 const translateAllElements = function () {
   sideNavigationView.translateSortMoveElements();
+  sideNavigationView.translateCountryInfoModalElements();
   topNavigationView.translateElements();
   quiz.translateElements();
   aboutView.translateElements();

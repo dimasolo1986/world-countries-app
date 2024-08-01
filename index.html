@@ -61,7 +61,46 @@
     ></script>
   </head>
   <body class="sb-nav-fixed">
-    <!-- Modal -->
+    <!-- Modal Country Info -->
+    <div
+      class="modal fade"
+      id="countryInfoModal"
+      tabindex="-1"
+      aria-labelledby="countryInfoLabel"
+      aria-hidden="true"
+    >
+      <div class="modal-dialog modal-dialog-centered modal-dialog-scrollable">
+        <div class="modal-content">
+          <div class="modal-header">
+            <h1
+              style="font-weight: bold; color: #6495ed"
+              class="modal-title fs-5"
+              id="countryInfoLabel"
+            >
+              Country Information
+            </h1>
+            <button
+              type="button"
+              class="btn-close"
+              data-bs-dismiss="modal"
+              aria-label="Close"
+            ></button>
+          </div>
+          <div class="modal-body country-info-modal-body"></div>
+          <div class="modal-footer">
+            <button
+              id="countryInfoModalClose"
+              type="button"
+              class="btn btn-secondary"
+              data-bs-dismiss="modal"
+            >
+              Close
+            </button>
+          </div>
+        </div>
+      </div>
+    </div>
+    <!-- Modal Quiz Result -->
     <div
       class="modal fade"
       id="quizResultModal"
