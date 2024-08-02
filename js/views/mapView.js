@@ -104,6 +104,10 @@ class mapView {
     });
   }
 
+  setMapViewToBounds(bounds) {
+    this._map.fitBounds(bounds);
+  }
+
   setMapView(latLon, zoomLevel) {
     this._map.setView(latLon, zoomLevel);
   }

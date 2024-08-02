@@ -2,6 +2,7 @@ import mapView from "./mapView.js";
 import * as model from "../model.js";
 import { localization } from "../localization/ua.js";
 import { defineZoomLevelByCountryArea } from "../helpers.js";
+import { COUNTRY_BOUNDS } from "../data/countriesBounds.js";
 import {
   GEOGRAPHICAL_CENTER,
   DEFAULT_ZOOM_LEVEL,
@@ -316,11 +317,18 @@ class sideNavigationView {
             "selected-side-navigation-country-container"
           );
           this._selectedCountry = country;
-          const zoomLevel = defineZoomLevelByCountryArea(country.area);
-          mapView.setMapView(
-            country.latlng ? country.latlng : country.capitalInfo.latlng,
-            zoomLevel
+          const countryBound = COUNTRY_BOUNDS.find(
+            (bound) => country.name.common === bound.name
           );
+          if (countryBound) {
+            mapView.setMapViewToBounds(countryBound.bounds);
+          } else {
+            const zoomLevel = defineZoomLevelByCountryArea(country.area);
+            mapView.setMapView(
+              country.latlng ? country.latlng : country.capitalInfo.latlng,
+              zoomLevel
+            );
+          }
           mapView.removeCapitalMarker();
           mapView.removeCountryBoundary();
           mapView.addCountryBoundary(country);

@@ -32375,7 +32375,7 @@ export const COUNTRIES = [
         common: "圣马力诺",
       },
     },
-    latlng: [43.76666666, 12.41666666],
+    latlng: [43.94, 12.45],
     landlocked: true,
     borders: ["ITA"],
     area: 61,
