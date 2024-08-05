@@ -97,15 +97,6 @@ class mapView {
     window.addEventListener("load", handler);
   }
 
-  createDevelopmentPlaceIcon() {
-    const iconUrl = require("/assets/img/slavutich_emblem.png");
-    return L.icon({
-      iconUrl: iconUrl,
-      iconSize: [20, 30],
-      className: "development-place-icon",
-    });
-  }
-
   _createMarkerIcon(country) {
     return L.icon({
       iconUrl: `${country.flags.png}`,
@@ -144,9 +135,7 @@ class mapView {
   }
 
   addDevelopmentPlaceMarker() {
-    this._developmentPlaceMarker = L.marker([51.52, 30.75], {
-      icon: this.createDevelopmentPlaceIcon(),
-    })
+    this._developmentPlaceMarker = L.marker([51.52, 30.75])
       .bindTooltip(
         localization[model.worldCountries.language][
           "Slavutych, Ukraine - birthplace of the project"
