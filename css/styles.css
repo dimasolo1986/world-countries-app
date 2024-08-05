@@ -11550,6 +11550,10 @@ body,
   border-radius: 50%;
 }
 
+.development-place-icon {
+  border-radius: 0;
+}
+
 .side-navigation-country-container {
   display: flex;
   align-items: center;
