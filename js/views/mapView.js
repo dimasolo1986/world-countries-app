@@ -210,6 +210,11 @@ class mapView {
         }
       )
         .addTo(this._map)
+        .bindTooltip(
+          localization[model.worldCountries.language]["countries"][
+            country.name.common
+          ]
+        )
         .bindPopup(
           L.popup({
             maxWidth: 210,
