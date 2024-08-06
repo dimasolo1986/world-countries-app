@@ -1,7 +1,7 @@
 import {
   GEOGRAPHICAL_CENTER,
   DEFAULT_RIGHT_MAP_SCORE,
-  DEFAULT_ZOOM_LEVEL,
+  WORLD_MAP_BOUNDS,
 } from "../config.js";
 import * as model from "../model.js";
 import { COUNTRIES_GEO } from "../data/countries.geo.js";
@@ -76,7 +76,7 @@ class MapQuiz {
     this.createCountries();
     this.createMap(GEOGRAPHICAL_CENTER);
     this.invalidateSize();
-    this._map.setView(GEOGRAPHICAL_CENTER, 1.2);
+    this._map.fitBounds(WORLD_MAP_BOUNDS);
     this.selectRandomCountry();
     this.renderCountryQuestion();
     this.returnToMapButtonHandler(
@@ -102,7 +102,7 @@ class MapQuiz {
   startQuizHandler() {
     const startQuiz = function () {
       this.clearQuiz();
-      this._map.setView(GEOGRAPHICAL_CENTER, 1.2);
+      this._map.fitBounds(WORLD_MAP_BOUNDS);
       this.resetCountryBoundaries();
       this.createCountries();
       this.selectRandomCountry();
@@ -204,7 +204,7 @@ class MapQuiz {
     ) {
       this.clearQuiz();
       this.hideQuiz();
-      mapView.setMapView(GEOGRAPHICAL_CENTER, DEFAULT_ZOOM_LEVEL);
+      mapView.setMapViewToBounds(WORLD_MAP_BOUNDS);
       mapView.showMap();
       mapView.invalidateSize();
       sideNavigationView.showSideNavigation();
@@ -267,7 +267,7 @@ class MapQuiz {
   }
 
   nextQuestionClickHandler(target) {
-    this._map.setView(GEOGRAPHICAL_CENTER, 1.2);
+    this._map.fitBounds(WORLD_MAP_BOUNDS);
     this.clearTimeout();
     this._correctIncorrectQuizAnswer.classList.add("not-displayed");
     this._alreadyCountrySelected = false;
@@ -604,7 +604,7 @@ class MapQuiz {
           resetZoom,
           "click",
           function () {
-            map.setView(GEOGRAPHICAL_CENTER, 1.2);
+            map.fitBounds(WORLD_MAP_BOUNDS);
           },
           resetZoom
         );

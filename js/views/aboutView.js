@@ -1,6 +1,6 @@
 import { localization } from "../localization/ua.js";
 import * as model from "../model.js";
-import { GEOGRAPHICAL_CENTER, DEFAULT_ZOOM_LEVEL } from "../config.js";
+import { WORLD_MAP_BOUNDS } from "../config.js";
 class aboutView {
   _parentElement = document.querySelector("#about-project");
   _aboutHeading = document.querySelector(".about-heading");
@@ -76,7 +76,7 @@ class aboutView {
   ) {
     this.hideAboutProject();
     statisticView.hideStatistic();
-    mapView.setMapView(GEOGRAPHICAL_CENTER, DEFAULT_ZOOM_LEVEL);
+    mapView.setMapViewToBounds(WORLD_MAP_BOUNDS);
     mapView.showMap();
     mapView.invalidateSize();
     sideNavigationView.showSideNavigation();

@@ -1,5 +1,6 @@
 import { GEOGRAPHICAL_CENTER } from "../config.js";
 import { DEFAULT_ZOOM_LEVEL } from "../config.js";
+import { WORLD_MAP_BOUNDS } from "../config.js";
 import { COUNTRIES_GEO } from "../data/countries.geo.js";
 import { WAR_AGGRESSOR_COUNTRIES } from "../config.js";
 import { localization } from "../localization/ua.js";
@@ -56,7 +57,7 @@ class mapView {
           resetZoom,
           "click",
           function () {
-            map.setView(GEOGRAPHICAL_CENTER, DEFAULT_ZOOM_LEVEL);
+            map.fitBounds(WORLD_MAP_BOUNDS);
           },
           resetZoom
         );

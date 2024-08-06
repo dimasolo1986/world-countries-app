@@ -1,4 +1,5 @@
 import { localization } from "../localization/ua.js";
+import { WORLD_MAP_BOUNDS } from "../config.js";
 import * as model from "../model.js";
 import {
   GEOGRAPHICAL_CENTER,
@@ -28,7 +29,7 @@ class statisticView {
   ) {
     this.hideStatistic();
     aboutView.hideAboutProject();
-    mapView.setMapView(GEOGRAPHICAL_CENTER, DEFAULT_ZOOM_LEVEL);
+    mapView.setMapViewToBounds(WORLD_MAP_BOUNDS);
     mapView.showMap();
     mapView.invalidateSize();
     sideNavigationView.showSideNavigation();

@@ -12,6 +12,7 @@ import { localization } from "./localization/ua.js";
 import { GEOGRAPHICAL_CENTER } from "./config.js";
 import { DEFAULT_ZOOM_LEVEL } from "./config.js";
 import { COUNTRY_ON_MAP_QUIZ } from "./config.js";
+import { WORLD_MAP_BOUNDS } from "./config.js";
 import { sortData } from "./helpers.js";
 const init = function () {
   mapView.addHandlerRender(mapCountriesMarkerRender);
@@ -77,7 +78,7 @@ const loadWorldMap = function () {
   aboutView.hideAboutProject();
   statisticView.hideStatistic();
   countriesSelectView.enableCountriesSelect();
-  mapView.setMapView(GEOGRAPHICAL_CENTER, DEFAULT_ZOOM_LEVEL);
+  mapView.setMapViewToBounds(WORLD_MAP_BOUNDS);
   mapView.showMap();
   mapView.invalidateSize();
   if (window.screen.width < 650) {
@@ -209,7 +210,7 @@ const countriesSelectionHandler = function (selectedCountriesNames) {
   model.worldCountries.selectedCountries = [];
   sideNavigationView._selectedCountry = undefined;
   document.body.classList.remove("sb-sidenav-toggled");
-  mapView.setMapView(GEOGRAPHICAL_CENTER, DEFAULT_ZOOM_LEVEL);
+  mapView.setMapViewToBounds(WORLD_MAP_BOUNDS);
   if (selectedCountriesNames.length !== 0) {
     selectedCountriesNames.forEach((countryName) => {
       const country = model.worldCountries.countries.find(

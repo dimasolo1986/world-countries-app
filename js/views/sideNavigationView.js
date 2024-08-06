@@ -3,11 +3,7 @@ import * as model from "../model.js";
 import { localization } from "../localization/ua.js";
 import { defineZoomLevelByCountryArea } from "../helpers.js";
 import { COUNTRY_BOUNDS } from "../data/countriesBounds.js";
-import {
-  GEOGRAPHICAL_CENTER,
-  DEFAULT_ZOOM_LEVEL,
-  WAR_AGGRESSOR_COUNTRIES,
-} from "../config.js";
+import { WORLD_MAP_BOUNDS, WAR_AGGRESSOR_COUNTRIES } from "../config.js";
 class sideNavigationView {
   _parentElement = document.querySelector(".sb-sidenav-menu .nav");
   _sideNavigation = document.querySelector(".sb-sidenav");
@@ -306,7 +302,7 @@ class sideNavigationView {
         mapView.removeCapitalMarker();
         mapView.removeCountryBoundary();
         mapView.closeAllPopup();
-        mapView.setMapView(GEOGRAPHICAL_CENTER, DEFAULT_ZOOM_LEVEL);
+        mapView.setMapViewToBounds(WORLD_MAP_BOUNDS);
       } else {
         if (
           !target.classList.contains("side-navigation-country-link") &&

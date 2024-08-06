@@ -14,3 +14,7 @@ export const COUNTRY_ON_MAP_QUIZ = "country-on-map-quiz";
 export const DEFAULT_RIGHT_SCORE = 100;
 export const DEFAULT_RIGHT_MAP_SCORE = 300;
 export const WAR_AGGRESSOR_COUNTRIES = ["Russia"];
+export const WORLD_MAP_BOUNDS = [
+  [73.1217211716937, 221.48437500000003],
+  [-65.37146534864254, -140.27343750000003],
+];

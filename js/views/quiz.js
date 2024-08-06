@@ -3,7 +3,7 @@ import { localization } from "../localization/ua.js";
 import { getRandomInt } from "../helpers.js";
 import { DEFAULT_RIGHT_SCORE } from "../config.js";
 import { showQuizResultWindow } from "../helpers.js";
-import { GEOGRAPHICAL_CENTER, DEFAULT_ZOOM_LEVEL } from "../config.js";
+import { WORLD_MAP_BOUNDS } from "../config.js";
 import {
   FLAG_BY_COUNTRY_NAME_QUIZ,
   COUNTRY_NAME_BY_FLAG_QUIZ,
@@ -675,7 +675,7 @@ class Quiz {
       )
     ) {
       this.hideQuiz();
-      mapView.setMapView(GEOGRAPHICAL_CENTER, DEFAULT_ZOOM_LEVEL);
+      mapView.setMapViewToBounds(WORLD_MAP_BOUNDS);
       mapView.showMap();
       mapView.invalidateSize();
       sideNavigationView.showSideNavigation();
