@@ -5593,6 +5593,7 @@ fieldset:disabled .btn {
 }
 .modal.show .modal-dialog {
   transform: none;
+  width: fit-content;
 }
 .modal.modal-static .modal-dialog {
   transform: scale(1.02);

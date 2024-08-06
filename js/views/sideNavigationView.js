@@ -336,6 +336,7 @@ class sideNavigationView {
             country.latlng ? country.latlng : country.capitalInfo.latlng
           );
           mapView.addCapitalMarker(
+            country.coatOfArms,
             country.capitalInfo?.latlng,
             country.capital
               ? localization[model.worldCountries.language]["capitals"][

@@ -105,6 +105,14 @@ class mapView {
     });
   }
 
+  createCapitalMarkerIcon(iconUrl) {
+    return L.icon({
+      iconUrl: iconUrl,
+      iconSize: [30, 30],
+      className: "development-place-icon",
+    });
+  }
+
   _createMarkerIcon(country) {
     return L.icon({
       iconUrl: `${country.flags.png}`,
@@ -120,9 +128,14 @@ class mapView {
     this._map.setView(latLon, zoomLevel);
   }
 
-  addCapitalMarker(latLon, capital) {
+  addCapitalMarker(coatOfArms, latLon, capital) {
     if (latLon && capital)
-      this._capitalMarker = L.marker(latLon)
+      this._capitalMarker = L.marker(
+        latLon,
+        coatOfArms.png
+          ? { icon: this.createCapitalMarkerIcon(coatOfArms.png) }
+          : {}
+      )
         .addTo(this._map)
         .bindTooltip(capital);
   }
