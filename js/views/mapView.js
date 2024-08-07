@@ -295,6 +295,12 @@ class mapView {
       }" target="_blank" rel="external">${
         localization[model.worldCountries.language]["Wikipedia"]
       }</a>`);
+      marker.on("mouseover", function () {
+        if (!this.isPopupOpen()) this.openTooltip();
+      });
+      marker.on("click", function () {
+        this.closeTooltip();
+      });
       this._markers.push(marker);
     });
   }
