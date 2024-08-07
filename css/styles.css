@@ -11559,8 +11559,8 @@ body,
   display: flex;
   align-items: center;
   justify-content: left;
-  padding-top: 5px;
-  padding-bottom: 5px;
+  padding-top: 7px;
+  padding-bottom: 7px;
   padding-left: 5px;
   cursor: pointer;
 }
