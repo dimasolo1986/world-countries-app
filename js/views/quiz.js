@@ -431,7 +431,7 @@ class Quiz {
     if (this._quizType === FLAG_BY_COUNTRY_NAME_QUIZ) {
       this._quizHeading.textContent = this._quizHeading.textContent = `${
         localization[model.worldCountries.language][
-          "Guess Flag By Country Name Quiz"
+          "Guess Flag By Country Name"
         ]
       }`;
       this._questionCountry.textContent = "";
@@ -441,7 +441,7 @@ class Quiz {
     if (this._quizType === FLAG_BY_COUNTRY_CAPITAL_QUIZ) {
       this._quizHeading.textContent = this._quizHeading.textContent = `${
         localization[model.worldCountries.language][
-          "Guess Flag By Country Capital Quiz"
+          "Guess Flag By Country Capital"
         ]
       }`;
       this._questionCountry.textContent = "";
@@ -451,7 +451,7 @@ class Quiz {
     if (this._quizType === COUNTRY_NAME_BY_CAPITAL_QUIZ) {
       this._quizHeading.textContent = this._quizHeading.textContent = `${
         localization[model.worldCountries.language][
-          "Guess Country Name By Capital Quiz"
+          "Guess Country Name By Capital"
         ]
       }`;
       this._questionCountry.classList.remove("not-displayed");
@@ -461,7 +461,7 @@ class Quiz {
     if (this._quizType === COUNTRY_CAPITAL_BY_COUNTRY_NAME_QUIZ) {
       this._quizHeading.textContent = this._quizHeading.textContent = `${
         localization[model.worldCountries.language][
-          "Guess Capital By Country Name Quiz"
+          "Guess Capital By Country Name"
         ]
       }`;
       this._questionCountry.classList.remove("not-displayed");
@@ -471,7 +471,7 @@ class Quiz {
     if (this._quizType === COUNTRY_NAME_BY_FLAG_QUIZ) {
       this._quizHeading.textContent = this._quizHeading.textContent = `${
         localization[model.worldCountries.language][
-          "Guess Country Name By Flag Quiz"
+          "Guess Country Name By Flag"
         ]
       }`;
       this._questionCountry.classList.add("not-displayed");
@@ -481,7 +481,7 @@ class Quiz {
     if (this._quizType === COUNTRY_CAPITAL_BY_FLAG_QUIZ) {
       this._quizHeading.textContent = this._quizHeading.textContent = `${
         localization[model.worldCountries.language][
-          "Guess Country Capital By Flag Quiz"
+          "Guess Country Capital By Flag"
         ]
       }`;
       this._questionCountry.classList.add("not-displayed");
@@ -709,9 +709,7 @@ class Quiz {
 
   translateElements() {
     this._quizHeading.textContent = `${
-      localization[model.worldCountries.language][
-        "Guess Flag By Country Name Quiz"
-      ]
+      localization[model.worldCountries.language]["Guess Flag By Country Name"]
     }`;
     this._returnToMap.textContent = `${
       localization[model.worldCountries.language]["RETURN TO MAP"]
@@ -748,7 +746,7 @@ class Quiz {
     if (this._quizType === COUNTRY_NAME_BY_FLAG_QUIZ) {
       this._quizHeading.textContent = `${
         localization[model.worldCountries.language][
-          "Guess Country Name By Flag Quiz"
+          "Guess Country Name By Flag"
         ]
       }`;
       this._cardOptionsElements.forEach((cardOption) => {
@@ -762,7 +760,7 @@ class Quiz {
     if (this._quizType === COUNTRY_NAME_BY_CAPITAL_QUIZ) {
       this._quizHeading.textContent = `${
         localization[model.worldCountries.language][
-          "Guess Country Name By Capital Quiz"
+          "Guess Country Name By Capital"
         ]
       }`;
       this._questionCountry.textContent =
@@ -780,7 +778,7 @@ class Quiz {
     if (this._quizType === COUNTRY_CAPITAL_BY_COUNTRY_NAME_QUIZ) {
       this._quizHeading.textContent = `${
         localization[model.worldCountries.language][
-          "Guess Capital By Country Name Quiz"
+          "Guess Capital By Country Name"
         ]
       }`;
       this._questionCountry.textContent =
@@ -801,7 +799,7 @@ class Quiz {
     if (this._quizType === FLAG_BY_COUNTRY_CAPITAL_QUIZ) {
       this._quizHeading.textContent = `${
         localization[model.worldCountries.language][
-          "Guess Flag By Country Capital Quiz"
+          "Guess Flag By Country Capital"
         ]
       }`;
       this._questionCountry.textContent =
@@ -812,7 +810,7 @@ class Quiz {
     if (this._quizType === COUNTRY_CAPITAL_BY_FLAG_QUIZ) {
       this._quizHeading.textContent = `${
         localization[model.worldCountries.language][
-          "Guess Country Capital By Flag Quiz"
+          "Guess Country Capital By Flag"
         ]
       }`;
       this._cardOptionsElements.forEach((cardOption) => {

@@ -514,19 +514,19 @@ export const localization = {
       "Ви впевнені, що бажаєте залишити цей тест? Поточні дані вікторини не будуть збережені!",
     "Only Independent Countries": "Тільки незалежні країни",
     "All Countries": "Всі країни",
-    "Guess Flag By Country Name Quiz":
-      "Вікторина Вгадай Прапор За Назвою Країни",
-    "Guess Country Name By Flag Quiz":
-      "Вікторина Вгадай Назву Країни За Прапором",
-    "Guess Country Capital By Flag Quiz":
-      "Вікторина Вгадай Столицю Країни За Прапором",
-    "Guess Flag By Country Capital Quiz":
-      "Вікторина Вгадай Прапор За Столицею Країни",
-    "Guess Country Name By Capital Quiz":
-      "Вікторина Вгадай Назву Країни За Столицею Країни",
-    "Guess Capital By Country Name Quiz":
-      "Вікторина Вгадай Столицю За Назвою Країни",
-    "Guess Country On Map Quiz": "Вікторина Знайди Країну На Мапі",
+    "Guess Flag By Country Name":
+      "Вгадай Прапор За Назвою Країни",
+    "Guess Country Name By Flag":
+      "Вгадай Назву Країни За Прапором",
+    "Guess Country Capital By Flag":
+      "Вгадай Столицю Країни За Прапором",
+    "Guess Flag By Country Capital":
+      "Вгадай Прапор За Столицею Країни",
+    "Guess Country Name By Capital":
+      "Вгадай Назву Країни За Столицею Країни",
+    "Guess Capital By Country Name":
+      "Вгадай Столицю За Назвою Країни",
+    "Guess Country On Map": "Знайди Країну На Мапі",
     "War Aggressor": "Країна Агресор",
     "Aggressor Supporter": "Прибічник Агресора",
     "Flag By Country Name Quiz": "Вікторина Прапор За Назвою Країни",
@@ -1175,12 +1175,12 @@ export const localization = {
     "Guess Flag": "Guess Flag:",
     "RETURN TO MAP": "RETURN TO MAP",
     "START AGAIN": "START AGAIN",
-    "Guess Flag By Country Name Quiz": "Guess Flag By Country Name Quiz",
-    "Guess Country Name By Flag Quiz": "Guess Country Name By Flag Quiz",
-    "Guess Country Capital By Flag Quiz": "Guess Country Capital By Flag Quiz",
-    "Guess Flag By Country Capital Quiz": "Guess Flag By Country Capital Quiz",
-    "Guess Country Name By Capital Quiz": "Guess Country Name By Capital Quiz",
-    "Guess Capital By Country Name Quiz": "Guess Capital By Country Name Quiz",
+    "Guess Flag By Country Name": "Guess Flag By Country Name",
+    "Guess Country Name By Flag": "Guess Country Name By Flag",
+    "Guess Country Capital By Flag": "Guess Country Capital By Flag",
+    "Guess Flag By Country Capital": "Guess Flag By Country Capital",
+    "Guess Country Name By Capital": "Guess Country Name By Capital",
+    "Guess Capital By Country Name": "Guess Capital By Country Name",
     "Are you sure you want to leave this quiz? Current quiz data will not be saved!":
       "Are you sure you want to leave this quiz? Current quiz data will not be saved!",
     "Only Independent Countries": "Only Independent Countries",
@@ -1191,7 +1191,7 @@ export const localization = {
     "FINISH QUIZ": "FINISH QUIZ",
     "Flag By Country Name Quiz": "Flag By Country Name Quiz",
     "Country On Map Quiz": "Country On Map Quiz",
-    "Guess Country On Map Quiz": "Guess Country On Map Quiz",
+    "Guess Country On Map": "Guess Country On Map",
     "All Countries": "All Countries",
     "Search Or Select Counties...": "Search Or Select Counties...",
     Selected: "Selected",

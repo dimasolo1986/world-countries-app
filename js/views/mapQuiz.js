@@ -629,7 +629,7 @@ class MapQuiz {
         localization[model.worldCountries.language]["Reset"];
     }
     this._quizHeading.textContent = `${
-      localization[model.worldCountries.language]["Guess Country On Map Quiz"]
+      localization[model.worldCountries.language]["Guess Country On Map"]
     }`;
     this._returnToMap.textContent = `${
       localization[model.worldCountries.language]["RETURN TO MAP"]
