@@ -60,7 +60,6 @@ h1.heading {
   margin-bottom: 20px;
   line-height: 1.42857143;
   background-color: #fff;
-  border-radius: 2px;
   box-shadow: 0 2px 5px 0 rgba(0, 0, 0, 0.16), 0 2px 10px 0 rgba(0, 0, 0, 0.12);
   transition: box-shadow 0.25s;
 }
@@ -125,7 +124,6 @@ h1.heading {
   display: inline;
   margin-right: 10px;
   margin-left: 10px;
-  border-radius: 2px;
   border: solid 1px black;
   background-color: hsl(210deg 60% 98.0392156863%);
   padding: 0.5rem;
@@ -187,7 +185,6 @@ h1.heading {
   width: 100px;
   height: 50px;
   border: solid 1px black;
-  border-radius: 2px;
   margin-top: 5px;
   margin-bottom: 5px;
 }
