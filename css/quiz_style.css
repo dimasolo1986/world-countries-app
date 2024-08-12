@@ -147,11 +147,11 @@ h1.heading {
 }
 
 .right-answer {
-  border: 8px solid green;
+  outline: 8px ridge rgba(2, 207, 43, 0.993);
 }
 
 .wrong-answer {
-  border: 8px solid red;
+  outline: 8px ridge rgba(241, 1, 1, 0.735);
 }
 
 .column {
