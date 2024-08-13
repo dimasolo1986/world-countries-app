@@ -9,13 +9,12 @@ import mapQuiz from "./views/mapQuiz.js";
 import aboutView from "./views/aboutView.js";
 import statisticView from "./views/statisticView.js";
 import { localization } from "./localization/ua.js";
-import { GEOGRAPHICAL_CENTER } from "./config.js";
-import { DEFAULT_ZOOM_LEVEL } from "./config.js";
 import { COUNTRY_ON_MAP_QUIZ } from "./config.js";
 import { WORLD_MAP_BOUNDS } from "./config.js";
 import { sortData } from "./helpers.js";
 const init = function () {
   mapView.addHandlerRender(mapCountriesMarkerRender);
+  mapView.setSideNavigationView(sideNavigationView);
   topNavigationView.initSideBar();
   translateAllElements();
   sideNavigationView.addHandlerRender(sideNavigationCountriesRender);

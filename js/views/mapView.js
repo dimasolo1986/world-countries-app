@@ -8,6 +8,7 @@ import * as model from "../model.js";
 
 class mapView {
   _parentElement = document.querySelector("#map");
+  _sideNavigationView;
   _errorMessage = "Failed to load map!";
   _map;
   _capitalMarker;
@@ -17,6 +18,10 @@ class mapView {
 
   constructor() {
     this._createMap(GEOGRAPHICAL_CENTER);
+  }
+
+  setSideNavigationView(sideNavigationView) {
+    this._sideNavigationView = sideNavigationView;
   }
 
   _createMap(latLon, defaultZoomLevel = DEFAULT_ZOOM_LEVEL) {
@@ -196,7 +201,11 @@ class mapView {
       countryGeo.features = COUNTRIES_GEO.features.filter(
         (feature) => feature.properties.country_a2 === countryCode
       );
-      this._countryBoundary = L.geoJson(countryGeo).addTo(this._map);
+      this._countryBoundary = L.geoJson(countryGeo, {
+        bubblingMouseEvents: false,
+      })
+        .on("click", () => {})
+        .addTo(this._map);
     }
   }
 
@@ -310,31 +319,32 @@ class mapView {
           ".sb-sidenav-menu .nav"
         );
         if (sideNavigationCountries) {
-          sideNavigationCountries.childNodes.forEach((child) =>
-            child.classList.remove("selected-side-navigation-country-container")
-          );
+          sideNavigationCountries.childNodes.forEach((child) => {
+            if (country.name.common === child.dataset.country) {
+              this._sideNavigationView._selectedCountry = country;
+              child.classList.add("selected-side-navigation-country-container");
+              child.scrollIntoView();
+            } else {
+              child.classList.remove(
+                "selected-side-navigation-country-container"
+              );
+            }
+          });
         }
       }
       function removeCountryBoundary() {
-        let isSideCountrySelected = false;
         const sideNavigationCountries = document.querySelector(
           ".sb-sidenav-menu .nav"
         );
         if (sideNavigationCountries) {
           sideNavigationCountries.childNodes.forEach((child) => {
-            if (
-              child.classList.contains(
-                "selected-side-navigation-country-container"
-              )
-            ) {
-              isSideCountrySelected = true;
-            }
+            child.classList.remove(
+              "selected-side-navigation-country-container"
+            );
           });
         }
-        if (!isSideCountrySelected) {
-          this.removeCountryBoundary();
-          this.removeCapitalMarker();
-        }
+        this.removeCountryBoundary();
+        this.removeCapitalMarker();
       }
       this._map.on("click", removeCountryBoundary.bind(this));
       this._markers.push(marker);

@@ -369,6 +369,7 @@ class sideNavigationView {
       countryElementContainer.classList.add(
         "side-navigation-country-container"
       );
+      countryElementContainer.dataset.country = country.name.common;
       if (this._selectedCountry && this._selectedCountry === country)
         countryElementContainer.classList.add(
           "selected-side-navigation-country-container"
