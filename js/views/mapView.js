@@ -301,6 +301,42 @@ class mapView {
       marker.on("click", function () {
         this.closeTooltip();
       });
+      marker.on("click", addCountryBoundary.bind(this, country));
+      function addCountryBoundary(country) {
+        this.removeCountryBoundary();
+        this.removeCapitalMarker();
+        this.addCountryBoundary(country);
+        const sideNavigationCountries = document.querySelector(
+          ".sb-sidenav-menu .nav"
+        );
+        if (sideNavigationCountries) {
+          sideNavigationCountries.childNodes.forEach((child) =>
+            child.classList.remove("selected-side-navigation-country-container")
+          );
+        }
+      }
+      function removeCountryBoundary() {
+        let isSideCountrySelected = false;
+        const sideNavigationCountries = document.querySelector(
+          ".sb-sidenav-menu .nav"
+        );
+        if (sideNavigationCountries) {
+          sideNavigationCountries.childNodes.forEach((child) => {
+            if (
+              child.classList.contains(
+                "selected-side-navigation-country-container"
+              )
+            ) {
+              isSideCountrySelected = true;
+            }
+          });
+        }
+        if (!isSideCountrySelected) {
+          this.removeCountryBoundary();
+          this.removeCapitalMarker();
+        }
+      }
+      this._map.on("click", removeCountryBoundary.bind(this));
       this._markers.push(marker);
     });
   }

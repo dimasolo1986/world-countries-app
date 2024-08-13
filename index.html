@@ -364,21 +364,21 @@
         <nav class="sb-sidenav accordion sb-sidenav-dark" id="sidenavAccordion">
           <div class="sort-up-down">
             <div class="sort">
-              <span
+              <button class="hover-effect"
                 data-sort="asc"
                 id="sb-sidenav-sort"
-                style="padding-left: 5px; cursor: pointer"
-                >Sort: &#8645;</span
+                style="cursor: pointer; font-family: Roboto, sans-serif; border: 0px; background-color: #555d64; color: #ffffff80; font-size: 0.85rem;"
+                >Sort: &#8645;</button
               >
-              <span
+              <button class="hover-effect"
                 id="sb-sidenav-up"
-                style="padding-left: 5px; padding-right: 5px; cursor: pointer"
-                >Up: &uarr;</span
+                style="padding-left: 5px; padding-right: 5px; cursor: pointer; font-family: Roboto, sans-serif; border: 0px; background-color: #555d64; color: #ffffff80; font-size: 0.85rem;"
+                >Up: &uarr;</button
               >
-              <span
+              <button class="hover-effect"
                 id="sb-sidenav-down"
-                style="padding-left: 5px; padding-right: 5px; cursor: pointer"
-                >Down: &darr;</span
+                style="padding-left: 5px; padding-right: 5px; cursor: pointer; font-family: Roboto, sans-serif; border: 0px; background-color: #555d64; color: #ffffff80; font-size: 0.85rem;"
+                >Down: &darr;</button
               >
             </div>
           </div>
@@ -587,6 +587,14 @@
                   style="font-weight: bold; color: red; margin-left: 5px"
                   >Finished</span
                 >
+                <span
+                    class="correct-incorrect-quiz not-displayed"
+                    style="
+                      font-weight: bold;
+                      color: darkgreen;
+                      margin-left: 5px;
+                    "
+                  ></span>
               </div>
               <br />
               <div class="question-country-container">

@@ -47,6 +47,9 @@ class Quiz {
   _scoreElement = document.querySelector(".score-name");
   _scoreValue = document.querySelector(".score");
   _cardOptionsElements = document.querySelectorAll(".card");
+  _correctIncorrectQuizAnswer = document.querySelector(
+    ".correct-incorrect-quiz"
+  );
   _countries;
   _questionCountrySelected;
   _randomCountries = [];
@@ -136,6 +139,7 @@ class Quiz {
       this._finishQuiz.disabled = true;
       this._doNotKnowAnswer.disabled = true;
       this._finishedQuizLabel.classList.remove("not-displayed");
+      this._correctIncorrectQuizAnswer.classList.add("not-displayed");
       this._cardOptionsElements.forEach((cardOption) => {
         cardOption.classList.remove("wrong-answer");
         cardOption.classList.remove("right-answer");
@@ -230,8 +234,16 @@ class Quiz {
       flag.classList.add("right-answer");
       const currentScore = +this._scoreValue.textContent;
       this._scoreValue.textContent = currentScore + DEFAULT_RIGHT_SCORE;
+      this._correctIncorrectQuizAnswer.classList.remove("not-displayed");
+      this._correctIncorrectQuizAnswer.textContent =
+        localization[model.worldCountries.language]["Correct"];
+      this._correctIncorrectQuizAnswer.style.color = "darkgreen";
     } else {
       flag.classList.add("wrong-answer");
+      this._correctIncorrectQuizAnswer.classList.remove("not-displayed");
+      this._correctIncorrectQuizAnswer.textContent =
+        localization[model.worldCountries.language]["Incorrect"];
+      this._correctIncorrectQuizAnswer.style.color = "red";
       this._cardOptionsElements.forEach((cardOption) => {
         let element;
         if (
@@ -264,6 +276,7 @@ class Quiz {
       this._startQuiz.disabled = false;
       this._finishQuiz.disabled = true;
       this._finishedQuizLabel.classList.remove("not-displayed");
+      this._correctIncorrectQuizAnswer.classList.add("not-displayed");
       this.showResultWindow();
     }
     this.disableCardOptions();
@@ -420,6 +433,7 @@ class Quiz {
         countryOption.classList.remove("not-displayed");
       }
     });
+    this._correctIncorrectQuizAnswer.classList.add("not-displayed");
     this._finishedQuizLabel.classList.add("not-displayed");
     this._randomCountries = [];
     this._scoreValue.textContent = 0;
@@ -502,9 +516,11 @@ class Quiz {
       this._finishQuiz.disabled = true;
       this._startQuiz.disabled = false;
       this._finishedQuizLabel.classList.remove("not-displayed");
+      this._correctIncorrectQuizAnswer.classList.add("not-displayed");
       this.showResultWindow();
       return;
     }
+    this._correctIncorrectQuizAnswer.classList.add("not-displayed");
     this._randomCountries = [];
     this._cardOptionsElements.forEach((cardOption) => {
       cardOption.classList.remove("wrong-answer");
@@ -524,6 +540,7 @@ class Quiz {
       this._finishQuiz.disabled = true;
       this._startQuiz.disabled = false;
       this._finishedQuizLabel.classList.remove("not-displayed");
+      this._correctIncorrectQuizAnswer.classList.add("not-displayed");
       this.showResultWindow();
     }
     this.enableCardOptions();
@@ -729,6 +746,10 @@ class Quiz {
     this._scoreElement.textContent = `${
       localization[model.worldCountries.language]["SCORE"]
     }`;
+    this._correctIncorrectQuizAnswer.textContent =
+      localization[model.worldCountries.language][
+        this._correctIncorrectQuizAnswer.textContent
+      ];
     if (this._questionCountrySelected)
       this._questionCountry.textContent =
         localization[model.worldCountries.language]["countries"][
