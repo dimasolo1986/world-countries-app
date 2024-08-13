@@ -343,6 +343,7 @@ class mapView {
             );
           });
         }
+        this._sideNavigationView._selectedCountry = undefined;
         this.removeCountryBoundary();
         this.removeCapitalMarker();
       }
