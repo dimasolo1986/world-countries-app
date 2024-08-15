@@ -25,16 +25,15 @@ class countriesSelectView {
         Array.from(this._parentElement.querySelectorAll("[src]")).forEach(
           (item) => {
             const src = item.getAttribute("src");
-            const countOfChildNodes = item.childNodes.length;
             const iconElement = document.createElement("img");
             iconElement.textContent = iconElement.setAttribute(
               "style",
-              "height: 15px; width: 20px; position: relative; border: 1px solid; margin-left: 5px;"
+              "height: 15px; width: 20px; position: relative; border: 1px solid; margin-right: 5px; margin-bottom: 2px;"
             );
             iconElement.setAttribute("src", src);
-            item.insertBefore(
+            item.childNodes[1].insertBefore(
               iconElement,
-              item.childNodes[countOfChildNodes - 1]
+              item.childNodes[1].childNodes[0]
             );
           }
         );
