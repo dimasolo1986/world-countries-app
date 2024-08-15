@@ -7,6 +7,7 @@ class countriesSelectView {
   _treeSelect;
 
   constructor() {
+    let isIconsWereInserted = false;
     this._treeSelect = new Treeselect({
       parentHtmlContainer: this._parentElement,
       placeholder: this._placeholder,
@@ -16,6 +17,28 @@ class countriesSelectView {
       openLevel: 2,
       value: [],
       options: [],
+      openCallback: () => {
+        if (isIconsWereInserted) {
+          return;
+        }
+        isIconsWereInserted = true;
+        Array.from(this._parentElement.querySelectorAll("[src]")).forEach(
+          (item) => {
+            const src = item.getAttribute("src");
+            const countOfChildNodes = item.childNodes.length;
+            const iconElement = document.createElement("img");
+            iconElement.textContent = iconElement.setAttribute(
+              "style",
+              "height: 15px; width: 20px; position: relative; border: 1px solid; margin-left: 5px;"
+            );
+            iconElement.setAttribute("src", src);
+            item.insertBefore(
+              iconElement,
+              item.childNodes[countOfChildNodes - 1]
+            );
+          }
+        );
+      },
     });
   }
 
@@ -28,9 +51,9 @@ class countriesSelectView {
         ];
       const firstCountryLetter = country.charAt(0);
       if (firstCountryLetter in countriesObject) {
-        countriesObject[firstCountryLetter].push(country);
+        countriesObject[firstCountryLetter].push([country, element.flags.png]);
       } else {
-        countriesObject[firstCountryLetter] = [country];
+        countriesObject[firstCountryLetter] = [[country, element.flags.png]];
       }
     });
     return countriesObject;
@@ -48,8 +71,9 @@ class countriesSelectView {
               value: entry[0],
               children: entry[1].map((entry) => {
                 return {
-                  name: entry,
-                  value: entry,
+                  name: entry[0],
+                  value: entry[0],
+                  htmlAttr: { src: entry[1] },
                   children: [],
                 };
               }),
