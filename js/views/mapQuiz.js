@@ -325,6 +325,8 @@ class MapQuiz {
         minZoom: defaultZoomLevel,
         zoomSnap: 0.25,
         worldCopyJump: true,
+        zoomAnimation: true,
+        zoomAnimationThreshold: 2,
       })
         .fitWorld()
         .setView(latLon, defaultZoomLevel);

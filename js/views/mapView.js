@@ -29,6 +29,8 @@ class mapView {
       minZoom: DEFAULT_ZOOM_LEVEL,
       zoomSnap: 0.25,
       worldCopyJump: true,
+      zoomAnimation: true,
+      zoomAnimationThreshold: 2,
     })
       .fitWorld()
       .setView(latLon, defaultZoomLevel);
@@ -346,6 +348,7 @@ class mapView {
         this._sideNavigationView._selectedCountry = undefined;
         this.removeCountryBoundary();
         this.removeCapitalMarker();
+        this._sideNavigationView._parentElement.firstElementChild.scrollIntoView();
       }
       this._map.on("click", removeCountryBoundary.bind(this));
       this._markers.push(marker);
