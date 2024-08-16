@@ -11597,11 +11597,11 @@ body,
   border-radius: 0;
   text-align: left;
   font-size: 0.8rem;
-  height: 25px;
+  height: 27px;
 }
 
-#sb-sidenav-up,
-#sb-sidenav-down {
+#sb-sidenav-down,
+#sb-sidenav-up {
   float: right;
   font-size: 0.8rem;
 }
