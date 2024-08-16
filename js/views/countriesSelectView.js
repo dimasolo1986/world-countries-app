@@ -7,7 +7,6 @@ class countriesSelectView {
   _treeSelect;
 
   constructor() {
-    let isIconsWereInserted = false;
     this._treeSelect = new Treeselect({
       parentHtmlContainer: this._parentElement,
       placeholder: this._placeholder,
@@ -18,12 +17,13 @@ class countriesSelectView {
       value: [],
       options: [],
       openCallback: () => {
-        if (isIconsWereInserted) {
-          return;
-        }
-        isIconsWereInserted = true;
         Array.from(this._parentElement.querySelectorAll("[src]")).forEach(
           (item) => {
+            if (!item.childNodes[1]) {
+              return;
+            }
+            if (item.childNodes[1] && item.childNodes[1].childNodes.length > 1)
+              return;
             const src = item.getAttribute("src");
             const iconElement = document.createElement("img");
             iconElement.textContent = iconElement.setAttribute(
