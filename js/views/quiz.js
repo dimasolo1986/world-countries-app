@@ -238,6 +238,30 @@ class Quiz {
       this._correctIncorrectQuizAnswer.textContent =
         localization[model.worldCountries.language]["Correct"];
       this._correctIncorrectQuizAnswer.style.color = "darkgreen";
+      if (this._quizType === COUNTRY_NAME_BY_CAPITAL_QUIZ) {
+        this._quizHeading.textContent = `💡 ${
+          localization[model.worldCountries.language]["capitals"][
+            this._questionCountrySelected.capital[0]
+          ]
+        } ${localization[model.worldCountries.language]["is the capital of"]} ${
+          localization[model.worldCountries.language]["countries"][
+            this._questionCountrySelected.name.common
+          ]
+        }`;
+      }
+      if (this._quizType === COUNTRY_CAPITAL_BY_COUNTRY_NAME_QUIZ) {
+        this._quizHeading.textContent = `💡 ${
+          localization[model.worldCountries.language]["The capital of"]
+        } ${
+          localization[model.worldCountries.language]["countries"][
+            this._questionCountrySelected.name.common
+          ]
+        } - ${
+          localization[model.worldCountries.language]["capitals"][
+            this._questionCountrySelected.capital[0]
+          ]
+        }`;
+      }
     } else {
       flag.classList.add("wrong-answer");
       this._correctIncorrectQuizAnswer.classList.remove("not-displayed");
@@ -266,6 +290,30 @@ class Quiz {
           cardOption.classList.add("right-answer");
         }
       });
+      if (this._quizType === COUNTRY_NAME_BY_CAPITAL_QUIZ) {
+        this._quizHeading.textContent = `💡 ${
+          localization[model.worldCountries.language]["capitals"][
+            this._questionCountrySelected.capital[0]
+          ]
+        } ${localization[model.worldCountries.language]["is the capital of"]} ${
+          localization[model.worldCountries.language]["countries"][
+            this._questionCountrySelected.name.common
+          ]
+        }`;
+      }
+      if (this._quizType === COUNTRY_CAPITAL_BY_COUNTRY_NAME_QUIZ) {
+        this._quizHeading.textContent = `💡 ${
+          localization[model.worldCountries.language]["The capital of"]
+        } ${
+          localization[model.worldCountries.language]["countries"][
+            this._questionCountrySelected.name.common
+          ]
+        } - ${
+          localization[model.worldCountries.language]["capitals"][
+            this._questionCountrySelected.capital[0]
+          ]
+        }`;
+      }
     }
     this._nextQuestion.disabled = false;
     this._doNotKnowAnswer.disabled = true;
@@ -506,6 +554,48 @@ class Quiz {
   }
 
   nextQuestionClickHandler(target) {
+    if (this._quizType === FLAG_BY_COUNTRY_NAME_QUIZ) {
+      this._quizHeading.textContent = this._quizHeading.textContent = `${
+        localization[model.worldCountries.language][
+          "Guess Flag By Country Name"
+        ]
+      }`;
+    }
+    if (this._quizType === FLAG_BY_COUNTRY_CAPITAL_QUIZ) {
+      this._quizHeading.textContent = this._quizHeading.textContent = `${
+        localization[model.worldCountries.language][
+          "Guess Flag By Country Capital"
+        ]
+      }`;
+    }
+    if (this._quizType === COUNTRY_NAME_BY_CAPITAL_QUIZ) {
+      this._quizHeading.textContent = this._quizHeading.textContent = `${
+        localization[model.worldCountries.language][
+          "Guess Country Name By Capital"
+        ]
+      }`;
+    }
+    if (this._quizType === COUNTRY_CAPITAL_BY_COUNTRY_NAME_QUIZ) {
+      this._quizHeading.textContent = this._quizHeading.textContent = `${
+        localization[model.worldCountries.language][
+          "Guess Capital By Country Name"
+        ]
+      }`;
+    }
+    if (this._quizType === COUNTRY_NAME_BY_FLAG_QUIZ) {
+      this._quizHeading.textContent = this._quizHeading.textContent = `${
+        localization[model.worldCountries.language][
+          "Guess Country Name By Flag"
+        ]
+      }`;
+    }
+    if (this._quizType === COUNTRY_CAPITAL_BY_FLAG_QUIZ) {
+      this._quizHeading.textContent = this._quizHeading.textContent = `${
+        localization[model.worldCountries.language][
+          "Guess Country Capital By Flag"
+        ]
+      }`;
+    }
     if (
       target === this._doNotKnowAnswer &&
       +this._questionCurrentNumber.textContent ===
