@@ -238,7 +238,11 @@ class Quiz {
       this._correctIncorrectQuizAnswer.textContent =
         localization[model.worldCountries.language]["Correct"];
       this._correctIncorrectQuizAnswer.style.color = "darkgreen";
-      if (this._quizType === COUNTRY_NAME_BY_CAPITAL_QUIZ) {
+      if (
+        this._quizType === COUNTRY_NAME_BY_CAPITAL_QUIZ ||
+        this._quizType === COUNTRY_CAPITAL_BY_FLAG_QUIZ ||
+        this._quizType === FLAG_BY_COUNTRY_CAPITAL_QUIZ
+      ) {
         this._quizHeading.textContent = `💡 ${
           localization[model.worldCountries.language]["capitals"][
             this._questionCountrySelected.capital[0]
@@ -290,7 +294,11 @@ class Quiz {
           cardOption.classList.add("right-answer");
         }
       });
-      if (this._quizType === COUNTRY_NAME_BY_CAPITAL_QUIZ) {
+      if (
+        this._quizType === COUNTRY_NAME_BY_CAPITAL_QUIZ ||
+        this._quizType === COUNTRY_CAPITAL_BY_FLAG_QUIZ ||
+        this._quizType === FLAG_BY_COUNTRY_CAPITAL_QUIZ
+      ) {
         this._quizHeading.textContent = `💡 ${
           localization[model.worldCountries.language]["capitals"][
             this._questionCountrySelected.capital[0]
