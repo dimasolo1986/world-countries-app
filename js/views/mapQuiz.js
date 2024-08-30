@@ -246,8 +246,14 @@ class MapQuiz {
       this._doNotKnowAnswer.disabled = true;
       this._finishQuiz.disabled = true;
       this._finishedQuizLabel.classList.remove("not-displayed");
-      this._correctIncorrectQuizAnswer.classList.add("not-displayed");
       this.resetCountryBoundaries();
+      if (
+        +this._questionCurrentNumber.textContent === 1 &&
+        this._correctIncorrectQuizAnswer.classList.contains("not-displayed")
+      ) {
+        return;
+      }
+      this._correctIncorrectQuizAnswer.classList.add("not-displayed");
       this.showResultWindow();
     };
     if (!this._finishQuizListenerAdded) {
