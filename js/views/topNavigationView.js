@@ -15,6 +15,7 @@ class topNavigationView {
   _menuLink = document.querySelector("#navbarDropdown");
   _logoCountriesElement = document.querySelector(".logo-countries");
   _worldMapLink = document.querySelector("#world-map-link");
+  _navbarBrand = document.querySelector(".navbar-brand");
   _flagByCountryNameQuizLink = document.querySelector(
     "#flag-by-country-name-quiz-link"
   );
@@ -161,6 +162,10 @@ class topNavigationView {
         "click",
         handlerWorldMapClick.bind(this, this._worldMapLink)
       );
+    this._navbarBrand.addEventListener(
+      "click",
+      handlerWorldMapClick.bind(this, this._worldMapLink)
+    );
   }
 
   addHandlerAboutClick(handler) {
