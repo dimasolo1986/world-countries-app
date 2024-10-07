@@ -237,7 +237,7 @@ class mapView {
           })
         ).setPopupContent(`<img src="${
         country.flags.png
-      }" style="width:30px; height:20px; border: 1px solid black;"> ${
+      }" style="width:30px; height:20px; border: 1px solid black; border-radius: 2px;"> ${
         country.coatOfArms.png
           ? `<img src="${country.coatOfArms.png}" style="width:30px; height:30px; margin-left: 3px;">`
           : ""
