@@ -678,6 +678,8 @@ class Quiz {
       this._startQuiz.disabled = false;
       this._finishedQuizLabel.classList.remove("not-displayed");
       this._correctIncorrectQuizAnswer.classList.add("not-displayed");
+      this.disableCardOptions();
+      this.initTimer();
       this.showResultWindow();
       return;
     }
@@ -702,7 +704,10 @@ class Quiz {
       this._startQuiz.disabled = false;
       this._finishedQuizLabel.classList.remove("not-displayed");
       this._correctIncorrectQuizAnswer.classList.add("not-displayed");
+      this.disableCardOptions();
+      this.initTimer();
       this.showResultWindow();
+      return;
     }
     this.enableCardOptions();
     this.initTimer();
