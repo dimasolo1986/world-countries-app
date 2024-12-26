@@ -218,8 +218,19 @@ class mapView {
         country.latlng ? country.latlng : country.capitalInfo.latlng,
         {
           icon: this._createMarkerIcon(country),
+          riseOnHover: true,
+          opacity: 0.95,
+          alt: localization[model.worldCountries.language]["countries"][
+            country.name.common
+          ],
         }
       )
+        .on("mouseover", function () {
+          this.setOpacity(1);
+        })
+        .on("mouseout", function () {
+          this.setOpacity(0.95);
+        })
         .addTo(this._map)
         .bindTooltip(
           localization[model.worldCountries.language]["countries"][

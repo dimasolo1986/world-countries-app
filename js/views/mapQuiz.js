@@ -287,6 +287,7 @@ class MapQuiz {
       this._doNotKnowAnswer.disabled = true;
       this._nextQuestion.disabled = true;
       this._finishQuiz.disabled = true;
+      this._finishedQuiz = true;
       this._startQuiz.disabled = false;
       this._finishedQuizLabel.classList.remove("not-displayed");
       this.showResultWindow();
@@ -303,6 +304,7 @@ class MapQuiz {
       this._doNotKnowAnswer.disabled = true;
       this._nextQuestion.disabled = true;
       this._finishQuiz.disabled = true;
+      this._finishedQuiz = true;
       this._startQuiz.disabled = false;
       this._finishedQuizLabel.classList.remove("not-displayed");
       this.showResultWindow();
@@ -377,7 +379,7 @@ class MapQuiz {
     if (this._countryMarker) this._map.removeLayer(this._countryMarker);
     this._countryBondaries.forEach((item) => {
       item.resetStyle();
-      item.setStyle({ fillColor: "#3388ff", fillOpacity: 0.3 });
+      item.setStyle({ weight: 2, fillColor: "#3388ff", fillOpacity: 0.3 });
     });
   }
 
@@ -451,6 +453,7 @@ class MapQuiz {
       const currentQuestionNumber = +context._questionCurrentNumber.textContent;
       const questionsAllNumber = +context._questionsAllNumber.textContent;
       if (currentQuestionNumber === questionsAllNumber) {
+        context._finishedQuiz = true;
         context._nextQuestion.disabled = true;
         context._startQuiz.disabled = false;
         context._finishQuiz.disabled = true;
@@ -544,8 +547,14 @@ class MapQuiz {
           (feature) => feature.properties.country_a2 === countryCode
         );
         const countryBoundary = L.geoJson(countryGeo, {
-          style: { fillOpacity: 0.3, className: countryCode },
+          style: { weight: 2, fillOpacity: 0.3, className: countryCode },
           onEachFeature: function (feature, countryBoundary) {
+            countryBoundary.on("mouseover", function () {
+              this.setStyle({ weight: 5, className: countryCode });
+            });
+            countryBoundary.on("mouseout", function () {
+              this.setStyle({ weight: 2, className: countryCode });
+            });
             countryBoundary.on("click", function () {
               addCountryBoundariesClickHandler(
                 context,
