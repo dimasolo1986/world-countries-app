@@ -904,13 +904,13 @@ class Quiz {
       localization[model.worldCountries.language]["NEXT QUESTION"]
     }`;
     this._finishQuiz.textContent = `${
-      localization[model.worldCountries.language]["FINISH QUIZ"]
+      localization[model.worldCountries.language]["FINISH"]
     }`;
     this._startQuiz.textContent = `${
       localization[model.worldCountries.language]["START AGAIN"]
     }`;
     this._doNotKnowAnswer.textContent = `${
-      localization[model.worldCountries.language]["DO NOT KNOW ANSWER"]
+      localization[model.worldCountries.language]["DO NOT KNOW"]
     }`;
     this._scoreElement.textContent = `${
       localization[model.worldCountries.language]["SCORE"]

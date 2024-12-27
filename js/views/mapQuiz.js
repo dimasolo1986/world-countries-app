@@ -435,7 +435,7 @@ class MapQuiz {
             : context._country.capitalInfo.latlng;
           if (countryCoordinates) {
             context._timeout = setTimeout(() => {
-              context._countryMarker = L.popup()
+              context._countryMarker = L.popup({ closeOnClick: false })
                 .setLatLng(countryCoordinates)
                 .setContent(
                   `<p style="font-weight:bold; color:darkgreen">${
@@ -655,10 +655,10 @@ class MapQuiz {
       localization[model.worldCountries.language]["NEXT QUESTION"]
     }`;
     this._finishQuiz.textContent = `${
-      localization[model.worldCountries.language]["FINISH QUIZ"]
+      localization[model.worldCountries.language]["FINISH"]
     }`;
     this._doNotKnowAnswer.textContent = `${
-      localization[model.worldCountries.language]["DO NOT KNOW ANSWER"]
+      localization[model.worldCountries.language]["DO NOT KNOW"]
     }`;
     this._startQuiz.textContent = `${
       localization[model.worldCountries.language]["START AGAIN"]
