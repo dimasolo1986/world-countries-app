@@ -50,6 +50,7 @@ class mapView {
     ).addTo(this._map);
     this.addDevelopmentPlaceMarker();
     this._addResetZoomToMap();
+    L.control.mousePosition({ position: "bottomleft" }).addTo(this._map);
   }
 
   _addResetZoomToMap() {
