@@ -533,6 +533,8 @@ export const localization = {
     "Country On Map Quiz": "Вікторина Країна На Мапі",
     "About Project": "Про Проект",
     Correct: "Вірно",
+    "Full Screen": "Повний Екран",
+    "Exit Fullscreen Mode": "Вийти З Повноекранного Режиму",
     Incorrect: "Невірно",
     "Difficulty: Normal": "Складність: Середня",
     "Difficulty: Easy": "Складність: Легко",
@@ -1262,6 +1264,8 @@ export const localization = {
     "There Are No Quiz Passing Statistics...":
       "There Are No Quiz Passing Statistics...",
     Close: "Close",
+    "Full Screen": "Full Screen",
+    "Exit Fullscreen Mode": "Exit Fullscreen Mode",
     MENU: "MENU",
     "DO NOT KNOW ANSWER": "DO NOT KNOW ANSWER",
     "DO NOT KNOW": "DO NOT KNOW",

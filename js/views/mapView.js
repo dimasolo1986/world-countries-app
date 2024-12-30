@@ -31,6 +31,13 @@ class mapView {
       worldCopyJump: true,
       zoomAnimation: true,
       zoomAnimationThreshold: 2,
+      fullscreenControl: true,
+      fullscreenControlOptions: {
+        position: "topleft",
+        title: "Full Screen",
+        titleCancel: "Exit Fullscreen Mode",
+        forceSeparateButton: true,
+      },
     })
       .fitWorld()
       .setView(latLon, defaultZoomLevel);
