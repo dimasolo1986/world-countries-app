@@ -410,6 +410,23 @@ class MapQuiz {
             fillColor: "darkgreen",
             fillOpacity: 1,
           });
+          const countryCoordinates = context._country.latlng
+            ? context._country.latlng
+            : context._country.capitalInfo.latlng;
+          if (countryCoordinates) {
+            context._countryMarker = L.popup({ closeOnClick: false })
+              .setLatLng(countryCoordinates)
+              .setContent(
+                `<img src="${
+                  context._country.flags.png
+                }" style="width:25px; height:15px; border: 1px solid black; border-radius: 2px;"><span style="font-weight:bold; color:darkgreen; margin-left:5px;">${
+                  localization[model.worldCountries.language]["countries"][
+                    context._country.name.common
+                  ]
+                }</span>`
+              )
+              .openOn(context._map);
+          }
         }
       } else {
         if (!context._alreadyCountrySelected) {
@@ -438,11 +455,13 @@ class MapQuiz {
               context._countryMarker = L.popup({ closeOnClick: false })
                 .setLatLng(countryCoordinates)
                 .setContent(
-                  `<p style="font-weight:bold; color:darkgreen">${
+                  `<img src="${
+                    context._country.flags.png
+                  }" style="width:25px; height:15px; border: 1px solid black; border-radius: 2px;"><span style="font-weight:bold; color:darkgreen; margin-left:5px;">${
                     localization[model.worldCountries.language]["countries"][
                       context._country.name.common
                     ]
-                  }</p>`
+                  }</span>`
                 )
                 .openOn(context._map);
               context._map.setView(countryCoordinates, 4.5);
