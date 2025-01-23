@@ -15,6 +15,7 @@ import { sortData } from "./helpers.js";
 const init = function () {
   mapView.addHandlerRender(mapCountriesMarkerRender);
   mapView.setSideNavigationView(sideNavigationView);
+  mapView.setTopNavigationView(topNavigationView);
   topNavigationView.initSideBar();
   translateAllElements();
   sideNavigationView.addHandlerRender(sideNavigationCountriesRender);
@@ -254,3 +255,7 @@ const saveCurrentLanguageHandler = function () {
 };
 
 init();
+
+export function loadQuizOnMap(quizId) {
+  loadQuiz(quizId);
+}

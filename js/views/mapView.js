@@ -3,12 +3,23 @@ import { DEFAULT_ZOOM_LEVEL } from "../config.js";
 import { WORLD_MAP_BOUNDS } from "../config.js";
 import { COUNTRIES_GEO } from "../data/countries.geo.js";
 import { WAR_AGGRESSOR_COUNTRIES } from "../config.js";
+import {
+  COUNTRY_ON_MAP_QUIZ,
+  FLAG_BY_COUNTRY_NAME_QUIZ,
+  FLAG_BY_COUNTRY_CAPITAL_QUIZ,
+  COUNTRY_NAME_BY_CAPITAL_QUIZ,
+  COUNTRY_CAPITAL_BY_COUNTRY_NAME_QUIZ,
+  COUNTRY_NAME_BY_FLAG_QUIZ,
+  COUNTRY_CAPITAL_BY_FLAG_QUIZ,
+} from "../config.js";
 import { localization } from "../localization/ua.js";
+import { loadQuizOnMap } from "../controller.js";
 import * as model from "../model.js";
 
 class mapView {
   _parentElement = document.querySelector("#map");
   _sideNavigationView;
+  _topNavigationView;
   _errorMessage = "Failed to load map!";
   _map;
   _capitalMarker;
@@ -22,6 +33,10 @@ class mapView {
 
   setSideNavigationView(sideNavigationView) {
     this._sideNavigationView = sideNavigationView;
+  }
+
+  setTopNavigationView(topNavigationView) {
+    this._topNavigationView = topNavigationView;
   }
 
   _createMap(latLon, defaultZoomLevel = DEFAULT_ZOOM_LEVEL) {
@@ -50,6 +65,111 @@ class mapView {
     ).addTo(this._map);
     this.addDevelopmentPlaceMarker();
     this._addResetZoomToMap();
+    L.control
+      .bootstrapDropdowns({
+        position: "topleft",
+        className: "quiz-menu-map",
+        menuItems: [
+          {
+            html: `<span id="country-on-map-quiz-menu">${
+              localization[model.worldCountries.language]["Country On Map Quiz"]
+            }</span>`,
+            afterClick: () => {
+              loadQuizOnMap(COUNTRY_ON_MAP_QUIZ);
+              sessionStorage.setItem("currentWindow", "country-on-map-quiz");
+              this._topNavigationView.initItemMenuStyle();
+            },
+          },
+          {
+            html: `<span id="flag-by-country-name-quiz-menu">${
+              localization[model.worldCountries.language][
+                "Flag By Country Name Quiz"
+              ]
+            }</span>`,
+            afterClick: () => {
+              loadQuizOnMap(FLAG_BY_COUNTRY_NAME_QUIZ);
+              sessionStorage.setItem(
+                "currentWindow",
+                "flag-by-country-name-quiz"
+              );
+              this._topNavigationView.initItemMenuStyle();
+            },
+          },
+          {
+            html: `<span id="flag-by-country-capital-quiz-menu">${
+              localization[model.worldCountries.language][
+                "Flag By Country Capital Quiz"
+              ]
+            }</span>`,
+            afterClick: () => {
+              loadQuizOnMap(FLAG_BY_COUNTRY_CAPITAL_QUIZ);
+              sessionStorage.setItem("currentWindow", "flag-by-capital-quiz");
+              this._topNavigationView.initItemMenuStyle();
+            },
+          },
+          {
+            html: `<span id="country-name-by-capital-quiz-menu">${
+              localization[model.worldCountries.language][
+                "Country Name By Capital Quiz"
+              ]
+            }</span>`,
+            afterClick: () => {
+              loadQuizOnMap(COUNTRY_NAME_BY_CAPITAL_QUIZ);
+              sessionStorage.setItem(
+                "currentWindow",
+                "country-name-by-capital-quiz"
+              );
+              this._topNavigationView.initItemMenuStyle();
+            },
+          },
+          {
+            html: `<span id="capital-by-country-name-quiz-menu">${
+              localization[model.worldCountries.language][
+                "Capital By Country Name Quiz"
+              ]
+            }</span>`,
+            afterClick: () => {
+              loadQuizOnMap(COUNTRY_CAPITAL_BY_COUNTRY_NAME_QUIZ);
+              sessionStorage.setItem(
+                "currentWindow",
+                "capital-by-country-name-quiz"
+              );
+              this._topNavigationView.initItemMenuStyle();
+            },
+          },
+          {
+            html: `<span id="country-name-by-flag-quiz-menu">${
+              localization[model.worldCountries.language][
+                "Country Name By Flag Quiz"
+              ]
+            }</span>`,
+            afterClick: () => {
+              loadQuizOnMap(COUNTRY_NAME_BY_FLAG_QUIZ);
+              sessionStorage.setItem(
+                "currentWindow",
+                "country-name-by-flag-quiz"
+              );
+              this._topNavigationView.initItemMenuStyle();
+            },
+          },
+          {
+            html: `<span id="country-capital-by-flag-quiz-menu">${
+              localization[model.worldCountries.language][
+                "Country Capital By Flag Quiz"
+              ]
+            }</span>`,
+            afterClick: () => {
+              loadQuizOnMap(COUNTRY_CAPITAL_BY_FLAG_QUIZ);
+              sessionStorage.setItem(
+                "currentWindow",
+                "country-capital-by-flag-quiz"
+              );
+              this._topNavigationView.initItemMenuStyle();
+            },
+          },
+        ],
+      })
+      .addTo(this._map);
     L.control.mousePosition({ position: "topright" }).addTo(this._map);
   }
 
@@ -64,9 +184,9 @@ class mapView {
         resetZoom.style.textDecoration = "none";
         resetZoom.style.background = "white";
         resetZoom.style.color = "black";
-        resetZoom.style.border = "2px solid rgba(0,0,0,0.2)";
+        resetZoom.style.border = "2px solid rgba(0,0,0,0.1)";
         resetZoom.style.borderRadius = "2px";
-        resetZoom.style.padding = "1px";
+        resetZoom.style.padding = "3px";
         resetZoom.style.fontSize = "0.7rem";
         L.DomEvent.disableClickPropagation(resetZoom).addListener(
           resetZoom,
@@ -87,6 +207,67 @@ class mapView {
     if (resetZoom) {
       resetZoom.textContent =
         localization[model.worldCountries.language]["Reset"];
+    }
+    const countryOnMapQuiz = document.querySelector(
+      "#country-on-map-quiz-menu"
+    );
+    if (countryOnMapQuiz) {
+      countryOnMapQuiz.textContent =
+        localization[model.worldCountries.language]["Country On Map Quiz"];
+    }
+    const flagByCountryNameQuiz = document.querySelector(
+      "#flag-by-country-name-quiz-menu"
+    );
+    if (flagByCountryNameQuiz) {
+      flagByCountryNameQuiz.textContent =
+        localization[model.worldCountries.language][
+          "Flag By Country Name Quiz"
+        ];
+    }
+    const flagByCountryCapitalQuiz = document.querySelector(
+      "#flag-by-country-capital-quiz-menu"
+    );
+    if (flagByCountryCapitalQuiz) {
+      flagByCountryCapitalQuiz.textContent =
+        localization[model.worldCountries.language][
+          "Flag By Country Capital Quiz"
+        ];
+    }
+    const countryNameByCapitalQuiz = document.querySelector(
+      "#country-name-by-capital-quiz-menu"
+    );
+    if (countryNameByCapitalQuiz) {
+      countryNameByCapitalQuiz.textContent =
+        localization[model.worldCountries.language][
+          "Country Name By Capital Quiz"
+        ];
+    }
+    const countryCapitalByCountryNameQuiz = document.querySelector(
+      "#capital-by-country-name-quiz-menu"
+    );
+    if (countryCapitalByCountryNameQuiz) {
+      countryCapitalByCountryNameQuiz.textContent =
+        localization[model.worldCountries.language][
+          "Capital By Country Name Quiz"
+        ];
+    }
+    const countryNameByFlagQuiz = document.querySelector(
+      "#country-name-by-flag-quiz-menu"
+    );
+    if (countryNameByFlagQuiz) {
+      countryNameByFlagQuiz.textContent =
+        localization[model.worldCountries.language][
+          "Country Name By Flag Quiz"
+        ];
+    }
+    const countryCapitalByFlagQuiz = document.querySelector(
+      "#country-capital-by-flag-quiz-menu"
+    );
+    if (countryCapitalByFlagQuiz) {
+      countryCapitalByFlagQuiz.textContent =
+        localization[model.worldCountries.language][
+          "Country Capital By Flag Quiz"
+        ];
     }
     this.removeDevelopmentPlaceMarker();
     this.addDevelopmentPlaceMarker();

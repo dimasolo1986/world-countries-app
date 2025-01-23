@@ -3680,7 +3680,7 @@ fieldset:disabled .btn {
 }
 .dropdown-item:hover,
 .dropdown-item:focus {
-  color: var(--bs-dropdown-link-hover-color);
+  color: #6495ed;
   background-color: var(--bs-dropdown-link-hover-bg);
 }
 .dropdown-item.active,

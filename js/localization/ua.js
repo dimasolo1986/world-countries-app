@@ -567,6 +567,7 @@ export const localization = {
     "You can support Ukraine in the fight against Russia's military aggression:":
       "Ви можете підтримати Україну в боротьбі з військовою агресією Росії:",
     "Quizzes:": "Вікторини:",
+    Quizzes: "Вікторини",
     "Dmytro Solovei": "Дмитро Соловей",
     "You can reach me by e-mail:":
       "Ви можете зв'язатися зі мною електронною поштою:",
@@ -1256,6 +1257,7 @@ export const localization = {
     "Slavutych, Ukraine - birthplace of the project":
       "Slavutych, Ukraine - birthplace of the project",
     "Quizzes:": "Quizzes:",
+    Quizzes: "Quizzes",
     Correct: "Correct",
     "Quiz Result": "Quiz Result",
     "Quiz Passing Statistics": "Quiz Passing Statistics",
