@@ -373,8 +373,8 @@ class MapQuiz {
         toggleDisplay: true,
         width: 120,
         height: 120,
-        collapsedWidth: 22,
-        collapsedHeight: 22,
+        collapsedWidth: 25,
+        collapsedHeight: 25,
       });
       miniMap.addTo(this._map);
       this.addCountryBoundaries();

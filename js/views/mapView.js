@@ -179,8 +179,8 @@ class mapView {
       toggleDisplay: true,
       width: 120,
       height: 120,
-      collapsedWidth: 22,
-      collapsedHeight: 22,
+      collapsedWidth: 25,
+      collapsedHeight: 25,
       minimized: false,
     });
     L.control.mousePosition({ position: "topright" }).addTo(this._map);
