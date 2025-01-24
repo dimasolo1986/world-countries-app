@@ -194,6 +194,21 @@ class MapQuiz {
     countriesSelectView
   ) {
     if (
+      this._finishQuiz.disabled === true &&
+      +this._questionCurrentNumber.textContent ===
+        +this._questionsAllNumber.textContent
+    ) {
+      this.clearQuiz();
+      this.hideQuiz();
+      mapView.setMapViewToBounds(WORLD_MAP_BOUNDS);
+      mapView.showMap();
+      mapView.invalidateSize();
+      sideNavigationView.showSideNavigation();
+      topNavigationView.enableSideBarToggle();
+      countriesSelectView.enableCountriesSelect();
+      sessionStorage.setItem("currentWindow", "map");
+      topNavigationView.initItemMenuStyle();
+    } else if (
       confirm(
         `${
           localization[model.worldCountries.language][
