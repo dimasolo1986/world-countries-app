@@ -361,7 +361,22 @@ class MapQuiz {
           maxZoom: 8,
         }
       ).addTo(this._map);
+      const miniLayer = L.tileLayer(
+        "https://server.arcgisonline.com/ArcGIS/rest/services/World_Physical_Map/MapServer/tile/{z}/{y}/{x}",
+        {
+          maxZoom: 8,
+        }
+      );
       this._addResetZoomToMap();
+      const miniMap = new L.Control.MiniMap(miniLayer, {
+        position: "topright",
+        toggleDisplay: true,
+        width: 120,
+        height: 120,
+        collapsedWidth: 22,
+        collapsedHeight: 22,
+      });
+      miniMap.addTo(this._map);
       this.addCountryBoundaries();
       this.resetTranslateHandler();
     }

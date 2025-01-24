@@ -171,7 +171,20 @@ class mapView {
         ],
       })
       .addTo(this._map);
+    const miniLayer = L.tileLayer(
+      "https://server.arcgisonline.com/ArcGIS/rest/services/World_Street_Map/MapServer/tile/{z}/{y}/{x}"
+    );
+    const miniMap = new L.Control.MiniMap(miniLayer, {
+      position: "topright",
+      toggleDisplay: true,
+      width: 120,
+      height: 120,
+      collapsedWidth: 22,
+      collapsedHeight: 22,
+      minimized: false,
+    });
     L.control.mousePosition({ position: "topright" }).addTo(this._map);
+    miniMap.addTo(this._map);
   }
 
   _addResetZoomToMap() {
