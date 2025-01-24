@@ -52,6 +52,7 @@ class mapView {
         title: "Full Screen",
         titleCancel: "Exit Fullscreen Mode",
         forceSeparateButton: false,
+        forcePseudoFullscreen: true,
       },
     })
       .fitWorld()
