@@ -46,6 +46,7 @@ class MapQuiz {
   _correctIncorrectQuizAnswer = document.querySelector(
     ".correct-incorrect-quiz-map"
   );
+  _questionTimerBonus = document.querySelector(".question-timer-bonus-map");
   _map;
   _country;
   _countryMarker;
@@ -269,6 +270,7 @@ class MapQuiz {
         return;
       }
       this._correctIncorrectQuizAnswer.classList.add("not-displayed");
+      this._questionTimerBonus.classList.add("not-displayed");
       this.showResultWindow();
     };
     if (!this._finishQuizListenerAdded) {
@@ -291,6 +293,7 @@ class MapQuiz {
     this._map.fitBounds(WORLD_MAP_BOUNDS);
     this.clearTimeout();
     this._correctIncorrectQuizAnswer.classList.add("not-displayed");
+    this._questionTimerBonus.classList.add("not-displayed");
     this._alreadyCountrySelected = false;
     this.resetCountryBoundaries();
     this._country = undefined;
@@ -432,6 +435,9 @@ class MapQuiz {
           const currentScore = +context._scoreValue.textContent;
           context._scoreValue.textContent =
             currentScore + DEFAULT_RIGHT_MAP_SCORE;
+          context._questionTimerBonus.textContent =
+            "+" + DEFAULT_RIGHT_MAP_SCORE;
+          context._questionTimerBonus.classList.remove("not-displayed");
           context._correctIncorrectQuizAnswer.classList.remove("not-displayed");
           context._correctIncorrectQuizAnswer.textContent =
             localization[model.worldCountries.language]["Correct"];
@@ -508,6 +514,7 @@ class MapQuiz {
         context._finishQuiz.disabled = true;
         context._finishedQuizLabel.classList.remove("not-displayed");
         context._correctIncorrectQuizAnswer.classList.add("not-displayed");
+        context._questionTimerBonus.classList.add("not-displayed");
         context._quizResultScore.textContent = context._scoreValue.textContent;
         context._quizResultAnsweredNumber.textContent =
           context._questionCurrentNumber.textContent;
@@ -635,6 +642,7 @@ class MapQuiz {
   clearQuiz() {
     this.clearTimeout();
     this._correctIncorrectQuizAnswer.classList.add("not-displayed");
+    this._questionTimerBonus.classList.add("not-displayed");
     this._countries = [];
     this._scoreValue.textContent = 0;
     this._questionCurrentNumber.textContent = 1;

@@ -548,20 +548,22 @@ export const localization = {
       "це проект, який розроблений для вивчення Географії та Країн Світу.",
     "Here you can find all countries of the world on a map, brief information about selected countries, links to Wikipedia pages of a specific country. It is also possible to take various quizzes with specific difficulty levels: Very Easy, Easy, Normal, Hard.":
       "Тут ви можете знайти всі країни світу на мапі, коротку інформацію про обрані країни, посилання на сторінки Вікіпедії певної країни. Також є можливість пройти різні вікторини з певними рівнями складності: Дуже Легко, Легко, Нормально, Важко.",
-    "Guess the country's flag from the suggested country name. The quiz contains 35 questions. Get 100 points for each correct answer.":
-      "Відгадайте прапор країни за запропонованою назвою країни. Вікторина містить 35 питань. За кожну правильну відповідь отримуйте 100 балів.",
-    "Guess the country's name from the suggested country flag image. The quiz contains 35 questions. Get 100 points for each correct answer.":
-      "Відгадайте назву країни за запропонованим зображенням прапора країни. Вікторина містить 35 питань. За кожну правильну відповідь отримуйте 100 балів.",
-    "Guess the country's capital from the suggested country flag image. The quiz contains 35 questions. Get 100 points for each correct answer.":
-      "Відгадайте столицю країни за запропонованим зображенням прапора країни. Вікторина містить 35 питань. За кожну правильну відповідь отримуйте 100 балів.",
-    "Guess the country's flag from the suggested country's capital. The quiz contains 35 questions. Get 100 points for each correct answer.":
-      "Відгадайте прапор країни за запропонованою столицею країни. Вікторина містить 35 питань. За кожну правильну відповідь отримуйте 100 балів.",
-    "Guess the country's name from the suggested country capital. The quiz contains 35 questions. Get 100 points for each correct answer.":
-      "Відгадайте назву країни за запропонованою столицею країни. Вікторина містить 35 питань. За кожну правильну відповідь отримуйте 100 балів.",
-    "Guess the country's capital from the suggested country name. The quiz contains 35 questions. Get 100 points for each correct answer.":
-      "Відгадайте столицю країни за запропонованою назвою країни. Вікторина містить 35 питань. За кожну правильну відповідь отримуйте 100 балів.",
+    "Guess the country's flag from the suggested country name.":
+      "Відгадайте прапор країни за запропонованою назвою країни.",
+    "Guess the country's name from the suggested country flag image.":
+      "Відгадайте назву країни за запропонованим зображенням прапора країни.",
+    "Guess the country's capital from the suggested country flag image.":
+      "Відгадайте столицю країни за запропонованим зображенням прапора країни.",
+    "Guess the country's flag from the suggested country's capital.":
+      "Відгадайте прапор країни за запропонованою столицею країни.",
+    "Guess the country's name from the suggested country capital.":
+      "Відгадайте назву країни за запропонованою столицею країни.",
+    "Guess the country's capital from the suggested country name.":
+      "Відгадайте столицю країни за запропонованою назвою країни.",
     "Guess the country on the map from the suggested country name. The quiz contains 35 questions. Get 300 points for each correct answer.":
       "Відгадайте розташування країни на світовій мапі за запропонованою назвою країни. Вікторина містить 35 питань. За кожну правильну відповідь отримуйте 300 балів.",
+    "Quizzes contain from 10 to 35 questions depending on the difficulty level. Get from 50 to 150 points for each correct answer, depending on the speed of the answer.":
+      "Вікторини містять від 10 до 35 питань в залежності від рівня складності. Отримуйте від 50 до 150 балів за кожну правильну відповідь в залежності від швидкості відповіді.",
     "Project was created by Software Developer from Ukraine -":
       "Проект створений програмістом з України -",
     "You can support Ukraine in the fight against Russia's military aggression:":
@@ -1228,20 +1230,22 @@ export const localization = {
       "project which is developed for learning Geography and World Countries.",
     "Here you can find all countries of the world on a map, brief information about selected countries, links to Wikipedia pages of a specific country. It is also possible to take various quizzes with specific difficulty levels: Very Easy, Easy, Normal, Hard.":
       "Here you can find all countries of the world on a map, brief information about selected countries, links to Wikipedia pages of a specific country. It is also possible to take various quizzes with specific difficulty levels: Very Easy, Easy, Normal, Hard.",
-    "Guess the country's flag from the suggested country name. The quiz contains 35 questions. Get 100 points for each correct answer.":
-      "Guess the country's flag from the suggested country name. The quiz contains 35 questions. Get 100 points for each correct answer.",
-    "Guess the country's name from the suggested country flag image. The quiz contains 35 questions. Get 100 points for each correct answer.":
-      "Guess the country's name from the suggested country flag image. The quiz contains 35 questions. Get 100 points for each correct answer.",
-    "Guess the country's capital from the suggested country flag image. The quiz contains 35 questions. Get 100 points for each correct answer.":
-      "Guess the country's capital from the suggested country flag image. The quiz contains 35 questions. Get 100 points for each correct answer.",
-    "Guess the country's flag from the suggested country's capital. The quiz contains 35 questions. Get 100 points for each correct answer.":
-      "Guess the country's flag from the suggested country's capital. The quiz contains 35 questions. Get 100 points for each correct answer.",
-    "Guess the country's name from the suggested country capital. The quiz contains 35 questions. Get 100 points for each correct answer.":
-      "Guess the country's name from the suggested country capital. The quiz contains 35 questions. Get 100 points for each correct answer.",
-    "Guess the country's capital from the suggested country name. The quiz contains 35 questions. Get 100 points for each correct answer.":
-      "Guess the country's capital from the suggested country name. The quiz contains 35 questions. Get 100 points for each correct answer.",
+    "Guess the country's flag from the suggested country name.":
+      "Guess the country's flag from the suggested country name.",
+    "Guess the country's name from the suggested country flag image.":
+      "Guess the country's name from the suggested country flag image.",
+    "Guess the country's capital from the suggested country flag image.":
+      "Guess the country's capital from the suggested country flag image.",
+    "Guess the country's flag from the suggested country's capital.":
+      "Guess the country's flag from the suggested country's capital.",
+    "Guess the country's name from the suggested country capital.":
+      "Guess the country's name from the suggested country capital.",
+    "Guess the country's capital from the suggested country name.":
+      "Guess the country's capital from the suggested country name.",
     "Guess the country on the map from the suggested country name. The quiz contains 35 questions. Get 300 points for each correct answer.":
       "Guess the country on the map from the suggested country name. The quiz contains 35 questions. Get 300 points for each correct answer.",
+    "Quizzes contain from 10 to 35 questions depending on the difficulty level. Get from 50 to 150 points for each correct answer, depending on the speed of the answer.":
+      "Quizzes contain from 10 to 35 questions depending on the difficulty level. Get from 50 to 150 points for each correct answer, depending on the speed of the answer.",
     "Project was created by Software Developer from Ukraine -":
       "Project was created by Software Developer from Ukraine -",
     "You can support Ukraine in the fight against Russia's military aggression:":

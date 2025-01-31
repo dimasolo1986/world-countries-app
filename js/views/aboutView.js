@@ -53,6 +53,9 @@ class aboutView {
   _aboutCountryOnMapQuizDescription = document.querySelector(
     ".about-country-on-map-description"
   );
+  _aboutQuizzesQuestionsAndPoints = document.querySelector(
+    ".about-questions-points"
+  );
   _aboutDeveloper = document.querySelector(".about-developer");
   _aboutDeveloperLink = document.querySelector(".about-developer-link");
   _aboutDeveloperEmailDescription = document.querySelector(
@@ -146,7 +149,7 @@ class aboutView {
     }`;
     this._aboutFlagByCountryQuizDescription.textContent = `${
       localization[model.worldCountries.language][
-        "Guess the country's flag from the suggested country name. The quiz contains 35 questions. Get 100 points for each correct answer."
+        "Guess the country's flag from the suggested country name."
       ]
     }`;
     this._aboutDeveloper.textContent = `${
@@ -200,32 +203,37 @@ class aboutView {
     }`;
     this._aboutCountryCapitalByCountryNameQuizDescription.textContent = `${
       localization[model.worldCountries.language][
-        "Guess the country's capital from the suggested country name. The quiz contains 35 questions. Get 100 points for each correct answer."
+        "Guess the country's capital from the suggested country name."
       ]
     }`;
     this._aboutCountryNameByCapitalQuizDescription.textContent = `${
       localization[model.worldCountries.language][
-        "Guess the country's name from the suggested country capital. The quiz contains 35 questions. Get 100 points for each correct answer."
+        "Guess the country's name from the suggested country capital."
       ]
     }`;
     this._aboutCountryCapitalByFlagQuizDescription.textContent = `${
       localization[model.worldCountries.language][
-        "Guess the country's capital from the suggested country flag image. The quiz contains 35 questions. Get 100 points for each correct answer."
+        "Guess the country's capital from the suggested country flag image."
       ]
     }`;
     this._aboutCountryNameByFlagQuizDescription.textContent = `${
       localization[model.worldCountries.language][
-        "Guess the country's name from the suggested country flag image. The quiz contains 35 questions. Get 100 points for each correct answer."
+        "Guess the country's name from the suggested country flag image."
       ]
     }`;
     this._aboutFalgByCountryCapitalQuizDescription.textContent = `${
       localization[model.worldCountries.language][
-        "Guess the country's flag from the suggested country's capital. The quiz contains 35 questions. Get 100 points for each correct answer."
+        "Guess the country's flag from the suggested country's capital."
       ]
     }`;
     this._aboutCountryOnMapQuizDescription.textContent = `${
       localization[model.worldCountries.language][
         "Guess the country on the map from the suggested country name. The quiz contains 35 questions. Get 300 points for each correct answer."
+      ]
+    }`;
+    this._aboutQuizzesQuestionsAndPoints.textContent = `${
+      localization[model.worldCountries.language][
+        "Quizzes contain from 10 to 35 questions depending on the difficulty level. Get from 50 to 150 points for each correct answer, depending on the speed of the answer."
       ]
     }`;
     this._aboutUkraineHelpDescription.textContent = `${

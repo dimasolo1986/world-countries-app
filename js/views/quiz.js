@@ -1,7 +1,11 @@
 import * as model from "../model.js";
 import { localization } from "../localization/ua.js";
 import { getRandomInt } from "../helpers.js";
-import { DEFAULT_RIGHT_SCORE } from "../config.js";
+import {
+  DEFAULT_RIGHT_SCORE,
+  RIGHT_SCORE_SECOND_TEN_SECONDS,
+  RIGHT_SCORE_THIRD_TEN_SECONDS,
+} from "../config.js";
 import { showQuizResultWindow } from "../helpers.js";
 import { WORLD_MAP_BOUNDS } from "../config.js";
 import {
@@ -53,11 +57,13 @@ class Quiz {
   );
   _questionTimer = document.querySelector(".question-timer-seconds");
   _questionTimerName = document.querySelector(".question-timer-name");
+  _questionTimerBonus = document.querySelector(".question-timer-bonus");
   _timeLeft = TIME_TO_ANSWER;
   _timerId;
   _countries;
   _questionCountrySelected;
   _randomCountries = [];
+  _quizRightAnswerNumber = 0;
   _statisticView;
 
   _returnToMapListenerAdded = false;
@@ -205,6 +211,7 @@ class Quiz {
         return;
       }
       this._correctIncorrectQuizAnswer.classList.add("not-displayed");
+      this._questionTimerBonus.classList.add("not-displayed");
       this.showResultWindow();
     };
     if (!this._finishQuizListenerAdded) {
@@ -294,7 +301,22 @@ class Quiz {
       flag.classList.add("right-answer");
       if (type === "click") {
         const currentScore = +this._scoreValue.textContent;
-        this._scoreValue.textContent = currentScore + DEFAULT_RIGHT_SCORE;
+        this._quizRightAnswerNumber += 1;
+        if (this._timeLeft <= TIME_TO_ANSWER && this._timeLeft >= 20) {
+          this._scoreValue.textContent = currentScore + DEFAULT_RIGHT_SCORE;
+          this._questionTimerBonus.textContent = "+" + DEFAULT_RIGHT_SCORE;
+        } else if (this._timeLeft <= 20 && this._timeLeft >= 10) {
+          this._scoreValue.textContent =
+            currentScore + RIGHT_SCORE_SECOND_TEN_SECONDS;
+          this._questionTimerBonus.textContent =
+            "+" + RIGHT_SCORE_SECOND_TEN_SECONDS;
+        } else {
+          this._scoreValue.textContent =
+            currentScore + RIGHT_SCORE_THIRD_TEN_SECONDS;
+          this._questionTimerBonus.textContent =
+            "+" + RIGHT_SCORE_THIRD_TEN_SECONDS;
+        }
+        this._questionTimerBonus.classList.remove("not-displayed");
         this._correctIncorrectQuizAnswer.classList.remove("not-displayed");
         this._correctIncorrectQuizAnswer.textContent =
           localization[model.worldCountries.language]["Correct"];
@@ -395,6 +417,7 @@ class Quiz {
       this._finishQuiz.disabled = true;
       this._finishedQuizLabel.classList.remove("not-displayed");
       this._correctIncorrectQuizAnswer.classList.add("not-displayed");
+      this._questionTimerBonus.classList.add("not-displayed");
       this.showResultWindow();
     }
     this.disableCardOptions();
@@ -553,9 +576,11 @@ class Quiz {
       }
     });
     this._correctIncorrectQuizAnswer.classList.add("not-displayed");
+    this._questionTimerBonus.classList.add("not-displayed");
     this._finishedQuizLabel.classList.add("not-displayed");
     this._randomCountries = [];
     this._scoreValue.textContent = 0;
+    this._quizRightAnswerNumber = 0;
     this._questionCurrentNumber.textContent = 1;
     this._doNotKnowAnswer.disabled = false;
     this._finishQuiz.disabled = false;
@@ -678,12 +703,14 @@ class Quiz {
       this._startQuiz.disabled = false;
       this._finishedQuizLabel.classList.remove("not-displayed");
       this._correctIncorrectQuizAnswer.classList.add("not-displayed");
+      this._questionTimerBonus.classList.add("not-displayed");
       this.disableCardOptions();
       this.initTimer();
       this.showResultWindow();
       return;
     }
     this._correctIncorrectQuizAnswer.classList.add("not-displayed");
+    this._questionTimerBonus.classList.add("not-displayed");
     this._randomCountries = [];
     this._cardOptionsElements.forEach((cardOption) => {
       cardOption.classList.remove("wrong-answer");
@@ -704,6 +731,7 @@ class Quiz {
       this._startQuiz.disabled = false;
       this._finishedQuizLabel.classList.remove("not-displayed");
       this._correctIncorrectQuizAnswer.classList.add("not-displayed");
+      this._questionTimerBonus.classList.add("not-displayed");
       this.disableCardOptions();
       this.initTimer();
       this.showResultWindow();
@@ -721,7 +749,7 @@ class Quiz {
     this._quizResultRatingStar.textContent = "";
     let rating = 0;
     if (+this._scoreValue.textContent !== 0) {
-      const score = +this._scoreValue.textContent / DEFAULT_RIGHT_SCORE;
+      const score = this._quizRightAnswerNumber;
       const scorePersentage =
         (score * 100) / +this._questionCurrentNumber.textContent;
       this._quizResultRightAnswersNumber.textContent = score;
