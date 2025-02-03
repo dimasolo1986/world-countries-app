@@ -305,7 +305,7 @@ class Quiz {
       if (type === "click") {
         const currentScore = +this._scoreValue.textContent;
         this._quizRightAnswerNumber += 1;
-        if (this._timeLeft <= TIME_TO_ANSWER && this._timeLeft >= 20) {
+        if (this._timeLeft <= TIME_TO_ANSWER && this._timeLeft > 20) {
           this._scoreValue.textContent = currentScore + DEFAULT_RIGHT_SCORE;
           this._questionTimerBonus.textContent = "+" + DEFAULT_RIGHT_SCORE;
         } else if (this._timeLeft == 0) {
