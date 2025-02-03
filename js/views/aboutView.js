@@ -233,7 +233,7 @@ class aboutView {
     }`;
     this._aboutQuizzesQuestionsAndPoints.textContent = `${
       localization[model.worldCountries.language][
-        "Quizzes contain from 10 to 35 questions depending on the difficulty level. Get from 50 to 150 points for each correct answer, depending on the speed of the answer."
+        "Quizzes contain from 10 to 35 questions depending on the difficulty level. Get from 5 to 150 points for each correct answer, depending on the speed of the answer."
       ]
     }`;
     this._aboutUkraineHelpDescription.textContent = `${

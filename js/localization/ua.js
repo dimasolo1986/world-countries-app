@@ -562,8 +562,8 @@ export const localization = {
       "Відгадайте столицю країни за запропонованою назвою країни.",
     "Guess the country on the map from the suggested country name. The quiz contains 35 questions. Get 300 points for each correct answer.":
       "Відгадайте розташування країни на світовій мапі за запропонованою назвою країни. Вікторина містить 35 питань. За кожну правильну відповідь отримуйте 300 балів.",
-    "Quizzes contain from 10 to 35 questions depending on the difficulty level. Get from 50 to 150 points for each correct answer, depending on the speed of the answer.":
-      "Вікторини містять від 10 до 35 питань в залежності від рівня складності. Отримуйте від 50 до 150 балів за кожну правильну відповідь в залежності від швидкості відповіді.",
+    "Quizzes contain from 10 to 35 questions depending on the difficulty level. Get from 5 to 150 points for each correct answer, depending on the speed of the answer.":
+      "Вікторини містять від 10 до 35 питань в залежності від рівня складності. Отримуйте від 5 до 150 балів за кожну правильну відповідь в залежності від швидкості відповіді.",
     "Project was created by Software Developer from Ukraine -":
       "Проект створений програмістом з України -",
     "You can support Ukraine in the fight against Russia's military aggression:":
@@ -1245,8 +1245,8 @@ export const localization = {
       "Guess the country's capital from the suggested country name.",
     "Guess the country on the map from the suggested country name. The quiz contains 35 questions. Get 300 points for each correct answer.":
       "Guess the country on the map from the suggested country name. The quiz contains 35 questions. Get 300 points for each correct answer.",
-    "Quizzes contain from 10 to 35 questions depending on the difficulty level. Get from 50 to 150 points for each correct answer, depending on the speed of the answer.":
-      "Quizzes contain from 10 to 35 questions depending on the difficulty level. Get from 50 to 150 points for each correct answer, depending on the speed of the answer.",
+    "Quizzes contain from 10 to 35 questions depending on the difficulty level. Get from 5 to 150 points for each correct answer, depending on the speed of the answer.":
+      "Quizzes contain from 10 to 35 questions depending on the difficulty level. Get from 5 to 150 points for each correct answer, depending on the speed of the answer.",
     "Project was created by Software Developer from Ukraine -":
       "Project was created by Software Developer from Ukraine -",
     "You can support Ukraine in the fight against Russia's military aggression:":
