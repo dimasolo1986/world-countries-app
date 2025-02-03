@@ -573,6 +573,7 @@ export const localization = {
     "Dmytro Solovei": "Дмитро Соловей",
     "You can reach me by e-mail:":
       "Ви можете зв'язатися зі мною електронною поштою:",
+    "Time's Up!": "Час Минув!",
     "Come Back Alive": "Повернись Живим",
     "All Countries": "Всі Країни",
     "Search Or Select Counties...": "Пошук або вибір країни...",
@@ -1252,6 +1253,7 @@ export const localization = {
       "You can support Ukraine in the fight against Russia's military aggression:",
     "Dmytro Solovei": "Dmytro Solovei",
     "You can reach me by e-mail:": "You can reach me by e-mail:",
+    "Time's Up!": "Time's Up!",
     "Country Name By Flag Quiz": "Country Name By Flag Quiz",
     "Country Capital By Flag Quiz": "Country Capital By Flag Quiz",
     "Flag By Country Capital Quiz": "Flag By Country Capital Quiz",

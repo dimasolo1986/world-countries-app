@@ -3,8 +3,7 @@ import { localization } from "../localization/ua.js";
 import { getRandomInt } from "../helpers.js";
 import {
   DEFAULT_RIGHT_SCORE,
-  RIGHT_SCORE_SECOND_TEN_SECONDS,
-  RIGHT_SCORE_THIRD_TEN_SECONDS,
+  RIGHT_SCORE_AFTER_FIRST_FIVE_SECONDS,
 } from "../config.js";
 import { showQuizResultWindow } from "../helpers.js";
 import { WORLD_MAP_BOUNDS } from "../config.js";
@@ -58,6 +57,7 @@ class Quiz {
   _questionTimer = document.querySelector(".question-timer-seconds");
   _questionTimerName = document.querySelector(".question-timer-name");
   _questionTimerBonus = document.querySelector(".question-timer-bonus");
+  _questionTimerTimeUp = document.querySelector(".question-timer-time-up");
   _timeLeft = TIME_TO_ANSWER;
   _timerId;
   _countries;
@@ -126,6 +126,8 @@ class Quiz {
       }
       this._questionTimer.innerHTML = String(this._timeLeft);
     } else {
+      this._questionTimerBonus.classList.add("not-displayed");
+      this._questionTimerTimeUp.classList.remove("not-displayed");
       this._cardOptionsElements.forEach((cardOption) => {
         let element;
         if (
@@ -212,6 +214,7 @@ class Quiz {
       }
       this._correctIncorrectQuizAnswer.classList.add("not-displayed");
       this._questionTimerBonus.classList.add("not-displayed");
+      this._questionTimerTimeUp.classList.add("not-displayed");
       this.showResultWindow();
     };
     if (!this._finishQuizListenerAdded) {
@@ -305,16 +308,14 @@ class Quiz {
         if (this._timeLeft <= TIME_TO_ANSWER && this._timeLeft >= 20) {
           this._scoreValue.textContent = currentScore + DEFAULT_RIGHT_SCORE;
           this._questionTimerBonus.textContent = "+" + DEFAULT_RIGHT_SCORE;
-        } else if (this._timeLeft <= 20 && this._timeLeft >= 10) {
-          this._scoreValue.textContent =
-            currentScore + RIGHT_SCORE_SECOND_TEN_SECONDS;
-          this._questionTimerBonus.textContent =
-            "+" + RIGHT_SCORE_SECOND_TEN_SECONDS;
-        } else {
-          this._scoreValue.textContent =
-            currentScore + RIGHT_SCORE_THIRD_TEN_SECONDS;
-          this._questionTimerBonus.textContent =
-            "+" + RIGHT_SCORE_THIRD_TEN_SECONDS;
+        } else if (this._timeLeft == 0) {
+          this._scoreValue.textContent = currentScore + 5;
+          this._questionTimerBonus.textContent = "+" + 5;
+        } else if (this._timeLeft <= 20) {
+          const score =
+            RIGHT_SCORE_AFTER_FIRST_FIVE_SECONDS - (20 - this._timeLeft) * 5;
+          this._scoreValue.textContent = currentScore + score;
+          this._questionTimerBonus.textContent = "+" + score;
         }
         this._questionTimerBonus.classList.remove("not-displayed");
         this._correctIncorrectQuizAnswer.classList.remove("not-displayed");
@@ -418,6 +419,7 @@ class Quiz {
       this._finishedQuizLabel.classList.remove("not-displayed");
       this._correctIncorrectQuizAnswer.classList.add("not-displayed");
       this._questionTimerBonus.classList.add("not-displayed");
+      this._questionTimerTimeUp.classList.add("not-displayed");
       this.showResultWindow();
     }
     this.disableCardOptions();
@@ -577,6 +579,7 @@ class Quiz {
     });
     this._correctIncorrectQuizAnswer.classList.add("not-displayed");
     this._questionTimerBonus.classList.add("not-displayed");
+    this._questionTimerTimeUp.classList.add("not-displayed");
     this._finishedQuizLabel.classList.add("not-displayed");
     this._randomCountries = [];
     this._scoreValue.textContent = 0;
@@ -704,6 +707,7 @@ class Quiz {
       this._finishedQuizLabel.classList.remove("not-displayed");
       this._correctIncorrectQuizAnswer.classList.add("not-displayed");
       this._questionTimerBonus.classList.add("not-displayed");
+      this._questionTimerTimeUp.classList.add("not-displayed");
       this.disableCardOptions();
       this.initTimer();
       this.showResultWindow();
@@ -711,6 +715,7 @@ class Quiz {
     }
     this._correctIncorrectQuizAnswer.classList.add("not-displayed");
     this._questionTimerBonus.classList.add("not-displayed");
+    this._questionTimerTimeUp.classList.add("not-displayed");
     this._randomCountries = [];
     this._cardOptionsElements.forEach((cardOption) => {
       cardOption.classList.remove("wrong-answer");
@@ -732,6 +737,7 @@ class Quiz {
       this._finishedQuizLabel.classList.remove("not-displayed");
       this._correctIncorrectQuizAnswer.classList.add("not-displayed");
       this._questionTimerBonus.classList.add("not-displayed");
+      this._questionTimerTimeUp.classList.add("not-displayed");
       this.disableCardOptions();
       this.initTimer();
       this.showResultWindow();
@@ -972,6 +978,9 @@ class Quiz {
         ];
     this._questionDelimeterElement.textContent =
       localization[model.worldCountries.language]["of"];
+    this._questionTimerTimeUp.textContent = `${
+      localization[model.worldCountries.language]["Time's Up!"]
+    }`;
     this._finishedQuizLabel.textContent =
       localization[model.worldCountries.language]["Finished"];
     const options = Array.from(this._countriesSelector.options);

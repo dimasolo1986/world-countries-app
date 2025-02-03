@@ -12,10 +12,9 @@ export const COUNTRY_CAPITAL_BY_COUNTRY_NAME_QUIZ =
   "capital-by-country-name-quiz";
 export const COUNTRY_ON_MAP_QUIZ = "country-on-map-quiz";
 export const DEFAULT_RIGHT_SCORE = 150;
-export const RIGHT_SCORE_SECOND_TEN_SECONDS = 100;
-export const RIGHT_SCORE_THIRD_TEN_SECONDS = 50;
+export const RIGHT_SCORE_AFTER_FIRST_FIVE_SECONDS = 100;
 export const DEFAULT_RIGHT_MAP_SCORE = 300;
-export const TIME_TO_ANSWER = 30;
+export const TIME_TO_ANSWER = 25;
 export const WAR_AGGRESSOR_COUNTRIES = ["Russia"];
 export const WORLD_MAP_BOUNDS = [
   [73.1217211716937, 221.48437500000003],
