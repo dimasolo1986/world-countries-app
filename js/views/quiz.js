@@ -1,10 +1,7 @@
 import * as model from "../model.js";
 import { localization } from "../localization/ua.js";
 import { getRandomInt } from "../helpers.js";
-import {
-  DEFAULT_RIGHT_SCORE,
-  RIGHT_SCORE_AFTER_FIRST_FIVE_SECONDS,
-} from "../config.js";
+import { DEFAULT_RIGHT_SCORE } from "../config.js";
 import { showQuizResultWindow } from "../helpers.js";
 import { WORLD_MAP_BOUNDS } from "../config.js";
 import {
@@ -312,8 +309,7 @@ class Quiz {
           this._scoreValue.textContent = currentScore + 5;
           this._questionTimerBonus.textContent = "+" + 5;
         } else if (this._timeLeft <= 20) {
-          const score =
-            RIGHT_SCORE_AFTER_FIRST_FIVE_SECONDS - (20 - this._timeLeft) * 5;
+          const score = DEFAULT_RIGHT_SCORE - (20 - this._timeLeft) * 5;
           this._scoreValue.textContent = currentScore + score;
           this._questionTimerBonus.textContent = "+" + score;
         }
