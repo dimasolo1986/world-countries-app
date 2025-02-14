@@ -8,6 +8,7 @@ import {
   COUNTRY_NAME_BY_CAPITAL_QUIZ,
   COUNTRY_CAPITAL_BY_COUNTRY_NAME_QUIZ,
   COUNTRY_ON_MAP_QUIZ,
+  COUNTRY_NAME_BY_COUNTRY_ON_MAP,
 } from "../config.js";
 class topNavigationView {
   _parentElement = document.querySelector(".sb-topnav");
@@ -33,6 +34,9 @@ class topNavigationView {
   );
   _countryCapitalByCountryNameQuizLink = document.querySelector(
     "#capital-by-country-name-quiz-link"
+  );
+  _countryNameByCountryOnMapQuizLink = document.querySelector(
+    "#country-name-by-country-on-map-quiz-link"
   );
   _countryOnMapQuizLink = document.querySelector("#country-on-map-quiz-link");
   _aboutLink = document.querySelector("#about");
@@ -84,6 +88,11 @@ class topNavigationView {
           break;
         case COUNTRY_CAPITAL_BY_COUNTRY_NAME_QUIZ:
           this._countryCapitalByCountryNameQuizLink.closest(
+            "li"
+          ).style.backgroundColor = "lightgrey";
+          break;
+        case COUNTRY_NAME_BY_COUNTRY_ON_MAP:
+          this._countryNameByCountryOnMapQuizLink.closest(
             "li"
           ).style.backgroundColor = "lightgrey";
           break;
@@ -140,6 +149,12 @@ class topNavigationView {
       .addEventListener(
         "click",
         handlerQuizClick.bind(this, this._countryCapitalByCountryNameQuizLink)
+      );
+    this._countryNameByCountryOnMapQuizLink
+      .closest("li")
+      .addEventListener(
+        "click",
+        handlerQuizClick.bind(this, this._countryNameByCountryOnMapQuizLink)
       );
     this._countryOnMapQuizLink
       .closest("li")
@@ -220,6 +235,11 @@ class topNavigationView {
     this._countryCapitalByCountryNameQuizLink.textContent = `${
       localization[model.worldCountries.language][
         "Capital By Country Name Quiz"
+      ]
+    }`;
+    this._countryNameByCountryOnMapQuizLink.textContent = `${
+      localization[model.worldCountries.language][
+        "Country Name By Country On Map Quiz"
       ]
     }`;
     this._countryOnMapQuizLink.textContent = `${

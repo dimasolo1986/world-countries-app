@@ -516,6 +516,8 @@ export const localization = {
     "Only Independent Countries": "Тільки незалежні країни",
     "All Countries": "Всі країни",
     "Guess Flag By Country Name": "Вгадай Прапор За Назвою Країни",
+    "Guess Country Name By Country On Map":
+      "Вгадай Назву Країни За Країною На Мапі",
     "Guess Country Name By Flag": "Вгадай Назву Країни За Прапором",
     "Guess Country Capital By Flag": "Вгадай Столицю Країни За Прапором",
     "Guess Flag By Country Capital": "Вгадай Прапор За Столицею Країни",
@@ -526,6 +528,8 @@ export const localization = {
     "Aggressor Supporter": "Прибічник Агресора",
     "Flag By Country Name Quiz": "Вікторина Прапор За Назвою Країни",
     "Country Name By Flag Quiz": "Вікторина Назва Країни За Прапором",
+    "Country Name By Country On Map Quiz":
+      "Вікторина Назва Країни За Країною На Мапі",
     "Country Capital By Flag Quiz": "Вікторина Столиця Країни За Прапором",
     "Flag By Country Capital Quiz": "Вікторина Прапор За Столицею Країни",
     "Country Name By Capital Quiz": "Вікторина Назва Країни За Столицею Країни",
@@ -550,6 +554,8 @@ export const localization = {
       "Тут ви можете знайти всі країни світу на мапі, коротку інформацію про обрані країни, посилання на сторінки Вікіпедії певної країни. Також є можливість пройти різні вікторини з певними рівнями складності: Дуже Легко, Легко, Нормально, Важко.",
     "Guess the country's flag from the suggested country name.":
       "Відгадайте прапор країни за запропонованою назвою країни.",
+    "Guess the country's name from the suggested country on a map.":
+      "Відгадайте назву країни за запропонованою країною на мапі.",
     "Guess the country's name from the suggested country flag image.":
       "Відгадайте назву країни за запропонованим зображенням прапора країни.",
     "Guess the country's capital from the suggested country flag image.":
@@ -1197,8 +1203,12 @@ export const localization = {
     "FINISH QUIZ": "FINISH QUIZ",
     FINISH: "FINISH",
     "Flag By Country Name Quiz": "Flag By Country Name Quiz",
+    "Country Name By Country On Map Quiz":
+      "Country Name By Country On Map Quiz",
     "Country On Map Quiz": "Country On Map Quiz",
     "Guess Country On Map": "Guess Country On Map",
+    "Guess Country Name By Country On Map":
+      "Guess Country Name By Country On Map",
     "All Countries": "All Countries",
     "Search Or Select Counties...": "Search Or Select Counties...",
     Selected: "Selected",
@@ -1235,6 +1245,8 @@ export const localization = {
       "Guess the country's flag from the suggested country name.",
     "Guess the country's name from the suggested country flag image.":
       "Guess the country's name from the suggested country flag image.",
+      "Guess the country's name from the suggested country on a map.":
+      "Guess the country's name from the suggested country on a map.",
     "Guess the country's capital from the suggested country flag image.":
       "Guess the country's capital from the suggested country flag image.",
     "Guess the country's flag from the suggested country's capital.":

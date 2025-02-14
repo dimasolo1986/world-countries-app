@@ -2,8 +2,6 @@ import { localization } from "../localization/ua.js";
 import { WORLD_MAP_BOUNDS } from "../config.js";
 import * as model from "../model.js";
 import {
-  GEOGRAPHICAL_CENTER,
-  DEFAULT_ZOOM_LEVEL,
   FLAG_BY_COUNTRY_NAME_QUIZ,
   COUNTRY_NAME_BY_FLAG_QUIZ,
   COUNTRY_CAPITAL_BY_FLAG_QUIZ,
@@ -11,6 +9,7 @@ import {
   COUNTRY_NAME_BY_CAPITAL_QUIZ,
   COUNTRY_CAPITAL_BY_COUNTRY_NAME_QUIZ,
   COUNTRY_ON_MAP_QUIZ,
+  COUNTRY_NAME_BY_COUNTRY_ON_MAP,
 } from "../config.js";
 class statisticView {
   _parentElement = document.querySelector("#statistic-quizzes");
@@ -168,6 +167,13 @@ class statisticView {
               ]
             }`;
             break;
+          case COUNTRY_NAME_BY_COUNTRY_ON_MAP:
+            quizType.textContent = `${
+              localization[model.worldCountries.language][
+                "Country Name By Country On Map Quiz"
+              ]
+            }`;
+            break;
           case COUNTRY_ON_MAP_QUIZ:
             quizType.textContent = `${
               localization[model.worldCountries.language]["Country On Map Quiz"]
@@ -302,6 +308,13 @@ class statisticView {
             quiz.textContent = `${
               localization[model.worldCountries.language][
                 "Capital By Country Name Quiz"
+              ]
+            }`;
+            break;
+          case COUNTRY_NAME_BY_COUNTRY_ON_MAP:
+            quiz.textContent = `${
+              localization[model.worldCountries.language][
+                "Country Name By Country On Map Quiz"
               ]
             }`;
             break;

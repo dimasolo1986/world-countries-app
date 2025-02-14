@@ -53,6 +53,12 @@ class aboutView {
   _aboutCountryOnMapQuizDescription = document.querySelector(
     ".about-country-on-map-description"
   );
+  _aboutCountryNameOnCountryMapQuizName = document.querySelector(
+    ".about-country-name-by-country-on-map-quiz-name"
+  );
+  _aboutCountryNameOnCountryMapQuizDescription = document.querySelector(
+    ".about-name-by-country-on-map-description"
+  );
   _aboutQuizzesQuestionsAndPoints = document.querySelector(
     ".about-questions-points"
   );
@@ -198,6 +204,11 @@ class aboutView {
         "Capital By Country Name Quiz"
       ]
     }`;
+    this._aboutCountryNameOnCountryMapQuizName.textContent = `${
+      localization[model.worldCountries.language][
+        "Country Name By Country On Map Quiz"
+      ]
+    }`;
     this._aboutCountryOnMapQuizName.textContent = `${
       localization[model.worldCountries.language]["Country On Map Quiz"]
     }`;
@@ -224,6 +235,11 @@ class aboutView {
     this._aboutFalgByCountryCapitalQuizDescription.textContent = `${
       localization[model.worldCountries.language][
         "Guess the country's flag from the suggested country's capital."
+      ]
+    }`;
+    this._aboutCountryNameOnCountryMapQuizDescription.textContent = `${
+      localization[model.worldCountries.language][
+        "Guess the country's name from the suggested country on a map."
       ]
     }`;
     this._aboutCountryOnMapQuizDescription.textContent = `${

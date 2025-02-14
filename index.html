@@ -346,6 +346,15 @@
                 >Country On Map Quiz</a
               >
             </li>
+            <li style="cursor: pointer">
+              <a
+                data-quiz="country-name-by-country-on-map"
+                id="country-name-by-country-on-map-quiz-link"
+                class="dropdown-item"
+                style="display: inline"
+                >Country Name By Country On Map Quiz</a
+              >
+            </li>
             <li><hr class="dropdown-divider" /></li>
             <li id="statistic-li" style="cursor: pointer">
               <span style="margin-left: 5px">📝</span>
@@ -692,6 +701,19 @@
               <br />
               <div class="question-country-container">
                 <span class="question-country"></span>
+                <div
+                  id="question-country-on-map"
+                  class="question-country-on-map rounded-1 not-displayed"
+                  style="
+                    width: 250px;
+                    height: 110px;
+                    border: 1px solid black;
+                    margin-bottom: 10px;
+                    margin-top: 15px;
+                    margin-left: auto;
+                    margin-right: auto;
+                  "
+                ></div>
                 <img
                   class="question-img-country border-dark rounded-1 not-displayed"
                 />
@@ -883,6 +905,18 @@
               style="font-weight: bold; font-size: 1.3rem; margin-top: 5px"
             >
               Quizzes:
+            </p>
+            <p class="about-country-name-by-country-on-map-quiz">
+              <span
+                class="about-country-name-by-country-on-map-quiz-name"
+                style="font-weight: bold"
+                >Country Name By Country On Map Quiz</span
+              >
+              -
+              <span class="about-name-by-country-on-map-description"
+                >Guess the country's name from the suggested country on a
+                map.</span
+              >
             </p>
             <p class="about-flag-by-country-quiz">
               <span

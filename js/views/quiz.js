@@ -1,12 +1,15 @@
 import * as model from "../model.js";
 import { localization } from "../localization/ua.js";
 import { getRandomInt } from "../helpers.js";
-import { DEFAULT_RIGHT_SCORE } from "../config.js";
+import { DEFAULT_RIGHT_SCORE, GEOGRAPHICAL_CENTER } from "../config.js";
+import { COUNTRY_BOUNDS } from "../data/countriesBounds.js";
+import { COUNTRIES_GEO } from "../data/countries.geo.js";
 import { showQuizResultWindow } from "../helpers.js";
 import { WORLD_MAP_BOUNDS } from "../config.js";
 import {
   FLAG_BY_COUNTRY_NAME_QUIZ,
   COUNTRY_NAME_BY_FLAG_QUIZ,
+  COUNTRY_NAME_BY_COUNTRY_ON_MAP,
   COUNTRY_CAPITAL_BY_FLAG_QUIZ,
   FLAG_BY_COUNTRY_CAPITAL_QUIZ,
   COUNTRY_NAME_BY_CAPITAL_QUIZ,
@@ -35,6 +38,7 @@ class Quiz {
   _questionContainer = document.querySelector(".question-container");
   _questionCountry = document.querySelector(".question-country");
   _questionImgCountry = document.querySelector(".question-img-country");
+  _questionMapCountry = document.querySelector(".question-country-on-map");
   _questionDelimeterElement = document.querySelector(".question-delimeter");
   _questionCurrentNumber = document.querySelector(".question-current-number");
   _questionsAllNumber = document.querySelector(".question-all-number");
@@ -71,6 +75,9 @@ class Quiz {
   _doNotKnowAnswerAdded = false;
   _countriesSelectorListenerAdded = false;
 
+  _countriesMap;
+  _countryBoundary;
+
   _quizType;
 
   initQuiz(
@@ -93,6 +100,8 @@ class Quiz {
       topNavigationView,
       countriesSelectView
     );
+    this.createCountryOnMapQuizMap();
+    this._countriesMap.invalidateSize();
     this.countriesSelectHandler();
     this.finishQuizHandler();
     this.nextButtonHandler();
@@ -104,6 +113,20 @@ class Quiz {
     this.addCardClickHandler();
     this.initTimer();
     this._timerId = setInterval(this.timerCountDown.bind(this), 1000);
+  }
+
+  createCountryOnMapQuizMap() {
+    if (!this._countriesMap) {
+      this._countriesMap = L.map("question-country-on-map", {
+        attributionControl: false,
+      })
+        .fitWorld()
+        .setView(GEOGRAPHICAL_CENTER);
+      L.tileLayer(
+        "https://server.arcgisonline.com/ArcGIS/rest/services/World_Physical_Map/MapServer/tile/{z}/{y}/{x}"
+      ).addTo(this._countriesMap);
+      this._countriesMap.invalidateSize();
+    }
   }
 
   initTimer() {
@@ -137,7 +160,8 @@ class Quiz {
           this._quizType === COUNTRY_NAME_BY_FLAG_QUIZ ||
           this._quizType === COUNTRY_CAPITAL_BY_FLAG_QUIZ ||
           this._quizType === COUNTRY_NAME_BY_CAPITAL_QUIZ ||
-          this._quizType === COUNTRY_CAPITAL_BY_COUNTRY_NAME_QUIZ
+          this._quizType === COUNTRY_CAPITAL_BY_COUNTRY_NAME_QUIZ ||
+          this._quizType === COUNTRY_NAME_BY_COUNTRY_ON_MAP
         ) {
           element = cardOption.querySelector(".country-option");
         }
@@ -233,7 +257,8 @@ class Quiz {
       }
       if (
         this._quizType === COUNTRY_NAME_BY_FLAG_QUIZ ||
-        this._quizType === COUNTRY_NAME_BY_CAPITAL_QUIZ
+        this._quizType === COUNTRY_NAME_BY_CAPITAL_QUIZ ||
+        this._quizType === COUNTRY_NAME_BY_COUNTRY_ON_MAP
       ) {
         const countryName = cardOption.querySelector(".country-option");
         const countryNameParts =
@@ -290,7 +315,8 @@ class Quiz {
       this._quizType === COUNTRY_NAME_BY_FLAG_QUIZ ||
       this._quizType === COUNTRY_CAPITAL_BY_FLAG_QUIZ ||
       this._quizType === COUNTRY_NAME_BY_CAPITAL_QUIZ ||
-      this._quizType === COUNTRY_CAPITAL_BY_COUNTRY_NAME_QUIZ
+      this._quizType === COUNTRY_CAPITAL_BY_COUNTRY_NAME_QUIZ ||
+      this._quizType === COUNTRY_NAME_BY_COUNTRY_ON_MAP
     ) {
       selectedAnswer = flag.querySelector(".country-option");
     }
@@ -365,7 +391,8 @@ class Quiz {
           this._quizType === COUNTRY_NAME_BY_FLAG_QUIZ ||
           this._quizType === COUNTRY_CAPITAL_BY_FLAG_QUIZ ||
           this._quizType === COUNTRY_NAME_BY_CAPITAL_QUIZ ||
-          this._quizType === COUNTRY_CAPITAL_BY_COUNTRY_NAME_QUIZ
+          this._quizType === COUNTRY_CAPITAL_BY_COUNTRY_NAME_QUIZ ||
+          this._quizType === COUNTRY_NAME_BY_COUNTRY_ON_MAP
         ) {
           element = cardOption.querySelector(".country-option");
         }
@@ -551,6 +578,17 @@ class Quiz {
             country.area > 250000
         );
     }
+    if (this._quizType === COUNTRY_NAME_BY_COUNTRY_ON_MAP) {
+      this._countries = this._countries.filter((country) => {
+        const countryBound = COUNTRY_BOUNDS.find(
+          (bound) => country.name.common === bound.name
+        );
+        const countryGeo = COUNTRIES_GEO.features.filter(
+          (feature) => feature.properties.country_a2 === country.cca2
+        );
+        return country.area > 5000 && countryBound && countryGeo.length > 0;
+      });
+    }
     this._cardOptionsElements.forEach((cardOption) => {
       cardOption.classList.remove("wrong-answer");
       cardOption.classList.remove("right-answer");
@@ -567,7 +605,8 @@ class Quiz {
         this._quizType === COUNTRY_NAME_BY_FLAG_QUIZ ||
         this._quizType === COUNTRY_CAPITAL_BY_FLAG_QUIZ ||
         this._quizType === COUNTRY_NAME_BY_CAPITAL_QUIZ ||
-        this._quizType === COUNTRY_CAPITAL_BY_COUNTRY_NAME_QUIZ
+        this._quizType === COUNTRY_CAPITAL_BY_COUNTRY_NAME_QUIZ ||
+        this._quizType === COUNTRY_NAME_BY_COUNTRY_ON_MAP
       ) {
         flagOption.classList.add("not-displayed");
         countryOption.classList.remove("not-displayed");
@@ -594,6 +633,8 @@ class Quiz {
       this._questionCountry.textContent = "";
       this._questionImgCountry.classList.add("not-displayed");
       this._questionCountry.classList.remove("not-displayed");
+      this._questionMapCountry.classList.add("not-displayed");
+      this._quizHeading.classList.remove("not-displayed");
     }
     if (this._quizType === FLAG_BY_COUNTRY_CAPITAL_QUIZ) {
       this._quizHeading.textContent = this._quizHeading.textContent = `${
@@ -604,6 +645,8 @@ class Quiz {
       this._questionCountry.textContent = "";
       this._questionImgCountry.classList.add("not-displayed");
       this._questionCountry.classList.remove("not-displayed");
+      this._questionMapCountry.classList.add("not-displayed");
+      this._quizHeading.classList.remove("not-displayed");
     }
     if (this._quizType === COUNTRY_NAME_BY_CAPITAL_QUIZ) {
       this._quizHeading.textContent = this._quizHeading.textContent = `${
@@ -614,6 +657,8 @@ class Quiz {
       this._questionCountry.classList.remove("not-displayed");
       this._questionCountry.textContent = "";
       this._questionImgCountry.classList.add("not-displayed");
+      this._questionMapCountry.classList.add("not-displayed");
+      this._quizHeading.classList.remove("not-displayed");
     }
     if (this._quizType === COUNTRY_CAPITAL_BY_COUNTRY_NAME_QUIZ) {
       this._quizHeading.textContent = this._quizHeading.textContent = `${
@@ -624,6 +669,8 @@ class Quiz {
       this._questionCountry.classList.remove("not-displayed");
       this._questionCountry.textContent = "";
       this._questionImgCountry.classList.add("not-displayed");
+      this._questionMapCountry.classList.add("not-displayed");
+      this._quizHeading.classList.remove("not-displayed");
     }
     if (this._quizType === COUNTRY_NAME_BY_FLAG_QUIZ) {
       this._quizHeading.textContent = this._quizHeading.textContent = `${
@@ -634,6 +681,20 @@ class Quiz {
       this._questionCountry.classList.add("not-displayed");
       this._questionCountry.textContent = "";
       this._questionImgCountry.classList.remove("not-displayed");
+      this._questionMapCountry.classList.add("not-displayed");
+      this._quizHeading.classList.remove("not-displayed");
+    }
+    if (this._quizType === COUNTRY_NAME_BY_COUNTRY_ON_MAP) {
+      this._quizHeading.textContent = this._quizHeading.textContent = `${
+        localization[model.worldCountries.language][
+          "Guess Country Name By Country On Map"
+        ]
+      }`;
+      this._questionCountry.classList.add("not-displayed");
+      this._questionCountry.textContent = "";
+      this._questionImgCountry.classList.add("not-displayed");
+      this._questionMapCountry.classList.remove("not-displayed");
+      this._quizHeading.classList.add("not-displayed");
     }
     if (this._quizType === COUNTRY_CAPITAL_BY_FLAG_QUIZ) {
       this._quizHeading.textContent = this._quizHeading.textContent = `${
@@ -644,6 +705,8 @@ class Quiz {
       this._questionCountry.classList.add("not-displayed");
       this._questionCountry.textContent = "";
       this._questionImgCountry.classList.remove("not-displayed");
+      this._questionMapCountry.classList.add("not-displayed");
+      this._quizHeading.classList.remove("not-displayed");
     }
     this.enableCardOptions();
   }
@@ -681,6 +744,13 @@ class Quiz {
       this._quizHeading.textContent = this._quizHeading.textContent = `${
         localization[model.worldCountries.language][
           "Guess Country Name By Flag"
+        ]
+      }`;
+    }
+    if (this._quizType === COUNTRY_NAME_BY_COUNTRY_ON_MAP) {
+      this._quizHeading.textContent = this._quizHeading.textContent = `${
+        localization[model.worldCountries.language][
+          "Guess Country Name By Country On Map"
         ]
       }`;
     }
@@ -848,6 +918,22 @@ class Quiz {
         ? this._questionCountrySelected.flags.png
         : this._questionCountrySelected.flags.svg;
     }
+    if (this._quizType === COUNTRY_NAME_BY_COUNTRY_ON_MAP) {
+      const countryBound = COUNTRY_BOUNDS.find(
+        (bound) => this._questionCountrySelected.name.common === bound.name
+      );
+      const countryGeo = {};
+      countryGeo.type = COUNTRIES_GEO.type;
+      countryGeo.features = COUNTRIES_GEO.features.filter(
+        (feature) =>
+          feature.properties.country_a2 === this._questionCountrySelected.cca2
+      );
+      if (this._countryBoundary)
+        this._countriesMap.removeLayer(this._countryBoundary);
+      this._countryBoundary = L.geoJson(countryGeo).addTo(this._countriesMap);
+      this._countriesMap.fitBounds(countryBound.bounds);
+      this._countriesMap.invalidateSize();
+    }
   }
 
   selectRandomCountries() {
@@ -988,6 +1074,20 @@ class Quiz {
       this._quizHeading.textContent = `${
         localization[model.worldCountries.language][
           "Guess Country Name By Flag"
+        ]
+      }`;
+      this._cardOptionsElements.forEach((cardOption) => {
+        const country = cardOption.querySelector(".country-option");
+        country.textContent =
+          localization[model.worldCountries.language]["countries"][
+            country.dataset.country
+          ];
+      });
+    }
+    if (this._quizType === COUNTRY_NAME_BY_COUNTRY_ON_MAP) {
+      this._quizHeading.textContent = `${
+        localization[model.worldCountries.language][
+          "Guess Country Name By Country On Map"
         ]
       }`;
       this._cardOptionsElements.forEach((cardOption) => {

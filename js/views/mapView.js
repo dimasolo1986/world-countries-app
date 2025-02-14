@@ -11,6 +11,7 @@ import {
   COUNTRY_CAPITAL_BY_COUNTRY_NAME_QUIZ,
   COUNTRY_NAME_BY_FLAG_QUIZ,
   COUNTRY_CAPITAL_BY_FLAG_QUIZ,
+  COUNTRY_NAME_BY_COUNTRY_ON_MAP,
 } from "../config.js";
 import { localization } from "../localization/ua.js";
 import { loadQuizOnMap } from "../controller.js";
@@ -71,6 +72,21 @@ class mapView {
         position: "topleft",
         className: "quiz-menu-map",
         menuItems: [
+          {
+            html: `<span id="country-name-on-map-quiz-menu">${
+              localization[model.worldCountries.language][
+                "Country Name By Country On Map Quiz"
+              ]
+            }</span>`,
+            afterClick: () => {
+              loadQuizOnMap(COUNTRY_NAME_BY_COUNTRY_ON_MAP);
+              sessionStorage.setItem(
+                "currentWindow",
+                "country-name-by-country-on-map"
+              );
+              this._topNavigationView.initItemMenuStyle();
+            },
+          },
           {
             html: `<span id="country-on-map-quiz-menu">${
               localization[model.worldCountries.language]["Country On Map Quiz"]
@@ -228,6 +244,15 @@ class mapView {
     if (countryOnMapQuiz) {
       countryOnMapQuiz.textContent =
         localization[model.worldCountries.language]["Country On Map Quiz"];
+    }
+    const countryNameOnMapQuiz = document.querySelector(
+      "#country-name-on-map-quiz-menu"
+    );
+    if (countryNameOnMapQuiz) {
+      countryNameOnMapQuiz.textContent =
+        localization[model.worldCountries.language][
+          "Country Name By Country On Map Quiz"
+        ];
     }
     const flagByCountryNameQuiz = document.querySelector(
       "#flag-by-country-name-quiz-menu"
