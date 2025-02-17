@@ -945,7 +945,7 @@ class Quiz {
       if (this._countryBoundary)
         this._countriesMap.removeLayer(this._countryBoundary);
       this._countryBoundary = L.geoJson(countryGeo, {
-        style: { weight: 2 },
+        style: { weight: 2, fillOpacity: 0.4 },
       }).addTo(this._countriesMap);
       this._countriesMap.fitBounds(countryBound.bounds);
       this._countriesMap.invalidateSize();
