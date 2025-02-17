@@ -443,8 +443,8 @@ class MapQuiz {
             localization[model.worldCountries.language]["Correct"];
           context._correctIncorrectQuizAnswer.style.color = "darkgreen";
           countryBoundary.setStyle({
-            fillColor: "darkgreen",
-            fillOpacity: 1,
+            fillColor: "green",
+            fillOpacity: 0.8,
           });
           const countryCoordinates = context._country.latlng
             ? context._country.latlng
@@ -475,13 +475,13 @@ class MapQuiz {
           );
           if (rightCountryBoundary) {
             rightCountryBoundary.setStyle({
-              fillColor: "darkgreen",
-              fillOpacity: 1,
+              fillColor: "green",
+              fillOpacity: 0.8,
             });
           }
           countryBoundary.setStyle({
             fillColor: "red",
-            fillOpacity: 1,
+            fillOpacity: 0.8,
           });
           const countryCoordinates = context._country.latlng
             ? context._country.latlng
