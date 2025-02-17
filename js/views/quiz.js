@@ -324,6 +324,13 @@ class Quiz {
       this._questionCountrySelected.name.common ===
       selectedAnswer.dataset.country
     ) {
+      if (this._countryBoundary) {
+        this._countryBoundary.setStyle({
+          color: "green",
+          fillColor: "green",
+          fillOpacity: 0.7,
+        });
+      }
       flag.classList.add("right-answer");
       if (type === "click") {
         const currentScore = +this._scoreValue.textContent;
@@ -374,6 +381,13 @@ class Quiz {
         }`;
       }
     } else {
+      if (this._countryBoundary) {
+        this._countryBoundary.setStyle({
+          color: "darkorange",
+          fillColor: "darkorange",
+          fillOpacity: 0.7,
+        });
+      }
       flag.classList.add("wrong-answer");
       this._correctIncorrectQuizAnswer.classList.remove("not-displayed");
       this._correctIncorrectQuizAnswer.textContent =
@@ -930,7 +944,9 @@ class Quiz {
       );
       if (this._countryBoundary)
         this._countriesMap.removeLayer(this._countryBoundary);
-      this._countryBoundary = L.geoJson(countryGeo).addTo(this._countriesMap);
+      this._countryBoundary = L.geoJson(countryGeo, {
+        style: { weight: 2 },
+      }).addTo(this._countriesMap);
       this._countriesMap.fitBounds(countryBound.bounds);
       this._countriesMap.invalidateSize();
     }
