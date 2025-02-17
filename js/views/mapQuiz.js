@@ -441,7 +441,8 @@ class MapQuiz {
           context._correctIncorrectQuizAnswer.classList.remove("not-displayed");
           context._correctIncorrectQuizAnswer.textContent =
             localization[model.worldCountries.language]["Correct"];
-          context._correctIncorrectQuizAnswer.style.color = "darkgreen";
+          context._correctIncorrectQuizAnswer.style.color = "white";
+          context._correctIncorrectQuizAnswer.style.backgroundColor = "green";
           countryBoundary.setStyle({
             fillColor: "green",
             fillOpacity: 0.8,
@@ -469,7 +470,8 @@ class MapQuiz {
           context._correctIncorrectQuizAnswer.classList.remove("not-displayed");
           context._correctIncorrectQuizAnswer.textContent =
             localization[model.worldCountries.language]["Incorrect"];
-          context._correctIncorrectQuizAnswer.style.color = "red";
+          context._correctIncorrectQuizAnswer.style.color = "white";
+          context._correctIncorrectQuizAnswer.style.backgroundColor = "red";
           const rightCountryBoundary = context._countryBondaries.find(
             (item) => item.options.style.className === context._country.cca2
           );
@@ -697,6 +699,7 @@ class MapQuiz {
   }
 
   translateElements() {
+    this._correctIncorrectQuizAnswer.classList.add("not-displayed");
     const resetZoom = document.querySelector(".reset-zoom-map-quiz");
     if (resetZoom) {
       resetZoom.textContent =

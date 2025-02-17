@@ -350,7 +350,8 @@ class Quiz {
         this._correctIncorrectQuizAnswer.classList.remove("not-displayed");
         this._correctIncorrectQuizAnswer.textContent =
           localization[model.worldCountries.language]["Correct"];
-        this._correctIncorrectQuizAnswer.style.color = "darkgreen";
+        this._correctIncorrectQuizAnswer.style.color = "white";
+        this._correctIncorrectQuizAnswer.style.backgroundColor = "green";
       }
       if (
         this._quizType === COUNTRY_NAME_BY_CAPITAL_QUIZ ||
@@ -392,7 +393,8 @@ class Quiz {
       this._correctIncorrectQuizAnswer.classList.remove("not-displayed");
       this._correctIncorrectQuizAnswer.textContent =
         localization[model.worldCountries.language]["Incorrect"];
-      this._correctIncorrectQuizAnswer.style.color = "red";
+      this._correctIncorrectQuizAnswer.style.color = "white";
+      this._correctIncorrectQuizAnswer.style.backgroundColor = "red";
       this._cardOptionsElements.forEach((cardOption) => {
         let element;
         if (
@@ -1041,6 +1043,7 @@ class Quiz {
   }
 
   translateElements() {
+    this._correctIncorrectQuizAnswer.classList.add("not-displayed");
     this._quizHeading.textContent = `${
       localization[model.worldCountries.language]["Guess Flag By Country Name"]
     }`;
