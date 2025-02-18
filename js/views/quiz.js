@@ -602,7 +602,7 @@ class Quiz {
         const countryGeo = COUNTRIES_GEO.features.filter(
           (feature) => feature.properties.country_a2 === country.cca2
         );
-        return country.area > 5000 && countryBound && countryGeo.length > 0;
+        return country.area > 2000 && countryBound && countryGeo.length > 0;
       });
     }
     this._cardOptionsElements.forEach((cardOption) => {
