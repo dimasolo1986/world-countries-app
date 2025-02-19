@@ -538,6 +538,7 @@ export const localization = {
     "About Project": "Про Проект",
     Correct: "Вірно",
     "Full Screen": "Повний Екран",
+    Start: "Старт",
     "Exit Fullscreen Mode": "Вийти З Повноекранного Режиму",
     Incorrect: "Невірно",
     "Difficulty: Normal": "Складність: Середня",
@@ -1245,7 +1246,7 @@ export const localization = {
       "Guess the country's flag from the suggested country name.",
     "Guess the country's name from the suggested country flag image.":
       "Guess the country's name from the suggested country flag image.",
-      "Guess the country's name from the suggested country on a map.":
+    "Guess the country's name from the suggested country on a map.":
       "Guess the country's name from the suggested country on a map.",
     "Guess the country's capital from the suggested country flag image.":
       "Guess the country's capital from the suggested country flag image.",
@@ -1286,6 +1287,7 @@ export const localization = {
     Close: "Close",
     "Full Screen": "Full Screen",
     "Exit Fullscreen Mode": "Exit Fullscreen Mode",
+    Start: "Start",
     MENU: "MENU",
     "DO NOT KNOW ANSWER": "DO NOT KNOW ANSWER",
     "DO NOT KNOW": "DO NOT KNOW",

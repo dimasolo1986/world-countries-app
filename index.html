@@ -731,7 +731,7 @@
                 >Time's Up!</span
               >
               <br />
-              <div class="question-country-container">
+              <div class="question-country-container not-displayed">
                 <span class="question-country"></span>
                 <div
                   id="question-country-on-map"
@@ -755,7 +755,28 @@
             <section class="wrapper">
               <div class="container-fostrap">
                 <div class="content">
-                  <div class="container">
+                  <div class="container" id="start-quiz-container">
+                    <div class="row">
+                      <div class="col-xs-12 col-sm-12 column">
+                        <div
+                          class="card country-option"
+                          style="
+                            margin-top: 35px;
+                            background-color: #dc3545;
+                            color: white;
+                            cursor: pointer;
+                            width: 50%;
+                            line-height: 10vh;
+                            height: 10vh;
+                          "
+                          id="start-quiz"
+                        >
+                          Start
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                  <div class="container not-displayed" id="quiz-container">
                     <div class="row">
                       <div class="col-xs-6 col-sm-6 column">
                         <div class="card">

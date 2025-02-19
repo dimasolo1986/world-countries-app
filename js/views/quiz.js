@@ -21,6 +21,9 @@ class Quiz {
   _quizElement = document.querySelector("#quiz");
   _quizResultModalLabel = document.querySelector("#quizModalResultLabel");
   _quizResultModalButton = document.querySelector("#quizResultCloseButton");
+  _quizStartContainer = document.querySelector("#start-quiz-container");
+  _quizStartCard = document.querySelector("#start-quiz");
+  _quizContainer = document.querySelector("#quiz-container");
   _quizResultScoreName = document.querySelector(".score-name-result");
   _quizResultScore = document.querySelector(".score-result");
   _quizResultScorePoints = document.querySelector(".score-result-points");
@@ -37,6 +40,9 @@ class Quiz {
   _quizHeading = document.querySelector(".heading");
   _questionContainer = document.querySelector(".question-container");
   _questionCountry = document.querySelector(".question-country");
+  _questionCountryContainer = document.querySelector(
+    ".question-country-container"
+  );
   _questionImgCountry = document.querySelector(".question-img-country");
   _questionMapCountry = document.querySelector(".question-country-on-map");
   _questionDelimeterElement = document.querySelector(".question-delimeter");
@@ -51,7 +57,7 @@ class Quiz {
   _returnToMap = document.querySelector(".return");
   _scoreElement = document.querySelector(".score-name");
   _scoreValue = document.querySelector(".score");
-  _cardOptionsElements = document.querySelectorAll(".card");
+  _cardOptionsElements = document.querySelectorAll("#quiz-container .card");
   _correctIncorrectQuizAnswer = document.querySelector(
     ".correct-incorrect-quiz"
   );
@@ -74,11 +80,56 @@ class Quiz {
   _startQuizListenerAdded = false;
   _doNotKnowAnswerAdded = false;
   _countriesSelectorListenerAdded = false;
+  _startQuizCardListenerAdded = false;
 
   _countriesMap;
   _countryBoundary;
 
   _quizType;
+
+  startQuiz(
+    quizId,
+    mapView,
+    statisticView,
+    sideNavigationView,
+    topNavigationView,
+    countriesSelectView
+  ) {
+    const startQuizCard = function () {
+      this._quizStartContainer.classList.add("not-displayed");
+      this._quizContainer.classList.remove("not-displayed");
+      this._questionCountryContainer.classList.remove("not-displayed");
+      if (this._quizType === COUNTRY_NAME_BY_COUNTRY_ON_MAP)
+        this._quizHeading.classList.add("not-displayed");
+      this.showQuiz();
+      this.createCountryOnMapQuizMap();
+      this._countriesMap.invalidateSize();
+      this.selectRandomCountries();
+      this.renderCountryQuestion();
+      this.renderCountryCards();
+      this.initTimer();
+      this._timerId = setInterval(this.timerCountDown.bind(this), 1000);
+    };
+    this._countriesSelector.value = "Difficulty: Normal";
+    this._quizStartContainer.classList.remove("not-displayed");
+    this._quizContainer.classList.add("not-displayed");
+    this._questionCountryContainer.classList.add("not-displayed");
+    this.initQuiz(
+      quizId,
+      mapView,
+      statisticView,
+      sideNavigationView,
+      topNavigationView,
+      countriesSelectView
+    );
+    if (this._quizType === COUNTRY_NAME_BY_COUNTRY_ON_MAP)
+      this._quizHeading.classList.remove("not-displayed");
+    this.initTimer();
+    if (!this._startQuizCardListenerAdded) {
+      this._quizStartCard.addEventListener("click", startQuizCard.bind(this));
+      this._startQuizCardListenerAdded = true;
+    }
+  }
 
   initQuiz(
     quizId,
@@ -91,7 +142,6 @@ class Quiz {
     this._statisticView = statisticView;
     this._quizType = quizId;
     mapView.hideMap();
-    this._countriesSelector.value = "Difficulty: Normal";
     this.clearQuiz();
     this.showQuiz();
     this.returnToMapButtonHandler(
@@ -100,19 +150,12 @@ class Quiz {
       topNavigationView,
       countriesSelectView
     );
-    this.createCountryOnMapQuizMap();
-    this._countriesMap.invalidateSize();
     this.countriesSelectHandler();
     this.finishQuizHandler();
     this.nextButtonHandler();
     this.doNotKnowAnswerHandler();
     this.startQuizHandler();
-    this.selectRandomCountries();
-    this.renderCountryQuestion();
-    this.renderCountryCards();
     this.addCardClickHandler();
-    this.initTimer();
-    this._timerId = setInterval(this.timerCountDown.bind(this), 1000);
   }
 
   createCountryOnMapQuizMap() {
@@ -176,18 +219,25 @@ class Quiz {
 
   countriesSelectHandler() {
     const countriesSelector = function () {
-      this.clearQuiz();
-      this.selectRandomCountries();
-      this.renderCountryQuestion();
-      this.renderCountryCards();
-      this.initTimer();
-      this._timerId = setInterval(this.timerCountDown.bind(this), 1000);
+      if (this._quizStartContainer.classList.contains("not-displayed")) {
+        this.clearQuiz();
+        this.selectRandomCountries();
+        this.renderCountryQuestion();
+        this.renderCountryCards();
+        this.initTimer();
+        this._timerId = setInterval(this.timerCountDown.bind(this), 1000);
+      } else {
+        this.clearQuiz();
+        if (this._quizType === COUNTRY_NAME_BY_COUNTRY_ON_MAP)
+          this._quizHeading.classList.remove("not-displayed");
+      }
     };
     if (!this._countriesSelectorListenerAdded) {
       this._countriesSelector.addEventListener(
         "change",
         countriesSelector.bind(this)
       );
+      this._countriesSelectorListenerAdded = true;
     }
   }
 
@@ -211,6 +261,7 @@ class Quiz {
     };
     if (!this._startQuizListenerAdded) {
       this._startQuiz.addEventListener("click", startQuiz.bind(this));
+      this._startQuizListenerAdded = true;
     }
   }
 
@@ -934,7 +985,10 @@ class Quiz {
         ? this._questionCountrySelected.flags.png
         : this._questionCountrySelected.flags.svg;
     }
-    if (this._quizType === COUNTRY_NAME_BY_COUNTRY_ON_MAP) {
+    if (
+      this._quizType === COUNTRY_NAME_BY_COUNTRY_ON_MAP &&
+      this._countriesMap
+    ) {
       const countryBound = COUNTRY_BOUNDS.find(
         (bound) => this._questionCountrySelected.name.common === bound.name
       );
@@ -1198,6 +1252,9 @@ class Quiz {
     }`;
     this._quizResultRightAnswersText.textContent = `${
       localization[model.worldCountries.language]["CORRECT ANSWERS:"]
+    }`;
+    this._quizStartCard.textContent = `${
+      localization[model.worldCountries.language]["Start"]
     }`;
     this._quizResultAnsweredOutOf.textContent = `${
       localization[model.worldCountries.language]["of"]

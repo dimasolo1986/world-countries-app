@@ -130,7 +130,7 @@ const loadQuiz = function (quizId) {
     );
   } else {
     mapQuiz.hideQuiz();
-    quiz.initQuiz(
+    quiz.startQuiz(
       quizId,
       mapView,
       statisticView,
