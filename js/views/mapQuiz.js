@@ -77,7 +77,6 @@ class MapQuiz {
     this.createCountries();
     this.createMap(GEOGRAPHICAL_CENTER);
     this.invalidateSize();
-    this._map.fitBounds(WORLD_MAP_BOUNDS);
     this.selectRandomCountry();
     this.renderCountryQuestion();
     this.returnToMapButtonHandler(
@@ -380,6 +379,7 @@ class MapQuiz {
         collapsedHeight: 25,
       });
       miniMap.addTo(this._map);
+      this._map.fitBounds(WORLD_MAP_BOUNDS);
       this.addCountryBoundaries();
       this.resetTranslateHandler();
     }
