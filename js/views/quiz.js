@@ -23,6 +23,9 @@ class Quiz {
   _quizResultModalButton = document.querySelector("#quizResultCloseButton");
   _quizStartContainer = document.querySelector("#start-quiz-container");
   _quizStartCard = document.querySelector("#start-quiz");
+  _quizReturnToWorldMapButton = document.querySelector(
+    "#return-to-world-map-quiz"
+  );
   _quizContainer = document.querySelector("#quiz-container");
   _quizResultScoreName = document.querySelector(".score-name-result");
   _quizResultScore = document.querySelector(".score-result");
@@ -81,6 +84,7 @@ class Quiz {
   _doNotKnowAnswerAdded = false;
   _countriesSelectorListenerAdded = false;
   _startQuizCardListenerAdded = false;
+  _returnToWorldMapOnStartListenerAdded = false;
 
   _countriesMap;
   _countryBoundary;
@@ -95,6 +99,15 @@ class Quiz {
     topNavigationView,
     countriesSelectView
   ) {
+    const returnToWorldMap = function () {
+      this.returnToMap(
+        mapView,
+        sideNavigationView,
+        topNavigationView,
+        countriesSelectView,
+        false
+      );
+    };
     const startQuizCard = function () {
       this._quizStartContainer.classList.add("not-displayed");
       this._quizContainer.classList.remove("not-displayed");
@@ -128,6 +141,13 @@ class Quiz {
     if (!this._startQuizCardListenerAdded) {
       this._quizStartCard.addEventListener("click", startQuizCard.bind(this));
       this._startQuizCardListenerAdded = true;
+    }
+    if (!this._returnToWorldMapOnStartListenerAdded) {
+      this._quizReturnToWorldMapButton.addEventListener(
+        "click",
+        returnToWorldMap.bind(this)
+      );
+      this._returnToWorldMapOnStartListenerAdded = true;
     }
   }
 
@@ -1036,12 +1056,14 @@ class Quiz {
     mapView,
     sideNavigationView,
     topNavigationView,
-    countriesSelectView
+    countriesSelectView,
+    useConfirm
   ) {
     if (
-      this._finishQuiz.disabled === true &&
-      +this._questionCurrentNumber.textContent ===
-        +this._questionsAllNumber.textContent
+      (this._finishQuiz.disabled === true &&
+        +this._questionCurrentNumber.textContent ===
+          +this._questionsAllNumber.textContent) ||
+      !useConfirm
     ) {
       this.hideQuiz();
       mapView.setMapViewToBounds(WORLD_MAP_BOUNDS);
@@ -1089,7 +1111,8 @@ class Quiz {
           mapView,
           sideNavigationView,
           topNavigationView,
-          countriesSelectView
+          countriesSelectView,
+          true
         )
       );
       this._returnToMapListenerAdded = true;
@@ -1109,6 +1132,9 @@ class Quiz {
     }`;
     this._finishQuiz.textContent = `${
       localization[model.worldCountries.language]["FINISH"]
+    }`;
+    this._quizReturnToWorldMapButton.textContent = `${
+      localization[model.worldCountries.language]["RETURN TO WORLD MAP"]
     }`;
     this._startQuiz.textContent = `${
       localization[model.worldCountries.language]["START AGAIN"]
@@ -1254,7 +1280,7 @@ class Quiz {
       localization[model.worldCountries.language]["CORRECT ANSWERS:"]
     }`;
     this._quizStartCard.textContent = `${
-      localization[model.worldCountries.language]["Start"]
+      localization[model.worldCountries.language]["START"]
     }`;
     this._quizResultAnsweredOutOf.textContent = `${
       localization[model.worldCountries.language]["of"]
