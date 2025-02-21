@@ -76,6 +76,7 @@ class MapQuiz {
     this.resetCountryBoundaries();
     this.createCountries();
     this.createMap(GEOGRAPHICAL_CENTER);
+    this._map.fitBounds(WORLD_MAP_BOUNDS);
     this.invalidateSize();
     this.selectRandomCountry();
     this.renderCountryQuestion();
@@ -370,6 +371,7 @@ class MapQuiz {
         }
       );
       this._addResetZoomToMap();
+      this._map.fitBounds(WORLD_MAP_BOUNDS);
       const miniMap = new L.Control.MiniMap(miniLayer, {
         position: "topright",
         toggleDisplay: true,
@@ -379,7 +381,6 @@ class MapQuiz {
         collapsedHeight: 25,
       });
       miniMap.addTo(this._map);
-      this._map.fitBounds(WORLD_MAP_BOUNDS);
       this.addCountryBoundaries();
       this.resetTranslateHandler();
     }
