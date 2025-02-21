@@ -189,6 +189,22 @@ class Quiz {
         "https://server.arcgisonline.com/ArcGIS/rest/services/World_Physical_Map/MapServer/tile/{z}/{y}/{x}"
       ).addTo(this._countriesMap);
       this._countriesMap.invalidateSize();
+      model.worldCountries.countries.forEach((country) => {
+        const countryCode = country.cca2;
+        if (countryCode) {
+          const countryGeo = {};
+          countryGeo.type = COUNTRIES_GEO.type;
+          countryGeo.features = COUNTRIES_GEO.features.filter(
+            (feature) => feature.properties.country_a2 === countryCode
+          );
+          L.geoJson(countryGeo, {
+            style: {
+              weight: 1,
+              color: "grey",
+            },
+          }).addTo(this._countriesMap);
+        }
+      });
     }
   }
 
