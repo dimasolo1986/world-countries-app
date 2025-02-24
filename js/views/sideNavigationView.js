@@ -299,6 +299,7 @@ class sideNavigationView {
           "selected-side-navigation-country-container"
         );
         this._selectedCountry = undefined;
+        mapView.setIsCountrySelected(false);
         mapView.removeCapitalMarker();
         mapView.removeCountryBoundary();
         mapView.closeAllPopup();
@@ -313,6 +314,7 @@ class sideNavigationView {
             "selected-side-navigation-country-container"
           );
           this._selectedCountry = country;
+          mapView.setIsCountrySelected(true);
           const countryBound = COUNTRY_BOUNDS.find(
             (bound) => country.name.common === bound.name
           );

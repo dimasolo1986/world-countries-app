@@ -27,6 +27,7 @@ class mapView {
   _developmentPlaceMarker;
   _countryBoundary;
   _markers = [];
+  _isCountrySelected;
 
   constructor() {
     this._createMap(GEOGRAPHICAL_CENTER);
@@ -435,6 +436,10 @@ class mapView {
     }
   }
 
+  setIsCountrySelected(isSelected) {
+    this._isCountrySelected = isSelected;
+  }
+
   renderCountriesMarkers(worldCountries) {
     this._removeAllMarkersFromMap();
     worldCountries.forEach((country) => {
@@ -544,32 +549,48 @@ class mapView {
       marker.on("mouseover", function () {
         if (!this.isPopupOpen()) this.openTooltip();
       });
+      marker.on(
+        "mouseover",
+        addCountryBoundary.bind(this, country, "mouse", false)
+      );
+      marker.on("mouseout", removeCountryBoundary.bind(this, "mouse"));
       marker.on("click", function () {
         this.closeTooltip();
       });
-      marker.on("click", addCountryBoundary.bind(this, country));
-      function addCountryBoundary(country) {
-        this.removeCountryBoundary();
-        this.removeCapitalMarker();
-        this.addCountryBoundary(country);
-        const sideNavigationCountries = document.querySelector(
-          ".sb-sidenav-menu .nav"
-        );
-        if (sideNavigationCountries) {
-          sideNavigationCountries.childNodes.forEach((child) => {
-            if (country.name.common === child.dataset.country) {
-              this._sideNavigationView._selectedCountry = country;
-              child.classList.add("selected-side-navigation-country-container");
-              child.scrollIntoView();
-            } else {
-              child.classList.remove(
-                "selected-side-navigation-country-container"
-              );
+      marker.on(
+        "click",
+        addCountryBoundary.bind(this, country, "marker", true)
+      );
+      function addCountryBoundary(country, type, isCountrySelected) {
+        if (!this._isCountrySelected || type === "marker") {
+          this.removeCountryBoundary();
+          this.removeCapitalMarker();
+          this.addCountryBoundary(country);
+          const sideNavigationCountries = document.querySelector(
+            ".sb-sidenav-menu .nav"
+          );
+          if (sideNavigationCountries) {
+            if (type !== "mouse") {
+              sideNavigationCountries.childNodes.forEach((child) => {
+                if (country.name.common === child.dataset.country) {
+                  this._sideNavigationView._selectedCountry = country;
+                  child.classList.add(
+                    "selected-side-navigation-country-container"
+                  );
+                  child.scrollIntoView();
+                } else {
+                  child.classList.remove(
+                    "selected-side-navigation-country-container"
+                  );
+                }
+              });
             }
-          });
+          }
+          this._isCountrySelected = isCountrySelected;
         }
       }
-      function removeCountryBoundary() {
+      function removeCountryBoundary(type) {
+        if (type === "mouse" && this._isCountrySelected) return;
         const sideNavigationCountries = document.querySelector(
           ".sb-sidenav-menu .nav"
         );
@@ -584,8 +605,9 @@ class mapView {
         this.removeCountryBoundary();
         this.removeCapitalMarker();
         this._sideNavigationView._parentElement.firstElementChild.scrollIntoView();
+        if (type === "map") this._isCountrySelected = false;
       }
-      this._map.on("click", removeCountryBoundary.bind(this));
+      this._map.on("click", removeCountryBoundary.bind(this, "map"));
       this._markers.push(marker);
     });
   }
