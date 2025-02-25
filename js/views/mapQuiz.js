@@ -413,7 +413,13 @@ class MapQuiz {
     if (this._countryMarker) this._map.removeLayer(this._countryMarker);
     this._countryBondaries.forEach((item) => {
       item.resetStyle();
-      item.setStyle({ weight: 2, fillColor: "#3388ff", fillOpacity: 0.3 });
+      item.setStyle({
+        weight: 2,
+        fillColor: "#3388ff",
+        fillOpacity: 0.2,
+        opacity: 1,
+      });
+      item.bringToBack();
     });
   }
 
@@ -445,9 +451,13 @@ class MapQuiz {
           context._correctIncorrectQuizAnswer.style.color = "white";
           context._correctIncorrectQuizAnswer.style.backgroundColor = "green";
           countryBoundary.setStyle({
+            weight: 3,
+            color: "green",
             fillColor: "green",
-            fillOpacity: 0.8,
+            fillOpacity: 0.5,
+            opacity: 0.8,
           });
+          countryBoundary.bringToFront();
           const countryCoordinates = context._country.latlng
             ? context._country.latlng
             : context._country.capitalInfo.latlng;
@@ -478,14 +488,22 @@ class MapQuiz {
           );
           if (rightCountryBoundary) {
             rightCountryBoundary.setStyle({
+              weight: 3,
+              color: "green",
               fillColor: "green",
-              fillOpacity: 0.8,
+              fillOpacity: 0.5,
+              opacity: 0.8,
             });
+            rightCountryBoundary.bringToFront();
           }
           countryBoundary.setStyle({
+            weight: 3,
+            color: "red",
             fillColor: "red",
-            fillOpacity: 0.8,
+            fillOpacity: 0.5,
+            opacity: 0.8,
           });
+          countryBoundary.bringToFront();
           const countryCoordinates = context._country.latlng
             ? context._country.latlng
             : context._country.capitalInfo.latlng;
@@ -606,14 +624,41 @@ class MapQuiz {
           (feature) => feature.properties.country_a2 === countryCode
         );
         const countryBoundary = L.geoJson(countryGeo, {
-          style: { weight: 2, fillOpacity: 0.3, className: countryCode },
+          style: {
+            weight: 2,
+            fillOpacity: 0.2,
+            className: countryCode,
+            opacity: 1,
+          },
           onEachFeature: function (feature, countryBoundary) {
             countryBoundary.on("mouseover", function () {
-              this.setStyle({ weight: 5, className: countryCode });
+              mouseOver(this, context);
             });
+            const mouseOver = function (countryBoundary, context) {
+              if (!context._alreadyCountrySelected) {
+                countryBoundary.setStyle({
+                  weight: 4,
+                  fillOpacity: 0.5,
+                  opacity: 1,
+                  className: countryCode,
+                });
+                countryBoundary.bringToFront();
+              }
+            };
             countryBoundary.on("mouseout", function () {
-              this.setStyle({ weight: 2, className: countryCode });
+              mouseOut(this, context);
             });
+            const mouseOut = function (countryBoundary, context) {
+              if (!context._alreadyCountrySelected) {
+                countryBoundary.setStyle({
+                  weight: 2,
+                  fillOpacity: 0.2,
+                  opacity: 1,
+                  className: countryCode,
+                });
+                countryBoundary.bringToBack();
+              }
+            };
             countryBoundary.on("click", function () {
               addCountryBoundariesClickHandler(
                 context,
