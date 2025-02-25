@@ -353,6 +353,10 @@ class MapQuiz {
         worldCopyJump: true,
         zoomAnimation: true,
         zoomAnimationThreshold: 18,
+        maxBounds: [
+          [85.1217211716937, 265.48437500000003],
+          [-80.37146534864254, -185.27343750000003],
+        ],
       })
         .fitWorld()
         .setView(latLon, defaultZoomLevel);

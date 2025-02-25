@@ -182,6 +182,10 @@ class Quiz {
     if (!this._countriesMap) {
       this._countriesMap = L.map("question-country-on-map", {
         attributionControl: false,
+        zoomSnap: 0.25,
+        worldCopyJump: true,
+        zoomAnimation: true,
+        zoomAnimationThreshold: 2,
       })
         .fitWorld()
         .setView(GEOGRAPHICAL_CENTER);

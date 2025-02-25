@@ -48,6 +48,10 @@ class mapView {
       worldCopyJump: true,
       zoomAnimation: true,
       zoomAnimationThreshold: 2,
+      maxBounds: [
+        [85.1217211716937, 270.48437500000003],
+        [-86.37146534864254, -250.27343750000003],
+      ],
       fullscreenControl: true,
       fullscreenControlOptions: {
         position: "topleft",
