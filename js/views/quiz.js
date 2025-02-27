@@ -386,9 +386,9 @@ class Quiz {
     if (wordParts.length === 2) {
       element.style.fontSize = "1.5rem";
     } else if (wordParts.length > 2 && wordParts.length < 5) {
-      element.style.fontSize = "1.2rem";
+      element.style.fontSize = "1.1rem";
     } else if (wordParts.length >= 5) {
-      element.style.fontSize = "0.9rem";
+      element.style.fontSize = "0.8rem";
     } else {
       element.style.fontSize = "1.8rem";
     }
