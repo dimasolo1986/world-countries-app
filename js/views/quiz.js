@@ -352,15 +352,11 @@ class Quiz {
         this._quizType === COUNTRY_NAME_BY_COUNTRY_ON_MAP
       ) {
         const countryName = cardOption.querySelector(".country-option");
-        const countryNameParts =
-          localization[model.worldCountries.language]["countries"][
-            country.name.common
-          ].split(" ");
-        this.setFontSizeByWordLength(countryNameParts, countryName);
         countryName.textContent =
           localization[model.worldCountries.language]["countries"][
             country.name.common
           ];
+        this.resizeText({ element: countryName, step: 0.5 });
         countryName.dataset.country = country.name.common;
       }
       if (
@@ -368,31 +364,43 @@ class Quiz {
         this._quizType === COUNTRY_CAPITAL_BY_COUNTRY_NAME_QUIZ
       ) {
         const countryCapital = cardOption.querySelector(".country-option");
-        const countryCapitalParts =
-          localization[model.worldCountries.language]["capitals"][
-            country.capital[0]
-          ].split(" ");
-        this.setFontSizeByWordLength(countryCapitalParts, countryCapital);
         countryCapital.textContent =
           localization[model.worldCountries.language]["capitals"][
             country.capital[0]
           ];
+        this.resizeText({ element: countryCapital, step: 0.5 });
         countryCapital.dataset.country = country.name.common;
       }
     });
   }
 
-  setFontSizeByWordLength(wordParts, element) {
-    if (wordParts.length === 2) {
-      element.style.fontSize = "1.5rem";
-    } else if (wordParts.length > 2 && wordParts.length < 5) {
-      element.style.fontSize = "1.1rem";
-    } else if (wordParts.length >= 5) {
-      element.style.fontSize = "0.8rem";
-    } else {
-      element.style.fontSize = "1.8rem";
-    }
-  }
+  isTextOverflown = ({
+    clientWidth,
+    clientHeight,
+    scrollWidth,
+    scrollHeight,
+  }) => scrollWidth > clientWidth || scrollHeight > clientHeight;
+
+  resizeText = ({
+    element,
+    elements,
+    minSize = 10,
+    maxSize = 30,
+    step = 1,
+    unit = "px",
+  }) => {
+    (elements || [element]).forEach((el) => {
+      let i = minSize;
+      let overflow = false;
+      const parent = el.parentNode;
+      while (!overflow && i < maxSize) {
+        el.style.fontSize = `${i}${unit}`;
+        overflow = this.isTextOverflown(parent);
+        if (!overflow) i += step;
+      }
+      el.style.fontSize = `${i - step}${unit}`;
+    });
+  };
 
   cardHandler(flag, type) {
     let selectedAnswer;
