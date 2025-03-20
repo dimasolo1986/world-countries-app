@@ -42,7 +42,21 @@ class mapView {
   }
 
   _createMap(latLon, defaultZoomLevel = DEFAULT_ZOOM_LEVEL) {
+    const streetLayer = L.tileLayer(
+      "https://server.arcgisonline.com/ArcGIS/rest/services/World_Street_Map/MapServer/tile/{z}/{y}/{x}"
+    );
+    const siteliteLayer = L.tileLayer(
+      "https://tiles.stadiamaps.com/tiles/alidade_satellite/{z}/{x}/{y}{r}.{ext}",
+      {
+        ext: "jpg",
+      }
+    );
+    const baseMaps = {
+      Satellite: siteliteLayer,
+      WorldStreetMap: streetLayer,
+    };
     this._map = L.map("map", {
+      layers: [siteliteLayer, streetLayer],
       minZoom: DEFAULT_ZOOM_LEVEL,
       zoomSnap: 0.25,
       worldCopyJump: true,
@@ -63,11 +77,9 @@ class mapView {
     })
       .fitWorld()
       .setView(latLon, defaultZoomLevel);
-    L.tileLayer(
-      "https://server.arcgisonline.com/ArcGIS/rest/services/World_Street_Map/MapServer/tile/{z}/{y}/{x}"
-    ).addTo(this._map);
     this.addDevelopmentPlaceMarker();
     this._addResetZoomToMap();
+    L.control.layers(baseMaps).setPosition("topleft").addTo(this._map);
     L.control
       .bootstrapDropdowns({
         position: "topleft",
