@@ -46,10 +46,7 @@ class mapView {
       "https://server.arcgisonline.com/ArcGIS/rest/services/World_Street_Map/MapServer/tile/{z}/{y}/{x}"
     );
     const siteliteLayer = L.tileLayer(
-      "https://tiles.stadiamaps.com/tiles/alidade_satellite/{z}/{x}/{y}{r}.{ext}",
-      {
-        ext: "jpg",
-      }
+      "https://server.arcgisonline.com/ArcGIS/rest/services/World_Imagery/MapServer/tile/{z}/{y}/{x}"
     );
     const baseMaps = {
       Satellite: siteliteLayer,
