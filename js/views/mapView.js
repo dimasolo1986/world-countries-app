@@ -236,7 +236,7 @@ class mapView {
       height: 120,
       collapsedWidth: 25,
       collapsedHeight: 25,
-      minimized: false,
+      minimized: true,
     });
     L.control.mousePosition({ position: "topright" }).addTo(this._map);
     miniMap.addTo(this._map);
