@@ -74,11 +74,11 @@ class mapView {
       }
     );
     const baseMaps = {
-      Satellite: siteliteLayer,
       WorldStreetMap: streetLayer,
       NatGeoWorldMap: natGeoWorldMap,
       WorldTopoMap: worldTopoMap,
       OpenStreetMap: openStreetMap,
+      Satellite: siteliteLayer,
     };
     this._map = L.map("map", {
       layers: [streetLayer],
