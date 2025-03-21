@@ -57,7 +57,7 @@ class mapView {
       WorldStreetMap: streetLayer,
     };
     this._map = L.map("map", {
-      layers: [siteliteLayer, streetLayer],
+      layers: [streetLayer],
       minZoom: DEFAULT_ZOOM_LEVEL,
       zoomSnap: 0.25,
       worldCopyJump: true,
