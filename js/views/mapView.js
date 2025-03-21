@@ -253,10 +253,13 @@ class mapView {
         resetZoom.style.textDecoration = "none";
         resetZoom.style.background = "white";
         resetZoom.style.color = "black";
-        resetZoom.style.border = "2px solid rgba(0,0,0,0.1)";
+        resetZoom.style.border = "2px solid rgba(0,0,0,0.2)";
+        resetZoom.style.backgroundClip = "padding-box";
         resetZoom.style.borderRadius = "2px";
-        resetZoom.style.padding = "3px";
+        resetZoom.style.padding = "1px";
         resetZoom.style.fontSize = "0.7rem";
+        resetZoom.style.width = "48px";
+        resetZoom.style.textAlign = "center";
         L.DomEvent.disableClickPropagation(resetZoom).addListener(
           resetZoom,
           "click",
