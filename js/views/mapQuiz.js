@@ -726,6 +726,7 @@ class MapQuiz {
         resetZoom.style.borderRadius = "2px";
         resetZoom.style.padding = "1px";
         resetZoom.style.fontSize = "0.7rem";
+        resetZoom.style.backgroundClip = "padding-box";
         L.DomEvent.disableClickPropagation(resetZoom).addListener(
           resetZoom,
           "click",
