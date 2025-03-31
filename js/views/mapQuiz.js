@@ -347,7 +347,46 @@ class MapQuiz {
 
   createMap(latLon, defaultZoomLevel = 1.2) {
     if (!this._map) {
+      function centerMap(e) {
+        this._map.panTo(e.latlng);
+      }
+      function zoomIn() {
+        this._map.zoomIn();
+      }
+
+      function zoomOut() {
+        this._map.zoomOut();
+      }
+      function reset() {
+        this._map.fitBounds(WORLD_MAP_BOUNDS);
+      }
       this._map = L.map("mapCountriesQuiz", {
+        contextmenu: true,
+        contextmenuItems: [
+          {
+            text: localization[model.worldCountries.language][
+              "Center Map Here"
+            ],
+            callback: centerMap,
+            context: this,
+          },
+          "-",
+          {
+            text: localization[model.worldCountries.language]["Zoom In"],
+            callback: zoomIn,
+            context: this,
+          },
+          {
+            text: localization[model.worldCountries.language]["Zoom Out"],
+            callback: zoomOut,
+            context: this,
+          },
+          {
+            text: localization[model.worldCountries.language]["Reset"],
+            callback: reset,
+            context: this,
+          },
+        ],
         minZoom: defaultZoomLevel,
         zoomSnap: 0.25,
         worldCopyJump: true,
@@ -750,6 +789,19 @@ class MapQuiz {
   }
 
   translateElements() {
+    const contextMenuItems = document.querySelectorAll(
+      ".leaflet-contextmenu-item"
+    );
+    if (contextMenuItems.length > 5) {
+      contextMenuItems[5].textContent =
+        localization[model.worldCountries.language]["Center Map Here"];
+      contextMenuItems[6].textContent =
+        localization[model.worldCountries.language]["Zoom In"];
+      contextMenuItems[7].textContent =
+        localization[model.worldCountries.language]["Zoom Out"];
+      contextMenuItems[8].textContent =
+        localization[model.worldCountries.language]["Reset"];
+    }
     this._correctIncorrectQuizAnswer.classList.add("not-displayed");
     const resetZoom = document.querySelector(".reset-zoom-map-quiz");
     if (resetZoom) {
