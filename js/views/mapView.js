@@ -19,6 +19,7 @@ import * as model from "../model.js";
 
 class mapView {
   _parentElement = document.querySelector("#map");
+  _notification;
   _sideNavigationView;
   _topNavigationView;
   _errorMessage = "Failed to load map!";
@@ -42,6 +43,35 @@ class mapView {
   }
 
   _createMap(latLon, defaultZoomLevel = DEFAULT_ZOOM_LEVEL) {
+    function centerMap(e) {
+      this._map.panTo(e.latlng);
+    }
+    function showCoordinates(e) {
+      this._notification = L.control
+        .notifications({
+          timeout: 20000,
+          position: "topleft",
+          closable: true,
+          dismissable: true,
+        })
+        .addTo(this._map);
+      this._notification.info(
+        localization[model.worldCountries.language]["Coordinates"],
+        `${localization[model.worldCountries.language]["Latitude"]}, ${
+          localization[model.worldCountries.language]["Longitude"]
+        }: ${e.latlng.lat.toFixed(5)}, ${e.latlng.lng.toFixed(5)}`
+      );
+    }
+    function zoomIn() {
+      this._map.zoomIn();
+    }
+
+    function zoomOut() {
+      this._map.zoomOut();
+    }
+    function reset() {
+      this._map.fitBounds(WORLD_MAP_BOUNDS);
+    }
     const streetLayer = L.tileLayer(
       "https://server.arcgisonline.com/ArcGIS/rest/services/World_Street_Map/MapServer/tile/{z}/{y}/{x}"
     );
@@ -81,6 +111,36 @@ class mapView {
       Satellite: siteliteLayer,
     };
     this._map = L.map("map", {
+      contextmenu: true,
+      contextmenuItems: [
+        {
+          text: localization[model.worldCountries.language]["Show Coordinates"],
+          callback: showCoordinates,
+          context: this,
+        },
+        "-",
+        {
+          text: localization[model.worldCountries.language]["Center Map Here"],
+          callback: centerMap,
+          context: this,
+        },
+        "-",
+        {
+          text: localization[model.worldCountries.language]["Zoom In"],
+          callback: zoomIn,
+          context: this,
+        },
+        {
+          text: localization[model.worldCountries.language]["Zoom Out"],
+          callback: zoomOut,
+          context: this,
+        },
+        {
+          text: localization[model.worldCountries.language]["Reset"],
+          callback: reset,
+          context: this,
+        },
+      ],
       layers: [streetLayer],
       minZoom: DEFAULT_ZOOM_LEVEL,
       zoomSnap: 0.25,
@@ -275,6 +335,21 @@ class mapView {
   }
 
   translateElements() {
+    const contextMenuItems = document.querySelectorAll(
+      ".leaflet-contextmenu-item"
+    );
+    if (contextMenuItems) {
+      contextMenuItems[0].textContent =
+        localization[model.worldCountries.language]["Show Coordinates"];
+      contextMenuItems[1].textContent =
+        localization[model.worldCountries.language]["Center Map Here"];
+      contextMenuItems[2].textContent =
+        localization[model.worldCountries.language]["Zoom In"];
+      contextMenuItems[3].textContent =
+        localization[model.worldCountries.language]["Zoom Out"];
+      contextMenuItems[4].textContent =
+        localization[model.worldCountries.language]["Reset"];
+    }
     const resetZoom = document.querySelector(".resetzoom");
     if (resetZoom) {
       resetZoom.textContent =
@@ -361,10 +436,16 @@ class mapView {
   clearMap() {
     this._map.remove();
     this._parentElement.innerHTML = "";
+    if (this._notification) {
+      this._notification.clear();
+    }
   }
 
   hideMap() {
     this._parentElement.classList.add("not-displayed");
+    if (this._notification) {
+      this._notification.clear();
+    }
   }
 
   showMap() {
