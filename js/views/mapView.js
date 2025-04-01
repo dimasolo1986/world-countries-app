@@ -167,7 +167,7 @@ class mapView {
       .fitWorld()
       .setView(latLon, defaultZoomLevel);
     const measureOptions = {
-      position: "topright",
+      position: "topleft",
       circleMarker: {
         color: "blue",
         radius: 2,
@@ -190,6 +190,7 @@ class mapView {
       },
     };
     this.addDevelopmentPlaceMarker();
+    this._measure = L.control.ruler(measureOptions).addTo(this._map);
     this._addResetZoomToMap();
     L.control.layers(baseMaps).setPosition("topleft").addTo(this._map);
     L.control
@@ -325,7 +326,6 @@ class mapView {
       minimized: true,
     });
     L.control.mousePosition({ position: "topright" }).addTo(this._map);
-    this._measure = L.control.ruler(measureOptions).addTo(this._map);
     miniMap.addTo(this._map);
   }
 
