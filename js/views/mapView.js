@@ -19,7 +19,7 @@ import * as model from "../model.js";
 
 class mapView {
   _parentElement = document.querySelector("#map");
-  _notification;
+  _notifications = [];
   _sideNavigationView;
   _topNavigationView;
   _errorMessage = "Failed to load map!";
@@ -47,15 +47,17 @@ class mapView {
       this._map.panTo(e.latlng);
     }
     function showCoordinates(e) {
-      this._notification = L.control
+      const notification = L.control
         .notifications({
           timeout: 20000,
           position: "topleft",
           closable: true,
           dismissable: true,
+          className: "modern",
         })
         .addTo(this._map);
-      this._notification.info(
+      this._notifications.push(notification);
+      notification.info(
         localization[model.worldCountries.language]["Coordinates"],
         `${localization[model.worldCountries.language]["Latitude"]}, ${
           localization[model.worldCountries.language]["Longitude"]
@@ -436,15 +438,17 @@ class mapView {
   clearMap() {
     this._map.remove();
     this._parentElement.innerHTML = "";
-    if (this._notification) {
-      this._notification.clear();
+    if (this._notifications) {
+      this._notifications.forEach((notification) => notification.clear());
+      this._notifications = [];
     }
   }
 
   hideMap() {
     this._parentElement.classList.add("not-displayed");
-    if (this._notification) {
-      this._notification.clear();
+    if (this._notifications) {
+      this._notifications.forEach((notification) => notification.clear());
+      this._notifications = [];
     }
   }
 
