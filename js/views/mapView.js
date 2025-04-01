@@ -165,6 +165,29 @@ class mapView {
     })
       .fitWorld()
       .setView(latLon, defaultZoomLevel);
+    const measureOptions = {
+      position: "topright",
+      circleMarker: {
+        color: "blue",
+        radius: 2,
+      },
+      lineStyle: {
+        color: "blue",
+        dashArray: "1,6",
+      },
+      lengthUnit: {
+        display: "km",
+        decimal: 2,
+        factor: null,
+        label: "&#10137; ",
+      },
+      angleUnit: {
+        display: "&deg;",
+        decimal: 2,
+        factor: null,
+        label: "&#10138; ",
+      },
+    };
     this.addDevelopmentPlaceMarker();
     this._addResetZoomToMap();
     L.control.layers(baseMaps).setPosition("topleft").addTo(this._map);
@@ -301,6 +324,7 @@ class mapView {
       minimized: true,
     });
     L.control.mousePosition({ position: "topright" }).addTo(this._map);
+    L.control.ruler(measureOptions).addTo(this._map);
     miniMap.addTo(this._map);
   }
 

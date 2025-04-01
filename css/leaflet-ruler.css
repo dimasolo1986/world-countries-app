@@ -1,0 +1,41 @@
+.leaflet-ruler {
+  height: 35px;
+  width: 35px;
+  background-image: url("../assets/img/measure.png");
+  background-repeat: no-repeat;
+  background-position: center;
+}
+.leaflet-ruler:hover {
+  background-image: url("../assets/img/measure-colored.png");
+}
+.leaflet-ruler-clicked {
+  height: 35px;
+  width: 35px;
+  background-repeat: no-repeat;
+  background-position: center;
+  background-image: url("../assets/img/measure-colored.png");
+  border-color: blue !important;
+}
+.leaflet-bar {
+  background-color: #ffffff;
+}
+.leaflet-control {
+  cursor: pointer;
+}
+.result-tooltip {
+  background-color: white;
+  border-width: medium;
+  border-color: blue;
+  font-size: smaller;
+}
+.moving-tooltip {
+  background-color: rgba(255, 255, 255, 0.7);
+  background-clip: padding-box;
+  opacity: 0.5;
+  border: dotted;
+  border-color: blue;
+  font-size: smaller;
+}
+.plus-length {
+  padding-left: 45px;
+}
