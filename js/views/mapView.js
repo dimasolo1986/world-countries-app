@@ -20,6 +20,7 @@ import * as model from "../model.js";
 class mapView {
   _parentElement = document.querySelector("#map");
   _notifications = [];
+  _measure;
   _sideNavigationView;
   _topNavigationView;
   _errorMessage = "Failed to load map!";
@@ -324,7 +325,7 @@ class mapView {
       minimized: true,
     });
     L.control.mousePosition({ position: "topright" }).addTo(this._map);
-    L.control.ruler(measureOptions).addTo(this._map);
+    this._measure = L.control.ruler(measureOptions).addTo(this._map);
     miniMap.addTo(this._map);
   }
 
@@ -466,6 +467,9 @@ class mapView {
       this._notifications.forEach((notification) => notification.clear());
       this._notifications = [];
     }
+    if (this._measure) {
+      this._measure.clear();
+    }
   }
 
   hideMap() {
@@ -473,6 +477,9 @@ class mapView {
     if (this._notifications) {
       this._notifications.forEach((notification) => notification.clear());
       this._notifications = [];
+    }
+    if (this._measure) {
+      this._measure.clear();
     }
   }
 
