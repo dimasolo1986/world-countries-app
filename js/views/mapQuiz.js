@@ -392,6 +392,15 @@ class MapQuiz {
         worldCopyJump: true,
         zoomAnimation: true,
         zoomAnimationThreshold: 18,
+        fullscreenControl: true,
+        fullscreenControlOptions: {
+          position: "topleft",
+          title: "Full Screen",
+          titleCancel: "Exit Fullscreen Mode",
+          forceSeparateButton: false,
+          forcePseudoFullscreen: true,
+          addFullScreen: false,
+        },
         maxBounds: [
           [85.1217211716937, 265.48437500000003],
           [-80.37146534864254, -185.27343750000003],
@@ -413,7 +422,6 @@ class MapQuiz {
           maxZoom: 8,
         }
       );
-      this._addResetZoomToMap();
       this._map.fitBounds(WORLD_MAP_BOUNDS);
       const miniMap = new L.Control.MiniMap(miniLayer, {
         position: "topright",
@@ -422,21 +430,11 @@ class MapQuiz {
         height: 120,
         collapsedWidth: 25,
         collapsedHeight: 25,
+        minimized: true,
       });
       miniMap.addTo(this._map);
       this.addCountryBoundaries();
-      this.resetTranslateHandler();
     }
-  }
-
-  resetTranslateHandler() {
-    window.addEventListener("DOMContentLoaded", () => {
-      const resetZoom = document.querySelector(".reset-zoom-map-quiz");
-      if (resetZoom) {
-        resetZoom.textContent =
-          localization[model.worldCountries.language]["Reset"];
-      }
-    });
   }
 
   selectRandomCountry() {
@@ -750,36 +748,6 @@ class MapQuiz {
     this._countryBondaries.forEach((item) => this._map.removeLayer(item));
   }
 
-  _addResetZoomToMap() {
-    (function () {
-      const control = new L.Control({ position: "topleft" });
-      control.onAdd = function (map) {
-        const resetZoom = L.DomUtil.create("a", "reset-zoom-map-quiz");
-        resetZoom.innerHTML =
-          localization[model.worldCountries.language]["Reset"];
-        resetZoom.style.cursor = "pointer";
-        resetZoom.style.textDecoration = "none";
-        resetZoom.style.background = "white";
-        resetZoom.style.color = "black";
-        resetZoom.style.border = "2px solid rgba(0,0,0,0.2)";
-        resetZoom.style.borderRadius = "2px";
-        resetZoom.style.padding = "1px";
-        resetZoom.style.fontSize = "0.7rem";
-        resetZoom.style.backgroundClip = "padding-box";
-        L.DomEvent.disableClickPropagation(resetZoom).addListener(
-          resetZoom,
-          "click",
-          function () {
-            map.fitBounds(WORLD_MAP_BOUNDS);
-          },
-          resetZoom
-        );
-        return resetZoom;
-      };
-      return control;
-    })().addTo(this._map);
-  }
-
   showQuiz() {
     this._quizElement.classList.remove("not-displayed");
   }
@@ -803,11 +771,6 @@ class MapQuiz {
         localization[model.worldCountries.language]["Reset"];
     }
     this._correctIncorrectQuizAnswer.classList.add("not-displayed");
-    const resetZoom = document.querySelector(".reset-zoom-map-quiz");
-    if (resetZoom) {
-      resetZoom.textContent =
-        localization[model.worldCountries.language]["Reset"];
-    }
     this._quizHeading.textContent = `${
       localization[model.worldCountries.language]["Guess Country On Map"]
     }`;

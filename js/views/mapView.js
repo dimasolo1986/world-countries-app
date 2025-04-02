@@ -190,7 +190,6 @@ class mapView {
       },
     };
     this.addDevelopmentPlaceMarker();
-    this._addResetZoomToMap();
     this._measure = L.control.ruler(measureOptions).addTo(this._map);
     L.control.layers(baseMaps).setPosition("topleft").addTo(this._map);
     L.control
@@ -329,38 +328,6 @@ class mapView {
     miniMap.addTo(this._map);
   }
 
-  _addResetZoomToMap() {
-    (function () {
-      const control = new L.Control({ position: "topleft" });
-      control.onAdd = function (map) {
-        const resetZoom = L.DomUtil.create("a", "resetzoom");
-        resetZoom.innerHTML =
-          localization[model.worldCountries.language]["Reset"];
-        resetZoom.style.cursor = "pointer";
-        resetZoom.style.textDecoration = "none";
-        resetZoom.style.background = "white";
-        resetZoom.style.color = "black";
-        resetZoom.style.border = "2px solid rgba(0,0,0,0.2)";
-        resetZoom.style.backgroundClip = "padding-box";
-        resetZoom.style.borderRadius = "2px";
-        resetZoom.style.padding = "1px";
-        resetZoom.style.fontSize = "0.7rem";
-        resetZoom.style.width = "48px";
-        resetZoom.style.textAlign = "center";
-        L.DomEvent.disableClickPropagation(resetZoom).addListener(
-          resetZoom,
-          "click",
-          function () {
-            map.fitBounds(WORLD_MAP_BOUNDS);
-          },
-          resetZoom
-        );
-        return resetZoom;
-      };
-      return control;
-    })().addTo(this._map);
-  }
-
   translateElements() {
     const contextMenuItems = document.querySelectorAll(
       ".leaflet-contextmenu-item"
@@ -375,11 +342,6 @@ class mapView {
       contextMenuItems[3].textContent =
         localization[model.worldCountries.language]["Zoom Out"];
       contextMenuItems[4].textContent =
-        localization[model.worldCountries.language]["Reset"];
-    }
-    const resetZoom = document.querySelector(".resetzoom");
-    if (resetZoom) {
-      resetZoom.textContent =
         localization[model.worldCountries.language]["Reset"];
     }
     const countryOnMapQuiz = document.querySelector(

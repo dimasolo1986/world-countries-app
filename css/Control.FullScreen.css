@@ -3,6 +3,10 @@
   background-size: 26px 52px;
 }
 
+.leaflet-control-zoom-reset {
+  background-image: url("../assets/img/zoom-to-start.png");
+}
+
 .fullscreen-icon.leaflet-fullscreen-on {
   background-position: 0 -26px;
 }
