@@ -176,6 +176,7 @@ const languageSelectHandler = function (language) {
   sortData(model.worldCountries.countries);
   sortData(model.worldCountries.selectedCountries);
   translateAllElements();
+  sideNavigationView._selectedCountry = undefined;
   renderAll();
 };
 
