@@ -215,9 +215,11 @@
       }
     },
     clear: function () {
-      this._closePath();
-      this._choice = true;
-      this._toggleMeasure();
+      if (this.isActive()) {
+        this._closePath();
+        this._choice = true;
+        this._toggleMeasure();
+      }
     },
     _calculateBearingAndDistance: function () {
       var f1 = this._clickedLatLong.lat,
