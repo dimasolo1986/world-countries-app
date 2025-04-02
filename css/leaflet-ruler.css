@@ -7,6 +7,7 @@
 }
 .leaflet-ruler:hover {
   background-image: url("../assets/img/measure-colored.png");
+  cursor: pointer;
 }
 .leaflet-ruler-clicked {
   height: 35px;
@@ -18,6 +19,7 @@
 }
 .leaflet-bar {
   background-color: #ffffff;
+  cursor: pointer;
 }
 .leaflet-control {
   cursor: pointer;
