@@ -46,11 +46,11 @@
 .leaflet-bootstrap-dropdowns .btn.show {
   color: rgba(var(--primary-rgb), 1);
   background-color: white !important;
-  border-color: rgba(var(--primary-rgb), 1) !important;
+  border-color: darkblue !important;
 }
 
 .leaflet-bootstrap-dropdowns .btn.show svg {
-  fill: rgba(var(--primary-rgb), 1);
+  fill: darkblue;
 }
 
 .leaflet-bootstrap-dropdowns .btn:focus {

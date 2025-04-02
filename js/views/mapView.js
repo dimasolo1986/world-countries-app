@@ -190,8 +190,8 @@ class mapView {
       },
     };
     this.addDevelopmentPlaceMarker();
-    this._measure = L.control.ruler(measureOptions).addTo(this._map);
     this._addResetZoomToMap();
+    this._measure = L.control.ruler(measureOptions).addTo(this._map);
     L.control.layers(baseMaps).setPosition("topleft").addTo(this._map);
     L.control
       .bootstrapDropdowns({
