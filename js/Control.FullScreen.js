@@ -140,7 +140,7 @@
       forceSeparateButton: false,
       forcePseudoFullscreen: false,
       fullscreenElement: false,
-	  addFullScreen: true
+      addFullScreen: true,
     },
 
     _screenfull: fullscreenAPI,
@@ -156,6 +156,8 @@
         container = leaflet.DomUtil.create("div", "leaflet-bar");
       }
 
+      container.style.marginLeft = "17px";
+
       if (this.options.content) {
         content = this.options.content;
       } else {
@@ -170,17 +172,17 @@
         this.setOriginalZoom,
         this
       );
-	  if (this.options.addFullScreen) {
-		this._createButton(
-			this.options.title,
-			className,
-			content,
-			container,
-			this.toggleFullScreen,
-			this
-		  );
-	  }
-   
+      if (this.options.addFullScreen) {
+        this._createButton(
+          this.options.title,
+          className,
+          content,
+          container,
+          this.toggleFullScreen,
+          this
+        );
+      }
+
       this._map.fullscreenControl = this;
 
       this._map.on("enterFullscreen exitFullscreen", this._toggleState, this);
