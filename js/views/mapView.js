@@ -11,8 +11,7 @@ import {
   COUNTRY_CAPITAL_BY_COUNTRY_NAME_QUIZ,
   COUNTRY_NAME_BY_FLAG_QUIZ,
   COUNTRY_CAPITAL_BY_FLAG_QUIZ,
-  COUNTRY_NAME_BY_COUNTRY_ON_MAP,
-  WEATHER_API_KEY,
+  COUNTRY_NAME_BY_COUNTRY_ON_MAP
 } from "../config.js";
 import { localization } from "../localization/ua.js";
 import { loadQuizOnMap } from "../controller.js";
@@ -317,7 +316,7 @@ class mapView {
     this._weather = L.control
       .weather({
         position: "topright",
-        apiKey: WEATHER_API_KEY,
+        apiKey: "4f9049379479c8c94ece03f020cdccab",
         lang: "en",
         units: "metric",
         template: `<div class="weatherIcon"><img src=":iconurl"></div><div><span id="coordinates">${
