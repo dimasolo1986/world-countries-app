@@ -11,7 +11,7 @@ import {
   COUNTRY_CAPITAL_BY_COUNTRY_NAME_QUIZ,
   COUNTRY_NAME_BY_FLAG_QUIZ,
   COUNTRY_CAPITAL_BY_FLAG_QUIZ,
-  COUNTRY_NAME_BY_COUNTRY_ON_MAP
+  COUNTRY_NAME_BY_COUNTRY_ON_MAP,
 } from "../config.js";
 import { localization } from "../localization/ua.js";
 import { loadQuizOnMap } from "../controller.js";
@@ -336,24 +336,21 @@ class mapView {
   }
 
   translateWeather() {
-    const weatherCoordinates = document.getElementById("coordinates");
-    if (weatherCoordinates)
-      weatherCoordinates.textContent =
-        localization[model.worldCountries.language]["Coordinates"];
-    const tempreture = document.getElementById("tempreture");
-    if (tempreture)
-      tempreture.textContent =
-        localization[model.worldCountries.language]["Temreture"];
-    const humidity = document.getElementById("humidity");
-    if (humidity)
-      humidity.textContent =
-        localization[model.worldCountries.language]["Humidity"];
-    const wind = document.getElementById("wind");
-    if (wind)
-      wind.textContent = localization[model.worldCountries.language]["Wind"];
-    const windUnit = document.getElementById("windUnit");
-    if (windUnit)
-      windUnit.textContent = localization[model.worldCountries.language]["m/s"];
+    const weatherTemplate = `<div class="weatherIcon"><img src=":iconurl"></div><div><span id="coordinates">${
+      localization[model.worldCountries.language]["Coordinates"]
+    }</span>: :latitude, :longitude</div><div><span id="tempreture">${
+      localization[model.worldCountries.language]["Temreture"]
+    }</span>: :temperature°C</div><div><span id="humidity">${
+      localization[model.worldCountries.language]["Humidity"]
+    }</span>: :humidity%</div><div><span id="wind">${
+      localization[model.worldCountries.language]["Wind"]
+    }</span>: :winddirection :windspeed <span id="windUnit">${
+      localization[model.worldCountries.language]["m/s"]
+    }</span></div>`;
+    this._weather.options.template = weatherTemplate;
+    this._weather.refresh(
+      this._weather.options.updateWidget.bind(this._weather)
+    );
   }
 
   translateElements() {
