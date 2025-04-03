@@ -48,6 +48,13 @@ const init = function () {
   );
   saveCurrentLanguageHandler();
   loadWindow();
+  document.addEventListener("DOMContentLoaded", function () {
+    document.addEventListener("hide.bs.modal", function () {
+      if (document.activeElement) {
+        document.activeElement.blur();
+      }
+    });
+  });
 };
 
 const loadWindow = function () {
