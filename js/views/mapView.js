@@ -12,6 +12,7 @@ import {
   COUNTRY_NAME_BY_FLAG_QUIZ,
   COUNTRY_CAPITAL_BY_FLAG_QUIZ,
   COUNTRY_NAME_BY_COUNTRY_ON_MAP,
+  WEATHER_API_KEY,
 } from "../config.js";
 import { localization } from "../localization/ua.js";
 import { loadQuizOnMap } from "../controller.js";
@@ -21,6 +22,7 @@ class mapView {
   _parentElement = document.querySelector("#map");
   _notifications = [];
   _measure;
+  _weather;
   _sideNavigationView;
   _topNavigationView;
   _errorMessage = "Failed to load map!";
@@ -312,23 +314,51 @@ class mapView {
         ],
       })
       .addTo(this._map);
-    const miniLayer = L.tileLayer(
-      "https://server.arcgisonline.com/ArcGIS/rest/services/World_Street_Map/MapServer/tile/{z}/{y}/{x}"
-    );
-    const miniMap = new L.Control.MiniMap(miniLayer, {
-      position: "topright",
-      toggleDisplay: true,
-      width: 120,
-      height: 120,
-      collapsedWidth: 25,
-      collapsedHeight: 25,
-      minimized: true,
-    });
+    this._weather = L.control
+      .weather({
+        position: "topright",
+        apiKey: WEATHER_API_KEY,
+        lang: "en",
+        units: "metric",
+        template: `<div class="weatherIcon"><img src=":iconurl"></div><div><span id="coordinates">${
+          localization[model.worldCountries.language]["Coordinates"]
+        }</span>: :latitude, :longitude</div><div><span id="tempreture">${
+          localization[model.worldCountries.language]["Temreture"]
+        }</span>: :temperature°C</div><div><span id="humidity">${
+          localization[model.worldCountries.language]["Humidity"]
+        }</span>: :humidity%</div><div><span id="wind">${
+          localization[model.worldCountries.language]["Wind"]
+        }</span>: :winddirection :windspeed <span id="windUnit">${
+          localization[model.worldCountries.language]["m/s"]
+        }</span></div>`,
+      })
+      .addTo(this._map);
     L.control.mousePosition({ position: "topright" }).addTo(this._map);
-    miniMap.addTo(this._map);
+  }
+
+  translateWeather() {
+    const weatherCoordinates = document.getElementById("coordinates");
+    if (weatherCoordinates)
+      weatherCoordinates.textContent =
+        localization[model.worldCountries.language]["Coordinates"];
+    const tempreture = document.getElementById("tempreture");
+    if (tempreture)
+      tempreture.textContent =
+        localization[model.worldCountries.language]["Temreture"];
+    const humidity = document.getElementById("humidity");
+    if (humidity)
+      humidity.textContent =
+        localization[model.worldCountries.language]["Humidity"];
+    const wind = document.getElementById("wind");
+    if (wind)
+      wind.textContent = localization[model.worldCountries.language]["Wind"];
+    const windUnit = document.getElementById("windUnit");
+    if (windUnit)
+      windUnit.textContent = localization[model.worldCountries.language]["m/s"];
   }
 
   translateElements() {
+    this.translateWeather();
     const contextMenuItems = document.querySelectorAll(
       ".leaflet-contextmenu-item"
     );

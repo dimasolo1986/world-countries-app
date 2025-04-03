@@ -1,0 +1,27 @@
+.leaflet-control-weather {
+  color: white;
+  font-weight: bolder;
+  background: lightslategray;
+  padding: 3px;
+  opacity: 0.6;
+  font-size: 0.75em;
+  width: 185px;
+}
+
+.leaflet-control-weather .weatherIcon {
+  float: left;
+  border: 2px solid lightslategray;
+  font-size: 2.5em;
+  width: 50px;
+  height: 50px;
+  text-align: center;
+  margin-right: 7px;
+}
+
+.leaflet-control-weather .weatherIcon img {
+  max-width: 100% !important;
+}
+
+.leaflet-control-weather h4 {
+  font-size: 1.5em;
+}
