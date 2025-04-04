@@ -319,7 +319,11 @@ class mapView {
         apiKey: "4f9049379479c8c94ece03f020cdccab",
         lang: "en",
         units: "metric",
-        template: `<div class="weatherIcon"><img src=":iconurl"></div><div><span id="coordinates">${
+        template: `<div class="weatherButton">${
+          localization[model.worldCountries.language][
+            "Weather in the center of the map"
+          ]
+        }</div><div class="weatherIcon"><img src=":iconurl"></div><div><span id="coordinates">${
           localization[model.worldCountries.language]["Coordinates"]
         }</span>: :latitude, :longitude</div><div><span id="tempreture">${
           localization[model.worldCountries.language]["Temreture"]
@@ -332,11 +336,19 @@ class mapView {
         }</span></div>`,
       })
       .addTo(this._map);
-    L.control.mousePosition({ position: "topright" }).addTo(this._map);
+    L.control
+      .mousePosition({
+        position: "topright",
+      })
+      .addTo(this._map);
   }
 
   translateWeather() {
-    const weatherTemplate = `<div class="weatherIcon"><img src=":iconurl"></div><div><span id="coordinates">${
+    const weatherTemplate = `<div class="weatherButton">${
+      localization[model.worldCountries.language][
+        "Weather in the center of the map"
+      ]
+    }</div><div class="weatherIcon"><img src=":iconurl"></div><div><span id="coordinates">${
       localization[model.worldCountries.language]["Coordinates"]
     }</span>: :latitude, :longitude</div><div><span id="tempreture">${
       localization[model.worldCountries.language]["Temreture"]

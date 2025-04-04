@@ -423,16 +423,6 @@ class MapQuiz {
         }
       );
       this._map.fitBounds(WORLD_MAP_BOUNDS);
-      const miniMap = new L.Control.MiniMap(miniLayer, {
-        position: "topright",
-        toggleDisplay: true,
-        width: 120,
-        height: 120,
-        collapsedWidth: 25,
-        collapsedHeight: 25,
-        minimized: true,
-      });
-      miniMap.addTo(this._map);
       this.addCountryBoundaries();
     }
   }

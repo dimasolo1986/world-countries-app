@@ -23,7 +23,7 @@ L.Control.Weather = L.Control.extend({
     this._map.on(this.options.event, this.onMoveEnd);
 
     function onMoveEnd() {
-      var _this = this;
+      const _this = this;
       this.refresh(function (weather) {
         _this.options.updateWidget(weather);
       });
@@ -34,11 +34,11 @@ L.Control.Weather = L.Control.extend({
     this._map.off(this.options.event, this.onMoveEnd);
   },
   refresh: function (callback) {
-    var _this = this,
+    let _this = this,
       center = this._map.getCenter(),
       url =
         "https://api.openweathermap.org/data/2.5/weather?lat=:lat&lon=:lng&lang=:lang&units=:units&appid=:appkey";
-    var apiKey = this.options.apiKey;
+    const apiKey = this.options.apiKey;
 
     url = url.replace(":lang", this.options.lang);
     url = url.replace(":units", this.options.units);
@@ -58,11 +58,11 @@ L.Control.Weather = L.Control.extend({
     );
   },
   _updateWidget: function (weather) {
-    var iconUrl = this.options.iconUrlTemplate.replace(
+    const iconUrl = this.options.iconUrlTemplate.replace(
       ":icon",
       weather.weather[0].icon + ".png"
     );
-    var tpl = this.options.template;
+    let tpl = this.options.template;
     tpl = tpl.replace(":latitude", +weather.coord.lat.toFixed(2));
     tpl = tpl.replace(":longitude", +weather.coord.lon.toFixed(2));
     tpl = tpl.replace(":iconurl", iconUrl);
@@ -82,7 +82,7 @@ L.Control.Weather = L.Control.extend({
    * http://climate.umn.edu/snow_fence/components/winddirectionanddegreeswithouttable3.htm
    */
   mapWindDirection: function (degrees) {
-    var text = "";
+    let text = "";
     if (inRange(degrees, 11.25, 33.75)) {
       text = "&#8599;";
     } else if (inRange(degrees, 33.75, 56.25)) {

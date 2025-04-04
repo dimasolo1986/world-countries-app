@@ -511,6 +511,7 @@ export const localization = {
     "NEXT QUESTION": "НАСТУПНЕ ПИТАННЯ",
     "FINISH QUIZ": "ЗАКІНЧИТИ ВІКТОРИНУ",
     FINISH: "ЗАКІНЧИТИ",
+    "Weather in the center of the map": "Погода в центрі мапи",
     "Are you sure you want to leave this quiz? Current quiz data will not be saved!":
       "Ви впевнені, що бажаєте залишити цей тест? Поточні дані вікторини не будуть збережені!",
     "Only Independent Countries": "Тільки незалежні країни",
@@ -1290,6 +1291,7 @@ export const localization = {
     Coordinates: "Coordinates",
     Latitude: "Latitude",
     Longitude: "Longitude",
+    "Weather in the center of the map": "Weather in the center of the map",
     "Country Name By Flag Quiz": "Country Name By Flag Quiz",
     "Country Capital By Flag Quiz": "Country Capital By Flag Quiz",
     "Flag By Country Capital Quiz": "Flag By Country Capital Quiz",

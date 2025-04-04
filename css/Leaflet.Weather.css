@@ -2,10 +2,17 @@
   color: white;
   font-weight: bolder;
   background: lightslategray;
-  padding: 3px;
   opacity: 0.6;
   font-size: 0.75em;
   width: 185px;
+}
+
+.leaflet-control-weather .weatherButton {
+  min-width: 185px;
+  background-color: white;
+  opacity: 0.8;
+  color: black;
+  text-align: center;
 }
 
 .leaflet-control-weather .weatherIcon {
