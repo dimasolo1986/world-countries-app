@@ -74,7 +74,13 @@ class mapView {
       this._map.zoomOut();
     }
     function reset() {
-      this._map.fitBounds(WORLD_MAP_BOUNDS);
+      this._sideNavigationView._selectedCountry = undefined;
+      this._sideNavigationView._removeAllSelection();
+      this.setIsCountrySelected(false);
+      this.removeCapitalMarker();
+      this.removeCountryBoundary();
+      this.closeAllPopup();
+      this.setMapViewToBounds(WORLD_MAP_BOUNDS);
     }
     const streetLayer = L.tileLayer(
       "https://server.arcgisonline.com/ArcGIS/rest/services/World_Street_Map/MapServer/tile/{z}/{y}/{x}"
@@ -163,6 +169,7 @@ class mapView {
         titleCancel: "Exit Fullscreen Mode",
         forceSeparateButton: false,
         forcePseudoFullscreen: true,
+        zoomResetFunction: reset.bind(this),
       },
     })
       .fitWorld()
