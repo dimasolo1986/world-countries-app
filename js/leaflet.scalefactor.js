@@ -71,7 +71,7 @@
         "<br/>" +
         `1 cm - ${Math.round(scaleFactor / 100)
           .toLocaleString()
-          .replaceAll(",", ".")} m`;
+          .replaceAll(",", " ")} m`;
     },
   });
 
