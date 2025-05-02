@@ -343,6 +343,7 @@ class mapView {
         }</span></div>`,
       })
       .addTo(this._map);
+    L.control.scalefactor({ position: "topright" }).addTo(this._map);
     L.control
       .mousePosition({
         position: "topright",

@@ -416,12 +416,7 @@ class MapQuiz {
           maxZoom: 8,
         }
       ).addTo(this._map);
-      const miniLayer = L.tileLayer(
-        "https://server.arcgisonline.com/ArcGIS/rest/services/World_Physical_Map/MapServer/tile/{z}/{y}/{x}",
-        {
-          maxZoom: 8,
-        }
-      );
+      L.control.scalefactor({ position: "topright" }).addTo(this._map);
       this._map.fitBounds(WORLD_MAP_BOUNDS);
       this.addCountryBoundaries();
     }
