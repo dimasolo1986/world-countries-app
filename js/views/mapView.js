@@ -550,6 +550,7 @@ class mapView {
     );
     if (marker) {
       marker.openPopup();
+      marker.enablePermanentHighlight();
     }
   }
 
@@ -587,6 +588,7 @@ class mapView {
 
   removeCountryBoundary() {
     if (this._countryBoundary) this._map.removeLayer(this._countryBoundary);
+    this._markers.forEach((marker) => marker.disablePermanentHighlight());
   }
 
   addCountryBoundary(country) {
@@ -730,6 +732,13 @@ class mapView {
         "click",
         addCountryBoundary.bind(this, country, "marker", true)
       );
+      marker.on(
+        "click",
+        function () {
+          this._markers.forEach((marker) => marker.disablePermanentHighlight());
+          marker.enablePermanentHighlight();
+        }.bind(this)
+      );
       function addCountryBoundary(country, type, isCountrySelected) {
         if (!this._isCountrySelected || type === "marker") {
           this.removeCountryBoundary();
@@ -759,7 +768,9 @@ class mapView {
         }
       }
       function removeCountryBoundary(type) {
-        if (type === "mouse" && this._isCountrySelected) return;
+        if (type === "mouse" && this._isCountrySelected) {
+          return;
+        }
         const sideNavigationCountries = document.querySelector(
           ".sb-sidenav-menu .nav"
         );
@@ -774,9 +785,12 @@ class mapView {
         this.removeCountryBoundary();
         this.removeCapitalMarker();
         this._sideNavigationView._parentElement.firstElementChild.scrollIntoView();
-        if (type === "map") this._isCountrySelected = false;
+        if (type === "map") {
+          this._isCountrySelected = false;
+        }
       }
       this._map.on("click", removeCountryBoundary.bind(this, "map"));
+      this._map.on("click", () => marker.disablePermanentHighlight());
       this._markers.push(marker);
     });
   }
