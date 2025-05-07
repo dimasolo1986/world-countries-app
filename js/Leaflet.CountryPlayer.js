@@ -12,11 +12,11 @@ L.Control.Player = L.Control.extend({
     this._startButton = $(this._div).find(".playerButtonStart")[0];
     this._pauseButton = $(this._div).find(".playerButtonPause")[0];
     this._endButton = $(this._div).find(".playerButtonEnd")[0];
-    this._pauseButton.style.color = "white";
+    this._pauseButton.style.opacity = "0.5";
     this._pauseButton.style.pointerEvents = "none";
-    this._startButton.style.color = "white";
+    this._startButton.style.opacity = "1";
     this._startButton.style.pointerEvents = "auto";
-    this._endButton.style.color = "blue";
+    this._endButton.style.opacity = "0.5";
     this._endButton.style.pointerEvents = "none";
     const delaySelect = $(this._div).find(".playerDelaySelect")[0];
     this._countryCountElement = $(this._div).find("#countryCount")[0];
@@ -54,11 +54,11 @@ L.Control.Player = L.Control.extend({
   },
   playCountires: function () {
     this._isPaused = false;
-    this._pauseButton.style.color = "white";
+    this._pauseButton.style.opacity = "1";
     this._pauseButton.style.pointerEvents = "auto";
-    this._startButton.style.color = "blue";
+    this._startButton.style.opacity = "0.5";
     this._startButton.style.pointerEvents = "none";
-    this._endButton.style.color = "white";
+    this._endButton.style.opacity = "1";
     this._endButton.style.pointerEvents = "auto";
     const delaySelect = $(this._div).find(".playerDelaySelect")[0];
     const delayValue = +delaySelect.value;
@@ -105,21 +105,21 @@ L.Control.Player = L.Control.extend({
     $(this._div).html(this.options.template);
   },
   pausePlayCountries: function () {
-    this._pauseButton.style.color = "blue";
+    this._pauseButton.style.opacity = "0.5";
     this._pauseButton.style.pointerEvents = "none";
-    this._startButton.style.color = "white";
+    this._startButton.style.opacity = "1";
     this._startButton.style.pointerEvents = "auto";
-    this._endButton.style.color = "white";
+    this._endButton.style.opacity = "1";
     this._endButton.style.pointerEvents = "auto";
     this._isPaused = true;
   },
   terminatePlayCountries: function () {
     this._isPaused = false;
-    this._pauseButton.style.color = "white";
+    this._pauseButton.style.opacity = "0.5";
     this._pauseButton.style.pointerEvents = "none";
-    this._startButton.style.color = "white";
+    this._startButton.style.opacity = "1";
     this._startButton.style.pointerEvents = "auto";
-    this._endButton.style.color = "blue";
+    this._endButton.style.opacity = "0.5";
     this._endButton.style.pointerEvents = "none";
     this._countryCountElement.textContent = 1;
     if (this._timerIntervalId) {
@@ -133,11 +133,11 @@ L.Control.Player = L.Control.extend({
   },
   stopPlayCountries: function () {
     this._isPaused = false;
-    this._pauseButton.style.color = "white";
+    this._pauseButton.style.opacity = "0.5";
     this._pauseButton.style.pointerEvents = "none";
-    this._startButton.style.color = "white";
+    this._startButton.style.opacity = "1";
     this._startButton.style.pointerEvents = "auto";
-    this._endButton.style.color = "blue";
+    this._endButton.style.opacity = "0.5";
     this._endButton.style.pointerEvents = "none";
     this.options.mapView._sideNavigationView._selectedCountry = undefined;
     this.options.mapView._sideNavigationView._removeAllSelection();
