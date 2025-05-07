@@ -218,6 +218,7 @@ const countriesSelectionHandler = function (selectedCountriesNames) {
   model.worldCountries.selectedCountries = [];
   sideNavigationView._selectedCountry = undefined;
   document.body.classList.remove("sb-sidenav-toggled");
+  mapView.stopCountryPlayer();
   mapView.setMapViewToBounds(WORLD_MAP_BOUNDS);
   if (selectedCountriesNames.length !== 0) {
     selectedCountriesNames.forEach((countryName) => {

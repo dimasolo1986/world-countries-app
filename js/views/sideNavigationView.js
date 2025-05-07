@@ -287,6 +287,7 @@ class sideNavigationView {
 
   addContryClickHandler(countryElement, country) {
     const countryClickFunction = function (e) {
+      mapView.terminatePlayCountries();
       const target = e.target;
       if (
         countryElement.classList.contains(

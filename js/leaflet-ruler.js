@@ -12,6 +12,7 @@
   "use strict";
   L.Control.Ruler = L.Control.extend({
     options: {
+      mapView: undefined,
       position: "topright",
       events: {
         onToggle: function (is_active) {},
@@ -41,6 +42,7 @@
       return this._choice;
     },
     onAdd: function (map) {
+      this._mapView = this.options.mapView;
       this._map = map;
       this._container = L.DomUtil.create("div", "leaflet-bar");
       this._container.classList.add("leaflet-ruler");
@@ -55,6 +57,7 @@
       L.DomEvent.off(this._container, "click", this._toggleMeasure, this);
     },
     _toggleMeasure: function () {
+      this._mapView.stopCountryPlayer();
       this._choice = !this._choice;
       this.options.events.onToggle(this._choice);
       this._clickedLatLong = null;

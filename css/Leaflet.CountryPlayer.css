@@ -1,0 +1,81 @@
+.leaflet-control-country-player {
+  color: white;
+  font-weight: bolder;
+  background: lightslategray;
+  opacity: 0.6;
+  font-size: 0.75em;
+  width: 185px;
+  vertical-align: middle;
+}
+
+.leaflet-control-country-player .playerButton {
+  min-width: 185px;
+  background-color: white;
+  opacity: 0.8;
+  color: black;
+  text-align: center;
+}
+
+.leaflet-control-country-player .playerFooter {
+  min-width: 185px;
+  background-color: white;
+  opacity: 0.8;
+  color: black;
+  text-align: center;
+}
+
+.leaflet-control-country-player .playerButtonStart {
+  float: left;
+  border: 0px solid white;
+  font-size: 18px;
+  width: 24px;
+  height: 24px;
+  text-align: center;
+  margin-right: 5px;
+  cursor: pointer;
+}
+
+.leaflet-control-country-player .playerButtonEnd {
+  float: left;
+  border: 0px solid white;
+  font-size: 18px;
+  width: 24px;
+  height: 24px;
+  text-align: center;
+  margin-right: 5px;
+  cursor: pointer;
+  color: blue;
+}
+
+.leaflet-control-country-player .playerButtonPause {
+  float: left;
+  border: 0px solid white;
+  font-size: 18px;
+  width: 24px;
+  height: 24px;
+  text-align: center;
+  margin-right: 5px;
+  cursor: pointer;
+}
+
+.leaflet-control-country-player .playerDelaySelect {
+  margin-left: 3px;
+  border: 1px solid black;
+  border-radius: 1px;
+  font-size: 12px;
+  width: 60px;
+  height: 16px;
+  text-align: center;
+  margin-right: 3px;
+  cursor: pointer;
+}
+
+.leaflet-control-country-player #playerSelectLabel {
+  margin-left: 3px;
+  border: 0px solid white;
+  font-size: 14px;
+  width: 24px;
+  height: 24px;
+  text-align: center;
+  margin-right: 3px;
+}

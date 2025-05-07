@@ -16,12 +16,15 @@ import {
 import { localization } from "../localization/ua.js";
 import { loadQuizOnMap } from "../controller.js";
 import * as model from "../model.js";
+import { COUNTRY_BOUNDS } from "../data/countriesBounds.js";
+import { defineZoomLevelByCountryArea } from "../helpers.js";
 
 class mapView {
   _parentElement = document.querySelector("#map");
   _notifications = [];
   _measure;
   _weather;
+  _countryPlayer;
   _sideNavigationView;
   _topNavigationView;
   _errorMessage = "Failed to load map!";
@@ -80,6 +83,7 @@ class mapView {
       this.removeCapitalMarker();
       this.removeCountryBoundary();
       this.closeAllPopup();
+      this.stopCountryPlayer();
       this.setMapViewToBounds(WORLD_MAP_BOUNDS);
     }
     const streetLayer = L.tileLayer(
@@ -176,6 +180,7 @@ class mapView {
       .setView(latLon, defaultZoomLevel);
     const measureOptions = {
       position: "topleft",
+      mapView: this,
       circleMarker: {
         color: "blue",
         radius: 2,
@@ -343,12 +348,75 @@ class mapView {
         }</span></div>`,
       })
       .addTo(this._map);
+    this._countryPlayer = L.control
+      .player({
+        template: `<div id="countryPlayerHeading" class="playerButton">${
+          localization[model.worldCountries.language]["Play World Countries"]
+        }</div><div class="playerButtonStart" title="${
+          localization[model.worldCountries.language]["Start"]
+        }">&#9658;</div><div class="playerButtonPause" title="${
+          localization[model.worldCountries.language]["Pause"]
+        }">&#10074;&#10074;</div><div class="playerButtonEnd" title="${
+          localization[model.worldCountries.language]["Stop"]
+        }">&#9724;</div>
+        <label id="playerSelectLabel" title="${
+          localization[model.worldCountries.language]["Country Display Time"]
+        }" for="playerSelect">&#128338;:</label><select id="playerSelect" class="playerDelaySelect"><option value="3" selected>3 sec.</option><option value="5">5 sec.</option><option value="10">10 sec.</option><option value="20">20 sec.</option><option value="30">30 sec.</option><option value="60">60 sec.</option></select><div class="playerFooter"><span id="countryCount">1</span><span id="allCountriesNumber"> : ${
+          model.worldCountries.countries.length
+        }</span></div>`,
+        model: model,
+        mapView: this,
+        countryBounds: COUNTRY_BOUNDS,
+        worldBounds: WORLD_MAP_BOUNDS,
+        defineZoomLevelByCountryArea: defineZoomLevelByCountryArea,
+      })
+      .addTo(this._map);
     L.control.scalefactor({ position: "topright" }).addTo(this._map);
     L.control
       .mousePosition({
         position: "topright",
       })
       .addTo(this._map);
+  }
+
+  stopCountryPlayer() {
+    if (this._countryPlayer && !this._countryPlayer._isPaused) {
+      this._countryPlayer.stopPlayCountries();
+    }
+  }
+
+  terminatePlayCountries() {
+    if (this._countryPlayer && !this._countryPlayer._isPaused) {
+      this._countryPlayer.terminatePlayCountries();
+    }
+  }
+
+  translateCountryPlayer() {
+    const countryPlayer = document.querySelector("#countryPlayerHeading");
+    if (countryPlayer) {
+      countryPlayer.textContent =
+        localization[model.worldCountries.language]["Play World Countries"];
+    }
+    const startButton = document.querySelector(".playerButtonStart");
+    if (startButton) {
+      startButton.title = localization[model.worldCountries.language]["Start"];
+    }
+    const pauseButton = document.querySelector(".playerButtonPause");
+    if (pauseButton) {
+      pauseButton.title = localization[model.worldCountries.language]["Pause"];
+    }
+    const stopButton = document.querySelector(".playerButtonEnd");
+    if (stopButton) {
+      stopButton.title = localization[model.worldCountries.language]["Stop"];
+    }
+    const label = document.querySelector("#playerSelectLabel");
+    if (label) {
+      label.title =
+        localization[model.worldCountries.language]["Country Display Time"];
+    }
+    if (this._countryPlayer) {
+      this._countryPlayer.stopPlayCountries();
+    }
   }
 
   translateWeather() {
@@ -374,6 +442,7 @@ class mapView {
   }
 
   translateElements() {
+    this.translateCountryPlayer();
     this.translateWeather();
     const contextMenuItems = document.querySelectorAll(
       ".leaflet-contextmenu-item"
@@ -478,6 +547,9 @@ class mapView {
     if (this._measure) {
       this._measure.clear();
     }
+    if (this._countryPlayer) {
+      this.stopCountryPlayer();
+    }
   }
 
   hideMap() {
@@ -488,6 +560,9 @@ class mapView {
     }
     if (this._measure) {
       this._measure.clear();
+    }
+    if (this._countryPlayer) {
+      this.stopCountryPlayer();
     }
   }
 
