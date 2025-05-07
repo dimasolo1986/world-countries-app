@@ -354,11 +354,11 @@ class mapView {
           localization[model.worldCountries.language]["Play World Countries"]
         }</div><div class="playerButtonStart" title="${
           localization[model.worldCountries.language]["Start"]
-        }">&#9658;</div><div class="playerButtonPause" title="${
+        }">&#9205;</div><div class="playerButtonPause" title="${
           localization[model.worldCountries.language]["Pause"]
-        }">&#10074;&#10074;</div><div class="playerButtonEnd" title="${
+        }">&#9208;</div><div class="playerButtonEnd" title="${
           localization[model.worldCountries.language]["Stop"]
-        }">&#9724;</div>
+        }">&#9209;</div>
         <label id="playerSelectLabel" title="${
           localization[model.worldCountries.language]["Country Display Time"]
         }" for="playerSelect">&#128338;:</label><select id="playerSelect" class="playerDelaySelect"><option value="3" selected>3 sec.</option><option value="5">5 sec.</option><option value="10">10 sec.</option><option value="20">20 sec.</option><option value="30">30 sec.</option><option value="60">60 sec.</option></select><div class="playerFooter"><span id="countryCount">1</span><span id="allCountriesNumber"> : ${
