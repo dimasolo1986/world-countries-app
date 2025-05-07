@@ -12,6 +12,12 @@ L.Control.Player = L.Control.extend({
     this._startButton = $(this._div).find(".playerButtonStart")[0];
     this._pauseButton = $(this._div).find(".playerButtonPause")[0];
     this._endButton = $(this._div).find(".playerButtonEnd")[0];
+    this._pauseButton.style.color = "white";
+    this._pauseButton.style.pointerEvents = "none";
+    this._startButton.style.color = "white";
+    this._startButton.style.pointerEvents = "auto";
+    this._endButton.style.color = "blue";
+    this._endButton.style.pointerEvents = "none";
     const delaySelect = $(this._div).find(".playerDelaySelect")[0];
     this._countryCountElement = $(this._div).find("#countryCount")[0];
     this._startButton.addEventListener("click", this.playCountires.bind(this));
