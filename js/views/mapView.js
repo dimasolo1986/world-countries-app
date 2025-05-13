@@ -686,6 +686,19 @@ class mapView {
     this._isCountrySelected = isSelected;
   }
 
+  getLanguageCode() {
+    if (model.worldCountries.language === "ua") {
+      return "uk";
+    }
+    if (model.worldCountries.language === "en") {
+      return "en";
+    }
+    if (model.worldCountries.language === "de") {
+      return "de";
+    }
+    return "en";
+  }
+
   renderCountriesMarkers(worldCountries) {
     this._removeAllMarkersFromMap();
     worldCountries.forEach((country) => {
@@ -783,9 +796,7 @@ class mapView {
             localization[model.worldCountries.language]["people"]
           : " -"
       }</span><br />
-      <a class="side-navigation-country-link hover-effect" style="color:#85C1E9; text-decoration: none;" href="https://${
-        model.worldCountries.language === "ua" ? "uk" : "en"
-      }.wikipedia.org/wiki/${
+      <a class="side-navigation-country-link hover-effect" style="color:#85C1E9; text-decoration: none;" href="https://${this.getLanguageCode()}.wikipedia.org/wiki/${
         localization[model.worldCountries.language]["countries"][
           country.name.common
         ]

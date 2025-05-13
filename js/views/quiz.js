@@ -1231,10 +1231,12 @@ class Quiz {
           "Guess Country Name By Capital"
         ]
       }`;
-      this._questionCountry.textContent =
-        localization[model.worldCountries.language]["capitals"][
-          this._questionCountrySelected.capital[0]
-        ];
+      if (this._questionCountrySelected) {
+        this._questionCountry.textContent =
+          localization[model.worldCountries.language]["capitals"][
+            this._questionCountrySelected.capital[0]
+          ];
+      }
       this._cardOptionsElements.forEach((cardOption) => {
         const country = cardOption.querySelector(".country-option");
         country.textContent =
@@ -1249,10 +1251,12 @@ class Quiz {
           "Guess Capital By Country Name"
         ]
       }`;
-      this._questionCountry.textContent =
-        localization[model.worldCountries.language]["countries"][
-          this._questionCountrySelected.name.common
-        ];
+      if (this._questionCountrySelected) {
+        this._questionCountry.textContent =
+          localization[model.worldCountries.language]["countries"][
+            this._questionCountrySelected.name.common
+          ];
+      }
       this._cardOptionsElements.forEach((cardOption) => {
         const countryElement = cardOption.querySelector(".country-option");
         const countryCapital = model.worldCountries.countries.find(
@@ -1270,10 +1274,12 @@ class Quiz {
           "Guess Flag By Country Capital"
         ]
       }`;
-      this._questionCountry.textContent =
-        localization[model.worldCountries.language]["capitals"][
-          this._questionCountrySelected.capital[0]
-        ];
+      if (this._questionCountrySelected) {
+        this._questionCountry.textContent =
+          localization[model.worldCountries.language]["capitals"][
+            this._questionCountrySelected.capital[0]
+          ];
+      }
     }
     if (this._quizType === COUNTRY_CAPITAL_BY_FLAG_QUIZ) {
       this._quizHeading.textContent = `${

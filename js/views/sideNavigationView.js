@@ -255,6 +255,19 @@ class sideNavigationView {
     });
   }
 
+  getLanguageCode() {
+    if (model.worldCountries.language === "ua") {
+      return "uk";
+    }
+    if (model.worldCountries.language === "en") {
+      return "en";
+    }
+    if (model.worldCountries.language === "de") {
+      return "de";
+    }
+    return "en";
+  }
+
   _createCountryElement(country) {
     return `<div class="side-navigation-country-img-container hover-effect"><img class="side-navigation-country-img" src="${
       country.flags.png
@@ -267,9 +280,7 @@ class sideNavigationView {
        country.name.common
      )}>${localization[model.worldCountries.language]["Information"]}</a>
      <span style="color:#ffffff80">|</span>
-    <a class="side-navigation-country-link hover-effect" style="color:#85C1E9; text-decoration: none;" href="https://${
-      model.worldCountries.language === "ua" ? "uk" : "en"
-    }.wikipedia.org/wiki/${
+    <a class="side-navigation-country-link hover-effect" style="color:#85C1E9; text-decoration: none;" href="https://${this.getLanguageCode()}.wikipedia.org/wiki/${
       localization[model.worldCountries.language]["countries"][
         country.name.common
       ]
