@@ -3,7 +3,7 @@ import { localization } from "../localization/ua.js";
 class countriesSelectView {
   _parentElement = document.querySelector("#tree-select-countries");
   _errorMessage = "Failed to load countries!";
-  _placeholder = "Search Or Select Counties...";
+  _placeholder = "Search Or Select Countries...";
   _treeSelect;
 
   constructor() {
@@ -84,7 +84,7 @@ class countriesSelectView {
     this._treeSelect.options = options;
     this._treeSelect.placeholder =
       localization[model.worldCountries.language][
-        "Search Or Select Counties..."
+        "Search Or Select Countries..."
       ];
     this._treeSelect.tagsCountText =
       localization[model.worldCountries.language]["Selected"];

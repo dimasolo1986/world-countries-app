@@ -696,6 +696,9 @@ class mapView {
     if (model.worldCountries.language === "de") {
       return "de";
     }
+    if (model.worldCountries.language === "fr") {
+      return "fr";
+    }
     return "en";
   }
 
