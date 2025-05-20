@@ -1,7 +1,7 @@
 import mapView from "./mapView.js";
 import * as model from "../model.js";
 import { localization } from "../localization/ua.js";
-import { defineZoomLevelByCountryArea } from "../helpers.js";
+import { defineZoomLevelByCountryArea, getLanguageCode } from "../helpers.js";
 import { COUNTRY_BOUNDS } from "../data/countriesBounds.js";
 import { WORLD_MAP_BOUNDS, WAR_AGGRESSOR_COUNTRIES } from "../config.js";
 class sideNavigationView {
@@ -255,22 +255,6 @@ class sideNavigationView {
     });
   }
 
-  getLanguageCode() {
-    if (model.worldCountries.language === "ua") {
-      return "uk";
-    }
-    if (model.worldCountries.language === "en") {
-      return "en";
-    }
-    if (model.worldCountries.language === "de") {
-      return "de";
-    }
-    if (model.worldCountries.language === "fr") {
-      return "fr";
-    }
-    return "en";
-  }
-
   _createCountryElement(country) {
     return `<div class="side-navigation-country-img-container hover-effect"><img class="side-navigation-country-img" src="${
       country.flags.png
@@ -283,7 +267,7 @@ class sideNavigationView {
        country.name.common
      )}>${localization[model.worldCountries.language]["Information"]}</a>
      <span style="color:#ffffff80">|</span>
-    <a class="side-navigation-country-link hover-effect" style="color:#85C1E9; text-decoration: none;" href="https://${this.getLanguageCode()}.wikipedia.org/wiki/${
+    <a class="side-navigation-country-link hover-effect" style="color:#85C1E9; text-decoration: none;" href="https://${getLanguageCode()}.wikipedia.org/wiki/${
       localization[model.worldCountries.language]["countries"][
         country.name.common
       ]

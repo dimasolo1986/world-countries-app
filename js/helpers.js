@@ -92,3 +92,22 @@ export const currentDateTime = function () {
   const time = d.toTimeString().split(" ")[0];
   return `${date} ${time}`;
 };
+
+export const getLanguageCode = function () {
+  if (model.worldCountries.language === "ua") {
+    return "uk";
+  }
+  if (model.worldCountries.language === "en") {
+    return "en";
+  }
+  if (model.worldCountries.language === "de") {
+    return "de";
+  }
+  if (model.worldCountries.language === "fr") {
+    return "fr";
+  }
+  if (model.worldCountries.language === "es") {
+    return "es";
+  }
+  return "en";
+};

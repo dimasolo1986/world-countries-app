@@ -17,7 +17,7 @@ import { localization } from "../localization/ua.js";
 import { loadQuizOnMap } from "../controller.js";
 import * as model from "../model.js";
 import { COUNTRY_BOUNDS } from "../data/countriesBounds.js";
-import { defineZoomLevelByCountryArea } from "../helpers.js";
+import { defineZoomLevelByCountryArea, getLanguageCode } from "../helpers.js";
 
 class mapView {
   _parentElement = document.querySelector("#map");
@@ -361,7 +361,7 @@ class mapView {
         }">⏹️</div>
         <label id="playerSelectLabel" title="${
           localization[model.worldCountries.language]["Country Display Time"]
-        }" for="playerSelect">&#128338;:</label><select id="playerSelect" class="playerDelaySelect"><option value="3" selected>3 sec.</option><option value="5">5 sec.</option><option value="10">10 sec.</option><option value="20">20 sec.</option><option value="30">30 sec.</option><option value="60">60 sec.</option></select><div class="playerFooter"><span id="countryCount">1</span><span id="allCountriesNumber"> : ${
+        }" for="playerSelect">&#128338;:</label><select id="playerSelect" class="playerDelaySelect"><option value="3" selected>3 sec.</option><option value="5">5 sec.</option><option value="10">10 sec.</option><option value="20">20 sec.</option><option value="30">30 sec.</option><option value="60">60 sec.</option><option value="90">90 sec.</option></select><div class="playerFooter"><span id="countryCount">1</span><span id="allCountriesNumber"> : ${
           model.worldCountries.countries.length
         }</span></div>`,
         model: model,
@@ -686,22 +686,6 @@ class mapView {
     this._isCountrySelected = isSelected;
   }
 
-  getLanguageCode() {
-    if (model.worldCountries.language === "ua") {
-      return "uk";
-    }
-    if (model.worldCountries.language === "en") {
-      return "en";
-    }
-    if (model.worldCountries.language === "de") {
-      return "de";
-    }
-    if (model.worldCountries.language === "fr") {
-      return "fr";
-    }
-    return "en";
-  }
-
   renderCountriesMarkers(worldCountries) {
     this._removeAllMarkersFromMap();
     worldCountries.forEach((country) => {
@@ -799,7 +783,7 @@ class mapView {
             localization[model.worldCountries.language]["people"]
           : " -"
       }</span><br />
-      <a class="side-navigation-country-link hover-effect" style="color:#85C1E9; text-decoration: none;" href="https://${this.getLanguageCode()}.wikipedia.org/wiki/${
+      <a class="side-navigation-country-link hover-effect" style="color:#85C1E9; text-decoration: none;" href="https://${getLanguageCode()}.wikipedia.org/wiki/${
         localization[model.worldCountries.language]["countries"][
           country.name.common
         ]
