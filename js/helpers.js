@@ -109,5 +109,8 @@ export const getLanguageCode = function () {
   if (model.worldCountries.language === "es") {
     return "es";
   }
+  if (model.worldCountries.language === "it") {
+    return "it";
+  }
   return "en";
 };
