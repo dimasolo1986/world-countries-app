@@ -309,21 +309,6 @@ class mapView {
             },
           },
           {
-            html: `<span id="country-name-by-emblem-quiz-menu">${
-              localization[model.worldCountries.language][
-                "Country Name By Coat Of Arms Quiz"
-              ]
-            }</span>`,
-            afterClick: () => {
-              loadQuizOnMap(COUNTRY_NAME_BY_EMBLEM_QUIZ);
-              sessionStorage.setItem(
-                "currentWindow",
-                "country-name-by-emblem-quiz"
-              );
-              this._topNavigationView.initItemMenuStyle();
-            },
-          },
-          {
             html: `<span id="country-capital-by-flag-quiz-menu">${
               localization[model.worldCountries.language][
                 "Country Capital By Flag Quiz"
@@ -334,6 +319,21 @@ class mapView {
               sessionStorage.setItem(
                 "currentWindow",
                 "country-capital-by-flag-quiz"
+              );
+              this._topNavigationView.initItemMenuStyle();
+            },
+          },
+          {
+            html: `<span id="country-name-by-emblem-quiz-menu">${
+              localization[model.worldCountries.language][
+                "Country Name By Coat Of Arms Quiz"
+              ]
+            }</span>`,
+            afterClick: () => {
+              loadQuizOnMap(COUNTRY_NAME_BY_EMBLEM_QUIZ);
+              sessionStorage.setItem(
+                "currentWindow",
+                "country-name-by-emblem-quiz"
               );
               this._topNavigationView.initItemMenuStyle();
             },
