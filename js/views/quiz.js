@@ -7,6 +7,7 @@ import { COUNTRIES_GEO } from "../data/countries.geo.js";
 import { showQuizResultWindow } from "../helpers.js";
 import { WORLD_MAP_BOUNDS } from "../config.js";
 import {
+  COUNTRY_NAME_BY_EMBLEM_QUIZ,
   FLAG_BY_COUNTRY_NAME_QUIZ,
   COUNTRY_NAME_BY_FLAG_QUIZ,
   COUNTRY_NAME_BY_COUNTRY_ON_MAP,
@@ -47,6 +48,7 @@ class Quiz {
     ".question-country-container"
   );
   _questionImgCountry = document.querySelector(".question-img-country");
+  _questionImgEmblem = document.querySelector(".question-img-country-emblem");
   _questionMapCountry = document.querySelector(".question-country-on-map");
   _questionDelimeterElement = document.querySelector(".question-delimeter");
   _questionCurrentNumber = document.querySelector(".question-current-number");
@@ -244,7 +246,8 @@ class Quiz {
           this._quizType === COUNTRY_CAPITAL_BY_FLAG_QUIZ ||
           this._quizType === COUNTRY_NAME_BY_CAPITAL_QUIZ ||
           this._quizType === COUNTRY_CAPITAL_BY_COUNTRY_NAME_QUIZ ||
-          this._quizType === COUNTRY_NAME_BY_COUNTRY_ON_MAP
+          this._quizType === COUNTRY_NAME_BY_COUNTRY_ON_MAP ||
+          this._quizType === COUNTRY_NAME_BY_EMBLEM_QUIZ
         ) {
           element = cardOption.querySelector(".country-option");
         }
@@ -349,7 +352,8 @@ class Quiz {
       if (
         this._quizType === COUNTRY_NAME_BY_FLAG_QUIZ ||
         this._quizType === COUNTRY_NAME_BY_CAPITAL_QUIZ ||
-        this._quizType === COUNTRY_NAME_BY_COUNTRY_ON_MAP
+        this._quizType === COUNTRY_NAME_BY_COUNTRY_ON_MAP ||
+        this._quizType === COUNTRY_NAME_BY_EMBLEM_QUIZ
       ) {
         const countryName = cardOption.querySelector(".country-option");
         countryName.textContent =
@@ -415,7 +419,8 @@ class Quiz {
       this._quizType === COUNTRY_CAPITAL_BY_FLAG_QUIZ ||
       this._quizType === COUNTRY_NAME_BY_CAPITAL_QUIZ ||
       this._quizType === COUNTRY_CAPITAL_BY_COUNTRY_NAME_QUIZ ||
-      this._quizType === COUNTRY_NAME_BY_COUNTRY_ON_MAP
+      this._quizType === COUNTRY_NAME_BY_COUNTRY_ON_MAP ||
+      this._quizType === COUNTRY_NAME_BY_EMBLEM_QUIZ
     ) {
       selectedAnswer = flag.querySelector(".country-option");
     }
@@ -507,7 +512,8 @@ class Quiz {
           this._quizType === COUNTRY_CAPITAL_BY_FLAG_QUIZ ||
           this._quizType === COUNTRY_NAME_BY_CAPITAL_QUIZ ||
           this._quizType === COUNTRY_CAPITAL_BY_COUNTRY_NAME_QUIZ ||
-          this._quizType === COUNTRY_NAME_BY_COUNTRY_ON_MAP
+          this._quizType === COUNTRY_NAME_BY_COUNTRY_ON_MAP ||
+          this._quizType === COUNTRY_NAME_BY_EMBLEM_QUIZ
         ) {
           element = cardOption.querySelector(".country-option");
         }
@@ -704,6 +710,14 @@ class Quiz {
         return country.area > 2000 && countryBound && countryGeo.length > 0;
       });
     }
+    if (this._quizType === COUNTRY_NAME_BY_EMBLEM_QUIZ) {
+      this._countries = this._countries.filter((country) => {
+        return (
+          country.coatOfArms &&
+          (country.coatOfArms.png || country.coatOfArms.svg)
+        );
+      });
+    }
     this._cardOptionsElements.forEach((cardOption) => {
       cardOption.classList.remove("wrong-answer");
       cardOption.classList.remove("right-answer");
@@ -721,7 +735,8 @@ class Quiz {
         this._quizType === COUNTRY_CAPITAL_BY_FLAG_QUIZ ||
         this._quizType === COUNTRY_NAME_BY_CAPITAL_QUIZ ||
         this._quizType === COUNTRY_CAPITAL_BY_COUNTRY_NAME_QUIZ ||
-        this._quizType === COUNTRY_NAME_BY_COUNTRY_ON_MAP
+        this._quizType === COUNTRY_NAME_BY_COUNTRY_ON_MAP ||
+        this._quizType === COUNTRY_NAME_BY_EMBLEM_QUIZ
       ) {
         flagOption.classList.add("not-displayed");
         countryOption.classList.remove("not-displayed");
@@ -747,6 +762,7 @@ class Quiz {
       }`;
       this._questionCountry.textContent = "";
       this._questionImgCountry.classList.add("not-displayed");
+      this._questionImgEmblem.classList.add("not-displayed");
       this._questionCountry.classList.remove("not-displayed");
       this._questionMapCountry.classList.add("not-displayed");
       this._quizHeading.classList.remove("not-displayed");
@@ -759,6 +775,7 @@ class Quiz {
       }`;
       this._questionCountry.textContent = "";
       this._questionImgCountry.classList.add("not-displayed");
+      this._questionImgEmblem.classList.add("not-displayed");
       this._questionCountry.classList.remove("not-displayed");
       this._questionMapCountry.classList.add("not-displayed");
       this._quizHeading.classList.remove("not-displayed");
@@ -772,6 +789,7 @@ class Quiz {
       this._questionCountry.classList.remove("not-displayed");
       this._questionCountry.textContent = "";
       this._questionImgCountry.classList.add("not-displayed");
+      this._questionImgEmblem.classList.add("not-displayed");
       this._questionMapCountry.classList.add("not-displayed");
       this._quizHeading.classList.remove("not-displayed");
     }
@@ -784,6 +802,7 @@ class Quiz {
       this._questionCountry.classList.remove("not-displayed");
       this._questionCountry.textContent = "";
       this._questionImgCountry.classList.add("not-displayed");
+      this._questionImgEmblem.classList.add("not-displayed");
       this._questionMapCountry.classList.add("not-displayed");
       this._quizHeading.classList.remove("not-displayed");
     }
@@ -796,6 +815,20 @@ class Quiz {
       this._questionCountry.classList.add("not-displayed");
       this._questionCountry.textContent = "";
       this._questionImgCountry.classList.remove("not-displayed");
+      this._questionImgEmblem.classList.add("not-displayed");
+      this._questionMapCountry.classList.add("not-displayed");
+      this._quizHeading.classList.remove("not-displayed");
+    }
+    if (this._quizType === COUNTRY_NAME_BY_EMBLEM_QUIZ) {
+      this._quizHeading.textContent = this._quizHeading.textContent = `${
+        localization[model.worldCountries.language][
+          "Guess Country Name By Coat Of Arms"
+        ]
+      }`;
+      this._questionCountry.classList.add("not-displayed");
+      this._questionCountry.textContent = "";
+      this._questionImgEmblem.classList.remove("not-displayed");
+      this._questionImgCountry.classList.add("not-displayed");
       this._questionMapCountry.classList.add("not-displayed");
       this._quizHeading.classList.remove("not-displayed");
     }
@@ -808,6 +841,7 @@ class Quiz {
       this._questionCountry.classList.add("not-displayed");
       this._questionCountry.textContent = "";
       this._questionImgCountry.classList.add("not-displayed");
+      this._questionImgEmblem.classList.add("not-displayed");
       this._questionMapCountry.classList.remove("not-displayed");
       this._quizHeading.classList.add("not-displayed");
     }
@@ -820,6 +854,7 @@ class Quiz {
       this._questionCountry.classList.add("not-displayed");
       this._questionCountry.textContent = "";
       this._questionImgCountry.classList.remove("not-displayed");
+      this._questionImgEmblem.classList.add("not-displayed");
       this._questionMapCountry.classList.add("not-displayed");
       this._quizHeading.classList.remove("not-displayed");
     }
@@ -859,6 +894,13 @@ class Quiz {
       this._quizHeading.textContent = this._quizHeading.textContent = `${
         localization[model.worldCountries.language][
           "Guess Country Name By Flag"
+        ]
+      }`;
+    }
+    if (this._quizType === COUNTRY_NAME_BY_EMBLEM_QUIZ) {
+      this._quizHeading.textContent = this._quizHeading.textContent = `${
+        localization[model.worldCountries.language][
+          "Guess Country Name By Coat Of Arms"
         ]
       }`;
     }
@@ -1033,6 +1075,11 @@ class Quiz {
         ? this._questionCountrySelected.flags.png
         : this._questionCountrySelected.flags.svg;
     }
+    if (this._quizType === COUNTRY_NAME_BY_EMBLEM_QUIZ) {
+      this._questionImgEmblem.src = this._questionCountrySelected.coatOfArms.png
+        ? this._questionCountrySelected.coatOfArms.png
+        : this._questionCountrySelected.coatOfArms.svg;
+    }
     if (
       this._quizType === COUNTRY_NAME_BY_COUNTRY_ON_MAP &&
       this._countriesMap
@@ -1201,6 +1248,20 @@ class Quiz {
       this._quizHeading.textContent = `${
         localization[model.worldCountries.language][
           "Guess Country Name By Flag"
+        ]
+      }`;
+      this._cardOptionsElements.forEach((cardOption) => {
+        const country = cardOption.querySelector(".country-option");
+        country.textContent =
+          localization[model.worldCountries.language]["countries"][
+            country.dataset.country
+          ];
+      });
+    }
+    if (this._quizType === COUNTRY_NAME_BY_EMBLEM_QUIZ) {
+      this._quizHeading.textContent = `${
+        localization[model.worldCountries.language][
+          "Guess Country Name By Coat Of Arms"
         ]
       }`;
       this._cardOptionsElements.forEach((cardOption) => {

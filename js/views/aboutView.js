@@ -20,6 +20,12 @@ class aboutView {
   _aboutCountryNameByFlagQuizDescription = document.querySelector(
     ".about-country-name-by-flag-quiz-description"
   );
+  _aboutCountryNameByEmblemQuizName = document.querySelector(
+    ".about-country-name-by-emblem-quiz-name"
+  );
+  _aboutCountryNameByEmblemQuizDescription = document.querySelector(
+    ".about-country-name-by-emblem-description"
+  );
   _aboutFlagByCountryQuizDescription = document.querySelector(
     ".about-flag-by-country-quiz-description"
   );
@@ -184,6 +190,11 @@ class aboutView {
     this._aboutCountryNameByFlagQuizName.textContent = `${
       localization[model.worldCountries.language]["Country Name By Flag Quiz"]
     }`;
+    this._aboutCountryNameByEmblemQuizName.textContent = `${
+      localization[model.worldCountries.language][
+        "Country Name By Coat Of Arms Quiz"
+      ]
+    }`;
     this._aboutCountryCapitalByFlagQuizName.textContent = `${
       localization[model.worldCountries.language][
         "Country Capital By Flag Quiz"
@@ -230,6 +241,11 @@ class aboutView {
     this._aboutCountryNameByFlagQuizDescription.textContent = `${
       localization[model.worldCountries.language][
         "Guess the country's name from the suggested country flag image."
+      ]
+    }`;
+    this._aboutCountryNameByEmblemQuizDescription.textContent = `${
+      localization[model.worldCountries.language][
+        "Guess the country's name from the suggested country coat of arms image."
       ]
     }`;
     this._aboutFalgByCountryCapitalQuizDescription.textContent = `${

@@ -3,6 +3,7 @@ import { localization } from "../localization/ua.js";
 import {
   FLAG_BY_COUNTRY_NAME_QUIZ,
   COUNTRY_NAME_BY_FLAG_QUIZ,
+  COUNTRY_NAME_BY_EMBLEM_QUIZ,
   COUNTRY_CAPITAL_BY_FLAG_QUIZ,
   FLAG_BY_COUNTRY_CAPITAL_QUIZ,
   COUNTRY_NAME_BY_CAPITAL_QUIZ,
@@ -22,6 +23,9 @@ class topNavigationView {
   );
   _countryNameByFlagQuizLink = document.querySelector(
     "#country-name-by-flag-quiz-link"
+  );
+  _countryNameByEmblemQuizLink = document.querySelector(
+    "#country-name-by-emblem-quiz-link"
   );
   _countryCapitalByFlagQuizLink = document.querySelector(
     "#country-capital-by-flag-quiz-link"
@@ -70,6 +74,11 @@ class topNavigationView {
         case COUNTRY_NAME_BY_FLAG_QUIZ:
           this._countryNameByFlagQuizLink.closest("li").style.backgroundColor =
             "lightgrey";
+          break;
+        case COUNTRY_NAME_BY_EMBLEM_QUIZ:
+          this._countryNameByEmblemQuizLink.closest(
+            "li"
+          ).style.backgroundColor = "lightgrey";
           break;
         case COUNTRY_CAPITAL_BY_FLAG_QUIZ:
           this._countryCapitalByFlagQuizLink.closest(
@@ -125,6 +134,12 @@ class topNavigationView {
       .addEventListener(
         "click",
         handlerQuizClick.bind(this, this._countryNameByFlagQuizLink)
+      );
+    this._countryNameByEmblemQuizLink
+      .closest("li")
+      .addEventListener(
+        "click",
+        handlerQuizClick.bind(this, this._countryNameByEmblemQuizLink)
       );
     this._countryCapitalByFlagQuizLink
       .closest("li")
@@ -216,6 +231,11 @@ class topNavigationView {
     }`;
     this._countryNameByFlagQuizLink.textContent = `${
       localization[model.worldCountries.language]["Country Name By Flag Quiz"]
+    }`;
+    this._countryNameByEmblemQuizLink.textContent = `${
+      localization[model.worldCountries.language][
+        "Country Name By Coat Of Arms Quiz"
+      ]
     }`;
     this._countryCapitalByFlagQuizLink.textContent = `${
       localization[model.worldCountries.language][

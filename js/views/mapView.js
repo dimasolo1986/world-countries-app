@@ -12,6 +12,7 @@ import {
   COUNTRY_NAME_BY_FLAG_QUIZ,
   COUNTRY_CAPITAL_BY_FLAG_QUIZ,
   COUNTRY_NAME_BY_COUNTRY_ON_MAP,
+  COUNTRY_NAME_BY_EMBLEM_QUIZ,
 } from "../config.js";
 import { localization } from "../localization/ua.js";
 import { loadQuizOnMap } from "../controller.js";
@@ -308,6 +309,21 @@ class mapView {
             },
           },
           {
+            html: `<span id="country-name-by-emblem-quiz-menu">${
+              localization[model.worldCountries.language][
+                "Country Name By Coat Of Arms Quiz"
+              ]
+            }</span>`,
+            afterClick: () => {
+              loadQuizOnMap(COUNTRY_NAME_BY_EMBLEM_QUIZ);
+              sessionStorage.setItem(
+                "currentWindow",
+                "country-name-by-emblem-quiz"
+              );
+              this._topNavigationView.initItemMenuStyle();
+            },
+          },
+          {
             html: `<span id="country-capital-by-flag-quiz-menu">${
               localization[model.worldCountries.language][
                 "Country Capital By Flag Quiz"
@@ -518,6 +534,15 @@ class mapView {
       countryNameByFlagQuiz.textContent =
         localization[model.worldCountries.language][
           "Country Name By Flag Quiz"
+        ];
+    }
+    const countryNameByEmblemQuiz = document.querySelector(
+      "#country-name-by-emblem-quiz-menu"
+    );
+    if (countryNameByEmblemQuiz) {
+      countryNameByEmblemQuiz.textContent =
+        localization[model.worldCountries.language][
+          "Country Name By Coat Of Arms Quiz"
         ];
     }
     const countryCapitalByFlagQuiz = document.querySelector(

@@ -5,6 +5,7 @@ export const ALL_COUNTRIES_ENDPOINT = "https://restcountries.com/v3.1/all";
 export const REQUEST_TIMEOUT_SEC = 10;
 export const FLAG_BY_COUNTRY_NAME_QUIZ = "flag-by-country-name-quiz";
 export const COUNTRY_NAME_BY_FLAG_QUIZ = "country-name-by-flag-quiz";
+export const COUNTRY_NAME_BY_EMBLEM_QUIZ = "country-name-by-emblem-quiz";
 export const COUNTRY_NAME_BY_COUNTRY_ON_MAP = "country-name-by-country-on-map";
 export const COUNTRY_CAPITAL_BY_FLAG_QUIZ = "country-capital-by-flag-quiz";
 export const FLAG_BY_COUNTRY_CAPITAL_QUIZ = "flag-by-capital-quiz";

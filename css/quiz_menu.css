@@ -79,6 +79,8 @@
   -moz-user-select: none;
   -ms-user-select: none;
   -khtml-user-select: none;
+  padding-top: 0.15rem;
+  padding-bottom: 0.15rem;
 }
 
 .leaflet-bootstrap-dropdowns .dropdown-item i {

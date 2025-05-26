@@ -523,12 +523,14 @@ export const localization = {
     "Guess Country Capital By Flag": "Вгадай Столицю Країни За Прапором",
     "Guess Flag By Country Capital": "Вгадай Прапор За Столицею Країни",
     "Guess Country Name By Capital": "Вгадай Назву Країни За Столицею Країни",
+    "Guess Country Name By Coat Of Arms": "Вгадай Назву Країни За Гербом",
     "Guess Capital By Country Name": "Вгадай Столицю За Назвою Країни",
     "Guess Country On Map": "Знайди Країну На Мапі",
     "War Aggressor": "Країна Агресор",
     "Aggressor Supporter": "Прибічник Агресора",
     "Flag By Country Name Quiz": "Вікторина Прапор За Назвою Країни",
     "Country Name By Flag Quiz": "Вікторина Назва Країни За Прапором",
+    "Country Name By Coat Of Arms Quiz": "Вікторина Назва Країни За Гербом",
     "Country Name By Country On Map Quiz":
       "Вікторина Назва Країни За Країною На Мапі",
     "Country Capital By Flag Quiz": "Вікторина Столиця Країни За Прапором",
@@ -564,6 +566,8 @@ export const localization = {
       "Тут ви можете знайти всі країни світу на мапі, коротку інформацію про обрані країни, посилання на сторінки Вікіпедії певної країни. Також є можливість пройти різні вікторини з певними рівнями складності: Дуже Легко, Легко, Нормально, Важко.",
     "Guess the country's flag from the suggested country name.":
       "Відгадайте прапор країни за запропонованою назвою країни.",
+    "Guess the country's name from the suggested country coat of arms image.":
+      "Відгадайте назву країни за запропонованим зображенням герба країни.",
     "Guess the country's name from the suggested country on a map.":
       "Відгадайте назву країни за запропонованою країною на мапі.",
     "Guess the country's name from the suggested country flag image.":
@@ -1210,6 +1214,7 @@ export const localization = {
     "Guess Country Name By Flag": "Guess Country Name By Flag",
     "Guess Country Capital By Flag": "Guess Country Capital By Flag",
     "Guess Flag By Country Capital": "Guess Flag By Country Capital",
+    "Guess Country Name By Coat Of Arms": "Guess Country Name By Coat Of Arms",
     "Guess Country Name By Capital": "Guess Country Name By Capital",
     "Guess Capital By Country Name": "Guess Capital By Country Name",
     "Are you sure you want to leave this quiz? Current quiz data will not be saved!":
@@ -1224,6 +1229,7 @@ export const localization = {
     "Flag By Country Name Quiz": "Flag By Country Name Quiz",
     "Country Name By Country On Map Quiz":
       "Country Name By Country On Map Quiz",
+    "Country Name By Coat Of Arms Quiz": "Country Name By Coat Of Arms Quiz",
     "Country On Map Quiz": "Country On Map Quiz",
     "Guess Country On Map": "Guess Country On Map",
     "Guess Country Name By Country On Map":
@@ -1268,6 +1274,8 @@ export const localization = {
       "Guess the country's flag from the suggested country name.",
     "Guess the country's name from the suggested country flag image.":
       "Guess the country's name from the suggested country flag image.",
+    "Guess the country's name from the suggested country coat of arms image.":
+      "Guess the country's name from the suggested country coat of arms image.",
     "Guess the country's name from the suggested country on a map.":
       "Guess the country's name from the suggested country on a map.",
     "Guess the country's capital from the suggested country flag image.":
@@ -1901,6 +1909,8 @@ export const localization = {
     "Guess Country Name By Flag": "Ländernamen nach Flagge erraten",
     "Guess Country Capital By Flag": "Hauptstadt nach Flagge erraten",
     "Guess Flag By Country Capital": "Flagge nach Hauptstadt erraten",
+    "Guess Country Name By Coat Of Arms":
+      "Ländernamen anhand des Wappen erraten",
     "Guess Country Name By Capital": "Ländernamen nach Hauptstadt erraten",
     "Guess Capital By Country Name": "Hauptstadt nach Ländernamen erraten",
     "Are you sure you want to leave this quiz? Current quiz data will not be saved!":
@@ -1915,6 +1925,7 @@ export const localization = {
     "Flag By Country Name Quiz": "Flaggen nach Ländernamen Quiz",
     "Country Name By Country On Map Quiz":
       "Ländernamen nach Land auf Karte Quiz",
+    "Country Name By Coat Of Arms Quiz": "Ländername nach Wappen Quiz",
     "Country On Map Quiz": "Land auf Karte Quiz",
     "Guess Country On Map": "Land auf Karte erraten",
     "Guess Country Name By Country On Map":
@@ -1963,6 +1974,8 @@ export const localization = {
       "Erraten Sie den Namen des Landes anhand des vorgeschlagenen Landes auf einer Karte.",
     "Guess the country's capital from the suggested country flag image.":
       "Erraten Sie die Hauptstadt des Landes anhand des vorgeschlagenen Flaggenbildes.",
+    "Guess the country's name from the suggested country coat of arms image.":
+      "Erraten Sie den Namen des Landes anhand des vorgeschlagenen Landeswappen Bildes.",
     "Guess the country's flag from the suggested country's capital.":
       "Erraten Sie die Flagge des Landes anhand der vorgeschlagenen Hauptstadt.",
     "Guess the country's name from the suggested country capital.":
@@ -2590,6 +2603,7 @@ export const localization = {
     "START AGAIN": "RECOMMENCER",
     "Guess Flag By Country Name": "Devinez le Drapeau par le Nom du Pays",
     "Guess Country Name By Flag": "Devinez le Nom du Pays par le Drapeau",
+    "Guess Country Name By Coat Of Arms": "Devinez le Pays par son Blason",
     "Guess Country Capital By Flag":
       "Devinez la Capitale du Pays par le Drapeau",
     "Guess Flag By Country Capital":
@@ -2606,6 +2620,7 @@ export const localization = {
     "FINISH QUIZ": "TERMINER LE QUIZ",
     FINISH: "TERMINER",
     "Flag By Country Name Quiz": "Quiz du Drapeau par Nom de Pays",
+    "Country Name By Coat Of Arms Quiz": "Quiz du Nom de Pays par Blason",
     "Country Name By Country On Map Quiz":
       "Quiz du Nom de Pays par Pays sur la Carte",
     "Country On Map Quiz": "Quiz du Pays sur la Carte",
@@ -2652,6 +2667,8 @@ export const localization = {
       "Devinez le drapeau du pays à partir du nom du pays suggéré.",
     "Guess the country's name from the suggested country flag image.":
       "Devinez le nom du pays à partir de l'image du drapeau suggéré.",
+    "Guess the country's name from the suggested country coat of arms image.":
+      "Devinez le nom du pays à partir de l'image du blason.",
     "Guess the country's name from the suggested country on a map.":
       "Devinez le nom du pays à partir du pays suggéré sur une carte.",
     "Guess the country's capital from the suggested country flag image.":
@@ -3285,6 +3302,8 @@ export const localization = {
     "Guess Country Name By Flag": "Adivina el Nombre del País por Bandera",
     "Guess Country Capital By Flag": "Adivina la Capital del País por Bandera",
     "Guess Flag By Country Capital": "Adivina la Bandera por Capital del País",
+    "Guess Country Name By Coat Of Arms":
+      "Adivina el País por su Escudo de Armas",
     "Guess Country Name By Capital": "Adivina el Nombre del País por Capital",
     "Guess Capital By Country Name": "Adivina la Capital por Nombre del País",
     "Are you sure you want to leave this quiz? Current quiz data will not be saved!":
@@ -3297,6 +3316,8 @@ export const localization = {
     "FINISH QUIZ": "TERMINAR CUESTIONARIO",
     FINISH: "TERMINAR",
     "Flag By Country Name Quiz": "Cuestionario de Bandera por Nombre del País",
+    "Country Name By Coat Of Arms Quiz":
+      "Cuestionario de Nombre del País por Escudo de Armas",
     "Country Name By Country On Map Quiz":
       "Cuestionario de Nombre del País por País en el Mapa",
     "Country On Map Quiz": "Cuestionario de País en el Mapa",
@@ -3343,6 +3364,8 @@ export const localization = {
       "Adivina la bandera del país a partir del nombre sugerido del país.",
     "Guess the country's name from the suggested country flag image.":
       "Adivina el nombre del país a partir de la imagen de la bandera sugerida.",
+    "Guess the country's name from the suggested country coat of arms image.":
+      "Adivina el nombre del país a partir de la imagen de la escudo de armas.",
     "Guess the country's name from the suggested country on a map.":
       "Adivina el nombre del país a partir del país sugerido en un mapa.",
     "Guess the country's capital from the suggested country flag image.":
@@ -3980,6 +4003,7 @@ export const localization = {
     "Guess Country Name By Flag": "Indovina Nome del Paese per Bandiera",
     "Guess Country Capital By Flag": "Indovina Capitale per Bandiera",
     "Guess Flag By Country Capital": "Indovina Bandiera per Capitale",
+    "Guess Country Name By Coat Of Arms": "Indovina Nome del Paese per Stemma",
     "Guess Country Name By Capital": "Indovina Nome del Paese per Capitale",
     "Guess Capital By Country Name": "Indovina Capitale per Nome del Paese",
     "Are you sure you want to leave this quiz? Current quiz data will not be saved!":
@@ -3992,6 +4016,7 @@ export const localization = {
     "FINISH QUIZ": "FINISCI QUIZ",
     FINISH: "FINISCI",
     "Flag By Country Name Quiz": "Quiz Bandiera per Nome del Paese",
+    "Country Name By Coat Of Arms Quiz": "Quiz Nome del Paese per Stemma",
     "Country Name By Country On Map Quiz":
       "Quiz Nome del Paese per Paese sulla Mappa",
     "Country On Map Quiz": "Quiz Paese sulla Mappa",
@@ -4038,6 +4063,8 @@ export const localization = {
       "Indovina la bandiera del paese dal nome suggerito.",
     "Guess the country's name from the suggested country flag image.":
       "Indovina il nome del paese dall'immagine della bandiera suggerita.",
+    "Guess the country's name from the suggested country coat of arms image.":
+      "Indovina il nome del paese dall'immagine della stemma.",
     "Guess the country's name from the suggested country on a map.":
       "Indovina il nome del paese dalla mappa suggerita.",
     "Guess the country's capital from the suggested country flag image.":

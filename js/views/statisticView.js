@@ -4,6 +4,7 @@ import * as model from "../model.js";
 import {
   FLAG_BY_COUNTRY_NAME_QUIZ,
   COUNTRY_NAME_BY_FLAG_QUIZ,
+  COUNTRY_NAME_BY_EMBLEM_QUIZ,
   COUNTRY_CAPITAL_BY_FLAG_QUIZ,
   FLAG_BY_COUNTRY_CAPITAL_QUIZ,
   COUNTRY_NAME_BY_CAPITAL_QUIZ,
@@ -136,6 +137,13 @@ class statisticView {
             quizType.textContent = `${
               localization[model.worldCountries.language][
                 "Country Name By Flag Quiz"
+              ]
+            }`;
+            break;
+          case COUNTRY_NAME_BY_EMBLEM_QUIZ:
+            quizType.textContent = `${
+              localization[model.worldCountries.language][
+                "Country Name By Coat Of Arms Quiz"
               ]
             }`;
             break;
@@ -280,6 +288,13 @@ class statisticView {
             quiz.textContent = `${
               localization[model.worldCountries.language][
                 "Country Name By Flag Quiz"
+              ]
+            }`;
+            break;
+          case COUNTRY_NAME_BY_EMBLEM_QUIZ:
+            quiz.textContent = `${
+              localization[model.worldCountries.language][
+                "Country Name By Coat Of Arms Quiz"
               ]
             }`;
             break;

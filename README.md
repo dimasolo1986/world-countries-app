@@ -8,16 +8,22 @@ Used Map Library: [Leaflet](https://leafletjs.com/)
 
 <b>Quizzes:<b>
 
-<b>Flag By Country Name Quiz<b> - Guess the country's flag from the suggested country name. The quiz contains 35 questions. Get 100 points for each correct answer.
+<b>Country Name By Country On Map Quiz<b> - Guess the country's name from the suggested country on a map.
 
-<b>Country Name By Flag Quiz<b> - Guess the country's name from the suggested country flag image. The quiz contains 35 questions. Get 100 points for each correct answer.
+<b>Flag By Country Name Quiz<b> - Guess the country's flag from the suggested country name.
 
-<b>Country Name By Capital Quiz<b> - Guess the country's name from the suggested country capital. The quiz contains 35 questions. Get 100 points for each correct answer.
+<b>Country Name By Flag Quiz<b> - Guess the country's name from the suggested country flag image.
 
-<b>Capital By Country Name Quiz<b> - Guess the country's capital from the suggested country name. The quiz contains 35 questions. Get 100 points for each correct answer.
+<b>Country Name By Capital Quiz<b> - Guess the country's name from the suggested country capital.
 
-<b>Country Capital By Flag Quiz<b> - Guess the country's capital from the suggested country flag image. The quiz contains 35 questions. Get 100 points for each correct answer.
+<b>Capital By Country Name Quiz<b> - Guess the country's capital from the suggested country name.
 
-<b>Flag By Country Capital Quiz<b> - Guess the country's flag from the suggested country's capital. The quiz contains 35 questions. Get 100 points for each correct answer.
+<b>Country Capital By Flag Quiz<b> - Guess the country's capital from the suggested country flag image.
+
+<b>Flag By Country Capital Quiz<b> - Guess the country's flag from the suggested country's capital.
+
+<b>Country Name By Coat Of Arms Quiz<b> - Guess the country's name from the suggested country coat of arms image.
+
+Quizzes contain from 10 to 35 questions depending on the difficulty level. Get from 5 to 100 points for each correct answer, depending on the speed of the answer.
 
 <b>Country On Map Quiz<b> - Guess the country on the map from the suggested country name. The quiz contains 35 questions. Get 300 points for each correct answer.
