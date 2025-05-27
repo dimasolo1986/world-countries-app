@@ -114,7 +114,10 @@ class Quiz {
       this._quizStartContainer.classList.add("not-displayed");
       this._quizContainer.classList.remove("not-displayed");
       this._questionCountryContainer.classList.remove("not-displayed");
-      if (this._quizType === COUNTRY_NAME_BY_COUNTRY_ON_MAP)
+      if (
+        this._quizType === COUNTRY_NAME_BY_COUNTRY_ON_MAP ||
+        this._quizType === COUNTRY_NAME_BY_EMBLEM_QUIZ
+      )
         this._quizHeading.classList.add("not-displayed");
       this.showQuiz();
       this.createCountryOnMapQuizMap();
@@ -137,7 +140,10 @@ class Quiz {
       topNavigationView,
       countriesSelectView
     );
-    if (this._quizType === COUNTRY_NAME_BY_COUNTRY_ON_MAP)
+    if (
+      this._quizType === COUNTRY_NAME_BY_COUNTRY_ON_MAP ||
+      this._quizType === COUNTRY_NAME_BY_EMBLEM_QUIZ
+    )
       this._quizHeading.classList.remove("not-displayed");
     this.initTimer();
     if (!this._startQuizCardListenerAdded) {
@@ -271,7 +277,10 @@ class Quiz {
         this._timerId = setInterval(this.timerCountDown.bind(this), 1000);
       } else {
         this.clearQuiz();
-        if (this._quizType === COUNTRY_NAME_BY_COUNTRY_ON_MAP)
+        if (
+          this._quizType === COUNTRY_NAME_BY_COUNTRY_ON_MAP ||
+          this._quizType === COUNTRY_NAME_BY_EMBLEM_QUIZ
+        )
           this._quizHeading.classList.remove("not-displayed");
       }
     };
@@ -830,7 +839,7 @@ class Quiz {
       this._questionImgEmblem.classList.remove("not-displayed");
       this._questionImgCountry.classList.add("not-displayed");
       this._questionMapCountry.classList.add("not-displayed");
-      this._quizHeading.classList.remove("not-displayed");
+      this._quizHeading.classList.add("not-displayed");
     }
     if (this._quizType === COUNTRY_NAME_BY_COUNTRY_ON_MAP) {
       this._quizHeading.textContent = this._quizHeading.textContent = `${

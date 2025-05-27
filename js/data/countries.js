@@ -34073,8 +34073,8 @@ export const COUNTRIES = [
     timezones: ["UTC+04:30"],
     continents: ["Asia"],
     flags: {
-      png: "https://upload.wikimedia.org/wikipedia/commons/thumb/5/5c/Flag_of_the_Taliban.svg/320px-Flag_of_the_Taliban.svg.png",
-      svg: "https://upload.wikimedia.org/wikipedia/commons/5/5c/Flag_of_the_Taliban.svg",
+      png: "https://flagcdn.com/w320/af.png",
+      svg: "https://flagcdn.com/af.svg",
       alt: "The flag of the Islamic Emirate of Afghanistan has a white field with Arabic inscriptions — the Shahada — in black across its center.",
     },
     coatOfArms: {
