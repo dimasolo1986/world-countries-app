@@ -31,9 +31,9 @@ L.Control.Weather = L.Control.extend({
         this._weatherHumidity.classList.toggle("not-displayed");
         this._weatherWind.classList.toggle("not-displayed");
         if (this._weatherIcon.classList.contains("not-displayed")) {
-          this._collapse.innerHTML = "&#11206;";
+          this._collapse.innerHTML = "&#129095;";
         } else {
-          this._collapse.innerHTML = "&#11205;";
+          this._collapse.innerHTML = "&#129093;";
         }
       }.bind(this)
     );
