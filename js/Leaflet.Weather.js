@@ -15,6 +15,28 @@ L.Control.Weather = L.Control.extend({
   },
   onAdd: function (map) {
     this._div = L.DomUtil.create("div", this.options.cssClass);
+    $(this._div).html(this.options.template);
+    this._collapse = $(this._div).find(".collapseButtonWeather")[0];
+    this._weatherIcon = $(this._div).find(".weatherIcon")[0];
+    this._weatherCoordinates = $(this._div).find(".weatherCoordinates")[0];
+    this._weatherTemperature = $(this._div).find(".weatherTemperature")[0];
+    this._weatherHumidity = $(this._div).find(".weatherHumidity")[0];
+    this._weatherWind = $(this._div).find(".weatherWind")[0];
+    this._collapse.addEventListener(
+      "click",
+      function () {
+        this._weatherIcon.classList.toggle("not-displayed");
+        this._weatherCoordinates.classList.toggle("not-displayed");
+        this._weatherTemperature.classList.toggle("not-displayed");
+        this._weatherHumidity.classList.toggle("not-displayed");
+        this._weatherWind.classList.toggle("not-displayed");
+        if (this._weatherIcon.classList.contains("not-displayed")) {
+          this._collapse.innerHTML = "&#11206;";
+        } else {
+          this._collapse.innerHTML = "&#11205;";
+        }
+      }.bind(this)
+    );
     this.onMoveEnd = onMoveEnd.bind(this);
     if (!this.options.updateWidget) {
       this.options.updateWidget = this._updateWidget.bind(this);
@@ -62,19 +84,15 @@ L.Control.Weather = L.Control.extend({
       ":icon",
       weather.weather[0].icon + ".png"
     );
-    let tpl = this.options.template;
-    tpl = tpl.replace(":latitude", +weather.coord.lat.toFixed(2));
-    tpl = tpl.replace(":longitude", +weather.coord.lon.toFixed(2));
-    tpl = tpl.replace(":iconurl", iconUrl);
-    tpl = tpl.replace(":temperature", weather.main.temp);
-    tpl = tpl.replace(":humidity", weather.main.humidity);
-    tpl = tpl.replace(":windspeed", weather.wind.speed);
-    tpl = tpl.replace(
-      ":winddirection",
-      this.mapWindDirection(weather.wind.deg)
+    $(".weatherIconImg").attr("src", iconUrl);
+    $(".weatherCoordinatesValue").text(
+      `${+weather.coord.lat.toFixed(2)}, ${+weather.coord.lon.toFixed(2)}`
     );
-    tpl = tpl.replace(":windegrees", weather.wind.deg);
-    $(this._div).html(tpl);
+    $(".weatherTemperatureValue").text(`${weather.main.temp}°C`);
+    $(".weatherHumidityValue").text(`${weather.main.humidity}%`);
+    $(".weatherWindValue").html(
+      `${this.mapWindDirection(weather.wind.deg)} ${weather.wind.speed}`
+    );
   },
   /**
    * Maps from wind direction in degrees to cardinal points

@@ -351,17 +351,19 @@ class mapView {
           localization[model.worldCountries.language][
             "Weather in the center of the map"
           ]
-        }</div><div class="weatherIcon"><img src=":iconurl"></div><div><span id="coordinates">${
+        }</div><div class="weatherIcon"><img class="weatherIconImg" src=""></div><div class="weatherCoordinates"><span id="coordinates">${
           localization[model.worldCountries.language]["Coordinates"]
-        }</span>: :latitude, :longitude</div><div><span id="tempreture">${
+        }</span>: <span class="weatherCoordinatesValue"></span></div><div class="weatherTemperature"><span id="tempreture">${
           localization[model.worldCountries.language]["Temreture"]
-        }</span>: :temperature°C</div><div><span id="humidity">${
+        }</span>: <span class="weatherTemperatureValue"></span></div><div class="weatherHumidity"><span id="humidity">${
           localization[model.worldCountries.language]["Humidity"]
-        }</span>: :humidity%</div><div><span id="wind">${
+        }</span>: <span class="weatherHumidityValue"></span></div><div class="weatherWind"><span id="wind">${
           localization[model.worldCountries.language]["Wind"]
-        }</span>: :winddirection :windspeed <span id="windUnit">${
+        }</span>: <span class="weatherWindValue"></span><span id="windUnit">${
           localization[model.worldCountries.language]["m/s"]
-        }</span></div>`,
+        }</span></div><button class="collapseButtonWeather" title="${
+          localization[model.worldCountries.language]["Collapse"]
+        }">&#11205;</button>`,
       })
       .addTo(this._map);
     this._countryPlayer = L.control
@@ -379,7 +381,9 @@ class mapView {
           localization[model.worldCountries.language]["Country Display Time"]
         }" for="playerSelect">&#128338;:</label><select id="playerSelect" class="playerDelaySelect"><option value="3" selected>3 sec.</option><option value="5">5 sec.</option><option value="10">10 sec.</option><option value="20">20 sec.</option><option value="30">30 sec.</option><option value="60">60 sec.</option><option value="90">90 sec.</option></select><div class="playerFooter"><span id="countryCount">1</span><span id="allCountriesNumber"> : ${
           model.worldCountries.countries.length
-        }</span></div>`,
+        }</span></div><button class="collapseButtonCountryPlayer" title="${
+          localization[model.worldCountries.language]["Collapse"]
+        }">&#11205;</button>`,
         model: model,
         mapView: this,
         countryBounds: COUNTRY_BOUNDS,
@@ -430,31 +434,56 @@ class mapView {
       label.title =
         localization[model.worldCountries.language]["Country Display Time"];
     }
+    const collapseButton = document.querySelector(
+      ".collapseButtonCountryPlayer"
+    );
+    if (collapseButton) {
+      collapseButton.title =
+        localization[model.worldCountries.language]["Collapse"];
+    }
     if (this._countryPlayer) {
       this._countryPlayer.stopPlayCountries();
     }
   }
 
   translateWeather() {
-    const weatherTemplate = `<div class="weatherButton">${
-      localization[model.worldCountries.language][
-        "Weather in the center of the map"
-      ]
-    }</div><div class="weatherIcon"><img src=":iconurl"></div><div><span id="coordinates">${
-      localization[model.worldCountries.language]["Coordinates"]
-    }</span>: :latitude, :longitude</div><div><span id="tempreture">${
-      localization[model.worldCountries.language]["Temreture"]
-    }</span>: :temperature°C</div><div><span id="humidity">${
-      localization[model.worldCountries.language]["Humidity"]
-    }</span>: :humidity%</div><div><span id="wind">${
-      localization[model.worldCountries.language]["Wind"]
-    }</span>: :winddirection :windspeed <span id="windUnit">${
-      localization[model.worldCountries.language]["m/s"]
-    }</span></div>`;
-    this._weather.options.template = weatherTemplate;
-    this._weather.refresh(
-      this._weather.options.updateWidget.bind(this._weather)
-    );
+    const weatherHeading = document.querySelector(".weatherButton");
+    if (weatherHeading) {
+      weatherHeading.textContent =
+        localization[model.worldCountries.language][
+          "Weather in the center of the map"
+        ];
+    }
+    const weatherCoordinates = document.querySelector("#coordinates");
+    if (weatherCoordinates) {
+      weatherCoordinates.textContent =
+        localization[model.worldCountries.language]["Coordinates"];
+    }
+    const weatherTemperature = document.querySelector("#tempreture");
+    if (weatherTemperature) {
+      weatherTemperature.textContent =
+        localization[model.worldCountries.language]["Temreture"];
+    }
+    const weatherHumidity = document.querySelector("#humidity");
+    if (weatherHumidity) {
+      weatherHumidity.textContent =
+        localization[model.worldCountries.language]["Humidity"];
+    }
+    const weatherWind = document.querySelector("#wind");
+    if (weatherWind) {
+      weatherWind.textContent =
+        localization[model.worldCountries.language]["Wind"];
+    }
+    const weatherWindUnit = document.querySelector("#windUnit");
+    if (weatherWindUnit) {
+      weatherWindUnit.textContent =
+        localization[model.worldCountries.language]["m/s"];
+    }
+    const collapseButton = document.querySelector(".collapseButtonWeather");
+    if (collapseButton) {
+      collapseButton.title =
+        localization[model.worldCountries.language]["Collapse"];
+    }
   }
 
   translateElements() {

@@ -479,6 +479,19 @@
   color: black;
   text-align: center;
 }
+.leaflet-control-weather .collapseButtonWeather {
+  min-width: 185px;
+  background-color: white;
+  opacity: 0.8;
+  color: black;
+  text-align: center;
+  cursor: pointer;
+  pointer-events: auto;
+  border-top: 1px black dotted;
+  border-left: 0;
+  border-right: 0;
+  border-bottom: 0;
+}
 .leaflet-control-weather .weatherIcon {
   float: left;
   border: 2px solid lightslategray;
@@ -509,6 +522,19 @@
   opacity: 0.8;
   color: black;
   text-align: center;
+}
+.leaflet-control-country-player .collapseButtonCountryPlayer {
+  min-width: 185px;
+  background-color: white;
+  opacity: 0.8;
+  color: black;
+  text-align: center;
+  cursor: pointer;
+  pointer-events: auto;
+  border-top: 1px black dotted;
+  border-left: 0;
+  border-right: 0;
+  border-bottom: 0;
 }
 .leaflet-control-country-player .playerFooter {
   min-width: 185px;

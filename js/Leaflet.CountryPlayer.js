@@ -9,6 +9,10 @@ L.Control.Player = L.Control.extend({
     this._isPaused = false;
     this._div = L.DomUtil.create("div", this.options.cssClass);
     $(this._div).html(this.options.template);
+    this._collapse = $(this._div).find(".collapseButtonCountryPlayer")[0];
+    this._footer = $(this._div).find(".playerFooter")[0];
+    this._label = $(this._div).find("#playerSelectLabel")[0];
+    this._select = $(this._div).find("#playerSelectLabel")[0];
     this._startButton = $(this._div).find(".playerButtonStart")[0];
     this._pauseButton = $(this._div).find(".playerButtonPause")[0];
     this._endButton = $(this._div).find(".playerButtonEnd")[0];
@@ -18,8 +22,9 @@ L.Control.Player = L.Control.extend({
     this._startButton.style.pointerEvents = "auto";
     this._endButton.style.opacity = "0.5";
     this._endButton.style.pointerEvents = "none";
-    const delaySelect = $(this._div).find(".playerDelaySelect")[0];
+    this._delaySelect = $(this._div).find(".playerDelaySelect")[0];
     this._countryCountElement = $(this._div).find("#countryCount")[0];
+    this._collapse.addEventListener("click", this.collapse.bind(this));
     this._startButton.addEventListener("click", this.playCountires.bind(this));
     this._endButton.addEventListener(
       "click",
@@ -29,7 +34,7 @@ L.Control.Player = L.Control.extend({
       "click",
       this.pausePlayCountries.bind(this)
     );
-    delaySelect.addEventListener("change", this.delayChange.bind(this));
+    this._delaySelect.addEventListener("change", this.delayChange.bind(this));
     return this._div;
   },
   onRemove: function (map) {
@@ -52,6 +57,19 @@ L.Control.Player = L.Control.extend({
   delayChange: function () {
     this.stopPlayCountries();
   },
+  collapse: function () {
+    this._startButton.classList.toggle("not-displayed");
+    this._pauseButton.classList.toggle("not-displayed");
+    this._endButton.classList.toggle("not-displayed");
+    this._label.classList.toggle("not-displayed");
+    this._delaySelect.classList.toggle("not-displayed");
+    this._footer.classList.toggle("not-displayed");
+    if (this._startButton.classList.contains("not-displayed")) {
+      this._collapse.innerHTML = "&#11206;";
+    } else {
+      this._collapse.innerHTML = "&#11205;";
+    }
+  },
   playCountires: function () {
     this._isPaused = false;
     this._pauseButton.style.opacity = "1";
@@ -60,8 +78,7 @@ L.Control.Player = L.Control.extend({
     this._startButton.style.pointerEvents = "none";
     this._endButton.style.opacity = "1";
     this._endButton.style.pointerEvents = "auto";
-    const delaySelect = $(this._div).find(".playerDelaySelect")[0];
-    const delayValue = +delaySelect.value;
+    const delayValue = +this._delaySelect.value;
     const play = function () {
       if (!this._isPaused) {
         if (index >= this.options.model.worldCountries.countries.length) {
