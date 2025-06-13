@@ -65,9 +65,9 @@ L.Control.Player = L.Control.extend({
     this._delaySelect.classList.toggle("not-displayed");
     this._footer.classList.toggle("not-displayed");
     if (this._startButton.classList.contains("not-displayed")) {
-      this._collapse.innerHTML = "&#129095;";
+      this._collapse.innerHTML = "⬇";
     } else {
-      this._collapse.innerHTML = "&#129093;";
+      this._collapse.innerHTML = "⬆";
     }
   },
   playCountires: function () {

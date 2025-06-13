@@ -363,7 +363,7 @@ class mapView {
           localization[model.worldCountries.language]["m/s"]
         }</span></div><button class="collapseButtonWeather" title="${
           localization[model.worldCountries.language]["Collapse"]
-        }">&#129093;</button>`,
+        }">⬆</button>`,
       })
       .addTo(this._map);
     this._countryPlayer = L.control
@@ -383,7 +383,7 @@ class mapView {
           model.worldCountries.countries.length
         }</span></div><button class="collapseButtonCountryPlayer" title="${
           localization[model.worldCountries.language]["Collapse"]
-        }">&#129093;</button>`,
+        }">⬆</button>`,
         model: model,
         mapView: this,
         countryBounds: COUNTRY_BOUNDS,
