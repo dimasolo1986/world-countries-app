@@ -740,6 +740,24 @@ class mapView {
     this._isCountrySelected = isSelected;
   }
 
+  markersDisableCloseOnClick() {
+    this._markers.forEach((marker) => {
+      const popup = marker.getPopup();
+      if (popup) {
+        popup.options.closeOnClick = false;
+      }
+    });
+  }
+
+  markersEnableCloseOnClick() {
+    this._markers.forEach((marker) => {
+      const popup = marker.getPopup();
+      if (popup) {
+        popup.options.closeOnClick = true;
+      }
+    });
+  }
+
   renderCountriesMarkers(worldCountries) {
     this._removeAllMarkersFromMap();
     worldCountries.forEach((country) => {
@@ -862,11 +880,17 @@ class mapView {
       marker.on(
         "click",
         function () {
+          if (this._countryPlayer._isPlaying) {
+            return;
+          }
           this._markers.forEach((marker) => marker.disablePermanentHighlight());
           marker.enablePermanentHighlight();
         }.bind(this)
       );
       function addCountryBoundary(country, type, isCountrySelected) {
+        if (this._countryPlayer._isPlaying) {
+          return;
+        }
         if (!this._isCountrySelected || type === "marker") {
           this.removeCountryBoundary();
           this.removeCapitalMarker();
@@ -895,7 +919,10 @@ class mapView {
         }
       }
       function removeCountryBoundary(type) {
-        if (type === "mouse" && this._isCountrySelected) {
+        if (
+          (type === "mouse" && this._isCountrySelected) ||
+          this._countryPlayer._isPlaying
+        ) {
           return;
         }
         const sideNavigationCountries = document.querySelector(
@@ -917,7 +944,12 @@ class mapView {
         }
       }
       this._map.on("click", removeCountryBoundary.bind(this, "map"));
-      this._map.on("click", () => marker.disablePermanentHighlight());
+      this._map.on("click", () => {
+        if (this._countryPlayer._isPlaying) {
+          return;
+        }
+        marker.disablePermanentHighlight();
+      });
       this._markers.push(marker);
     });
   }

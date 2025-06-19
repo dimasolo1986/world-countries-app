@@ -6,6 +6,7 @@ L.Control.Player = L.Control.extend({
       '<div class="playerButton"></div><div class="playerButtonStart">▶</div><div class="playerButtonEnd">⏹</div>',
   },
   onAdd: function (map) {
+    this._isPlaying = false;
     this._isPaused = false;
     this._div = L.DomUtil.create("div", this.options.cssClass);
     $(this._div).html(this.options.template);
@@ -40,6 +41,7 @@ L.Control.Player = L.Control.extend({
   onRemove: function (map) {
     this.options.mapView._sideNavigationView._selectedCountry = undefined;
     this.options.mapView._sideNavigationView._removeAllSelection();
+    this.options.mapView.markersEnableCloseOnClick();
     this.options.mapView.setIsCountrySelected(false);
     this.options.mapView.removeCapitalMarker();
     this.options.mapView.removeCountryBoundary();
@@ -71,6 +73,7 @@ L.Control.Player = L.Control.extend({
     }
   },
   playCountires: function () {
+    this._isPlaying = true;
     this._isPaused = false;
     this._pauseButton.style.opacity = "1";
     this._pauseButton.style.pointerEvents = "auto";
@@ -99,6 +102,7 @@ L.Control.Player = L.Control.extend({
               zoomLevel
             );
           }
+          this.options.mapView.markersDisableCloseOnClick();
           this.options.mapView.removeCapitalMarker();
           this.options.mapView.removeCountryBoundary();
           this._countryCountElement.textContent = index + 1;
@@ -129,9 +133,19 @@ L.Control.Player = L.Control.extend({
     this._endButton.style.opacity = "1";
     this._endButton.style.pointerEvents = "auto";
     this._isPaused = true;
+    this._isPlaying = false;
+    this.options.mapView._sideNavigationView._selectedCountry = undefined;
+    this.options.mapView._sideNavigationView._removeAllSelection();
+    this.options.mapView.markersEnableCloseOnClick();
+    this.options.mapView.setIsCountrySelected(false);
+    this.options.mapView.removeCapitalMarker();
+    this.options.mapView.removeCountryBoundary();
+    this.options.mapView.closeAllPopup();
+    this.options.mapView.setMapViewToBounds(this.options.worldBounds);
   },
   terminatePlayCountries: function () {
     this._isPaused = false;
+    this._isPlaying = false;
     this._pauseButton.style.opacity = "0.5";
     this._pauseButton.style.pointerEvents = "none";
     this._startButton.style.opacity = "1";
@@ -150,6 +164,7 @@ L.Control.Player = L.Control.extend({
   },
   stopPlayCountries: function () {
     this._isPaused = false;
+    this._isPlaying = false;
     this._pauseButton.style.opacity = "0.5";
     this._pauseButton.style.pointerEvents = "none";
     this._startButton.style.opacity = "1";
@@ -158,6 +173,7 @@ L.Control.Player = L.Control.extend({
     this._endButton.style.pointerEvents = "none";
     this.options.mapView._sideNavigationView._selectedCountry = undefined;
     this.options.mapView._sideNavigationView._removeAllSelection();
+    this.options.mapView.markersEnableCloseOnClick();
     this.options.mapView.setIsCountrySelected(false);
     this.options.mapView.removeCapitalMarker();
     this.options.mapView.removeCountryBoundary();
