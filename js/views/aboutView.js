@@ -85,12 +85,14 @@ class aboutView {
   returnToMap(
     mapView,
     statisticView,
+    flagsView,
     sideNavigationView,
     topNavigationView,
     countriesSelectView
   ) {
     this.hideAboutProject();
     statisticView.hideStatistic();
+    flagsView.hideFlags();
     mapView.setMapViewToBounds(WORLD_MAP_BOUNDS);
     mapView.showMap();
     mapView.invalidateSize();
@@ -104,6 +106,7 @@ class aboutView {
   addReturnToMapHandlerClick(
     mapView,
     statisticView,
+    flagsView,
     sideNavigationView,
     topNavigationView,
     countriesSelectView
@@ -115,6 +118,7 @@ class aboutView {
           this,
           mapView,
           statisticView,
+          flagsView,
           sideNavigationView,
           topNavigationView,
           countriesSelectView

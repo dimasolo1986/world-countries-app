@@ -8364,7 +8364,8 @@ body,
 }
 
 #about-project,
-#statistic-quizzes {
+#statistic-quizzes,
+#countries-flags {
   padding: 10px;
 }
 
@@ -8389,7 +8390,8 @@ body,
 }
 
 .modal-content,
-#statistic-quizzes {
+#statistic-quizzes,
+#countries-flags {
   font-family: Cambria, Cochin, Georgia, Times, "Times New Roman", serif;
 }
 

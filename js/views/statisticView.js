@@ -23,12 +23,14 @@ class statisticView {
   returnToMap(
     mapView,
     aboutView,
+    flagsView,
     sideNavigationView,
     topNavigationView,
     countriesSelectView
   ) {
     this.hideStatistic();
     aboutView.hideAboutProject();
+    flagsView.hideFlags();
     mapView.setMapViewToBounds(WORLD_MAP_BOUNDS);
     mapView.showMap();
     mapView.invalidateSize();
@@ -42,6 +44,7 @@ class statisticView {
   addReturnToMapHandlerClick(
     mapView,
     aboutView,
+    flagsView,
     sideNavigationView,
     topNavigationView,
     countriesSelectView
@@ -53,6 +56,7 @@ class statisticView {
           this,
           mapView,
           aboutView,
+          flagsView,
           sideNavigationView,
           topNavigationView,
           countriesSelectView

@@ -516,6 +516,7 @@ export const localization = {
       "Ви впевнені, що бажаєте залишити цей тест? Поточні дані вікторини не будуть збережені!",
     "Only Independent Countries": "Тільки незалежні країни",
     "All Countries": "Всі країни",
+    "World Countries Flags": "Прапори Країн Світу",
     "Guess Flag By Country Name": "Вгадай Прапор За Назвою Країни",
     "Guess Country Name By Country On Map":
       "Вгадай Назву Країни За Країною На Мапі",
@@ -1229,6 +1230,7 @@ export const localization = {
     FINISH: "FINISH",
     Collapse: "Collapse",
     "Flag By Country Name Quiz": "Flag By Country Name Quiz",
+    "World Countries Flags": "World Countries Flags",
     "Country Name By Country On Map Quiz":
       "Country Name By Country On Map Quiz",
     "Country Name By Coat Of Arms Quiz": "Country Name By Coat Of Arms Quiz",
@@ -1925,6 +1927,7 @@ export const localization = {
     "NEXT QUESTION": "NÄCHSTE FRAGE",
     "FINISH QUIZ": "QUIZ BEENDEN",
     FINISH: "FERTIG",
+    "World Countries Flags": "Welt Länderflaggen",
     "Flag By Country Name Quiz": "Flaggen nach Ländernamen Quiz",
     "Country Name By Country On Map Quiz":
       "Ländernamen nach Land auf Karte Quiz",
@@ -2610,6 +2613,7 @@ export const localization = {
     "Guess Country Name By Coat Of Arms": "Devinez le Pays par son Blason",
     "Guess Country Capital By Flag":
       "Devinez la Capitale du Pays par le Drapeau",
+    "World Countries Flags": "Drapeaux des Pays du Monde",
     "Guess Flag By Country Capital":
       "Devinez le Drapeau par la Capitale du Pays",
     "Guess Country Name By Capital": "Devinez le Nom du Pays par la Capitale",
@@ -3319,6 +3323,7 @@ export const localization = {
     "All Countries": "Todos los Países",
     "NEXT QUESTION": "SIGUIENTE PREGUNTA",
     "FINISH QUIZ": "TERMINAR CUESTIONARIO",
+    "World Countries Flags": "Banderas de los Países del Mundo",
     FINISH: "TERMINAR",
     "Flag By Country Name Quiz": "Cuestionario de Bandera por Nombre del País",
     "Country Name By Coat Of Arms Quiz":
@@ -4019,6 +4024,7 @@ export const localization = {
     "All Countries": "Tutti i Paesi",
     "NEXT QUESTION": "PROSSIMA DOMANDA",
     "FINISH QUIZ": "FINISCI QUIZ",
+    "World Countries Flags": "Bandiere dei Paesi del Mondo",
     FINISH: "FINISCI",
     "Flag By Country Name Quiz": "Quiz Bandiera per Nome del Paese",
     "Country Name By Coat Of Arms Quiz": "Quiz Nome del Paese per Stemma",

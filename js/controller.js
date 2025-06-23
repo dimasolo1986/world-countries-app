@@ -8,6 +8,7 @@ import quiz from "./views/quiz.js";
 import mapQuiz from "./views/mapQuiz.js";
 import aboutView from "./views/aboutView.js";
 import statisticView from "./views/statisticView.js";
+import flagsView from "./views/flagsView.js";
 import { localization } from "./localization/ua.js";
 import { COUNTRY_ON_MAP_QUIZ } from "./config.js";
 import { WORLD_MAP_BOUNDS } from "./config.js";
@@ -30,11 +31,13 @@ const init = function () {
   topNavigationView.addHandlerWorldMapClick(worldMapHandlerClick);
   topNavigationView.addHandlerAboutClick(aboutProjectHandlerClick);
   topNavigationView.addHandlerStatisticClick(statisticHandlerClick);
+  topNavigationView.addHandlerFlagsClick(flagsHandlerClick);
   topNavigationView.addHandlerQuizClick(quizSelectionHandler);
   topNavigationView.initItemMenuStyle();
   aboutView.addReturnToMapHandlerClick(
     mapView,
     statisticView,
+    flagsView,
     sideNavigationView,
     topNavigationView,
     countriesSelectView
@@ -42,10 +45,20 @@ const init = function () {
   statisticView.addReturnToMapHandlerClick(
     mapView,
     aboutView,
+    flagsView,
     sideNavigationView,
     topNavigationView,
     countriesSelectView
   );
+  flagsView.addReturnToMapHandlerClick(
+    mapView,
+    aboutView,
+    statisticView,
+    sideNavigationView,
+    topNavigationView,
+    countriesSelectView
+  );
+  flagsView.flagsRegionSelectHandler();
   saveCurrentLanguageHandler();
   loadWindow();
   document.addEventListener("DOMContentLoaded", function () {
@@ -70,6 +83,9 @@ const loadWindow = function () {
       case "statistic":
         loadStatistic();
         break;
+      case "flags":
+        loadFlags();
+        break;
       default:
         loadQuiz(savedWindow);
         break;
@@ -84,6 +100,7 @@ const loadWorldMap = function () {
   mapQuiz.hideQuiz();
   aboutView.hideAboutProject();
   statisticView.hideStatistic();
+  flagsView.hideFlags();
   countriesSelectView.enableCountriesSelect();
   mapView.setMapViewToBounds(WORLD_MAP_BOUNDS);
   mapView.showMap();
@@ -102,6 +119,7 @@ const loadAboutProject = function () {
   mapQuiz.hideQuiz();
   countriesSelectView.disableCountriesSelect();
   statisticView.hideStatistic();
+  flagsView.hideFlags();
   aboutView.showAboutProjectInfo();
   topNavigationView.hideSideNavigation();
   topNavigationView.disableSideBarToggle();
@@ -114,7 +132,22 @@ const loadStatistic = function () {
   countriesSelectView.disableCountriesSelect();
   aboutView.hideAboutProject();
   statisticView.showStatistic();
+  flagsView.hideFlags();
   statisticView.renderStatisticData();
+  topNavigationView.hideSideNavigation();
+  topNavigationView.disableSideBarToggle();
+};
+
+const loadFlags = function () {
+  mapView.hideMap();
+  quiz.hideQuiz();
+  mapQuiz.hideQuiz();
+  countriesSelectView.disableCountriesSelect();
+  aboutView.hideAboutProject();
+  statisticView.hideStatistic();
+  flagsView.showFlags();
+  flagsView.setFlagsRegionDefaultValue();
+  flagsView.renderFlagsData();
   topNavigationView.hideSideNavigation();
   topNavigationView.disableSideBarToggle();
 };
@@ -124,6 +157,7 @@ const loadQuiz = function (quizId) {
   countriesSelectView.disableCountriesSelect();
   aboutView.hideAboutProject();
   statisticView.hideStatistic();
+  flagsView.hideFlags();
   if (quizId === COUNTRY_ON_MAP_QUIZ) {
     quiz.hideQuiz();
     mapView.hideMap();
@@ -161,6 +195,10 @@ const statisticHandlerClick = function () {
   loadStatistic();
 };
 
+const flagsHandlerClick = function () {
+  loadFlags();
+};
+
 const quizSelectionHandler = function (quizId) {
   loadQuiz(quizId);
 };
@@ -174,6 +212,7 @@ const translateAllElements = function () {
   mapView.translateElements();
   mapQuiz.translateElements();
   statisticView.translateElements();
+  flagsView.translateElements();
 };
 
 const languageSelectHandler = function (language) {
