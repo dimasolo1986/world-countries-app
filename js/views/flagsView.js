@@ -180,13 +180,27 @@ class flagsView {
           ? localization[model.worldCountries.language][country.region]
           : " -"
       }<span></div>
-    <div class="country-capital" style="margin-top: 5px;"><i class="fa-solid fa-city"></i><span style="margin-left:5px;" class="country-capital-text">${
+        ${
+          country.area
+            ? `<div class="country-area" style="margin-top: 5px;"><i class="fa-solid fa-square"></i><span style="margin-left:5px;" class="country-area-text">${
+                country.area.toLocaleString() + " km²"
+              }</span></div>`
+            : ""
+        }
+       ${
+         country.population
+           ? `<div class="country-population" style="margin-top: 5px;"><i class="fa-solid fa-users"></i><span style="margin-left:5px;" class="country-population-text">${country.population.toLocaleString()}</span></div>`
+           : ""
+       }
+    ${
       country.capital
-        ? localization[model.worldCountries.language]["capitals"][
-            country.capital[0]
-          ]
-        : "-"
-    }</span></div>
+        ? `<div class="country-capital" style="margin-top: 5px;"><i class="fa-solid fa-landmark"></i><span style="margin-left:5px;" class="country-capital-text">${
+            localization[model.worldCountries.language]["capitals"][
+              country.capital[0]
+            ]
+          }</span></div>`
+        : ""
+    }
     <div style="margin-top:5px;">
     <a href="https://${getLanguageCode()}.wikipedia.org/wiki/${
         localization[model.worldCountries.language]["countries"][
