@@ -139,6 +139,7 @@ class flagsView {
     countriesNumberContainer.style.fontWeight = "bold";
     countriesNumberContainer.style.marginBottom = "3px";
     countriesNumberContainer.style.fontSize = "0.8rem";
+    countriesNumberContainer.style.textAlign = "center";
     const countriesSpan = document.createElement("span");
     countriesSpan.textContent =
       localization[model.worldCountries.language]["Countries"] + ": ";
