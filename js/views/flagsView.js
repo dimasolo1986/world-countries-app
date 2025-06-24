@@ -1,5 +1,5 @@
 import { localization } from "../localization/ua.js";
-import { WORLD_MAP_BOUNDS } from "../config.js";
+import { WORLD_MAP_BOUNDS, WAR_AGGRESSOR_COUNTRIES } from "../config.js";
 import { getLanguageCode } from "../helpers.js";
 import * as model from "../model.js";
 class flagsView {
@@ -8,10 +8,12 @@ class flagsView {
   _flagsRegionSelector = document.querySelector(".flags-selector");
   _flagsData = document.querySelector(".flags-data");
   _flagsReturnToMap = document.querySelector(".return-flags");
+  _moveUpElement = document.querySelector(".countries-flags-up-button");
   _countries;
 
   _returnToMapListenerAdded = false;
   _flagsRegionSelectorListenerAdded = false;
+  _moveUpListenerAdded = false;
 
   returnToMap(
     mapView,
@@ -116,13 +118,36 @@ class flagsView {
     if (region === "Antarctic") return "darkblue";
   }
 
+  addMoveUpCountriesHandler() {
+    const moveUp = function () {
+      this._parentElement.scrollIntoView();
+    };
+    if (!this._moveUpListenerAdded) {
+      this._moveUpElement.addEventListener("click", moveUp.bind(this));
+      this._moveUpListenerAdded = true;
+    }
+  }
+
   renderFlagsData() {
     this._flagsData.innerHTML = "";
     const countryRow = document.createElement("div");
     countryRow.className = "row";
     countryRow.style.display = "flex";
     countryRow.style.flexWrap = "wrap";
+    const countriesNumberContainer = document.createElement("div");
+    countriesNumberContainer.style.color = "black";
+    countriesNumberContainer.style.fontWeight = "bold";
+    countriesNumberContainer.style.marginBottom = "3px";
+    countriesNumberContainer.style.fontSize = "0.8rem";
+    const countriesSpan = document.createElement("span");
+    countriesSpan.textContent =
+      localization[model.worldCountries.language]["Countries"] + ": ";
+    const countriesNumber = document.createElement("span");
     this.filterCountries();
+    countriesNumber.textContent = this._countries.length;
+    countriesNumberContainer.appendChild(countriesSpan);
+    countriesNumberContainer.appendChild(countriesNumber);
+    this._flagsData.appendChild(countriesNumberContainer);
     this._countries.forEach((country) => {
       const countryHtml = `<div class="col-xl-2 col-lg-3 col-md-4 col-sm-6 column">
       <div class="card text-center">
@@ -140,6 +165,13 @@ class flagsView {
       country.name.common
     ]
   }</div>
+   ${
+     WAR_AGGRESSOR_COUNTRIES.includes(country.name.common)
+       ? `<div style="color: red">${
+           localization[model.worldCountries.language]["War Aggressor"]
+         }</div>`
+       : ""
+   }
     <div class="country-region" style="width: fit-content; border-radius: 12px; color: white; background-color: ${this.getRegionColor(
       country.region
     )}; padding: 3px 10px; margin: 0 auto; margin-top: 5px;"><i class="fas fa-globe-europe"></i><span class="country-region-text" style="margin-left:5px;">${

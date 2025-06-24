@@ -59,6 +59,7 @@ const init = function () {
     countriesSelectView
   );
   flagsView.flagsRegionSelectHandler();
+  flagsView.addMoveUpCountriesHandler();
   saveCurrentLanguageHandler();
   loadWindow();
   document.addEventListener("DOMContentLoaded", function () {
