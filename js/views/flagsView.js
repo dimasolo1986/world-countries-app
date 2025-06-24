@@ -120,8 +120,9 @@ class flagsView {
 
   addMoveUpCountriesHandler() {
     const moveUp = function () {
-      window.scrollTo(window.scrollX, window.scrollY);
+      this._parentElement.style.overflow = "hidden";
       this._parentElement.scrollIntoView();
+      this._parentElement.style.overflow = "auto";
     };
     if (!this._moveUpListenerAdded) {
       this._moveUpElement.addEventListener("click", moveUp.bind(this));
