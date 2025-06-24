@@ -213,7 +213,6 @@ class sideNavigationView {
 
   addMoveUpCountriesHandler() {
     const moveUp = function () {
-      window.scrollTo(window.scrollX, window.scrollY);
       const firstChildElement = this._parentElement.firstElementChild;
       if (firstChildElement) firstChildElement.scrollIntoView();
     };
@@ -222,7 +221,6 @@ class sideNavigationView {
 
   addMoveDownCountriesHandler() {
     const moveDown = function () {
-      window.scrollTo(window.scrollX, window.scrollY);
       const lastChildElement = this._parentElement.lastElementChild;
       if (lastChildElement) lastChildElement.scrollIntoView();
     };
