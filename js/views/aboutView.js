@@ -142,7 +142,7 @@ class aboutView {
 
   translateElements() {
     this._aboutReturnToMap.textContent = `${
-      localization[model.worldCountries.language]["RETURN TO MAP"]
+      localization[model.worldCountries.language]["RETURN TO WORLD MAP"]
     }`;
     this._aboutProjectName.textContent = `${
       localization[model.worldCountries.language]["World Countries And Quizzes"]

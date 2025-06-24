@@ -261,7 +261,7 @@ class statisticView {
 
   translateElements() {
     this._statisticReturnToMap.textContent = `${
-      localization[model.worldCountries.language]["RETURN TO MAP"]
+      localization[model.worldCountries.language]["RETURN TO WORLD MAP"]
     }`;
     this._statisticHeading.textContent = `${
       localization[model.worldCountries.language][

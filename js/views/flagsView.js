@@ -154,7 +154,7 @@ class flagsView {
       <div class="card text-center">
   <img src="${
     country.flags.png
-  }" loading="lazy" style="width: 115px; height: 65px; border-radius: 5px; border: 1px solid black; object-fit: cover; margin-top:10px;" class="card-img-top" alt="${
+  }" loading="lazy" style="width: 115px; height: 65px; border-radius: 5px; border: 2px solid black; object-fit: cover; margin-top:10px;" class="card-img-top" alt="${
         localization[model.worldCountries.language]["countries"][
           country.name.common
         ]
@@ -173,7 +173,7 @@ class flagsView {
          }</div>`
        : ""
    }
-    <div class="country-region" style="width: fit-content; border-radius: 12px; color: white; background-color: ${this.getRegionColor(
+    <div class="country-region" style="width: fit-content; border: thick double white; border-radius: 12px; color: white; background-color: ${this.getRegionColor(
       country.region
     )}; padding: 3px 10px; margin: 0 auto; margin-top: 5px;"><i class="fas fa-globe-europe"></i><span class="country-region-text" style="margin-left:5px;">${
         country.region
@@ -216,7 +216,7 @@ class flagsView {
 
   translateElements() {
     this._flagsReturnToMap.textContent = `${
-      localization[model.worldCountries.language]["RETURN TO MAP"]
+      localization[model.worldCountries.language]["RETURN TO WORLD MAP"]
     }`;
     this._flagsHeading.textContent = `${
       localization[model.worldCountries.language]["World Countries Flags"]
