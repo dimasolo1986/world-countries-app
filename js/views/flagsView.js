@@ -154,7 +154,7 @@ class flagsView {
       <div class="card text-center">
   <img src="${
     country.flags.png
-  }" loading="lazy" style="width: 115px; height: 65px; border-radius: 5px; border: 2px solid black; object-fit: cover; margin-top:10px;" class="card-img-top" alt="${
+  }" loading="lazy" style="width: 115px; height: 65px; border-radius: 5px; border: 2px solid lightgrey; object-fit: cover; margin-top:10px;" class="card-img-top" alt="${
         localization[model.worldCountries.language]["countries"][
           country.name.common
         ]
