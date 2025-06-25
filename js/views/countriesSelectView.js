@@ -58,11 +58,108 @@ class countriesSelectView {
     return countriesObject;
   }
 
+  disableEnableOptions(selectedItems) {
+    if (selectedItems.length === 0) {
+      this._treeSelect.options.forEach((option) => (option.disabled = false));
+      this._treeSelect.mount();
+      this._treeSelect.toggleOpenClose();
+    } else if (
+      selectedItems.includes(
+        localization[model.worldCountries.language]["Europe"]
+      ) ||
+      selectedItems.includes(
+        localization[model.worldCountries.language]["Americas"]
+      ) ||
+      selectedItems.includes(
+        localization[model.worldCountries.language]["Oceania"]
+      ) ||
+      selectedItems.includes(
+        localization[model.worldCountries.language]["Africa"]
+      ) ||
+      selectedItems.includes(
+        localization[model.worldCountries.language]["Asia"]
+      ) ||
+      selectedItems.includes(
+        localization[model.worldCountries.language]["Antarctic"]
+      )
+    ) {
+      this._treeSelect.options[6].disabled = true;
+      this._treeSelect.mount();
+      this._treeSelect.toggleOpenClose();
+    } else if (
+      !selectedItems.includes(
+        localization[model.worldCountries.language]["Europe"]
+      ) &&
+      !selectedItems.includes(
+        localization[model.worldCountries.language]["Americas"]
+      ) &&
+      !selectedItems.includes(
+        localization[model.worldCountries.language]["Oceania"]
+      ) &&
+      !selectedItems.includes(
+        localization[model.worldCountries.language]["Africa"]
+      ) &&
+      !selectedItems.includes(
+        localization[model.worldCountries.language]["Asia"]
+      ) &&
+      !selectedItems.includes(
+        localization[model.worldCountries.language]["Antarctic"]
+      )
+    ) {
+      this._treeSelect.options[6].disabled = false;
+      this._treeSelect.options[0].disabled = true;
+      this._treeSelect.options[1].disabled = true;
+      this._treeSelect.options[2].disabled = true;
+      this._treeSelect.options[3].disabled = true;
+      this._treeSelect.options[4].disabled = true;
+      this._treeSelect.options[5].disabled = true;
+      this._treeSelect.mount();
+      this._treeSelect.toggleOpenClose();
+    }
+  }
+
   renderOptions(worldCountries) {
     const options = [
       {
+        name: localization[model.worldCountries.language]["Europe"],
+        value: localization[model.worldCountries.language]["Europe"],
+        children: [],
+        disabled: false,
+      },
+      {
+        name: localization[model.worldCountries.language]["Americas"],
+        value: localization[model.worldCountries.language]["Americas"],
+        children: [],
+        disabled: false,
+      },
+      {
+        name: localization[model.worldCountries.language]["Asia"],
+        value: localization[model.worldCountries.language]["Asia"],
+        children: [],
+        disabled: false,
+      },
+      {
+        name: localization[model.worldCountries.language]["Africa"],
+        value: localization[model.worldCountries.language]["Africa"],
+        children: [],
+        disabled: false,
+      },
+      {
+        name: localization[model.worldCountries.language]["Oceania"],
+        value: localization[model.worldCountries.language]["Oceania"],
+        children: [],
+        disabled: false,
+      },
+      {
+        name: localization[model.worldCountries.language]["Antarctic"],
+        value: localization[model.worldCountries.language]["Antarctic"],
+        children: [],
+        disabled: false,
+      },
+      {
         name: localization[model.worldCountries.language]["All Countries"],
         value: localization[model.worldCountries.language]["All Countries"],
+        disabled: false,
         children: Object.entries(this.buildCountriesObject(worldCountries)).map(
           (entry) => {
             return {

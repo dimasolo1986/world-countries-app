@@ -262,19 +262,71 @@ const countriesSelectionHandler = function (selectedCountriesNames) {
   mapView.setMapViewToBounds(WORLD_MAP_BOUNDS);
   if (selectedCountriesNames.length !== 0) {
     selectedCountriesNames.forEach((countryName) => {
-      const country = model.worldCountries.countries.find(
-        (country) =>
-          localization[model.worldCountries.language]["countries"][
-            country.name.common
-          ] === countryName
-      );
-      if (country) model.worldCountries.selectedCountries.push(country);
+      if (
+        countryName === localization[model.worldCountries.language]["Europe"]
+      ) {
+        model.worldCountries.countries.forEach((country) => {
+          if (country.region === "Europe") {
+            model.worldCountries.selectedCountries.push(country);
+          }
+        });
+      } else if (
+        countryName === localization[model.worldCountries.language]["Americas"]
+      ) {
+        model.worldCountries.countries.forEach((country) => {
+          if (country.region === "Americas") {
+            model.worldCountries.selectedCountries.push(country);
+          }
+        });
+      } else if (
+        countryName === localization[model.worldCountries.language]["Oceania"]
+      ) {
+        model.worldCountries.countries.forEach((country) => {
+          if (country.region === "Oceania") {
+            model.worldCountries.selectedCountries.push(country);
+          }
+        });
+      } else if (
+        countryName === localization[model.worldCountries.language]["Africa"]
+      ) {
+        model.worldCountries.countries.forEach((country) => {
+          if (country.region === "Africa") {
+            model.worldCountries.selectedCountries.push(country);
+          }
+        });
+      } else if (
+        countryName === localization[model.worldCountries.language]["Asia"]
+      ) {
+        model.worldCountries.countries.forEach((country) => {
+          if (country.region === "Asia") {
+            model.worldCountries.selectedCountries.push(country);
+          }
+        });
+      } else if (
+        countryName === localization[model.worldCountries.language]["Antarctic"]
+      ) {
+        model.worldCountries.countries.forEach((country) => {
+          if (country.region === "Antarctic") {
+            model.worldCountries.selectedCountries.push(country);
+          }
+        });
+      } else {
+        const country = model.worldCountries.countries.find(
+          (country) =>
+            localization[model.worldCountries.language]["countries"][
+              country.name.common
+            ] === countryName
+        );
+        if (country) model.worldCountries.selectedCountries.push(country);
+      }
     });
+    countriesSelectView.disableEnableOptions(selectedCountriesNames);
     sideNavigationView.renderSideNavigationCountries(
       model.worldCountries.selectedCountries
     );
     mapView.renderCountriesMarkers(model.worldCountries.selectedCountries);
   } else {
+    countriesSelectView.disableEnableOptions(selectedCountriesNames);
     sideNavigationView.renderSideNavigationCountries(
       model.worldCountries.countries
     );
