@@ -69,7 +69,7 @@ L.Control.Player = L.Control.extend({
       this._timerTimeoutId = undefined;
     }
   },
-  countriesChange: function () {
+  filterCountries: function () {
     if (this._countriesSelect.value === "All Countries") {
       this._countries = this.options.model.slice();
     } else if (this._countriesSelect.value === "Europe") {
@@ -97,6 +97,9 @@ L.Control.Player = L.Control.extend({
         .slice()
         .filter((country) => country.region === "Antarctic");
     }
+  },
+  countriesChange: function () {
+    this.filterCountries();
     this._allCountriesCountElement.textContent = " : " + this._countries.length;
     this.stopPlayCountries();
   },
@@ -133,6 +136,9 @@ L.Control.Player = L.Control.extend({
           this.stopPlayCountries();
           this._delaySelect.value = "3";
           this._countriesSelect.value = "All Countries";
+          this._countries = this.options.model.slice();
+          this._allCountriesCountElement.textContent =
+            " : " + this._countries.length;
         } else {
           const country = this._countries[index];
           const countryBound = this.options.countryBounds.find(
