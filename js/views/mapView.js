@@ -379,12 +379,26 @@ class mapView {
         }">⏹️</div>
         <label id="playerSelectLabel" title="${
           localization[model.worldCountries.language]["Country Display Time"]
-        }" for="playerSelect">&#128338;:</label><select id="playerSelect" class="playerDelaySelect"><option value="3" selected>3 sec.</option><option value="5">5 sec.</option><option value="10">10 sec.</option><option value="20">20 sec.</option><option value="30">30 sec.</option><option value="60">60 sec.</option><option value="90">90 sec.</option></select><div class="playerFooter"><span id="countryCount">1</span><span id="allCountriesNumber"> : ${
+        }" for="playerSelect">&#128338;:</label><select id="playerSelect" class="playerDelaySelect"><option value="3" selected>3 sec.</option><option value="5">5 sec.</option><option value="10">10 sec.</option><option value="20">20 sec.</option><option value="30">30 sec.</option><option value="60">60 sec.</option><option value="90">90 sec.</option></select><div class="playerCountriesSelect"><select id="playerCountriesSelect"><option value="All Countries" selected>${
+          localization[model.worldCountries.language]["All Countries"]
+        }</option><option value="Europe">${
+          localization[model.worldCountries.language]["Europe"]
+        }</option><option value="Americas">${
+          localization[model.worldCountries.language]["Americas"]
+        }</option><option value="Africa">${
+          localization[model.worldCountries.language]["Africa"]
+        }</option><option value="Asia">${
+          localization[model.worldCountries.language]["Asia"]
+        }</option><option value="Oceania">${
+          localization[model.worldCountries.language]["Oceania"]
+        }</option><option value="Antarctic">${
+          localization[model.worldCountries.language]["Antarctic"]
+        }</option></select></div><div class="playerFooter"><span id="countryCount">1</span><span id="allCountriesNumber"> : ${
           model.worldCountries.countries.length
         }</span></div><button class="collapseButtonCountryPlayer" title="${
           localization[model.worldCountries.language]["Collapse"]
         }">⬆</button>`,
-        model: model,
+        model: model.worldCountries.countries,
         mapView: this,
         countryBounds: COUNTRY_BOUNDS,
         worldBounds: WORLD_MAP_BOUNDS,
@@ -440,6 +454,15 @@ class mapView {
     if (collapseButton) {
       collapseButton.title =
         localization[model.worldCountries.language]["Collapse"];
+    }
+    const playerCountriesSelectOptions = document.querySelectorAll(
+      "#playerCountriesSelect option"
+    );
+    if (playerCountriesSelectOptions) {
+      playerCountriesSelectOptions.forEach((option) => {
+        option.textContent =
+          localization[model.worldCountries.language][option.value];
+      });
     }
     if (this._countryPlayer) {
       this._countryPlayer.stopPlayCountries();

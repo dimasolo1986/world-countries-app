@@ -523,6 +523,18 @@
   color: black;
   text-align: center;
 }
+.leaflet-control-country-player .playerCountriesSelect {
+  min-width: 185px;
+  background-color: lightslategray;
+  opacity: 0.8;
+  color: black;
+  text-align: center;
+  font-size: 12px;
+  margin-bottom: 2px;
+}
+.leaflet-control-country-player .playerCountriesSelect #playerCountriesSelect {
+  cursor: pointer;
+}
 .leaflet-control-country-player .collapseButtonCountryPlayer {
   min-width: 185px;
   background-color: white;
@@ -576,7 +588,6 @@
 }
 .leaflet-control-country-player .playerDelaySelect {
   margin-left: 3px;
-  border: 1px solid black;
   font-size: 13px;
   width: 62px;
   height: 16px;

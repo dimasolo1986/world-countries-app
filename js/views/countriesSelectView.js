@@ -88,6 +88,7 @@ class countriesSelectView {
       ];
     this._treeSelect.tagsCountText =
       localization[model.worldCountries.language]["Selected"];
+    this._treeSelect.updateValue([]);
     this._treeSelect.mount();
   }
 

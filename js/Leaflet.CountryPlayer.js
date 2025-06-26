@@ -8,10 +8,15 @@ L.Control.Player = L.Control.extend({
   onAdd: function (map) {
     this._isPlaying = false;
     this._isPaused = false;
+    this._countries = this.options.model.slice();
     this._div = L.DomUtil.create("div", this.options.cssClass);
     $(this._div).html(this.options.template);
     this._collapse = $(this._div).find(".collapseButtonCountryPlayer")[0];
     this._footer = $(this._div).find(".playerFooter")[0];
+    this._countriesSelectContainer = $(this._div).find(
+      ".playerCountriesSelect"
+    )[0];
+    this._countriesSelect = $(this._div).find("#playerCountriesSelect")[0];
     this._label = $(this._div).find("#playerSelectLabel")[0];
     this._select = $(this._div).find("#playerSelectLabel")[0];
     this._startButton = $(this._div).find(".playerButtonStart")[0];
@@ -25,6 +30,9 @@ L.Control.Player = L.Control.extend({
     this._endButton.style.pointerEvents = "none";
     this._delaySelect = $(this._div).find(".playerDelaySelect")[0];
     this._countryCountElement = $(this._div).find("#countryCount")[0];
+    this._allCountriesCountElement = $(this._div).find(
+      "#allCountriesNumber"
+    )[0];
     this._collapse.addEventListener("click", this.collapse.bind(this));
     this._startButton.addEventListener("click", this.playCountires.bind(this));
     this._endButton.addEventListener(
@@ -36,9 +44,14 @@ L.Control.Player = L.Control.extend({
       this.pausePlayCountries.bind(this)
     );
     this._delaySelect.addEventListener("change", this.delayChange.bind(this));
+    this._countriesSelect.addEventListener(
+      "change",
+      this.countriesChange.bind(this)
+    );
     return this._div;
   },
   onRemove: function (map) {
+    this.options._countries = [];
     this.options.mapView._sideNavigationView._selectedCountry = undefined;
     this.options.mapView._sideNavigationView._removeAllSelection();
     this.options.mapView.markersEnableCloseOnClick();
@@ -56,6 +69,37 @@ L.Control.Player = L.Control.extend({
       this._timerTimeoutId = undefined;
     }
   },
+  countriesChange: function () {
+    if (this._countriesSelect.value === "All Countries") {
+      this._countries = this.options.model.slice();
+    } else if (this._countriesSelect.value === "Europe") {
+      this._countries = this.options.model
+        .slice()
+        .filter((country) => country.region === "Europe");
+    } else if (this._countriesSelect.value === "Americas") {
+      this._countries = this.options.model
+        .slice()
+        .filter((country) => country.region === "Americas");
+    } else if (this._countriesSelect.value === "Africa") {
+      this._countries = this.options.model
+        .slice()
+        .filter((country) => country.region === "Africa");
+    } else if (this._countriesSelect.value === "Asia") {
+      this._countries = this.options.model
+        .slice()
+        .filter((country) => country.region === "Asia");
+    } else if (this._countriesSelect.value === "Oceania") {
+      this._countries = this.options.model
+        .slice()
+        .filter((country) => country.region === "Oceania");
+    } else if (this._countriesSelect.value === "Antarctic") {
+      this._countries = this.options.model
+        .slice()
+        .filter((country) => country.region === "Antarctic");
+    }
+    this._allCountriesCountElement.textContent = " : " + this._countries.length;
+    this.stopPlayCountries();
+  },
   delayChange: function () {
     this.stopPlayCountries();
   },
@@ -66,6 +110,7 @@ L.Control.Player = L.Control.extend({
     this._label.classList.toggle("not-displayed");
     this._delaySelect.classList.toggle("not-displayed");
     this._footer.classList.toggle("not-displayed");
+    this._countriesSelectContainer.classList.toggle("not-displayed");
     if (this._startButton.classList.contains("not-displayed")) {
       this._collapse.innerHTML = "⬇";
     } else {
@@ -84,10 +129,12 @@ L.Control.Player = L.Control.extend({
     const delayValue = +this._delaySelect.value;
     const play = function () {
       if (!this._isPaused) {
-        if (index >= this.options.model.worldCountries.countries.length) {
+        if (index >= this._countries.length) {
           this.stopPlayCountries();
+          this._delaySelect.value = "3";
+          this._countriesSelect.value = "All Countries";
         } else {
-          const country = this.options.model.worldCountries.countries[index];
+          const country = this._countries[index];
           const countryBound = this.options.countryBounds.find(
             (bound) => country.name.common === bound.name
           );
