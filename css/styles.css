@@ -109,6 +109,10 @@ hr {
   opacity: 0.25;
 }
 
+option {
+  color: black;
+}
+
 h6,
 .h6,
 h5,
