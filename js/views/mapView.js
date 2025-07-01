@@ -27,6 +27,7 @@ class mapView {
   _weather;
   _countryPlayer;
   _sideNavigationView;
+  _countriesSelectView;
   _topNavigationView;
   _errorMessage = "Failed to load map!";
   _map;
@@ -38,6 +39,10 @@ class mapView {
 
   constructor() {
     this._createMap(GEOGRAPHICAL_CENTER);
+  }
+
+  setCountriesSelectView(countriesSelectView) {
+    this._countriesSelectView = countriesSelectView;
   }
 
   setSideNavigationView(sideNavigationView) {
@@ -398,7 +403,7 @@ class mapView {
         }</span></div><button class="collapseButtonCountryPlayer" title="${
           localization[model.worldCountries.language]["Collapse"]
         }">⬆</button>`,
-        model: model.worldCountries.countries,
+        model: model.worldCountries,
         mapView: this,
         countryBounds: COUNTRY_BOUNDS,
         worldBounds: WORLD_MAP_BOUNDS,

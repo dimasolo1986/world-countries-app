@@ -8,7 +8,7 @@ L.Control.Player = L.Control.extend({
   onAdd: function (map) {
     this._isPlaying = false;
     this._isPaused = false;
-    this._countries = this.options.model.slice();
+    this._countries = this.options.model.countries.slice();
     this._div = L.DomUtil.create("div", this.options.cssClass);
     $(this._div).html(this.options.template);
     this._collapse = $(this._div).find(".collapseButtonCountryPlayer")[0];
@@ -71,29 +71,29 @@ L.Control.Player = L.Control.extend({
   },
   filterCountries: function () {
     if (this._countriesSelect.value === "All Countries") {
-      this._countries = this.options.model.slice();
+      this._countries = this.options.model.countries.slice();
     } else if (this._countriesSelect.value === "Europe") {
-      this._countries = this.options.model
+      this._countries = this.options.model.countries
         .slice()
         .filter((country) => country.region === "Europe");
     } else if (this._countriesSelect.value === "Americas") {
-      this._countries = this.options.model
+      this._countries = this.options.model.countries
         .slice()
         .filter((country) => country.region === "Americas");
     } else if (this._countriesSelect.value === "Africa") {
-      this._countries = this.options.model
+      this._countries = this.options.model.countries
         .slice()
         .filter((country) => country.region === "Africa");
     } else if (this._countriesSelect.value === "Asia") {
-      this._countries = this.options.model
+      this._countries = this.options.model.countries
         .slice()
         .filter((country) => country.region === "Asia");
     } else if (this._countriesSelect.value === "Oceania") {
-      this._countries = this.options.model
+      this._countries = this.options.model.countries
         .slice()
         .filter((country) => country.region === "Oceania");
     } else if (this._countriesSelect.value === "Antarctic") {
-      this._countries = this.options.model
+      this._countries = this.options.model.countries
         .slice()
         .filter((country) => country.region === "Antarctic");
     }
@@ -123,6 +123,12 @@ L.Control.Player = L.Control.extend({
   playCountires: function () {
     this._isPlaying = true;
     this._isPaused = false;
+    this.options.mapView._countriesSelectView.reset();
+    this.options.mapView._sideNavigationView._selectedCountry = undefined;
+    this.options.mapView.renderCountriesMarkers(this.options.model.countries);
+    this.options.mapView._sideNavigationView.renderSideNavigationCountries(
+      this.options.model.countries
+    );
     this._pauseButton.style.opacity = "1";
     this._pauseButton.style.pointerEvents = "auto";
     this._startButton.style.opacity = "0.5";
@@ -136,7 +142,7 @@ L.Control.Player = L.Control.extend({
           this.stopPlayCountries();
           this._delaySelect.value = "3";
           this._countriesSelect.value = "All Countries";
-          this._countries = this.options.model.slice();
+          this._countries = this.options.model.countries.slice();
           this._allCountriesCountElement.textContent =
             " : " + this._countries.length;
         } else {

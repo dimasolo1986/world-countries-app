@@ -108,6 +108,30 @@
 
       gtag("config", "G-QCRYXBJJ8K");
     </script>
+    <script>
+      document.addEventListener("DOMContentLoaded", function () {
+        const languageSelectElement =
+          document.getElementById("language-selector");
+        const en = new Option("ENG\u00A0🇬🇧", "en");
+        const ua = new Option("УКР\u00A0🇺🇦", "ua");
+        const de = new Option("GER\u00A0🇩🇪", "de");
+        const fr = new Option("FRA\u00A0🇫🇷", "fr");
+        const es = new Option("SPA\u00A0🇪🇸", "es");
+        const it = new Option("ITA\u00A0🇮🇹", "it");
+        languageSelectElement.add(en);
+        languageSelectElement.add(ua);
+        languageSelectElement.add(de);
+        languageSelectElement.add(fr);
+        languageSelectElement.add(es);
+        languageSelectElement.add(it);
+        const language = localStorage.getItem("language");
+        if (language) {
+          languageSelectElement.value = language;
+        } else {
+          languageSelectElement.value = "en";
+        }
+      });
+    </script>
     <meta charset="utf-8" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="language" content="en" />
@@ -341,14 +365,7 @@
           aria-label="Language"
           id="language-selector"
           style="cursor: pointer"
-        >
-          <option selected="selected" value="en">ENG&nbsp;🇬🇧</option>
-          <option value="ua">УКР&nbsp;🇺🇦</option>
-          <option value="de">GER&nbsp;🇩🇪</option>
-          <option value="fr">FRA&nbsp;🇫🇷</option>
-          <option value="es">SPA&nbsp;🇪🇸</option>
-          <option value="it">ITA&nbsp;🇮🇹</option>
-        </select>
+        ></select>
       </div>
       <!-- Navbar-->
       <ul class="navbar-nav ms-auto ms-md-0 me-3 me-lg-4">

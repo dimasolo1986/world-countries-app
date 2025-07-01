@@ -14,9 +14,11 @@ import { COUNTRY_ON_MAP_QUIZ } from "./config.js";
 import { WORLD_MAP_BOUNDS } from "./config.js";
 import { sortData } from "./helpers.js";
 const init = function () {
+  languageSelectView.init();
   mapView.addHandlerRender(mapCountriesMarkerRender);
   mapView.setSideNavigationView(sideNavigationView);
   mapView.setTopNavigationView(topNavigationView);
+  mapView.setCountriesSelectView(countriesSelectView);
   topNavigationView.initSideBar();
   translateAllElements();
   sideNavigationView.addHandlerRender(sideNavigationCountriesRender);
@@ -26,7 +28,6 @@ const init = function () {
   sideNavigationView.addCountryInfoModalClickHandler();
   countriesSelectView.addHandlerRender(countriesSelectRender);
   countriesSelectView.countriesSelectionHandler(countriesSelectionHandler);
-  languageSelectView.init();
   languageSelectView.addHandlerSelect(languageSelectHandler);
   topNavigationView.addHandlerWorldMapClick(worldMapHandlerClick);
   topNavigationView.addHandlerAboutClick(aboutProjectHandlerClick);
@@ -217,9 +218,10 @@ const translateAllElements = function () {
 };
 
 const languageSelectHandler = function (language) {
+  saveLanguage(language);
+  location.reload();
   model.worldCountries.language = language;
   model.loadAllCountries();
-  saveLanguage(language);
   sortData(model.worldCountries.countries);
   sortData(model.worldCountries.selectedCountries);
   translateAllElements();

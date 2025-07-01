@@ -92,6 +92,11 @@ class countriesSelectView {
     this._treeSelect.mount();
   }
 
+  reset() {
+    this._treeSelect.updateValue([]);
+    this._treeSelect.mount();
+  }
+
   disableCountriesSelect() {
     this._parentElement.style.opacity = 0.65;
     this._treeSelect.disabled = true;
