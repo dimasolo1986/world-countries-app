@@ -21,7 +21,9 @@ import { currentDateTime } from "../helpers.js";
 class Quiz {
   _quizElement = document.querySelector("#quiz");
   _quizResultModalLabel = document.querySelector("#quizModalResultLabel");
+  _quizResultModalShareButton = document.querySelector("#shareQuizResults");
   _quizResultModalButton = document.querySelector("#quizResultCloseButton");
+  _quizModalName = document.querySelector("#quizModalName");
   _quizStartContainer = document.querySelector("#start-quiz-container");
   _quizStartCard = document.querySelector("#start-quiz");
   _quizReturnToWorldMapButton = document.querySelector(
@@ -1041,6 +1043,7 @@ class Quiz {
       );
       this._quizResultRatingStar.textContent = "☆";
     }
+    this._quizModalName.textContent = this._quizHeading.textContent;
     const statistic = {
       quizType: this._quizType,
       dateTime: currentDateTime(),
@@ -1370,6 +1373,9 @@ class Quiz {
     }
     this._quizResultModalLabel.textContent = `${
       localization[model.worldCountries.language]["Quiz Result"]
+    }`;
+    this._quizResultModalShareButton.textContent = `${
+      localization[model.worldCountries.language]["Share"]
     }`;
     this._quizResultModalButton.textContent = `${
       localization[model.worldCountries.language]["Close"]

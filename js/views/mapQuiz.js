@@ -13,6 +13,8 @@ class MapQuiz {
   _mapElement = document.querySelector("#mapCountriesQuiz");
   _quizElement = document.querySelector("#mapQuiz");
   _quizResultModalLabel = document.querySelector("#quizModalResultLabel");
+  _quizResultModalShareButton = document.querySelector("#shareQuizResults");
+  _quizModalName = document.querySelector("#quizModalName");
   _quizResultModalButton = document.querySelector("#quizResultCloseButton");
   _quizResultScoreName = document.querySelector(".score-name-result");
   _quizResultScore = document.querySelector(".score-result");
@@ -176,6 +178,7 @@ class MapQuiz {
       );
       this._quizResultRatingStar.textContent = "☆";
     }
+    this._quizModalName.textContent = this._quizHeading.textContent;
     const statistic = {
       quizType: "country-on-map-quiz",
       dateTime: currentDateTime(),
@@ -792,6 +795,9 @@ class MapQuiz {
       ];
     this._quizResultModalLabel.textContent = `${
       localization[model.worldCountries.language]["Quiz Result"]
+    }`;
+    this._quizResultModalShareButton.textContent = `${
+      localization[model.worldCountries.language]["Share"]
     }`;
     this._quizResultModalButton.textContent = `${
       localization[model.worldCountries.language]["Close"]

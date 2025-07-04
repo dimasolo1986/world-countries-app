@@ -86,6 +86,44 @@ export const showQuizResultWindow = function () {
   quizResult.show();
 };
 
+export const shareQuizResults = function () {
+  const quizResultsLabelText = document.getElementById(
+    "quizModalResultLabel"
+  ).textContent;
+  const quizName = document.getElementById("quizModalName").textContent;
+  const quizScoreNameResult =
+    document.querySelector(".score-name-result").textContent;
+  const quizScoreResult = document.querySelector(".score-result").textContent;
+  const quizScoreResultPoints = document.querySelector(
+    ".score-result-points"
+  ).textContent;
+  const quizRightAnswersText = document.querySelector(
+    ".right-answers-text"
+  ).textContent;
+  const quizRightAnswersNumberText = document.querySelector(
+    ".right-answers-number"
+  ).textContent;
+  const quizRightAnswersOutOfText = document.querySelector(
+    ".right-answers-out-of"
+  ).textContent;
+  const answeredNumber = document.querySelector(".answered-number").textContent;
+  const ratingText = document.querySelector(".rating-text").textContent;
+  const ratingStar = document.querySelector(".rating-star").textContent;
+  const quizShareResultText = `https://www.worldcountriesquiz.com | ${quizName} | ${currentDateTime()} | ${quizScoreNameResult} ${quizScoreResult} ${quizScoreResultPoints} | ${quizRightAnswersText} ${quizRightAnswersNumberText} ${quizRightAnswersOutOfText} ${answeredNumber} | ${ratingText} ${ratingStar}`;
+  if (navigator.share) {
+    navigator
+      .share({
+        title: `https://www.worldcountriesquiz.com | ${quizResultsLabelText} : ${quizName}`,
+        text: `${quizShareResultText}`,
+        url: "https://www.worldcountriesquiz.com",
+      })
+      .then(function () {})
+      .catch(function () {
+        alert("Error Sharing Quiz Results!");
+      });
+  }
+};
+
 export const currentDateTime = function () {
   const d = new Date();
   const date = d.toISOString().split("T")[0];

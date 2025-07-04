@@ -12,7 +12,7 @@ import flagsView from "./views/flagsView.js";
 import { localization } from "./localization/ua.js";
 import { COUNTRY_ON_MAP_QUIZ } from "./config.js";
 import { WORLD_MAP_BOUNDS } from "./config.js";
-import { sortData } from "./helpers.js";
+import { sortData, shareQuizResults } from "./helpers.js";
 const init = function () {
   languageSelectView.init();
   mapView.addHandlerRender(mapCountriesMarkerRender);
@@ -69,6 +69,12 @@ const init = function () {
         document.activeElement.blur();
       }
     });
+    const quizResultsShareButton = document.getElementById("shareQuizResults");
+    if (quizResultsShareButton) {
+      quizResultsShareButton.addEventListener("click", () => {
+        shareQuizResults();
+      });
+    }
   });
 };
 
