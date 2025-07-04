@@ -131,13 +131,20 @@
           languageSelectElement.value = "en";
         }
         const shareResultsButton = document.getElementById("shareQuizResults");
+        const shareWebSiteButton = document.getElementById("shareWebSite");
         if (navigator.share) {
           if (shareResultsButton) {
             shareResultsButton.classList.remove("not-displayed");
           }
+          if (shareWebSiteButton) {
+            shareWebSiteButton.classList.remove("not-displayed");
+          }
         } else {
           if (shareResultsButton) {
             shareResultsButton.classList.add("not-displayed");
+          }
+          if (shareWebSiteButton) {
+            shareWebSiteButton.classList.add("not-displayed");
           }
         }
       });
@@ -382,7 +389,7 @@
         ></select>
       </div>
       <!-- Navbar-->
-      <ul class="navbar-nav ms-auto ms-md-0 me-3 me-lg-4">
+      <ul class="navbar-nav ms-auto ms-md-0 me-1 me-lg-4">
         <li class="nav-item dropdown">
           <a
             class="nav-link dropdown-toggle"
@@ -520,6 +527,16 @@
           </ul>
         </li>
       </ul>
+      <i
+        id="shareWebSite"
+        class="fa-solid fa-square-share-nodes"
+        style="
+          color: #85c1e9;
+          font-size: 0.85rem;
+          margin-right: 10px;
+          cursor: pointer;
+        "
+      ></i>
     </nav>
     <div id="layoutSidenav">
       <div id="layoutSidenav_nav">

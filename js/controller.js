@@ -75,6 +75,34 @@ const init = function () {
         shareQuizResults();
       });
     }
+    const shareWebSiteButton = document.getElementById("shareWebSite");
+    if (shareWebSiteButton) {
+      shareWebSiteButton.addEventListener("click", function () {
+        if (navigator.share) {
+          navigator
+            .share({
+              title: `${
+                localization[model.worldCountries.language][
+                  "World Countries And Quizzes"
+                ]
+              }`,
+              text: `${
+                localization[model.worldCountries.language][
+                  "World Countries And Quizzes"
+                ]
+              } - ${
+                document.querySelector(".about-project-description")
+                  .textContent +
+                " " +
+                document.querySelector(".about-info").textContent
+              }`,
+              url: "https://www.worldcountriesquiz.com",
+            })
+            .then(function () {})
+            .catch(function () {});
+        }
+      });
+    }
   });
 };
 
