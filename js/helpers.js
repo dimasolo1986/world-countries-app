@@ -113,7 +113,11 @@ export const shareQuizResults = function () {
   if (navigator.share) {
     navigator
       .share({
-        title: `World Countries And Quizzes | ${quizResultsLabelText} : ${quizName}`,
+        title: `${
+          localization[model.worldCountries.language][
+            "World Countries And Quizzes"
+          ]
+        } | ${quizResultsLabelText} : ${quizName}`,
         text: `${quizShareResultText}`,
         url: "https://www.worldcountriesquiz.com",
       })
