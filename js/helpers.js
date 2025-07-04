@@ -118,9 +118,7 @@ export const shareQuizResults = function () {
         url: "https://www.worldcountriesquiz.com",
       })
       .then(function () {})
-      .catch(function () {
-        alert("Error Sharing Quiz Results!");
-      });
+      .catch(function () {});
   }
 };
 
