@@ -869,6 +869,7 @@ class Quiz {
       this._questionMapCountry.classList.add("not-displayed");
       this._quizHeading.classList.remove("not-displayed");
     }
+    this._quizModalName.textContent = this._quizHeading.textContent;
     this.enableCardOptions();
   }
 
@@ -1043,7 +1044,6 @@ class Quiz {
       );
       this._quizResultRatingStar.textContent = "☆";
     }
-    this._quizModalName.textContent = this._quizHeading.textContent;
     const statistic = {
       quizType: this._quizType,
       dateTime: currentDateTime(),

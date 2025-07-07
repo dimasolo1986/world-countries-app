@@ -178,7 +178,6 @@ class MapQuiz {
       );
       this._quizResultRatingStar.textContent = "☆";
     }
-    this._quizModalName.textContent = this._quizHeading.textContent;
     const statistic = {
       quizType: "country-on-map-quiz",
       dateTime: currentDateTime(),
@@ -738,6 +737,7 @@ class MapQuiz {
 
   showQuiz() {
     this._quizElement.classList.remove("not-displayed");
+    this._quizModalName.textContent = this._quizHeading.textContent;
   }
 
   hideQuiz() {
