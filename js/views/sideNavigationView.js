@@ -382,6 +382,8 @@ class sideNavigationView {
       this.addContryClickHandler(countryElementContainer, country);
       this._parentElement.appendChild(countryElementContainer);
     });
+    const spinner = document.getElementById("cointriesLoaderSpinner");
+    spinner.style.display = "none";
   }
 }
 

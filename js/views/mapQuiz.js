@@ -402,6 +402,7 @@ class MapQuiz {
           forceSeparateButton: false,
           forcePseudoFullscreen: true,
           addFullScreen: false,
+          zoomResetFunction: reset.bind(this),
         },
         maxBounds: [
           [85.1217211716937, 265.48437500000003],
