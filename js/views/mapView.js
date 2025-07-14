@@ -346,6 +346,27 @@ class mapView {
         ],
       })
       .addTo(this._map);
+    L.Control.StandWidthUkraine = L.Control.extend({
+      onAdd: function (map) {
+        const link = L.DomUtil.create("a");
+        link.href = "https://stand-with-ukraine.pp.ua";
+        link.style.opacity = "0.65";
+        link.style.cursor = "pointer";
+        link.target = "_blank";
+        const img = L.DomUtil.create("img");
+        img.src =
+          "https://raw.githubusercontent.com/vshymanskyy/StandWithUkraine/main/badges/StandWithUkraine.svg";
+        img.style.opacity = "0.65";
+        img.alt = "Help Ukraine";
+        link.appendChild(img);
+        return link;
+      },
+      onRemove: function (map) {},
+    });
+    L.control.standWidthUkraine = function (opts) {
+      return new L.Control.StandWidthUkraine(opts);
+    };
+    L.control.standWidthUkraine({ position: "topright" }).addTo(this._map);
     this._weather = L.control
       .weather({
         position: "topright",
@@ -416,28 +437,6 @@ class mapView {
         position: "topright",
       })
       .addTo(this._map);
-    L.Control.StandWidthUkraine = L.Control.extend({
-      onAdd: function (map) {
-        const link = L.DomUtil.create("a");
-        link.href = "https://stand-with-ukraine.pp.ua";
-        link.style.bottom = "40px";
-        link.style.opacity = "0.65";
-        link.style.cursor = "pointer";
-        link.target = "_blank";
-        const img = L.DomUtil.create("img");
-        img.src =
-          "https://raw.githubusercontent.com/vshymanskyy/StandWithUkraine/main/badges/StandWithUkraine.svg";
-        img.style.opacity = "0.65";
-        img.alt = "Help Ukraine";
-        link.appendChild(img);
-        return link;
-      },
-      onRemove: function (map) {},
-    });
-    L.control.standWidthUkraine = function (opts) {
-      return new L.Control.StandWidthUkraine(opts);
-    };
-    L.control.standWidthUkraine({ position: "bottomright" }).addTo(this._map);
   }
 
   stopCountryPlayer() {
