@@ -75,29 +75,42 @@ const init = function () {
         shareQuizResults();
       });
     }
+    const shareWebSiteContent = {
+      title: `${
+        localization[model.worldCountries.language][
+          "World Countries And Quizzes"
+        ]
+      }`,
+      text: `${
+        localization[model.worldCountries.language][
+          "World Countries And Quizzes"
+        ]
+      } - ${
+        document.querySelector(".about-project-description").textContent +
+        " " +
+        document.querySelector(".about-info").textContent
+      }`,
+      url: "https://www.worldcountriesquiz.com",
+    };
     const shareWebSiteButton = document.getElementById("shareWebSite");
     if (shareWebSiteButton) {
       shareWebSiteButton.addEventListener("click", function () {
         if (navigator.share) {
           navigator
-            .share({
-              title: `${
-                localization[model.worldCountries.language][
-                  "World Countries And Quizzes"
-                ]
-              }`,
-              text: `${
-                localization[model.worldCountries.language][
-                  "World Countries And Quizzes"
-                ]
-              } - ${
-                document.querySelector(".about-project-description")
-                  .textContent +
-                " " +
-                document.querySelector(".about-info").textContent
-              }`,
-              url: "https://www.worldcountriesquiz.com",
-            })
+            .share(shareWebSiteContent)
+            .then(function () {})
+            .catch(function () {});
+        }
+      });
+    }
+    const shareWebSiteCountryInfo = document.getElementById(
+      "shareCountryInfoModal"
+    );
+    if (shareWebSiteCountryInfo) {
+      shareWebSiteCountryInfo.addEventListener("click", function () {
+        if (navigator.share) {
+          navigator
+            .share(shareWebSiteContent)
             .then(function () {})
             .catch(function () {});
         }

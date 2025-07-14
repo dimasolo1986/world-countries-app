@@ -1046,6 +1046,7 @@ class Quiz {
     }
     const statistic = {
       quizType: this._quizType,
+      difficulty: this._countriesSelector.value,
       dateTime: currentDateTime(),
       rating: rating,
       score: +this._scoreValue.textContent,

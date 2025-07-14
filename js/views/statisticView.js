@@ -81,6 +81,12 @@ class statisticView {
         quizType.style.fontWeight = "bold";
         const quizDateValue = document.createElement("span");
         quizDateValue.classList.add("quiz-data-value");
+        const quizDifficulty = document.createElement("span");
+        quizDifficulty.classList.add("quiz-difficulty");
+        quizDifficulty.textContent = `${
+          localization[model.worldCountries.language][statistic.difficulty]
+        }`;
+        quizDifficulty.dataset.difficulty = statistic.difficulty;
         quizDateValue.textContent = statistic.dateTime;
         const quizScoreText = document.createElement("span");
         quizScoreText.classList.add("quiz-score-text");
@@ -200,11 +206,17 @@ class statisticView {
         space3.textContent = " | ";
         const space4 = document.createElement("span");
         space4.textContent = " | ";
+        const space5 = document.createElement("span");
+        space5.textContent = " | ";
         this._statisticData.appendChild(quizIndex);
         this._statisticData.appendChild(quizType);
         this._statisticData.appendChild(space1);
         this._statisticData.appendChild(quizDateValue);
         this._statisticData.appendChild(space2);
+        if (statistic.difficulty) {
+          this._statisticData.appendChild(quizDifficulty);
+          this._statisticData.appendChild(space5);
+        }
         this._statisticData.appendChild(quizScoreText);
         this._statisticData.appendChild(quizScoreData);
         this._statisticData.appendChild(space3);
@@ -351,6 +363,17 @@ class statisticView {
       quizScoreTexts.forEach((scoreText) => {
         scoreText.textContent = `${
           localization[model.worldCountries.language]["Score"]
+        }`;
+      });
+    }
+    const quizDifficultyTexts =
+      this._statisticData.querySelectorAll(".quiz-difficulty");
+    if (quizDifficultyTexts) {
+      quizDifficultyTexts.forEach((quizDifficulty) => {
+        quizDifficulty.textContent = `${
+          localization[model.worldCountries.language][
+            quizDifficulty.dataset.difficulty
+          ]
         }`;
       });
     }

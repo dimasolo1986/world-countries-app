@@ -13,6 +13,7 @@ class sideNavigationView {
   _countryInfoModal = document.querySelector("#countryInfoModal");
   _countryInfoModalLabel = document.querySelector("#countryInfoLabel");
   _countryInfoModalClose = document.querySelector("#countryInfoModalClose");
+  _countryInfoModalShare = document.querySelector("#shareCountryInfoModal");
   _countryInfoModalBody = document.querySelector(".country-info-modal-body");
   _selectedCountry;
   _errorMessage = "Failed to load side navigation menu!";
@@ -245,6 +246,9 @@ class sideNavigationView {
     }`;
     this._countryInfoModalClose.innerHTML = `${
       localization[model.worldCountries.language]["Close"]
+    }`;
+    this._countryInfoModalShare.innerHTML = `${
+      localization[model.worldCountries.language]["Share"]
     }`;
   }
 
