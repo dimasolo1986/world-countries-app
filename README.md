@@ -1,3 +1,5 @@
+[![Stand With Ukraine](https://raw.githubusercontent.com/vshymanskyy/StandWithUkraine/main/banner-direct-single.svg)](https://stand-with-ukraine.pp.ua)
+
 # world-countries-app
 
 <b>World Countries And Quizzes<b> - project which is developed for learning Geography and World Countries.
