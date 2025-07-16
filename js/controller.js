@@ -9,6 +9,7 @@ import mapQuiz from "./views/mapQuiz.js";
 import aboutView from "./views/aboutView.js";
 import statisticView from "./views/statisticView.js";
 import flagsView from "./views/flagsView.js";
+import donateAuthorView from "./views/donateAuthorView.js";
 import { localization } from "./localization/ua.js";
 import { COUNTRY_ON_MAP_QUIZ } from "./config.js";
 import { WORLD_MAP_BOUNDS } from "./config.js";
@@ -33,12 +34,14 @@ const init = function () {
   topNavigationView.addHandlerAboutClick(aboutProjectHandlerClick);
   topNavigationView.addHandlerStatisticClick(statisticHandlerClick);
   topNavigationView.addHandlerFlagsClick(flagsHandlerClick);
+  topNavigationView.addHandlerDonateAuthorClick(donateAuthorClick);
   topNavigationView.addHandlerQuizClick(quizSelectionHandler);
   topNavigationView.initItemMenuStyle();
   aboutView.addReturnToMapHandlerClick(
     mapView,
     statisticView,
     flagsView,
+    donateAuthorView,
     sideNavigationView,
     topNavigationView,
     countriesSelectView
@@ -47,6 +50,7 @@ const init = function () {
     mapView,
     aboutView,
     flagsView,
+    donateAuthorView,
     sideNavigationView,
     topNavigationView,
     countriesSelectView
@@ -55,6 +59,16 @@ const init = function () {
     mapView,
     aboutView,
     statisticView,
+    donateAuthorView,
+    sideNavigationView,
+    topNavigationView,
+    countriesSelectView
+  );
+  donateAuthorView.addReturnToMapHandlerClick(
+    mapView,
+    statisticView,
+    flagsView,
+    aboutView,
     sideNavigationView,
     topNavigationView,
     countriesSelectView
@@ -132,6 +146,9 @@ const loadWindow = function () {
       case "statistic":
         loadStatistic();
         break;
+      case "donate-author":
+        loadDonateAuthor();
+        break;
       case "flags":
         loadFlags();
         break;
@@ -149,6 +166,7 @@ const loadWorldMap = function () {
   mapQuiz.hideQuiz();
   aboutView.hideAboutProject();
   statisticView.hideStatistic();
+  donateAuthorView.hideDonateProject();
   flagsView.hideFlags();
   countriesSelectView.enableCountriesSelect();
   mapView.setMapViewToBounds(WORLD_MAP_BOUNDS);
@@ -166,6 +184,7 @@ const loadAboutProject = function () {
   mapView.hideMap();
   quiz.hideQuiz();
   mapQuiz.hideQuiz();
+  donateAuthorView.hideDonateProject();
   countriesSelectView.disableCountriesSelect();
   statisticView.hideStatistic();
   flagsView.hideFlags();
@@ -178,11 +197,25 @@ const loadStatistic = function () {
   mapView.hideMap();
   quiz.hideQuiz();
   mapQuiz.hideQuiz();
+  donateAuthorView.hideDonateProject();
   countriesSelectView.disableCountriesSelect();
   aboutView.hideAboutProject();
   statisticView.showStatistic();
   flagsView.hideFlags();
   statisticView.renderStatisticData();
+  topNavigationView.hideSideNavigation();
+  topNavigationView.disableSideBarToggle();
+};
+
+const loadDonateAuthor = function () {
+  mapView.hideMap();
+  quiz.hideQuiz();
+  mapQuiz.hideQuiz();
+  countriesSelectView.disableCountriesSelect();
+  aboutView.hideAboutProject();
+  statisticView.hideStatistic();
+  donateAuthorView.showDonateInfo();
+  flagsView.hideFlags();
   topNavigationView.hideSideNavigation();
   topNavigationView.disableSideBarToggle();
 };
@@ -194,6 +227,7 @@ const loadFlags = function () {
   countriesSelectView.disableCountriesSelect();
   aboutView.hideAboutProject();
   statisticView.hideStatistic();
+  donateAuthorView.hideDonateProject();
   flagsView.showFlags();
   flagsView.setFlagsRegionDefaultValue();
   flagsView.renderFlagsData();
@@ -207,6 +241,7 @@ const loadQuiz = function (quizId) {
   aboutView.hideAboutProject();
   statisticView.hideStatistic();
   flagsView.hideFlags();
+  donateAuthorView.hideDonateProject();
   if (quizId === COUNTRY_ON_MAP_QUIZ) {
     quiz.hideQuiz();
     mapView.hideMap();
@@ -248,6 +283,10 @@ const flagsHandlerClick = function () {
   loadFlags();
 };
 
+const donateAuthorClick = function () {
+  loadDonateAuthor();
+};
+
 const quizSelectionHandler = function (quizId) {
   loadQuiz(quizId);
 };
@@ -262,6 +301,7 @@ const translateAllElements = function () {
   mapQuiz.translateElements();
   statisticView.translateElements();
   flagsView.translateElements();
+  donateAuthorView.translateElements();
 };
 
 const languageSelectHandler = function (language) {

@@ -521,6 +521,16 @@
               >
             </li>
             <li><hr class="dropdown-divider" /></li>
+            <li id="donate-author-li" style="cursor: pointer">
+              <span style="margin-left: 5px">💰</span>
+              <a
+                id="donate-author"
+                class="dropdown-item"
+                style="display: inline"
+                >Support Author</a
+              >
+            </li>
+            <li><hr class="dropdown-divider" /></li>
             <li id="about-li" style="cursor: pointer">
               <span style="margin-left: 5px">📰</span>
               <a id="about" class="dropdown-item" style="display: inline"
@@ -1043,6 +1053,83 @@
             </section>
           </div>
           <div
+            id="donate-author-page"
+            class="container-fluid px-4 not-displayed"
+            style="color: #6495ed; overflow: auto; text-align: justify"
+          >
+            <div class="text-center">
+              <button
+                type="button"
+                class="btn btn-sm btn-warning return-donate"
+                style="margin-top: 15px"
+              >
+                RETURN TO WORLD MAP
+              </button>
+              <div>
+                <img
+                  src="assets/img/Dmytro_Solovei.jpg"
+                  style="
+                    width: 50px;
+                    height: 50px;
+                    border-radius: 50%;
+                    margin-top: 5px;
+                  "
+                  loading="lazy"
+                  alt="Author Photo"
+                />
+              </div>
+              <p class="donate-heading" style="margin-top: 10px">
+                <a
+                  href="https://donatello.to/DmytroSolovei"
+                  target="_blank"
+                  class="donate-link"
+                  style="
+                    font-weight: bold;
+                    font-size: 1.5rem;
+                    color: white;
+                    text-decoration: none;
+                    margin-left: 10px;
+                    width: fit-content;
+                    background-color: #6495ed;
+                    display: inline-block;
+                    border: thick double white;
+                    border-radius: 12px;
+                    padding-left: 10px;
+                    padding-right: 10px;
+                  "
+                  >Donation Page</a
+                >
+              </p>
+              <div id="donate-qr-code">
+                <div id="donate-qr-code-text" style="font-weight: bolder">
+                  QR Code
+                </div>
+                <img
+                  src="assets/img/donate.png"
+                  alt="Donate Author"
+                  loading="lazy"
+                  style="width: 280px; height: 280px"
+                />
+              </div>
+              <a
+                target="_blank"
+                href="https://stand-with-ukraine.pp.ua"
+                style="
+                  cursor: pointer;
+                  display: block;
+                  margin-top: 5px;
+                  margin-bottom: 5px;
+                "
+              >
+                <img
+                  src="https://raw.githubusercontent.com/vshymanskyy/StandWithUkraine/main/badges/StandWithUkraine.svg"
+                  alt="Help Ukraine"
+                  loading="lazy"
+                />
+              </a>
+            </div>
+          </div>
+          <div
             id="about-project"
             class="container-fluid px-4 not-displayed"
             style="text-align: justify"
@@ -1134,6 +1221,20 @@
               class="about-developer-email-link"
               href="mailto:solovei.dmytro@gmail.com"
               >solovei.dmytro@gmail.com</a
+            >
+            <br />
+            <p
+              class="about-developer-donate-author-description"
+              style="display: inline"
+            >
+              Support Author
+            </p>
+            <span>:</span>
+            <a
+              class="about-developer-donate-author-link"
+              href="https://donatello.to/DmytroSolovei"
+              target="_blank"
+              >Donatello</a
             >
             <br />
             <p class="about-map-library" style="display: inline">

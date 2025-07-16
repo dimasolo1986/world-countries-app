@@ -76,6 +76,9 @@ class aboutView {
   _aboutUkraineHelpDescription = document.querySelector(
     ".about-ukraine-help-description"
   );
+  _aboutDonateAuthorText = document.querySelector(
+    ".about-developer-donate-author-description"
+  );
   _aboutUkraineHelpLink = document.querySelector(".about-ukraine-help-link");
   _aboutMapLibrary = document.querySelector(".about-map-library");
   _aboutReturnToMap = document.querySelector(".return-about");
@@ -86,12 +89,14 @@ class aboutView {
     mapView,
     statisticView,
     flagsView,
+    donateAuthorView,
     sideNavigationView,
     topNavigationView,
     countriesSelectView
   ) {
     this.hideAboutProject();
     statisticView.hideStatistic();
+    donateAuthorView.hideDonateProject();
     flagsView.hideFlags();
     mapView.setMapViewToBounds(WORLD_MAP_BOUNDS);
     mapView.showMap();
@@ -107,6 +112,7 @@ class aboutView {
     mapView,
     statisticView,
     flagsView,
+    donateAuthorView,
     sideNavigationView,
     topNavigationView,
     countriesSelectView
@@ -119,6 +125,7 @@ class aboutView {
           mapView,
           statisticView,
           flagsView,
+          donateAuthorView,
           sideNavigationView,
           topNavigationView,
           countriesSelectView
@@ -276,6 +283,9 @@ class aboutView {
       localization[model.worldCountries.language][
         "You can support Ukraine in the fight against Russia's military aggression:"
       ]
+    }`;
+    this._aboutDonateAuthorText.textContent = `${
+      localization[model.worldCountries.language]["Support Author"]
     }`;
     this._aboutMapLibrary.textContent = `${
       localization[model.worldCountries.language]["Used Map Library:"]

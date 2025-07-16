@@ -24,6 +24,7 @@ class statisticView {
     mapView,
     aboutView,
     flagsView,
+    donateAuthorView,
     sideNavigationView,
     topNavigationView,
     countriesSelectView
@@ -31,6 +32,7 @@ class statisticView {
     this.hideStatistic();
     aboutView.hideAboutProject();
     flagsView.hideFlags();
+    donateAuthorView.hideDonateProject();
     mapView.setMapViewToBounds(WORLD_MAP_BOUNDS);
     mapView.showMap();
     mapView.invalidateSize();
@@ -45,6 +47,7 @@ class statisticView {
     mapView,
     aboutView,
     flagsView,
+    donateAuthorView,
     sideNavigationView,
     topNavigationView,
     countriesSelectView
@@ -57,6 +60,7 @@ class statisticView {
           mapView,
           aboutView,
           flagsView,
+          donateAuthorView,
           sideNavigationView,
           topNavigationView,
           countriesSelectView

@@ -19,6 +19,7 @@ class flagsView {
     mapView,
     aboutView,
     statisticView,
+    donateAuthorView,
     sideNavigationView,
     topNavigationView,
     countriesSelectView
@@ -26,6 +27,7 @@ class flagsView {
     this.hideFlags();
     aboutView.hideAboutProject();
     statisticView.hideStatistic();
+    donateAuthorView.hideDonateProject();
     mapView.setMapViewToBounds(WORLD_MAP_BOUNDS);
     mapView.showMap();
     mapView.invalidateSize();
@@ -88,6 +90,7 @@ class flagsView {
     mapView,
     aboutView,
     statisticView,
+    donateAuthorView,
     sideNavigationView,
     topNavigationView,
     countriesSelectView
@@ -100,6 +103,7 @@ class flagsView {
           mapView,
           aboutView,
           statisticView,
+          donateAuthorView,
           sideNavigationView,
           topNavigationView,
           countriesSelectView
