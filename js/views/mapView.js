@@ -269,21 +269,6 @@ class mapView {
             },
           },
           {
-            html: `<span id="country-name-by-capital-quiz-menu">${
-              localization[model.worldCountries.language][
-                "Country Name By Capital Quiz"
-              ]
-            }</span>`,
-            afterClick: () => {
-              loadQuizOnMap(COUNTRY_NAME_BY_CAPITAL_QUIZ);
-              sessionStorage.setItem(
-                "currentWindow",
-                "country-name-by-capital-quiz"
-              );
-              this._topNavigationView.initItemMenuStyle();
-            },
-          },
-          {
             html: `<span id="capital-by-country-name-quiz-menu">${
               localization[model.worldCountries.language][
                 "Capital By Country Name Quiz"
@@ -294,6 +279,21 @@ class mapView {
               sessionStorage.setItem(
                 "currentWindow",
                 "capital-by-country-name-quiz"
+              );
+              this._topNavigationView.initItemMenuStyle();
+            },
+          },
+          {
+            html: `<span id="country-name-by-capital-quiz-menu">${
+              localization[model.worldCountries.language][
+                "Country Name By Capital Quiz"
+              ]
+            }</span>`,
+            afterClick: () => {
+              loadQuizOnMap(COUNTRY_NAME_BY_CAPITAL_QUIZ);
+              sessionStorage.setItem(
+                "currentWindow",
+                "country-name-by-capital-quiz"
               );
               this._topNavigationView.initItemMenuStyle();
             },
