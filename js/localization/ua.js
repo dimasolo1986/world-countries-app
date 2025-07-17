@@ -508,7 +508,7 @@ export const localization = {
     Share: "Поділитися",
     "Support Project": "Підтримати Проект",
     "If you like this project, you can share it with your friends or support it financially. Thank you!":
-      "Якщо Вам подобається цей проєкт, Ви можете поділитись ним з друзями або підтримати фінансово. Дякую Вам!",
+      "Якщо Вам подобається цей проект, Ви можете поділитись ним з друзями або підтримати фінансово. Дякую Вам!",
     "Make Donate": "Зробити Донат",
     "QR Code": "QR Код",
     "Guess Flag": "Вгадай Прапор:",
