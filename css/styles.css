@@ -8396,7 +8396,8 @@ body,
 .modal-content,
 #statistic-quizzes,
 #countries-flags,
-#donate-author-page {
+#donate-author-page,
+#about-project {
   font-family: Cambria, Cochin, Georgia, Times, "Times New Roman", serif;
 }
 
