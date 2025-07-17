@@ -10,29 +10,29 @@ L.Control.Player = L.Control.extend({
     this._isPaused = false;
     this._countries = this.options.model.countries.slice();
     this._div = L.DomUtil.create("div", this.options.cssClass);
-    $(this._div).html(this.options.template);
-    this._collapse = $(this._div).find(".collapseButtonCountryPlayer")[0];
-    this._footer = $(this._div).find(".playerFooter")[0];
-    this._countriesSelectContainer = $(this._div).find(
+    this._div.innerHTML = this.options.template;
+    this._collapse = this._div.querySelector(".collapseButtonCountryPlayer");
+    this._footer = this._div.querySelector(".playerFooter");
+    this._countriesSelectContainer = this._div.querySelector(
       ".playerCountriesSelect"
-    )[0];
-    this._countriesSelect = $(this._div).find("#playerCountriesSelect")[0];
-    this._label = $(this._div).find("#playerSelectLabel")[0];
-    this._select = $(this._div).find("#playerSelectLabel")[0];
-    this._startButton = $(this._div).find(".playerButtonStart")[0];
-    this._pauseButton = $(this._div).find(".playerButtonPause")[0];
-    this._endButton = $(this._div).find(".playerButtonEnd")[0];
+    );
+    this._countriesSelect = this._div.querySelector("#playerCountriesSelect");
+    this._label = this._div.querySelector("#playerSelectLabel");
+    this._select = this._div.querySelector("#playerSelectLabel");
+    this._startButton = this._div.querySelector(".playerButtonStart");
+    this._pauseButton = this._div.querySelector(".playerButtonPause");
+    this._endButton = this._div.querySelector(".playerButtonEnd");
     this._pauseButton.style.opacity = "0.5";
     this._pauseButton.style.pointerEvents = "none";
     this._startButton.style.opacity = "1";
     this._startButton.style.pointerEvents = "auto";
     this._endButton.style.opacity = "0.5";
     this._endButton.style.pointerEvents = "none";
-    this._delaySelect = $(this._div).find(".playerDelaySelect")[0];
-    this._countryCountElement = $(this._div).find("#countryCount")[0];
-    this._allCountriesCountElement = $(this._div).find(
+    this._delaySelect = this._div.querySelector(".playerDelaySelect");
+    this._countryCountElement = this._div.querySelector("#countryCount");
+    this._allCountriesCountElement = this._div.querySelector(
       "#allCountriesNumber"
-    )[0];
+    );
     this._collapse.addEventListener("click", this.collapse.bind(this));
     this._startButton.addEventListener("click", this.playCountires.bind(this));
     this._endButton.addEventListener(
@@ -182,7 +182,7 @@ L.Control.Player = L.Control.extend({
     }
   },
   updateTemplate: function () {
-    $(this._div).html(this.options.template);
+    this._div.innerHTML = this.options.template;
   },
   pausePlayCountries: function () {
     this._pauseButton.style.opacity = "0.5";

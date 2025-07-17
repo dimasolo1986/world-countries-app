@@ -15,13 +15,14 @@ L.Control.Weather = L.Control.extend({
   },
   onAdd: function (map) {
     this._div = L.DomUtil.create("div", this.options.cssClass);
-    $(this._div).html(this.options.template);
-    this._collapse = $(this._div).find(".collapseButtonWeather")[0];
-    this._weatherIcon = $(this._div).find(".weatherIcon")[0];
-    this._weatherCoordinates = $(this._div).find(".weatherCoordinates")[0];
-    this._weatherTemperature = $(this._div).find(".weatherTemperature")[0];
-    this._weatherHumidity = $(this._div).find(".weatherHumidity")[0];
-    this._weatherWind = $(this._div).find(".weatherWind")[0];
+    this._div.innerHTML = this.options.template;
+    this._collapse = this._div.querySelector(".collapseButtonWeather");
+    this._weatherIcon = this._div.querySelector(".weatherIcon");
+    this._weatherIconImg = this._div.querySelector(".weatherIconImg");
+    this._weatherCoordinates = this._div.querySelector(".weatherCoordinates");
+    this._weatherTemperature = this._div.querySelector(".weatherTemperature");
+    this._weatherHumidity = this._div.querySelector(".weatherHumidity");
+    this._weatherWind = this._div.querySelector(".weatherWind");
     this._collapse.addEventListener(
       "click",
       function () {
@@ -56,8 +57,7 @@ L.Control.Weather = L.Control.extend({
     this._map.off(this.options.event, this.onMoveEnd);
   },
   refresh: function (callback) {
-    let _this = this,
-      center = this._map.getCenter(),
+    let center = this._map.getCenter(),
       url =
         "https://api.openweathermap.org/data/2.5/weather?lat=:lat&lon=:lng&lang=:lang&units=:units&appid=:appkey";
     const apiKey = this.options.apiKey;
@@ -67,32 +67,44 @@ L.Control.Weather = L.Control.extend({
     url = url.replace(":lat", center.lat);
     url = url.replace(":lng", center.lng);
     url = url.replace(":appkey", apiKey);
-    $.getJSON(
-      url,
-      function (weather) {
+
+    fetch(url)
+      .then((response) => {
+        if (!response.ok) {
+          throw new Error("Failed to get Weather data");
+        }
+        return response.json();
+      })
+      .then((weather) => {
         callback(weather);
         this._div.style.display = "block";
-      }.bind(this)
-    ).fail(
-      function () {
+      })
+      .catch((error) => {
         this._div.style.display = "none";
-      }.bind(this)
-    );
+      });
   },
   _updateWidget: function (weather) {
     const iconUrl = this.options.iconUrlTemplate.replace(
       ":icon",
       weather.weather[0].icon + ".png"
     );
-    $(".weatherIconImg").attr("src", iconUrl);
-    $(".weatherCoordinatesValue").text(
-      `${+weather.coord.lat.toFixed(2)}, ${+weather.coord.lon.toFixed(2)}`
-    );
-    $(".weatherTemperatureValue").text(`${weather.main.temp}°C`);
-    $(".weatherHumidityValue").text(`${weather.main.humidity}%`);
-    $(".weatherWindValue").html(
-      `${this.mapWindDirection(weather.wind.deg)} ${weather.wind.speed}`
-    );
+    this._weatherIconImg.src = iconUrl;
+    this._div.querySelector(
+      ".weatherCoordinatesValue"
+    ).textContent = `${+weather.coord.lat.toFixed(
+      2
+    )}, ${+weather.coord.lon.toFixed(2)}`;
+    this._div.querySelector(
+      ".weatherTemperatureValue"
+    ).textContent = `${weather.main.temp}°C`;
+    this._div.querySelector(
+      ".weatherHumidityValue"
+    ).textContent = `${weather.main.humidity}%`;
+    this._div.querySelector(
+      ".weatherWindValue"
+    ).innerHTML = `${this.mapWindDirection(weather.wind.deg)} ${
+      weather.wind.speed
+    }`;
   },
   /**
    * Maps from wind direction in degrees to cardinal points
