@@ -73,6 +73,7 @@ const init = function () {
     topNavigationView,
     countriesSelectView
   );
+  donateAuthorView.addShareWebSiteHandlerClick();
   flagsView.flagsRegionSelectHandler();
   flagsView.addMoveUpCountriesHandler();
   saveCurrentLanguageHandler();
@@ -311,7 +312,6 @@ const languageSelectHandler = function (language) {
   model.loadAllCountries();
   sortData(model.worldCountries.countries);
   sortData(model.worldCountries.selectedCountries);
-  translateAllElements();
   sideNavigationView._selectedCountry = undefined;
   renderAll();
 };

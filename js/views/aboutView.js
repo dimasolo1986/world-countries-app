@@ -285,7 +285,7 @@ class aboutView {
       ]
     }`;
     this._aboutDonateAuthorText.textContent = `${
-      localization[model.worldCountries.language]["Support Author"]
+      localization[model.worldCountries.language]["Support Project"]
     }`;
     this._aboutMapLibrary.textContent = `${
       localization[model.worldCountries.language]["Used Map Library:"]

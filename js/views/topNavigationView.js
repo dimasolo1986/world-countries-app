@@ -310,7 +310,7 @@ class topNavigationView {
       localization[model.worldCountries.language]["World Countries Flags"]
     }`;
     this._donateLink.textContent = `${
-      localization[model.worldCountries.language]["Support Author"]
+      localization[model.worldCountries.language]["Support Project"]
     }`;
     this._worldMapLink.textContent = `${
       localization[model.worldCountries.language]["World Map"]
