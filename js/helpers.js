@@ -86,6 +86,14 @@ export const showQuizResultWindow = function () {
   quizResult.show();
 };
 
+export const showGameResultWindow = function () {
+  const gameResult = new bootstrap.Modal(
+    document.getElementById("gameResultModal"),
+    {}
+  );
+  gameResult.show();
+};
+
 export const shareQuizResults = function () {
   const quizResultsLabelText = document.getElementById(
     "quizModalResultLabel"

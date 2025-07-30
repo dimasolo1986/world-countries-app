@@ -2022,7 +2022,7 @@ fieldset:disabled .btn {
   --bs-dropdown-border-width: 1px;
   --bs-dropdown-inner-border-radius: calc(0.375rem - 1px);
   --bs-dropdown-divider-bg: var(--bs-border-color-translucent);
-  --bs-dropdown-divider-margin-y: 0.2rem;
+  --bs-dropdown-divider-margin-y: 0.1rem;
   --bs-dropdown-box-shadow: 0 0.5rem 1rem rgba(0, 0, 0, 0.15);
   --bs-dropdown-link-color: #212529;
   --bs-dropdown-link-hover-color: #1e2125;
@@ -2031,7 +2031,7 @@ fieldset:disabled .btn {
   /* --bs-dropdown-link-active-bg: #0d6efd; */
   --bs-dropdown-link-disabled-color: #adb5bd;
   --bs-dropdown-item-padding-x: 1rem;
-  --bs-dropdown-item-padding-y: 0.25rem;
+  --bs-dropdown-item-padding-y: 0.2rem;
   --bs-dropdown-header-color: #6c757d;
   --bs-dropdown-header-padding-x: 1rem;
   --bs-dropdown-header-padding-y: 0.5rem;
@@ -8394,6 +8394,7 @@ body,
 }
 
 .modal-content,
+.guess-country-game-message,
 #statistic-quizzes,
 #countries-flags,
 #donate-author-page,
@@ -8436,4 +8437,8 @@ spinner-border {
     -webkit-animation-duration: 1.5s;
     animation-duration: 1.5s;
   }
+}
+
+path.leaflet-interactive:focus {
+  outline: none;
 }

@@ -47,6 +47,9 @@ class topNavigationView {
   _statisticLink = document.querySelector("#statistic");
   _flagsLink = document.querySelector("#countries-flags-link");
   _donateLink = document.querySelector("#donate-author");
+  _quessCountriesGameLink = document.querySelector(
+    "#guess-countries-game-link"
+  );
   _dropdownMenuElements = document.querySelectorAll(".dropdown-menu li");
 
   resetItemMenuStyle() {
@@ -74,6 +77,10 @@ class topNavigationView {
           break;
         case "donate-author":
           this._donateLink.closest("li").style.backgroundColor = "lightgrey";
+          break;
+        case "guess-countries-game":
+          this._quessCountriesGameLink.closest("li").style.backgroundColor =
+            "lightgrey";
           break;
         case FLAG_BY_COUNTRY_NAME_QUIZ:
           this._flagByCountryNameQuizLink.closest("li").style.backgroundColor =
@@ -260,6 +267,21 @@ class topNavigationView {
       );
   }
 
+  addHandlerGuessCountriesGameClick(handler) {
+    const handlerGuessCountriesGameClick = function (link) {
+      this.resetItemMenuStyle();
+      link.closest("li").style.backgroundColor = "lightgrey";
+      sessionStorage.setItem("currentWindow", "guess-countries-game");
+      handler();
+    };
+    this._quessCountriesGameLink
+      .closest("li")
+      .addEventListener(
+        "click",
+        handlerGuessCountriesGameClick.bind(this, this._quessCountriesGameLink)
+      );
+  }
+
   translateElements() {
     this._flagByCountryNameQuizLink.textContent = `${
       localization[model.worldCountries.language]["Flag By Country Name Quiz"]
@@ -311,6 +333,9 @@ class topNavigationView {
     }`;
     this._donateLink.textContent = `${
       localization[model.worldCountries.language]["Support Project"]
+    }`;
+    this._quessCountriesGameLink.textContent = `${
+      localization[model.worldCountries.language]["Guess Countries Game"]
     }`;
     this._worldMapLink.textContent = `${
       localization[model.worldCountries.language]["World Map"]

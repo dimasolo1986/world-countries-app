@@ -13,9 +13,10 @@ import {
   COUNTRY_CAPITAL_BY_FLAG_QUIZ,
   COUNTRY_NAME_BY_COUNTRY_ON_MAP,
   COUNTRY_NAME_BY_EMBLEM_QUIZ,
+  GUESS_COUNTRY_GAME,
 } from "../config.js";
 import { localization } from "../localization/ua.js";
-import { loadQuizOnMap } from "../controller.js";
+import { loadQuizOnMap, loadGuessCountryGame } from "../controller.js";
 import * as model from "../model.js";
 import { COUNTRY_BOUNDS } from "../data/countriesBounds.js";
 import { defineZoomLevelByCountryArea, getLanguageCode } from "../helpers.js";
@@ -216,6 +217,18 @@ class mapView {
         position: "topleft",
         className: "quiz-menu-map",
         menuItems: [
+          {
+            html: `<span id="guess-countries-game-menu">${
+              localization[model.worldCountries.language][
+                "Guess Countries Game"
+              ]
+            }</span>`,
+            afterClick: () => {
+              loadGuessCountryGame(GUESS_COUNTRY_GAME);
+              sessionStorage.setItem("currentWindow", "guess-countries-game");
+              this._topNavigationView.initItemMenuStyle();
+            },
+          },
           {
             html: `<span id="country-name-on-map-quiz-menu">${
               localization[model.worldCountries.language][
@@ -578,6 +591,13 @@ class mapView {
           "Flag By Country Name Quiz"
         ];
     }
+    const guessCountriesGame = document.querySelector(
+      "#guess-countries-game-menu"
+    );
+    if (guessCountriesGame) {
+      guessCountriesGame.textContent =
+        localization[model.worldCountries.language]["Guess Countries Game"];
+    }
     const flagByCountryCapitalQuiz = document.querySelector(
       "#flag-by-country-capital-quiz-menu"
     );
@@ -680,7 +700,7 @@ class mapView {
   createDevelopmentPlaceIcon() {
     return L.icon({
       iconUrl: `https://upload.wikimedia.org/wikipedia/commons/0/00/Slavutich_gerb.png`,
-      iconSize: [20, 30],
+      iconSize: [15, 25],
       className: "development-place-icon",
     });
   }
@@ -688,7 +708,7 @@ class mapView {
   createCapitalMarkerIcon(iconUrl) {
     return L.icon({
       iconUrl: iconUrl,
-      iconSize: [30, 30],
+      iconSize: [15, 15],
       className: "development-place-icon",
     });
   }
@@ -696,7 +716,7 @@ class mapView {
   _createMarkerIcon(country) {
     return L.icon({
       iconUrl: `${country.flags.png}`,
-      iconSize: [20, 20],
+      iconSize: [15, 15],
     });
   }
 
@@ -779,6 +799,9 @@ class mapView {
       );
       this._countryBoundary = L.geoJson(countryGeo, {
         bubblingMouseEvents: false,
+        weight: 2,
+        fillOpacity: 0.5,
+        opacity: 1,
       })
         .on("click", () => {})
         .addTo(this._map);

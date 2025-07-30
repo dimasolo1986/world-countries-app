@@ -68,6 +68,13 @@ class aboutView {
   _aboutQuizzesQuestionsAndPoints = document.querySelector(
     ".about-questions-points"
   );
+  _aboutAvailableGames = document.querySelector(".about-available-games");
+  _aboutGuessCountryGameName = document.querySelector(
+    ".about-guess-countries-game-name"
+  );
+  _aboutGuessCountryGameDescription = document.querySelector(
+    ".about-guess-countries-game-description"
+  );
   _aboutDeveloper = document.querySelector(".about-developer");
   _aboutDeveloperLink = document.querySelector(".about-developer-link");
   _aboutDeveloperEmailDescription = document.querySelector(
@@ -87,17 +94,11 @@ class aboutView {
 
   returnToMap(
     mapView,
-    statisticView,
-    flagsView,
-    donateAuthorView,
     sideNavigationView,
     topNavigationView,
     countriesSelectView
   ) {
     this.hideAboutProject();
-    statisticView.hideStatistic();
-    donateAuthorView.hideDonateProject();
-    flagsView.hideFlags();
     mapView.setMapViewToBounds(WORLD_MAP_BOUNDS);
     mapView.showMap();
     mapView.invalidateSize();
@@ -110,9 +111,6 @@ class aboutView {
 
   addReturnToMapHandlerClick(
     mapView,
-    statisticView,
-    flagsView,
-    donateAuthorView,
     sideNavigationView,
     topNavigationView,
     countriesSelectView
@@ -123,9 +121,6 @@ class aboutView {
         this.returnToMap.bind(
           this,
           mapView,
-          statisticView,
-          flagsView,
-          donateAuthorView,
           sideNavigationView,
           topNavigationView,
           countriesSelectView
@@ -166,6 +161,17 @@ class aboutView {
     }`;
     this._aboutAvailableQuizzes.textContent = `${
       localization[model.worldCountries.language]["Quizzes:"]
+    }`;
+    this._aboutAvailableGames.textContent = `${
+      localization[model.worldCountries.language]["Games:"]
+    }`;
+    this._aboutGuessCountryGameName.textContent = `${
+      localization[model.worldCountries.language]["Guess Countries Game"]
+    }`;
+    this._aboutGuessCountryGameDescription.textContent = `${
+      localization[model.worldCountries.language][
+        "The game 'Guess Countries' helps to learn the location of countries in the world. Choose a given number of countries on the map. The computer will also choose the appropriate number of countries. Attempts to guess the countries take place in turn. The one who guesses the opponent's country gets an additional attempt. The winner is the one who first guesses all the opponent's countries. Follow the messages at the top of the screen after the game starts."
+      ]
     }`;
     this._aboutFlagByCountryQuizName.textContent = `${
       localization[model.worldCountries.language]["Flag By Country Name Quiz"]

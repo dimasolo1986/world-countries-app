@@ -17,17 +17,11 @@ class flagsView {
 
   returnToMap(
     mapView,
-    aboutView,
-    statisticView,
-    donateAuthorView,
     sideNavigationView,
     topNavigationView,
     countriesSelectView
   ) {
     this.hideFlags();
-    aboutView.hideAboutProject();
-    statisticView.hideStatistic();
-    donateAuthorView.hideDonateProject();
     mapView.setMapViewToBounds(WORLD_MAP_BOUNDS);
     mapView.showMap();
     mapView.invalidateSize();
@@ -88,9 +82,6 @@ class flagsView {
 
   addReturnToMapHandlerClick(
     mapView,
-    aboutView,
-    statisticView,
-    donateAuthorView,
     sideNavigationView,
     topNavigationView,
     countriesSelectView
@@ -101,9 +92,6 @@ class flagsView {
         this.returnToMap.bind(
           this,
           mapView,
-          aboutView,
-          statisticView,
-          donateAuthorView,
           sideNavigationView,
           topNavigationView,
           countriesSelectView

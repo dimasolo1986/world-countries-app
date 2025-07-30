@@ -70,7 +70,7 @@
 
 .leaflet-bootstrap-dropdowns .dropdown-item {
   font-family: Cambria, Cochin, Georgia, Times, Times New Roman, serif;
-  font-size: 0.9rem;
+  font-size: 0.85rem;
   font-weight: normal;
   color: black;
   cursor: pointer;
@@ -79,8 +79,8 @@
   -moz-user-select: none;
   -ms-user-select: none;
   -khtml-user-select: none;
-  padding-top: 0.15rem;
-  padding-bottom: 0.15rem;
+  padding-top: 0.1rem;
+  padding-bottom: 0.1rem;
 }
 
 .leaflet-bootstrap-dropdowns .dropdown-item i {
@@ -267,7 +267,8 @@ h1.heading {
 }
 
 .heading,
-.heading-map {
+.heading-map,
+.countries-game-heading {
   font-weight: bold;
   font-size: 1.5rem;
   color: cornflowerblue;
@@ -280,7 +281,8 @@ h1.heading {
   color: darkblue;
 }
 
-.countries-container {
+.countries-container,
+.guess-countries-game-container {
   display: block;
   font-weight: bold;
   margin-top: 10px;

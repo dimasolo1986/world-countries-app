@@ -464,7 +464,7 @@ class MapQuiz {
     this._countryBondaries.forEach((item) => {
       item.resetStyle();
       item.setStyle({
-        weight: 2,
+        weight: 1,
         fillColor: "#3388ff",
         fillOpacity: 0.2,
         opacity: 1,
@@ -501,7 +501,7 @@ class MapQuiz {
           context._correctIncorrectQuizAnswer.style.color = "white";
           context._correctIncorrectQuizAnswer.style.backgroundColor = "green";
           countryBoundary.setStyle({
-            weight: 3,
+            weight: 2,
             color: "green",
             fillColor: "green",
             fillOpacity: 0.5,
@@ -538,7 +538,7 @@ class MapQuiz {
           );
           if (rightCountryBoundary) {
             rightCountryBoundary.setStyle({
-              weight: 3,
+              weight: 2,
               color: "green",
               fillColor: "green",
               fillOpacity: 0.5,
@@ -547,7 +547,7 @@ class MapQuiz {
             rightCountryBoundary.bringToFront();
           }
           countryBoundary.setStyle({
-            weight: 3,
+            weight: 2,
             color: "red",
             fillColor: "red",
             fillOpacity: 0.5,
@@ -675,7 +675,7 @@ class MapQuiz {
         );
         const countryBoundary = L.geoJson(countryGeo, {
           style: {
-            weight: 2,
+            weight: 1,
             fillOpacity: 0.2,
             className: countryCode,
             opacity: 1,
@@ -687,7 +687,7 @@ class MapQuiz {
             const mouseOver = function (countryBoundary, context) {
               if (!context._alreadyCountrySelected) {
                 countryBoundary.setStyle({
-                  weight: 4,
+                  weight: 3,
                   fillOpacity: 0.5,
                   opacity: 1,
                   className: countryCode,
@@ -701,7 +701,7 @@ class MapQuiz {
             const mouseOut = function (countryBoundary, context) {
               if (!context._alreadyCountrySelected) {
                 countryBoundary.setStyle({
-                  weight: 2,
+                  weight: 1,
                   fillOpacity: 0.2,
                   opacity: 1,
                   className: countryCode,

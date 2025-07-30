@@ -13,6 +13,7 @@ export const COUNTRY_NAME_BY_CAPITAL_QUIZ = "country-name-by-capital-quiz";
 export const COUNTRY_CAPITAL_BY_COUNTRY_NAME_QUIZ =
   "capital-by-country-name-quiz";
 export const COUNTRY_ON_MAP_QUIZ = "country-on-map-quiz";
+export const GUESS_COUNTRY_GAME = "guess-countries-game";
 export const DEFAULT_RIGHT_SCORE = 100;
 export const DEFAULT_RIGHT_MAP_SCORE = 300;
 export const TIME_TO_ANSWER = 25;

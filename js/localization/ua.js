@@ -516,7 +516,54 @@ export const localization = {
     "START AGAIN": "ПОЧАТИ ЗНОВУ",
     "NEXT QUESTION": "НАСТУПНЕ ПИТАННЯ",
     "FINISH QUIZ": "ЗАКІНЧИТИ ВІКТОРИНУ",
+    "Guess Countries Game": "Гра Вгадай Країни",
+    "Failed attempt to guess country!": "Невдала спроба вгадати країну!",
+    "Press 'Play' to start game!": "Натисніть 'Грати', щоб розпочати гру!",
+    "Already tried this country. Try another one!":
+      "Вже спробували цю країну. Спробуйте іншу!",
+    "Already guessed this country. Try another one!":
+      "Вже вгадали цю країну. Спробуйте іншу!",
+    "Select country number": "Оберіть країну номер",
+    "You guessed": "Ви вгадали",
+    "Computer guessed": "Комп'ютер вгадав",
+    "Computer is guessing your country...":
+      "Комп'ютер прогнозує вашу країну...",
+    "Your attempt to guess opponent's country":
+      "Ваша спроба вгадати країну опонента",
+    "Computer failed to guess your country!":
+      "Комп'ютер не вгадав вашу країну!",
+    Play: "Грати",
+    "Your Map": "Ваша Мапа",
+    "Computer Map": "Мапа Компьютера",
+    "Countries to select: 5": "Країн для вибору: 5",
+    "Countries to select: 10": "Країн для вибору: 10",
+    "Countries to select: 15": "Країн для вибору: 15",
+    "Countries to select: 20": "Країн для вибору: 20",
+    "Countries to select: 25": "Країн для вибору: 25",
+    "Countries on map: All": "Країни на мапі: Усі",
+    "Countries on map: 150": "Країни на мапі: 150",
+    "Countries on map: 125": "Країни на мапі: 125",
+    "Countries on map: 100": "Країни на мапі: 100",
+    "Countries on map: 75": "Країни на мапі: 75",
+    "Only Independent Countries": "Тільки Незалежні Країни",
+    "Congratulations! You won the game!": "Вітаємо! Ви виграли гру!",
+    "You guessed all the opponent's countries:":
+      "Ви вгадали всі країни суперника:",
+    "Sorry! You lost the game!": "Вибачте! Ви програли гру!",
+    "Computer guessed all your countries:": "Комп'ютер вгадав усі ваші країни:",
+    "Game Result": "Результат Гри",
+    "Are you sure you want to leave this game?":
+      "Ви впевнені, що хочете закінчити гру?",
+    "Guessed Country": "Вгадана Країна",
+    "Not Guessed Country": "Не Вгадана Країна",
+    "The game 'Guess Countries' helps to learn the location of countries in the world. Choose a given number of countries on the map. The computer will also choose the appropriate number of countries. Attempts to guess the countries take place in turn. The one who guesses the opponent's country gets an additional attempt. The winner is the one who first guesses all the opponent's countries. Follow the messages at the top of the screen after the game starts.":
+      "Гра 'Вгадай Країни' допомагає вивчати розташування країн у світі. Оберіть задану кількість країн на мапі. Комп'ютер також обере відповідну кількість країн. Спроби відгадати країни відбуваються по черзі. Той, хто вгадав країну суперника отримує додаткову спробу. Виграє той, хто перший відгадає всі країни суперника. Слідкуйте за повідомленнями у верхній частині екрану після початку гри.",
+    "Game Rules": "Правила Гри",
+    "Games:": "Ігри:",
+    "You can't select a war aggressor country!":
+      "Не можна вибрати країну-агресора!",
     FINISH: "ЗАКІНЧИТИ",
+    Finish: "Закінчити",
     "Weather in the center of the map": "Погода в центрі мапи",
     "Are you sure you want to leave this quiz? Current quiz data will not be saved!":
       "Ви впевнені, що бажаєте залишити цей тест? Поточні дані вікторини не будуть збережені!",
@@ -1222,6 +1269,53 @@ export const localization = {
     "Rating:": "Rating:",
     of: "of",
     "Guess Flag": "Guess Flag:",
+    "Guess Countries Game": "Guess Countries Game",
+    "Press 'Play' to start game!": "Press 'Play' to start game!",
+    "Failed attempt to guess country!": "Failed attempt to guess country!",
+    "Already guessed this country. Try another one!":
+      "Already guessed this country. Try another one!",
+    "Already tried this country. Try another one!":
+      "Already tried this country. Try another one!",
+    "Select country number": "Select country number",
+    "You guessed": "You guessed",
+    "Computer guessed": "Computer guessed",
+    Play: "Play",
+    "Computer is guessing your country...":
+      "Computer is guessing your country...",
+    "Your attempt to guess opponent's country":
+      "Your attempt to guess opponent's country",
+    "Computer failed to guess your country!":
+      "Computer failed to guess your country!",
+    "Your Map": "Your Map",
+    "Computer Map": "Computer Map",
+    "Countries to select: 5": "Countries to select: 5",
+    "Countries to select: 10": "Countries to select: 10",
+    "Countries to select: 15": "Countries to select: 15",
+    "Countries to select: 20": "Countries to select: 20",
+    "Countries to select: 25": "Countries to select: 25",
+    "Countries on map: All": "Countries on map: All",
+    "Countries on map: 150": "Countries on map: 150",
+    "Countries on map: 125": "Countries on map: 125",
+    "Countries on map: 100": "Countries on map: 100",
+    "Countries on map: 75": "Countries on map: 75",
+    "Only Independent Countries": "Only Independent Countries",
+    "Congratulations! You won the game!": "Congratulations! You won the game!",
+    "You guessed all the opponent's countries:":
+      "You guessed all the opponent's countries:",
+    "Sorry! You lost the game!": "Sorry! You lost the game!",
+    "Computer guessed all your countries:":
+      "Computer guessed all your countries:",
+    "Game Result": "Game Result",
+    "Are you sure you want to leave this game?":
+      "Are you sure you want to leave this game?",
+    "Guessed Country": "Guessed Country",
+    "Not Guessed Country": "Not Guessed Country",
+    "The game 'Guess Countries' helps to learn the location of countries in the world. Choose a given number of countries on the map. The computer will also choose the appropriate number of countries. Attempts to guess the countries take place in turn. The one who guesses the opponent's country gets an additional attempt. The winner is the one who first guesses all the opponent's countries. Follow the messages at the top of the screen after the game starts.":
+      "The game 'Guess Countries' helps to learn the location of countries in the world. Choose a given number of countries on the map. The computer will also choose the appropriate number of countries. Attempts to guess the countries take place in turn. The one who guesses the opponent's country gets an additional attempt. The winner is the one who first guesses all the opponent's countries. Follow the messages at the top of the screen after the game starts.",
+    "Game Rules": "Game Rules",
+    "Games:": "Games:",
+    "You can't select a war aggressor country!":
+      "You can't select a war aggressor country!",
     "RETURN TO MAP": "RETURN TO MAP",
     "START AGAIN": "START AGAIN",
     "Guess Flag By Country Name": "Guess Flag By Country Name",
@@ -1240,6 +1334,7 @@ export const localization = {
     "NEXT QUESTION": "NEXT QUESTION",
     "FINISH QUIZ": "FINISH QUIZ",
     FINISH: "FINISH",
+    Finish: "Finish",
     Collapse: "Collapse",
     "Flag By Country Name Quiz": "Flag By Country Name Quiz",
     "World Countries Flags": "World Countries Flags",
@@ -1926,6 +2021,54 @@ export const localization = {
     of: "von",
     Collapse: "Minimieren",
     "Guess Flag": "Flagge erraten:",
+    "Guess Countries Game": "Länder Erraten Spiel",
+    "Press 'Play' to start game!": "Drücke 'Spielen', um das Spiel zu starten!",
+    "Already guessed this country. Try another one!":
+      "Dieses Land wurde bereits erraten. Versuche ein anderes!",
+    "Failed attempt to guess country!":
+      "Versuch, das Land zu erraten, fehlgeschlagen!",
+    "Select country number": "Wählen sie die ländernummer",
+    "You guessed": "Sie haben es erraten",
+    "Computer guessed": "Computer hat geraten",
+    Play: "Spielen",
+    "Already tried this country. Try another one!":
+      "Dieses Land wurde bereits ausprobiert. Versuche ein anderes!",
+    "Computer is guessing your country...": "Der Computer rät dein Land...",
+    "Your attempt to guess opponent's country":
+      "Dein Versuch, das Land des Gegners zu erraten",
+    "Computer failed to guess your country!":
+      "Der Computer konnte Ihr Land nicht erraten!",
+    "Your Map": "Ihre Karte",
+    "Computer Map": "Computerkarte",
+    "Countries to select: 5": "Länder zur auswahl: 5",
+    "Countries to select: 10": "Länder zur auswahl: 10",
+    "Countries to select: 15": "Länder zur auswahl: 15",
+    "Countries to select: 20": "Länder zur auswahl: 20",
+    "Countries to select: 25": "Länder zur auswahl: 25",
+    "Countries on map: All": "Länder auf der Karte: Alle",
+    "Countries on map: 150": "Länder auf der Karte: 150",
+    "Countries on map: 125": "Länder auf der Karte: 125",
+    "Countries on map: 100": "Länder auf der Karte: 100",
+    "Countries on map: 75": "Länder auf der Karte: 75",
+    "Only Independent Countries": "Nur Unabhängige Länder",
+    "Congratulations! You won the game!":
+      "Herzlichen Glückwunsch! Du hast das Spiel gewonnen!",
+    "You guessed all the opponent's countries:":
+      "Sie haben alle Länder des Gegners erraten:",
+    "Sorry! You lost the game!": "Entschuldigung! Du hast das Spiel verloren!",
+    "Computer guessed all your countries:":
+      "Der Computer hat alle Ihre Länder erraten:",
+    "Game Result": "Spielergebnis",
+    "Are you sure you want to leave this game?":
+      "Möchten Sie dieses Spiel wirklich verlassen?",
+    "Guessed Country": "Erratenes Land",
+    "Not Guessed Country": "Nicht Erratenes Land",
+    "The game 'Guess Countries' helps to learn the location of countries in the world. Choose a given number of countries on the map. The computer will also choose the appropriate number of countries. Attempts to guess the countries take place in turn. The one who guesses the opponent's country gets an additional attempt. The winner is the one who first guesses all the opponent's countries. Follow the messages at the top of the screen after the game starts.":
+      "Mit dem Spiel 'Rate das Land' erfährst du die Lage der Länder auf der Weltkarte. Wähle dazu eine bestimmte Anzahl Länder auf der Karte aus. Der Computer wählt automatisch die entsprechende Anzahl aus. Abwechselnd raten die Spieler die Länder. Wer das Land des Gegners errät, darf einen weiteren Versuch starten. Gewonnen hat, wer zuerst alle Länder des Gegners errät. Folge nach Spielbeginn den Hinweisen am oberen Bildschirmrand.",
+    "Game Rules": "Spielregeln",
+    "Games:": "Spiele:",
+    "You can't select a war aggressor country!":
+      "Sie können kein Kriegsaggressorland auswählen!",
     "RETURN TO MAP": "ZURÜCK ZUR KARTE",
     "START AGAIN": "NEU STARTEN",
     "Guess Flag By Country Name": "Flagge nach Ländernamen erraten",
@@ -1945,6 +2088,7 @@ export const localization = {
     "NEXT QUESTION": "NÄCHSTE FRAGE",
     "FINISH QUIZ": "QUIZ BEENDEN",
     FINISH: "FERTIG",
+    Finish: "Fertig",
     "World Countries Flags": "Welt Länderflaggen",
     "Flag By Country Name Quiz": "Flaggen nach Ländernamen Quiz",
     "Country Name By Country On Map Quiz":
@@ -2630,6 +2774,54 @@ export const localization = {
     of: "de",
     Collapse: "Réduire",
     "Guess Flag": "Devinez le Drapeau:",
+    "Guess Countries Game": "Jeu de Devinettes du Pays",
+    "Press 'Play' to start game!": "Appuie sur 'Jouer' pour démarrer le jeu!",
+    "Failed attempt to guess country!":
+      "La tentative de deviner le pays a échoué!",
+    "Select country number": "Sélectionnez le pays numéro",
+    "You guessed": "Vous l'avez deviné",
+    "Computer guessed": "L'ordinateur a deviné",
+    Play: "Jouer",
+    "Already tried this country. Try another one!":
+      "Ce pays a déjà été essayé. Essayez-en un autre!",
+    "Already guessed this country. Try another one!":
+      "Ce pays a déjà été deviné. Essayez-en un autre!",
+    "Computer is guessing your country...": "L'ordinateur devine votre pays...",
+    "Your attempt to guess opponent's country":
+      "Votre tentative de deviner le pays de l'adversaire",
+    "Computer failed to guess your country!":
+      "L'ordinateur n'a pas réussi à deviner votre pays!",
+    "Your Map": "Votre carte",
+    "Computer Map": "Carte de l'ordinateur",
+    "Countries to select: 5": "Pays à sélectionner: 5",
+    "Countries to select: 10": "Pays à sélectionner: 10",
+    "Countries to select: 15": "Pays à sélectionner: 15",
+    "Countries to select: 20": "Pays à sélectionner: 20",
+    "Countries to select: 25": "Pays à sélectionner: 25",
+    "Countries on map: All": "Pays sur la carte: Tous",
+    "Countries on map: 150": "Pays sur la carte: 150",
+    "Countries on map: 125": "Pays sur la carte: 125",
+    "Countries on map: 100": "Pays sur la carte: 100",
+    "Countries on map: 75": "Pays sur la carte: 75",
+    "Only Independent Countries": "Seuls les Pays Indépendants",
+    "Congratulations! You won the game!":
+      "Félicitations! Vous avez gagné la partie!",
+    "You guessed all the opponent's countries:":
+      "Vous avez deviné tous les pays de l'adversaire:",
+    "Sorry! You lost the game!": "Désolé! Vous avez perdu la partie!",
+    "Computer guessed all your countries:":
+      "L'ordinateur a deviné tous vos pays:",
+    "Game Result": "Résultat du Match",
+    "Are you sure you want to leave this game?":
+      "Êtes-vous sûr de vouloir quitter ce jeu?",
+    "Guessed Country": "Pays Deviné",
+    "Not Guessed Country": "Pays Non deviné",
+    "The game 'Guess Countries' helps to learn the location of countries in the world. Choose a given number of countries on the map. The computer will also choose the appropriate number of countries. Attempts to guess the countries take place in turn. The one who guesses the opponent's country gets an additional attempt. The winner is the one who first guesses all the opponent's countries. Follow the messages at the top of the screen after the game starts.":
+      "Le jeu 'Devinez les pays' vous permet de localiser les pays du monde. Sélectionnez un nombre donné de pays sur la carte. L'ordinateur sélectionnera également le nombre approprié. Les joueurs tentent de deviner les pays à tour de rôle. Le joueur qui devine le pays de son adversaire a droit à un essai supplémentaire. Le gagnant est le premier à deviner tous les pays de son adversaire. Suivez les instructions en haut de l'écran après le début de la partie.",
+    "Game Rules": "Règles du jeu",
+    "Games:": "Jeux:",
+    "You can't select a war aggressor country!":
+      "Vous ne pouvez pas sélectionner un pays agresseur de guerre!",
     "RETURN TO MAP": "RETOUR À LA CARTE",
     "START AGAIN": "RECOMMENCER",
     "Guess Flag By Country Name": "Devinez le Drapeau par le Nom du Pays",
@@ -2651,6 +2843,7 @@ export const localization = {
     "NEXT QUESTION": "QUESTION SUIVANTE",
     "FINISH QUIZ": "TERMINER LE QUIZ",
     FINISH: "TERMINER",
+    Finish: "Terminer",
     "Flag By Country Name Quiz": "Quiz du Drapeau par Nom de Pays",
     "Country Name By Coat Of Arms Quiz": "Quiz du Nom de Pays par Blason",
     "Country Name By Country On Map Quiz":
@@ -3335,6 +3528,53 @@ export const localization = {
     of: "de",
     Collapse: "Minimizar",
     "Guess Flag": "Adivina la Bandera:",
+    "Guess Countries Game": "Juego de Adivinar el País",
+    "Press 'Play' to start game!": "Pulsa 'Jugar' para comenzar el juego!",
+    "Failed attempt to guess country!": "¡Intento fallido de adivinar el país!",
+    "Select country number": "Seleccione el país número",
+    "You guessed": "Lo adivinaste",
+    "Computer guessed": "La computadora lo adivinó",
+    Play: "Jugar",
+    "Already tried this country. Try another one!":
+      "Ya se ha intentado con este país.¡Prueba con otro!",
+    "Already guessed this country. Try another one!":
+      "Este país ya ha sido adivinado. ¡Prueba con otro!",
+    "Computer is guessing your country...":
+      "La computadora está adivinando tu país...",
+    "Your attempt to guess opponent's country":
+      "Tu intento de adivinar el país del oponente",
+    "Computer failed to guess your country!":
+      "¡La computadora no pudo adivinar tu país!",
+    "Your Map": "Tu mapa",
+    "Computer Map": "Mapa de la computadora",
+    "Countries to select: 5": "Países a seleccionar: 5",
+    "Countries to select: 10": "Países a seleccionar: 10",
+    "Countries to select: 15": "Países a seleccionar: 15",
+    "Countries to select: 20": "Países a seleccionar: 20",
+    "Countries to select: 25": "Países a seleccionar: 25",
+    "Countries on map: All": "Países en el mapa: Todos",
+    "Countries on map: 150": "Países en el mapa: 150",
+    "Countries on map: 125": "Países en el mapa: 125",
+    "Countries on map: 100": "Países en el mapa: 100",
+    "Countries on map: 75": "Países en el mapa: 75",
+    "Only Independent Countries": "Sólo Países Independientes",
+    "Congratulations! You won the game!": "¡Felicidades! ¡Ganaste el juego!",
+    "You guessed all the opponent's countries:":
+      "Adivinaste todos los países del oponente:",
+    "Sorry! You lost the game!": "¡Lo siento! ¡Perdiste el juego!",
+    "Computer guessed all your countries:":
+      "La computadora adivinó todos tus países:",
+    "Game Result": "Resultado del Juego",
+    "Are you sure you want to leave this game?":
+      "¿Estás seguro de que quieres salir de este juego?",
+    "Guessed Country": "País Adivinado",
+    "Not Guessed Country": "País No Adivinado",
+    "The game 'Guess Countries' helps to learn the location of countries in the world. Choose a given number of countries on the map. The computer will also choose the appropriate number of countries. Attempts to guess the countries take place in turn. The one who guesses the opponent's country gets an additional attempt. The winner is the one who first guesses all the opponent's countries. Follow the messages at the top of the screen after the game starts.":
+      "El juego 'Adivina los Países' te ayuda a descubrir la ubicación de los países del mundo. Elige un número determinado de países en el mapa. La computadora también elegirá el número correcto. Los intentos para adivinar los países se realizan por turnos. Quien adivine el país del oponente tiene un intento extra. El ganador es el primero en adivinar todos los países del oponente. Sigue las instrucciones en la parte superior de la pantalla después de que comience el juego.",
+    "Game Rules": "Reglas del juego",
+    "Games:": "Juegos:",
+    "You can't select a war aggressor country!":
+      "¡No puedes seleccionar un país agresor de guerra!",
     "RETURN TO MAP": "VOLVER AL MAPA",
     "START AGAIN": "EMPEZAR DE NUEVO",
     "Guess Flag By Country Name": "Adivina la Bandera por Nombre del País",
@@ -3355,6 +3595,7 @@ export const localization = {
     "FINISH QUIZ": "TERMINAR CUESTIONARIO",
     "World Countries Flags": "Banderas de los Países del Mundo",
     FINISH: "TERMINAR",
+    Finish: "Terminar",
     "Flag By Country Name Quiz": "Cuestionario de Bandera por Nombre del País",
     "Country Name By Coat Of Arms Quiz":
       "Cuestionario de Nombre del País por Escudo de Armas",
@@ -4043,6 +4284,55 @@ export const localization = {
     "Rating:": "Valutazione:",
     of: "di",
     "Guess Flag": "Indovina Bandiera:",
+    "Guess Countries Game": "Gioco Indovina il Paese",
+    "Press 'Play' to start game!": "Premi 'Gioca' per iniziare il gioco!",
+    "Failed attempt to guess country!":
+      "Tentativo fallito di indovinare il paese!",
+    "Select country number": "Seleziona il paese numero",
+    "You guessed": "Hai indovinato",
+    "Computer guessed": "Il computer ha indovinato",
+    Play: "Gioca",
+    "Already tried this country. Try another one!":
+      "Hai già provato questo paese. Prova con un altro!",
+    "Already guessed this country. Try another one!":
+      "Hai già indovinato questo paese. Prova con un altro!",
+    "Computer is guessing your country...":
+      "Il computer sta indovinando il tuo paese...",
+    "Your attempt to guess opponent's country":
+      "Il tuo tentativo di indovinare il paese dell'avversario",
+    "Computer failed to guess your country!":
+      "Il computer non è riuscito a indovinare il tuo Paese!",
+    "Your Map": "La tua mappa",
+    "Computer Map": "Mappa del computer",
+    "Countries to select: 5": "Paesi da selezionare: 5",
+    "Countries to select: 10": "Paesi da selezionare: 10",
+    "Countries to select: 15": "Paesi da selezionare: 15",
+    "Countries to select: 20": "Paesi da selezionare: 20",
+    "Countries to select: 25": "Paesi da selezionare: 25",
+    "Countries on map: All": "Paesi sulla mappa: Tutti",
+    "Countries on map: 150": "Paesi sulla mappa: 150",
+    "Countries on map: 125": "Paesi sulla mappa: 125",
+    "Countries on map: 100": "Paesi sulla mappa: 100",
+    "Countries on map: 75": "Paesi sulla mappa: 75",
+    "Only Independent Countries": "Solo Paesi Indipendenti",
+    "Congratulations! You won the game!":
+      "Congratulazioni! Hai vinto la partita!",
+    "You guessed all the opponent's countries:":
+      "Hai indovinato tutti i paesi del tuo avversario:",
+    "Sorry! You lost the game!": "Mi dispiace! Hai perso la partita!",
+    "Computer guessed all your countries:":
+      "Il computer ha indovinato tutti i tuoi paesi:",
+    "Game Result": "Risultato del Gioco",
+    "Are you sure you want to leave this game?":
+      "Vuoi davvero lasciare questo gioco?",
+    "Guessed Country": "Paese Indovinato",
+    "Not Guessed Country": "Paese Non Indovinato",
+    "The game 'Guess Countries' helps to learn the location of countries in the world. Choose a given number of countries on the map. The computer will also choose the appropriate number of countries. Attempts to guess the countries take place in turn. The one who guesses the opponent's country gets an additional attempt. The winner is the one who first guesses all the opponent's countries. Follow the messages at the top of the screen after the game starts.":
+      "Il gioco 'Indovina i Paesi' ti aiuta a scoprire la posizione dei paesi in tutto il mondo. Seleziona un certo numero di paesi sulla mappa. Il computer selezionerà anche il numero appropriato di paesi. I tentativi di indovinare i paesi si svolgono a turno. Chi indovina il paese dell'avversario ha un ulteriore tentativo. Il vincitore è il primo a indovinare tutti i paesi dell'avversario. Segui le istruzioni nella parte superiore dello schermo dopo l'inizio del gioco.",
+    "Game Rules": "Regole del gioco",
+    "Games:": "Giochi:",
+    "You can't select a war aggressor country!":
+      "Non puoi scegliere un paese aggressore in guerra!",
     "RETURN TO MAP": "TORNA ALLA MAPPA",
     "START AGAIN": "RICOMINCIA",
     "Guess Flag By Country Name": "Indovina Bandiera per Nome del Paese",
@@ -4062,6 +4352,7 @@ export const localization = {
     "FINISH QUIZ": "FINISCI QUIZ",
     "World Countries Flags": "Bandiere dei Paesi del Mondo",
     FINISH: "FINISCI",
+    Finish: "Finisci",
     "Flag By Country Name Quiz": "Quiz Bandiera per Nome del Paese",
     "Country Name By Coat Of Arms Quiz": "Quiz Nome del Paese per Stemma",
     "Country Name By Country On Map Quiz":

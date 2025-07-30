@@ -10,6 +10,7 @@ import aboutView from "./views/aboutView.js";
 import statisticView from "./views/statisticView.js";
 import flagsView from "./views/flagsView.js";
 import donateAuthorView from "./views/donateAuthorView.js";
+import guessCountriesGame from "./views/guessCountriesGame.js";
 import { localization } from "./localization/ua.js";
 import { COUNTRY_ON_MAP_QUIZ } from "./config.js";
 import { WORLD_MAP_BOUNDS } from "./config.js";
@@ -35,40 +36,35 @@ const init = function () {
   topNavigationView.addHandlerStatisticClick(statisticHandlerClick);
   topNavigationView.addHandlerFlagsClick(flagsHandlerClick);
   topNavigationView.addHandlerDonateAuthorClick(donateAuthorClick);
+  topNavigationView.addHandlerGuessCountriesGameClick(guessCountriesGameClick);
   topNavigationView.addHandlerQuizClick(quizSelectionHandler);
   topNavigationView.initItemMenuStyle();
   aboutView.addReturnToMapHandlerClick(
     mapView,
-    statisticView,
-    flagsView,
-    donateAuthorView,
     sideNavigationView,
     topNavigationView,
     countriesSelectView
   );
   statisticView.addReturnToMapHandlerClick(
     mapView,
-    aboutView,
-    flagsView,
-    donateAuthorView,
     sideNavigationView,
     topNavigationView,
     countriesSelectView
   );
   flagsView.addReturnToMapHandlerClick(
     mapView,
-    aboutView,
-    statisticView,
-    donateAuthorView,
     sideNavigationView,
     topNavigationView,
     countriesSelectView
   );
   donateAuthorView.addReturnToMapHandlerClick(
     mapView,
-    statisticView,
-    flagsView,
-    aboutView,
+    sideNavigationView,
+    topNavigationView,
+    countriesSelectView
+  );
+  guessCountriesGame.returnToMapButtonHandler(
+    mapView,
     sideNavigationView,
     topNavigationView,
     countriesSelectView
@@ -131,6 +127,17 @@ const init = function () {
         }
       });
     }
+    const shareWebSiteGame = document.getElementById("shareGameResults");
+    if (shareWebSiteGame) {
+      shareWebSiteGame.addEventListener("click", function () {
+        if (navigator.share) {
+          navigator
+            .share(shareWebSiteContent)
+            .then(function () {})
+            .catch(function () {});
+        }
+      });
+    }
   });
 };
 
@@ -149,6 +156,9 @@ const loadWindow = function () {
         break;
       case "donate-author":
         loadDonateAuthor();
+        break;
+      case "guess-countries-game":
+        loadGuessCountriesGame();
         break;
       case "flags":
         loadFlags();
@@ -169,6 +179,7 @@ const loadWorldMap = function () {
   statisticView.hideStatistic();
   donateAuthorView.hideDonateProject();
   flagsView.hideFlags();
+  guessCountriesGame.hideGame();
   countriesSelectView.enableCountriesSelect();
   mapView.setMapViewToBounds(WORLD_MAP_BOUNDS);
   mapView.showMap();
@@ -189,6 +200,7 @@ const loadAboutProject = function () {
   countriesSelectView.disableCountriesSelect();
   statisticView.hideStatistic();
   flagsView.hideFlags();
+  guessCountriesGame.hideGame();
   aboutView.showAboutProjectInfo();
   topNavigationView.hideSideNavigation();
   topNavigationView.disableSideBarToggle();
@@ -203,6 +215,7 @@ const loadStatistic = function () {
   aboutView.hideAboutProject();
   statisticView.showStatistic();
   flagsView.hideFlags();
+  guessCountriesGame.hideGame();
   statisticView.renderStatisticData();
   topNavigationView.hideSideNavigation();
   topNavigationView.disableSideBarToggle();
@@ -216,6 +229,27 @@ const loadDonateAuthor = function () {
   aboutView.hideAboutProject();
   statisticView.hideStatistic();
   donateAuthorView.showDonateInfo();
+  guessCountriesGame.hideGame();
+  flagsView.hideFlags();
+  topNavigationView.hideSideNavigation();
+  topNavigationView.disableSideBarToggle();
+};
+
+const loadGuessCountriesGame = function () {
+  mapView.hideMap();
+  quiz.hideQuiz();
+  mapQuiz.hideQuiz();
+  countriesSelectView.disableCountriesSelect();
+  aboutView.hideAboutProject();
+  statisticView.hideStatistic();
+  donateAuthorView.hideDonateProject();
+  guessCountriesGame.showGame();
+  guessCountriesGame.initGame(
+    mapView,
+    sideNavigationView,
+    topNavigationView,
+    countriesSelectView
+  );
   flagsView.hideFlags();
   topNavigationView.hideSideNavigation();
   topNavigationView.disableSideBarToggle();
@@ -229,6 +263,7 @@ const loadFlags = function () {
   aboutView.hideAboutProject();
   statisticView.hideStatistic();
   donateAuthorView.hideDonateProject();
+  guessCountriesGame.hideGame();
   flagsView.showFlags();
   flagsView.setFlagsRegionDefaultValue();
   flagsView.renderFlagsData();
@@ -242,6 +277,7 @@ const loadQuiz = function (quizId) {
   aboutView.hideAboutProject();
   statisticView.hideStatistic();
   flagsView.hideFlags();
+  guessCountriesGame.hideGame();
   donateAuthorView.hideDonateProject();
   if (quizId === COUNTRY_ON_MAP_QUIZ) {
     quiz.hideQuiz();
@@ -288,6 +324,10 @@ const donateAuthorClick = function () {
   loadDonateAuthor();
 };
 
+const guessCountriesGameClick = function () {
+  loadGuessCountriesGame();
+};
+
 const quizSelectionHandler = function (quizId) {
   loadQuiz(quizId);
 };
@@ -303,6 +343,7 @@ const translateAllElements = function () {
   statisticView.translateElements();
   flagsView.translateElements();
   donateAuthorView.translateElements();
+  guessCountriesGame.translateElements();
 };
 
 const languageSelectHandler = function (language) {
@@ -393,6 +434,10 @@ const saveCurrentLanguageHandler = function () {
 };
 
 init();
+
+export function loadGuessCountryGame() {
+  loadGuessCountriesGame();
+}
 
 export function loadQuizOnMap(quizId) {
   loadQuiz(quizId);

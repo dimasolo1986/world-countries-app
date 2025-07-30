@@ -17,17 +17,11 @@ class donateAuthorView {
 
   returnToMap(
     mapView,
-    statisticView,
-    flagsView,
-    aboutView,
     sideNavigationView,
     topNavigationView,
     countriesSelectView
   ) {
     this.hideDonateProject();
-    statisticView.hideStatistic();
-    aboutView.hideAboutProject();
-    flagsView.hideFlags();
     mapView.setMapViewToBounds(WORLD_MAP_BOUNDS);
     mapView.showMap();
     mapView.invalidateSize();
@@ -70,9 +64,6 @@ class donateAuthorView {
 
   addReturnToMapHandlerClick(
     mapView,
-    statisticView,
-    flagsView,
-    aboutView,
     sideNavigationView,
     topNavigationView,
     countriesSelectView
@@ -83,9 +74,6 @@ class donateAuthorView {
         this.returnToMap.bind(
           this,
           mapView,
-          statisticView,
-          flagsView,
-          aboutView,
           sideNavigationView,
           topNavigationView,
           countriesSelectView

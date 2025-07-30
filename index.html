@@ -21,6 +21,14 @@
         "mainEntity": [
           {
             "@type": "Quiz",
+            "name": "Guess Countries Game",
+            "description": "The game 'Guess Countries' helps to learn the location of countries in the world. Choose a given number of countries on the map. The computer will also choose the appropriate number of countries. Attempts to guess the countries take place in turn. The one who guesses the opponent's country gets an additional attempt. The winner is the one who first guesses all the opponent's countries. Follow the messages at the top of the screen after the game starts.",
+            "image": "https://www.worldcountriesquiz.com/assets/img/guess-countries-game.png",
+            "url": "https://www.worldcountriesquiz.com",
+            "inLanguage": ["en", "uk", "de", "fr", "es", "it"]
+          },
+          {
+            "@type": "Quiz",
             "name": "Country Name By Country On Map Quiz",
             "description": "Guess the country's name from the suggested country on a map.",
             "image": "https://www.worldcountriesquiz.com/assets/img/country-name-by-country-on-map-quiz.png",
@@ -245,6 +253,55 @@
         </div>
       </div>
     </div>
+    <!-- Modal Game Guess Countries Result -->
+    <div
+      class="modal fade"
+      id="gameResultModal"
+      tabindex="-1"
+      aria-labelledby="gameModalResultLabel"
+      aria-hidden="true"
+    >
+      <div class="modal-dialog modal-dialog-centered">
+        <div class="modal-content" style="background-color: #f7fafd">
+          <div class="modal-header" style="padding: 0.5rem">
+            <h1
+              class="modal-title fs-5"
+              id="gameModalResultLabel"
+              style="font-weight: bold; color: cornflowerblue"
+            >
+              Game Result
+            </h1>
+            <button
+              type="button"
+              class="btn-close"
+              data-bs-dismiss="modal"
+              aria-label="Close"
+            ></button>
+          </div>
+          <div class="modal-body" style="padding: 0.5rem">
+            <div
+              id="gameResultHeading"
+              style="font-size: 1.2rem; font-weight: bolder"
+            ></div>
+            <div id="gameResultHeadingGuesedCountries"></div>
+            <div id="gameResultGuessing" style="overflow: auto"></div>
+          </div>
+          <div class="modal-footer" style="padding: 0.5rem">
+            <button
+              id="gameResultCloseButton"
+              type="button"
+              class="btn btn-primary"
+              data-bs-dismiss="modal"
+            >
+              Close
+            </button>
+            <button id="shareGameResults" type="button" class="btn btn-warning">
+              Share
+            </button>
+          </div>
+        </div>
+      </div>
+    </div>
     <!-- Modal Quiz Result -->
     <div
       class="modal fade"
@@ -429,6 +486,16 @@
                 style="display: inline"
                 class="dropdown-item"
                 >World Countries Flags</a
+              >
+            </li>
+            <li><hr class="dropdown-divider" /></li>
+            <li id="guess-countries-game-li" style="cursor: pointer">
+              <span style="margin-left: 5px">🎲</span>
+              <a
+                id="guess-countries-game-link"
+                style="display: inline"
+                class="dropdown-item"
+                >Guess Countries Game</a
               >
             </li>
             <li><hr class="dropdown-divider" /></li>
@@ -790,6 +857,187 @@
                 border-top: 1px solid black;
               "
             ></div>
+          </div>
+          <div id="guessCountriesGame" class="not-displayed">
+            <div id="guessCountriesGamePlay" class="not-displayed">
+              <div
+                id="guessCountriesGameHeader"
+                style="width: 100vw; height: 25px"
+              >
+                <div
+                  class="guess-country-game-message text-center"
+                  style="
+                    margin-top: 5px;
+                    padding-left: 5px;
+                    width: 100%;
+                    font-size: 0.9rem;
+                    font-weight: bolder;
+                    overflow: auto;
+                  "
+                ></div>
+              </div>
+              <div
+                id="guessCountriesGameMap"
+                style="
+                  background-color: #79aed0;
+                  border-top: 1px solid #000;
+                  width: 100vw;
+                  height: 95vh;
+                  position: fixed;
+                "
+              ></div>
+            </div>
+            <div
+              style="text-align: center"
+              id="guess-countries-start-container"
+            >
+              <div
+                class="guess-countries-heading"
+                style="text-align: center; margin-top: 5px"
+              >
+                <div class="countries-game-heading">Guess Countries Game</div>
+              </div>
+              <div
+                class="guess-countries-game-container"
+                style="margin-bottom: 5px"
+              >
+                <select
+                  class="guess-countries-game-countries-on-map-selector form-select form-select-sm rounded-1 border-success"
+                  style="
+                    width: fit-content;
+                    display: inline-block;
+                    font-weight: bolder;
+                    border-color: black;
+                    border-radius: 0;
+                    box-shadow: rgb(67, 181, 0) 0px 30px 60px -12px inset,
+                      rgba(111, 255, 0, 0.253) 0px 18px 36px -18px inset;
+                    cursor: pointer;
+                    margin-bottom: 10px;
+                    font-size: 0.9rem;
+                  "
+                >
+                  <option value="Countries on map: All" selected>
+                    Countries on map: All
+                  </option>
+                  <option value="Countries on map: 150">
+                    Countries on map: 150
+                  </option>
+                  <option value="Countries on map: 125">
+                    Countries on map: 125
+                  </option>
+                  <option value="Countries on map: 100">
+                    Countries on map: 100
+                  </option>
+                  <option value="Countries on map: 75">
+                    Countries on map: 75
+                  </option>
+                </select>
+                <br />
+                <select
+                  class="guess-countries-game-selector form-select form-select-sm rounded-1 border-info"
+                  style="
+                    width: fit-content;
+                    display: inline-block;
+                    font-weight: bolder;
+                    border-color: black;
+                    border-radius: 0;
+                    box-shadow: rgb(9, 79, 255, 0.384) 0px 30px 60px -12px inset,
+                      rgb(5, 174, 187, 0.3) 0px 18px 36px -18px inset;
+                    cursor: pointer;
+                    font-size: 0.9rem;
+                  "
+                >
+                  <option value="Countries to select: 5">
+                    Countries to select: 5
+                  </option>
+                  <option value="Countries to select: 10">
+                    Countries to select: 10
+                  </option>
+                  <option value="Countries to select: 15" selected>
+                    Countries to select: 15
+                  </option>
+                  <option value="Countries to select: 20">
+                    Countries to select: 20
+                  </option>
+                  <option value="Countries to select: 25">
+                    Countries to select: 25
+                  </option>
+                </select>
+                <div style="margin-top: 5px">
+                  <input
+                    type="checkbox"
+                    id="guess-countries-independent"
+                    name="only-independent"
+                    checked
+                  />
+                  <label
+                    for="guess-countries-independent"
+                    id="guess-countries-independent-label"
+                    style="font-weight: normal; margin-left: 5px"
+                    >Only Independent Countries</label
+                  >
+                </div>
+                <div class="text-center" style="margin-top: 5px">
+                  <div id="gameRulesContainer">
+                    <button
+                      id="gameRulesButton"
+                      class="btn btn-info btn-sm"
+                      style="font-size: 0.8rem"
+                    >
+                      Game Rules
+                    </button>
+                    <div
+                      id="gameRulesContent"
+                      class="not-displayed"
+                      style="
+                        font-weight: normal;
+                        text-align: justify;
+                        padding: 20px;
+                        padding-top: 5px;
+                      "
+                    >
+                      The game 'Guess Countries' helps to learn the location of
+                      countries in the world. Choose a given number of countries
+                      on the map. The computer will also choose the appropriate
+                      number of countries. Attempts to guess the countries take
+                      place in turn. The one who guesses the opponent's country
+                      gets an additional attempt. The winner is the one who
+                      first guesses all the opponent's countries. Follow the
+                      messages at the top of the screen after the game starts.
+                    </div>
+                  </div>
+                </div>
+              </div>
+              <div class="container" id="start-guess-countries-container">
+                <div class="row">
+                  <div class="col-xs-12 col-sm-12 column">
+                    <div
+                      class="card country-option"
+                      style="
+                        margin-top: 5px;
+                        background-color: #dc3545;
+                        color: white;
+                        cursor: pointer;
+                        width: 65%;
+                        line-height: 10vh;
+                        height: 10vh;
+                      "
+                      id="start-guess-countries"
+                    >
+                      START
+                    </div>
+                    <br />
+                    <button
+                      class="btn btn-sm btn-outline-warning"
+                      style="margin-top: 5px; font-size: 0.75rem"
+                      id="return-to-world-map-guess-countries-game"
+                    >
+                      RETURN TO WORLD MAP
+                    </button>
+                  </div>
+                </div>
+              </div>
+            </div>
           </div>
           <div id="quiz" class="container-fluid px-4 not-displayed">
             <div
@@ -1242,6 +1490,30 @@
               rel="external"
               >Leaflet</a
             >
+            <p
+              class="about-available-games"
+              style="font-weight: bold; font-size: 1.3rem; margin-top: 5px"
+            >
+              Games:
+            </p>
+            <p class="about-guess-countries-game">
+              <span
+                class="about-guess-countries-game-name"
+                style="font-weight: bold"
+                >Guess Countries Game</span
+              >
+              -
+              <span class="about-guess-countries-game-description"
+                >The game 'Guess Countries' helps to learn the location of
+                countries in the world. Choose a given number of countries on
+                the map. The computer will also choose the appropriate number of
+                countries. Attempts to guess the countries take place in turn.
+                The one who guesses the opponent's country gets an additional
+                attempt. The winner is the one who first guesses all the
+                opponent's countries. Follow the messages at the top of the
+                screen after the game starts.</span
+              >
+            </p>
             <p
               class="about-available-quizzes"
               style="font-weight: bold; font-size: 1.3rem; margin-top: 5px"
