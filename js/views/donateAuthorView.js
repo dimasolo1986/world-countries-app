@@ -8,6 +8,7 @@ class donateAuthorView {
   _donateText = document.querySelector(".donate-text");
   _donateShareWebSite = document.querySelector(".share-donate");
   _donateQrCodeText = document.querySelector("#donate-qr-code-text");
+  _donateCardText = document.querySelector("#donate-card-number");
 
   _donateReturnToMap = document.querySelector(".return-donate");
 
@@ -112,6 +113,9 @@ class donateAuthorView {
     }`;
     this._donateQrCodeText.textContent = `${
       localization[model.worldCountries.language]["QR Code"]
+    }`;
+    this._donateCardText.textContent = `${
+      localization[model.worldCountries.language]["Card number (UAH):"]
     }`;
   }
 }

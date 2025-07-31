@@ -61,6 +61,7 @@ class GuessCountriesGame {
   _userMarkerStyles = {};
   _computerCountryBoundariesStyles = {};
   _computerMarkerStyles = {};
+  _popups = {};
   _gameStarted = false;
   _userGuessCountryAttempt = true;
 
@@ -101,6 +102,13 @@ class GuessCountriesGame {
   startGame() {
     this._guessCountriesStartContainer.classList.add("not-displayed");
     this._guessCountriesGamePlayContainer.classList.remove("not-displayed");
+    let viewportMeta = document.querySelector('meta[name="viewport"]');
+    if (viewportMeta) {
+      viewportMeta.setAttribute(
+        "content",
+        "width=device-width, initial-scale=1.0, maximum-scale=3.0, user-scalable=no"
+      );
+    }
     this._countriesNumber = parseInt(
       this._guessCountriesGameSelector.value.split(":")[1].trim()
     );
@@ -250,11 +258,19 @@ class GuessCountriesGame {
     this._computerSelectedCountries = [];
     this._countryBondaries = [];
     this._markers = [];
+    this._popups = {};
     if (configDefault) {
       this._guessCountriesGameSelector.value = "Countries to select: 15";
       this._guessCountriesIndependentCheckbox.checked = true;
       this._guessCountriesGameCountriesOnMapSelector.value =
         "Countries on map: All";
+      let viewportMeta = document.querySelector('meta[name="viewport"]');
+      if (viewportMeta) {
+        viewportMeta.setAttribute(
+          "content",
+          "width=device-width, initial-scale=1.0, maximum-scale=3.0, user-scalable=yes"
+        );
+      }
     }
     this._userAlreadyGuessedCountries = [];
     this._computerCountries = [];
@@ -289,7 +305,7 @@ class GuessCountriesGame {
         this.finishGame(true);
       }
     } else {
-      this.finishGame(false);
+      this.finishGame(true);
     }
   }
 
@@ -489,6 +505,7 @@ class GuessCountriesGame {
     L.Control.GuessedNotGuessedPanel = L.Control.extend({
       onAdd: function (map) {
         const guessedNotGuessedPanel = L.DomUtil.create("div");
+        guessedNotGuessedPanel.id = "guessed-not-guessed-panel";
         guessedNotGuessedPanel.style.backgroundColor = "white";
         guessedNotGuessedPanel.style.opacity = "0.7";
         guessedNotGuessedPanel.style.borderRadius = "2px";
@@ -512,6 +529,42 @@ class GuessCountriesGame {
       return new L.Control.GuessedNotGuessedPanel(opts);
     };
     L.control.guessednotguessedpanel({ position: "topright" }).addTo(this._map);
+    L.Control.AvailableCountriesPanel = L.Control.extend({
+      onAdd: function (map) {
+        const availableCountriesPanel = L.DomUtil.create("div");
+        availableCountriesPanel.id = "available-countries-panel";
+        availableCountriesPanel.classList.add("not-displayed");
+        availableCountriesPanel.style.backgroundColor = "white";
+        availableCountriesPanel.style.opacity = "0.7";
+        availableCountriesPanel.style.borderRadius = "2px";
+        availableCountriesPanel.style.border = "2px solid rgba(0,0,0,0.2)";
+        availableCountriesPanel.style.marginTop = "5px";
+        availableCountriesPanel.style.padding = "3px";
+        availableCountriesPanel.style.width = "105px";
+        availableCountriesPanel.style.overflow = "hidden";
+        availableCountriesPanel.style.textOverflow = "ellipsis";
+        availableCountriesPanel.style.whiteSpace = "nowrap";
+        const availableCountriesHeader = `<div><span style="font-size:0.6rem;">${
+          localization[model.worldCountries.language]["Available Countries:"]
+        }</span></div>`;
+        availableCountriesPanel.insertAdjacentHTML(
+          "beforeend",
+          availableCountriesHeader
+        );
+        const availableCountriesPanelContent = L.DomUtil.create("div");
+        availableCountriesPanelContent.id = "available-countries-panel-content";
+        availableCountriesPanel.appendChild(availableCountriesPanelContent);
+
+        return availableCountriesPanel;
+      },
+      onRemove: function (map) {},
+    });
+    L.control.availablecountriespanel = function (opts) {
+      return new L.Control.AvailableCountriesPanel(opts);
+    };
+    L.control
+      .availablecountriespanel({ position: "topright" })
+      .addTo(this._map);
     L.Control.ComputerSelectedCountriesField = L.Control.extend({
       countriesNumber: +this._countriesNumber,
       onAdd: function (map) {
@@ -580,7 +633,7 @@ class GuessCountriesGame {
       };
       this._userCountryBoundariesStyles[item.options.style.className] = {
         weight: 0,
-        fillOpacity: 0,
+        fillOpacity: 0.1,
         className: item.options.style.className,
         opacity: 0.5,
         fillColor: "#3388ff",
@@ -588,7 +641,7 @@ class GuessCountriesGame {
       };
       this._computerCountryBoundariesStyles[item.options.style.className] = {
         weight: 0,
-        fillOpacity: 0,
+        fillOpacity: 0.1,
         className: item.options.style.className,
         opacity: 0.5,
         fillColor: "#3388ff",
@@ -596,7 +649,7 @@ class GuessCountriesGame {
       };
       item.setStyle({
         weight: 0,
-        fillOpacity: 0,
+        fillOpacity: 0.1,
         className: item.options.style.className,
         opacity: 0.5,
         fillColor: "#3388ff",
@@ -615,7 +668,7 @@ class GuessCountriesGame {
       item.on("mouseout", function () {
         this.setStyle({
           weight: 0,
-          fillOpacity: 0,
+          fillOpacity: 0.1,
           className: this.options.style.className,
           opacity: 0,
           fillColor: "#3388ff",
@@ -632,6 +685,58 @@ class GuessCountriesGame {
 
   enableElement(element) {
     element.disabled = false;
+  }
+
+  addAvailableCountriesPanel() {
+    const setViewCountry = function (country) {
+      this._map.setView(
+        country.latlng ? country.latlng : country.capitalLatLng,
+        4.5
+      );
+    };
+    const availableCountriesPanel = document.getElementById(
+      "available-countries-panel"
+    );
+    const availableCountriesPanelContent = document.getElementById(
+      "available-countries-panel-content"
+    );
+    const guessedNotGuessedPanel = document.getElementById(
+      "guessed-not-guessed-panel"
+    );
+    if (availableCountriesPanelContent) {
+      availableCountriesPanelContent.innerHTML = "";
+      this._countries.forEach((country) => {
+        const container = document.createElement("div");
+        container.style.cursor = "pointer";
+        const locationIcon = document.createElement("i");
+        locationIcon.classList.add("fa-solid");
+        locationIcon.classList.add("fa-location-crosshairs");
+        locationIcon.style.width = "10px";
+        locationIcon.style.height = "10px";
+        locationIcon.style.marginRight = "5px";
+        const countryImg = document.createElement("img");
+        countryImg.src = country.countryFlag;
+        countryImg.style =
+          "width:8px; height:8px; border-radius:50%; border:1px solid black; margin-right:5px;display:inline-block;";
+        const countryName = document.createElement("span");
+        countryName.textContent =
+          localization[model.worldCountries.language]["countries"][
+            country.countryName
+          ];
+        countryName.style = "font-size:0.6rem;";
+        container.addEventListener("click", setViewCountry.bind(this, country));
+        container.appendChild(locationIcon);
+        container.appendChild(countryImg);
+        container.appendChild(countryName);
+        availableCountriesPanelContent.appendChild(container);
+      });
+    }
+    if (availableCountriesPanel) {
+      availableCountriesPanel.classList.remove("not-displayed");
+    }
+    if (guessedNotGuessedPanel) {
+      guessedNotGuessedPanel.classList.add("not-displayed");
+    }
   }
 
   addCountryBoundaries() {
@@ -776,7 +881,7 @@ class GuessCountriesGame {
           }
           countryBoundary.setStyle({
             weight: 0,
-            fillOpacity: 0,
+            fillOpacity: 0.1,
             color: "#3388ff",
             fillColor: "#3388ff",
             className: countryCode,
@@ -791,6 +896,12 @@ class GuessCountriesGame {
         mapField.textContent = `${
           localization[model.worldCountries.language]["Computer Map"]
         }`;
+        context._countries = context._countries.filter(
+          (country) => country.cca2 !== countryCode
+        );
+        if (context._countries.length <= 5) {
+          context.addAvailableCountriesPanel();
+        }
         const country = context._computerSelectedCountries.find(
           (country) => country.cca2 === countryCode
         );
@@ -806,6 +917,8 @@ class GuessCountriesGame {
           marker.off();
         } catch (error) {}
         context.disableMapInteraction();
+        const popup = context._popups[countryCode];
+        if (popup) popup.openOn(context._map);
         if (country) {
           countryBoundary.on("click", (ev) => {
             L.DomEvent.stopPropagation(ev);
@@ -848,7 +961,7 @@ class GuessCountriesGame {
             localization[model.worldCountries.language]["You guessed"]
           }</span> <img src="${
             country.countryFlag
-          }" style="margin-left:5px; width:15px; height:15px; border-radius:50%; border: solid 1px black"> <span style="margin-left:5px;">${
+          }" style="margin-left:5px; width:20px; height:15px; border-radius:2px; border: solid 1px black"> <span style="margin-left:5px;">${
             localization[model.worldCountries.language]["countries"][
               country.countryName
             ]
@@ -881,6 +994,7 @@ class GuessCountriesGame {
             return;
           }
           await context.sleep(1500);
+          if (popup) popup.close();
           context._guessCountriesMessageField.textContent =
             localization[model.worldCountries.language][
               "Your attempt to guess opponent's country"
@@ -929,6 +1043,7 @@ class GuessCountriesGame {
             ]
           }`;
           await context.sleep(1500);
+          if (popup) popup.close();
           const computerAttemptToGuessCountry = async function (context) {
             context.disableMapInteraction();
             context._guessCountriesMessageField.textContent = `${
@@ -940,6 +1055,16 @@ class GuessCountriesGame {
             mapField.textContent = `${
               localization[model.worldCountries.language]["Your Map"]
             }`;
+            const availableCountriesPanel = document.getElementById(
+              "available-countries-panel"
+            );
+            if (availableCountriesPanel)
+              availableCountriesPanel.classList.add("not-displayed");
+            const guessedNotGuessedPanel = document.getElementById(
+              "guessed-not-guessed-panel"
+            );
+            if (guessedNotGuessedPanel)
+              guessedNotGuessedPanel.classList.remove("not-displayed");
             context._countryBondaries.forEach((countryBoundary) => {
               const countryCode = countryBoundary.options.style.className;
               const style =
@@ -967,7 +1092,7 @@ class GuessCountriesGame {
                 localization[model.worldCountries.language]["Computer guessed"]
               }</span> <img src="${
                 computerGuessedCountry.countryFlag
-              }" style="margin-left:5px; width:15px; height:15px; border-radius:50%; border: solid 1px black"> <span style="margin-left:5px;">${
+              }" style="margin-left:5px; width:20px; height:15px; border-radius:2px; border: solid 1px black"> <span style="margin-left:5px;">${
                 localization[model.worldCountries.language]["countries"][
                   computerGuessedCountry.countryName
                 ]
@@ -1056,18 +1181,9 @@ class GuessCountriesGame {
                 opacity: 0,
               };
             }
-            const popup = L.popup({ closeOnClick: false })
-              .setLatLng(countryCoordinates)
-              .setContent(
-                `<img src="${
-                  computerGuessedCountry.countryFlag
-                }" style="width:15px; height:15px; border: 1px solid black; border-radius: 50%;"><span style="font-weight:bold; margin-left:5px;">${
-                  localization[model.worldCountries.language]["countries"][
-                    computerGuessedCountry.countryName
-                  ]
-                }</span>`
-              )
-              .openOn(context._map);
+            const popup =
+              context._popups[computerCountryBoundary.options.style.className];
+            if (popup) popup.openOn(context._map);
             context._map.setView(countryCoordinates, 4.5);
             await context.sleep(1500);
             if (popup) popup.close();
@@ -1095,6 +1211,18 @@ class GuessCountriesGame {
                 localization[model.worldCountries.language][
                   "Your attempt to guess opponent's country"
                 ];
+              if (context._countries.length <= 5) {
+                const availableCountriesPanel = document.getElementById(
+                  "available-countries-panel"
+                );
+                if (availableCountriesPanel)
+                  availableCountriesPanel.classList.remove("not-displayed");
+                const guessedNotGuessedPanel = document.getElementById(
+                  "guessed-not-guessed-panel"
+                );
+                if (guessedNotGuessedPanel)
+                  guessedNotGuessedPanel.classList.add("not-displayed");
+              }
             }
           };
           context._timeout = setTimeout(
@@ -1127,11 +1255,22 @@ class GuessCountriesGame {
                 localization[model.worldCountries.language]["War Aggressor"]
         );
         countryTooltip.options.sticky = true;
+        const countryPopup = L.popup({ closeOnClick: false })
+          .setLatLng(country.latlng ? country.latlng : country.capitalLatLng)
+          .setContent(
+            `<img src="${
+              country.countryFlag
+            }" style="width:15px; height:15px; border: 1px solid black; border-radius: 50%;"><span style="font-weight:bold; margin-left:5px;">${
+              localization[model.worldCountries.language]["countries"][
+                country.countryName
+              ]
+            }</span>`
+          );
         const countryBoundary = L.geoJson(countryGeo, {
           bubblingMouseEvents: false,
           style: {
             weight: 0,
-            fillOpacity: 0,
+            fillOpacity: 0.1,
             className: countryCode,
             opacity: 0.5,
           },
@@ -1169,7 +1308,7 @@ class GuessCountriesGame {
               ) {
                 countryBoundary.setStyle({
                   weight: 0,
-                  fillOpacity: 0,
+                  fillOpacity: 0.1,
                   opacity: 0,
                   className: countryCode,
                 });
@@ -1215,6 +1354,7 @@ class GuessCountriesGame {
           .bindTooltip(countryTooltip)
           .addTo(this._map);
         marker.dataId = countryCode;
+        this._popups[countryCode] = countryPopup;
         this._markers.push(marker);
         this._countryBondaries.push(countryBoundary);
       }
@@ -1378,7 +1518,6 @@ class GuessCountriesGame {
     }
     showGameResultWindow();
     this.finishGameHandler(false);
-    this.startGame();
   }
 
   sleep(ms) {
@@ -1449,6 +1588,7 @@ class GuessCountriesGame {
     this._gameElement.classList.add("not-displayed");
     this._guessCountriesGamePlayContainer.classList.add("not-displayed");
     this._guessCountriesStartContainer.classList.remove("not-displayed");
+    this._gameRulesContent.classList.add("not-displayed");
   }
 
   translateElements() {

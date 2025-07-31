@@ -545,6 +545,8 @@ export const localization = {
     "Countries on map: 125": "Країни на мапі: 125",
     "Countries on map: 100": "Країни на мапі: 100",
     "Countries on map: 75": "Країни на мапі: 75",
+    "Available Countries:": "Доступні Країни:",
+    "Card number (UAH):": "Номер картки (UAH):",
     "Only Independent Countries": "Тільки Незалежні Країни",
     "Congratulations! You won the game!": "Вітаємо! Ви виграли гру!",
     "You guessed all the opponent's countries:":
@@ -1298,6 +1300,8 @@ export const localization = {
     "Countries on map: 125": "Countries on map: 125",
     "Countries on map: 100": "Countries on map: 100",
     "Countries on map: 75": "Countries on map: 75",
+    "Available Countries:": "Available Countries:",
+    "Card number (UAH):": "Card number (UAH):",
     "Only Independent Countries": "Only Independent Countries",
     "Congratulations! You won the game!": "Congratulations! You won the game!",
     "You guessed all the opponent's countries:":
@@ -2050,6 +2054,8 @@ export const localization = {
     "Countries on map: 125": "Länder auf der Karte: 125",
     "Countries on map: 100": "Länder auf der Karte: 100",
     "Countries on map: 75": "Länder auf der Karte: 75",
+    "Available Countries:": "Verfügbare Länder:",
+    "Card number (UAH):": "Kartennummer (UAH):",
     "Only Independent Countries": "Nur Unabhängige Länder",
     "Congratulations! You won the game!":
       "Herzlichen Glückwunsch! Du hast das Spiel gewonnen!",
@@ -2803,6 +2809,8 @@ export const localization = {
     "Countries on map: 125": "Pays sur la carte: 125",
     "Countries on map: 100": "Pays sur la carte: 100",
     "Countries on map: 75": "Pays sur la carte: 75",
+    "Available Countries:": "Pays Disponibles:",
+    "Card number (UAH):": "Numéro de carte (UAH):",
     "Only Independent Countries": "Seuls les Pays Indépendants",
     "Congratulations! You won the game!":
       "Félicitations! Vous avez gagné la partie!",
@@ -3557,6 +3565,8 @@ export const localization = {
     "Countries on map: 125": "Países en el mapa: 125",
     "Countries on map: 100": "Países en el mapa: 100",
     "Countries on map: 75": "Países en el mapa: 75",
+    "Available Countries:": "Países Disponibles:",
+    "Card number (UAH):": "Número de tarjeta (UAH):",
     "Only Independent Countries": "Sólo Países Independientes",
     "Congratulations! You won the game!": "¡Felicidades! ¡Ganaste el juego!",
     "You guessed all the opponent's countries:":
@@ -4314,6 +4324,8 @@ export const localization = {
     "Countries on map: 125": "Paesi sulla mappa: 125",
     "Countries on map: 100": "Paesi sulla mappa: 100",
     "Countries on map: 75": "Paesi sulla mappa: 75",
+    "Available Countries:": "Paesi Disponibili:",
+    "Card number (UAH):": "Numero della carta (UAH):",
     "Only Independent Countries": "Solo Paesi Indipendenti",
     "Congratulations! You won the game!":
       "Congratulazioni! Hai vinto la partita!",
