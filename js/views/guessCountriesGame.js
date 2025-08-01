@@ -48,7 +48,7 @@ class GuessCountriesGame {
   _gameResultShareButton = document.querySelector("#shareGameResults");
   _gameResultModalButton = document.querySelector("#gameResultCloseButton");
   _guessCountriesMap;
-  _timeout;
+  _timeoutIds = [];
   _countries = [];
   _computerCountries = [];
   _countriesNumber;
@@ -145,7 +145,9 @@ class GuessCountriesGame {
   }
 
   clearTimeout() {
-    clearTimeout(this._timeout);
+    this._timeoutIds.forEach((timeout) => {
+      clearTimeout(timeout);
+    });
   }
 
   invalidateSize() {
@@ -193,6 +195,7 @@ class GuessCountriesGame {
     this._gameModalHeading.innerHTML = "";
     this._gameModalHeadingGuessed.innerHTML = "";
     this._gameModalResultGuessedCountries.innerHTML = "";
+    this._timeoutIds = [];
     this._gameStarted = true;
     const playButton = document.querySelector(".guess-country-game-play");
     playButton.disabled = true;
@@ -251,6 +254,7 @@ class GuessCountriesGame {
     this._computerSelectedCountries = [];
     this._countryBondaries = [];
     this._markers = [];
+    this._timeoutIds = [];
     this._popups = {};
     if (configDefault) {
       this._guessCountriesGameSelector.value = "Countries to select: 15";
@@ -1233,11 +1237,12 @@ class GuessCountriesGame {
               }
             }
           };
-          context._timeout = setTimeout(
+          const timeout = setTimeout(
             computerAttemptToGuessCountry,
             1000,
             context
           );
+          context._timeoutIds.push(timeout);
         }
       }
     };
@@ -1529,7 +1534,9 @@ class GuessCountriesGame {
   }
 
   sleep(ms) {
-    return new Promise((resolve) => setTimeout(resolve, ms));
+    return new Promise((resolve) => {
+      this._timeoutIds.push(setTimeout(resolve, ms));
+    });
   }
 
   disableMapInteraction() {
@@ -1545,13 +1552,15 @@ class GuessCountriesGame {
       marker.style.cursor = "none";
       marker.style.pointerEvents = "none";
     });
-    this._guessCountriesMap.dragging.disable();
-    this._guessCountriesMap.doubleClickZoom.disable();
-    this._guessCountriesMap.scrollWheelZoom.disable();
-    this._guessCountriesMap.boxZoom.disable();
-    this._guessCountriesMap.keyboard.disable();
-    if (this._guessCountriesMap.tap) this._guessCountriesMap.tap.disable();
-    document.getElementById("guessCountriesGameMap").style.cursor = "default";
+    if (this._guessCountriesMap) {
+      this._guessCountriesMap.dragging.disable();
+      this._guessCountriesMap.doubleClickZoom.disable();
+      this._guessCountriesMap.scrollWheelZoom.disable();
+      this._guessCountriesMap.boxZoom.disable();
+      this._guessCountriesMap.keyboard.disable();
+      if (this._guessCountriesMap.tap) this._guessCountriesMap.tap.disable();
+      document.getElementById("guessCountriesGameMap").style.cursor = "default";
+    }
   }
 
   enableMapInteraction() {
@@ -1573,13 +1582,15 @@ class GuessCountriesGame {
       marker.style.cursor = "pointer";
       marker.style.pointerEvents = "auto";
     });
-    this._guessCountriesMap.dragging.enable();
-    this._guessCountriesMap.doubleClickZoom.enable();
-    this._guessCountriesMap.scrollWheelZoom.enable();
-    this._guessCountriesMap.boxZoom.enable();
-    this._guessCountriesMap.keyboard.enable();
-    if (this._guessCountriesMap.tap) this._guessCountriesMap.tap.enable();
-    document.getElementById("guessCountriesGameMap").style.cursor = "grab";
+    if (this._guessCountriesMap) {
+      this._guessCountriesMap.dragging.enable();
+      this._guessCountriesMap.doubleClickZoom.enable();
+      this._guessCountriesMap.scrollWheelZoom.enable();
+      this._guessCountriesMap.boxZoom.enable();
+      this._guessCountriesMap.keyboard.enable();
+      if (this._guessCountriesMap.tap) this._guessCountriesMap.tap.enable();
+      document.getElementById("guessCountriesGameMap").style.cursor = "grab";
+    }
   }
 
   removeAllCountryBoundaries() {
@@ -1593,10 +1604,12 @@ class GuessCountriesGame {
   }
 
   hideGame() {
+    this.clearTimeout();
     this._gameElement.classList.add("not-displayed");
     this._guessCountriesGamePlayContainer.classList.add("not-displayed");
     this._guessCountriesStartContainer.classList.remove("not-displayed");
     this._gameRulesContent.classList.add("not-displayed");
+    this.enableMapInteraction();
     this.finishGame(true);
   }
 
