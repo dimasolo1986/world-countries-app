@@ -47,7 +47,7 @@ class GuessCountriesGame {
   _gameRulesButton = document.querySelector("#gameRulesButton");
   _gameResultShareButton = document.querySelector("#shareGameResults");
   _gameResultModalButton = document.querySelector("#gameResultCloseButton");
-  _map;
+  _guessCountriesMap;
   _timeout;
   _countries = [];
   _computerCountries = [];
@@ -149,7 +149,7 @@ class GuessCountriesGame {
   }
 
   invalidateSize() {
-    this._map.invalidateSize();
+    this._guessCountriesMap.invalidateSize();
   }
 
   selectCountriesOnMap(countriesToReturn, countriesOnMapNumber) {
@@ -188,7 +188,7 @@ class GuessCountriesGame {
   }
 
   playGameHandler() {
-    this._map.fitBounds(WORLD_MAP_BOUNDS);
+    this._guessCountriesMap.fitBounds(WORLD_MAP_BOUNDS);
     this.resetCountryBoundaries();
     this._gameModalHeading.innerHTML = "";
     this._gameModalHeadingGuessed.innerHTML = "";
@@ -267,14 +267,16 @@ class GuessCountriesGame {
     this._gameStarted = false;
     this._userGuessCountryAttempt = true;
     this.clearTimeout();
-    this._map.eachLayer(
-      function (layer) {
-        this._map.removeLayer(layer);
-      }.bind(this)
-    );
-    this._map.off();
-    this._map.remove();
+    if (this._guessCountriesMap) {
+      this._guessCountriesMap.eachLayer(
+        function (layer) {
+          this._guessCountriesMap.removeLayer(layer);
+        }.bind(this)
+      );
+      this._guessCountriesMap.off();
+    }
     this._mapElement.innerHTML = "";
+    this._guessCountriesMessageField.textContent = "";
     this._gameRulesContent.classList.add("not-displayed");
     this._guessCountriesGamePlayContainer.classList.add("not-displayed");
     this._guessCountriesStartContainer.classList.remove("not-displayed");
@@ -296,18 +298,21 @@ class GuessCountriesGame {
   }
 
   createMap(latLon, defaultZoomLevel = 2.35) {
+    if (this._guessCountriesMap && this._guessCountriesMap.remove) {
+      this._guessCountriesMap.remove();
+    }
     function centerMap(e) {
-      this._map.panTo(e.latlng);
+      this._guessCountriesMap.panTo(e.latlng);
     }
     function zoomIn() {
-      this._map.zoomIn();
+      this._guessCountriesMap.zoomIn();
     }
 
     function zoomOut() {
-      this._map.zoomOut();
+      this._guessCountriesMap.zoomOut();
     }
     function reset() {
-      this._map.fitBounds(WORLD_MAP_BOUNDS);
+      this._guessCountriesMap.fitBounds(WORLD_MAP_BOUNDS);
     }
     const streetLayer = L.tileLayer(
       "https://server.arcgisonline.com/ArcGIS/rest/services/World_Street_Map/MapServer/tile/{z}/{y}/{x}"
@@ -319,7 +324,7 @@ class GuessCountriesGame {
       WorldStreetMap: streetLayer,
       NatGeoWorldMap: natGeoWorldMap,
     };
-    this._map = L.map("guessCountriesGameMap", {
+    this._guessCountriesMap = L.map("guessCountriesGameMap", {
       contextmenu: true,
       layers: [streetLayer],
       contextmenuItems: [
@@ -367,7 +372,10 @@ class GuessCountriesGame {
     })
       .fitWorld()
       .setView(latLon, defaultZoomLevel);
-    L.control.layers(baseMaps).setPosition("topleft").addTo(this._map);
+    L.control
+      .layers(baseMaps)
+      .setPosition("topleft")
+      .addTo(this._guessCountriesMap);
     L.Control.UserSelectedCountriesField = L.Control.extend({
       countriesNumber: +this._countriesNumber,
       onAdd: function (map) {
@@ -387,7 +395,8 @@ class GuessCountriesGame {
         const userCountriesNumber = L.DomUtil.create("span");
         userCountriesNumber.style.marginLeft = "5px";
         userCountriesNumber.id = "user-countries-number";
-        userCountriesNumber.textContent = 0;
+        userCountriesNumber.style.fontWeight = "bolder";
+        userCountriesNumber.textContent = this.countriesNumber;
         container.appendChild(userIconContainer);
         container.appendChild(userCountriesNumber);
         const index =
@@ -418,7 +427,7 @@ class GuessCountriesGame {
     };
     L.control
       .userSelectedCountriesField({ position: "topleft" })
-      .addTo(this._map);
+      .addTo(this._guessCountriesMap);
     L.Control.MapField = L.Control.extend({
       onAdd: function (map) {
         const mapFiled = L.DomUtil.create("div");
@@ -441,7 +450,7 @@ class GuessCountriesGame {
     L.control.mapfield = function (opts) {
       return new L.Control.MapField(opts);
     };
-    L.control.mapfield({ position: "topright" }).addTo(this._map);
+    L.control.mapfield({ position: "topright" }).addTo(this._guessCountriesMap);
     L.Control.PlayButton = L.Control.extend({
       playFunction: this.playGameHandler.bind(this),
       onAdd: function (map) {
@@ -465,7 +474,9 @@ class GuessCountriesGame {
     L.control.playbutton = function (opts) {
       return new L.Control.PlayButton(opts);
     };
-    L.control.playbutton({ position: "topright" }).addTo(this._map);
+    L.control
+      .playbutton({ position: "topright" })
+      .addTo(this._guessCountriesMap);
     L.Control.FinishButton = L.Control.extend({
       finishFunction: this.finishGameHandler.bind(this, true),
       onAdd: function (map) {
@@ -487,7 +498,9 @@ class GuessCountriesGame {
     L.control.finishbutton = function (opts) {
       return new L.Control.FinishButton(opts);
     };
-    L.control.finishbutton({ position: "topright" }).addTo(this._map);
+    L.control
+      .finishbutton({ position: "topright" })
+      .addTo(this._guessCountriesMap);
     L.Control.GuessedNotGuessedPanel = L.Control.extend({
       onAdd: function (map) {
         const guessedNotGuessedPanel = L.DomUtil.create("div");
@@ -514,7 +527,9 @@ class GuessCountriesGame {
     L.control.guessednotguessedpanel = function (opts) {
       return new L.Control.GuessedNotGuessedPanel(opts);
     };
-    L.control.guessednotguessedpanel({ position: "topright" }).addTo(this._map);
+    L.control
+      .guessednotguessedpanel({ position: "topright" })
+      .addTo(this._guessCountriesMap);
     L.Control.AvailableCountriesPanel = L.Control.extend({
       onAdd: function (map) {
         const availableCountriesPanel = L.DomUtil.create("div");
@@ -528,8 +543,6 @@ class GuessCountriesGame {
         availableCountriesPanel.style.padding = "3px";
         availableCountriesPanel.style.width = "105px";
         availableCountriesPanel.style.overflow = "hidden";
-        availableCountriesPanel.style.textOverflow = "ellipsis";
-        availableCountriesPanel.style.whiteSpace = "nowrap";
         const availableCountriesHeader = `<div><span style="font-size:0.6rem;">${
           localization[model.worldCountries.language]["Available Countries:"]
         }</span></div>`;
@@ -550,7 +563,7 @@ class GuessCountriesGame {
     };
     L.control
       .availablecountriespanel({ position: "topright" })
-      .addTo(this._map);
+      .addTo(this._guessCountriesMap);
     L.Control.ComputerSelectedCountriesField = L.Control.extend({
       countriesNumber: +this._countriesNumber,
       onAdd: function (map) {
@@ -571,6 +584,7 @@ class GuessCountriesGame {
         const computerCountriesNumber = L.DomUtil.create("span");
         computerCountriesNumber.style.marginLeft = "5px";
         computerCountriesNumber.id = "computer-countries-number";
+        computerCountriesNumber.style.fontWeight = "bolder";
         computerCountriesNumber.textContent = this.countriesNumber;
         container.appendChild(computerIconContainer);
         container.appendChild(computerCountriesNumber);
@@ -604,8 +618,8 @@ class GuessCountriesGame {
     };
     L.control
       .computerSelectedCountriesField({ position: "topright" })
-      .addTo(this._map);
-    this._map.fitBounds(WORLD_MAP_BOUNDS);
+      .addTo(this._guessCountriesMap);
+    this._guessCountriesMap.fitBounds(WORLD_MAP_BOUNDS);
     this.addCountryBoundaries();
   }
 
@@ -675,7 +689,7 @@ class GuessCountriesGame {
 
   addAvailableCountriesPanel() {
     const setViewCountry = function (country) {
-      this._map.setView(
+      this._guessCountriesMap.setView(
         country.latlng ? country.latlng : country.capitalLatLng,
         4.5
       );
@@ -904,7 +918,7 @@ class GuessCountriesGame {
         } catch (error) {}
         context.disableMapInteraction();
         const popup = context._popups[countryCode];
-        if (popup) popup.openOn(context._map);
+        if (popup) popup.openOn(context._guessCountriesMap);
         if (country) {
           countryBoundary.on("click", (ev) => {
             L.DomEvent.stopPropagation(ev);
@@ -985,7 +999,6 @@ class GuessCountriesGame {
             localization[model.worldCountries.language][
               "Your attempt to guess opponent's country"
             ];
-          context._map.fitBounds(WORLD_MAP_BOUNDS);
           context.enableMapInteraction();
         } else {
           context._userGuessCountryAttempt = false;
@@ -1062,7 +1075,7 @@ class GuessCountriesGame {
               const style = context._computerMarkerStyles[countryCode];
               marker.setOpacity(style["opacity"]);
             });
-            context._map.fitBounds(WORLD_MAP_BOUNDS);
+            context._guessCountriesMap.fitBounds(WORLD_MAP_BOUNDS);
             await context.sleep(1500);
             const computerGuessedCountry =
               context.selectComputerRandomCountry();
@@ -1169,11 +1182,11 @@ class GuessCountriesGame {
             }
             const popup =
               context._popups[computerCountryBoundary.options.style.className];
-            if (popup) popup.openOn(context._map);
-            context._map.setView(countryCoordinates, 4.5);
+            if (popup) popup.openOn(context._guessCountriesMap);
+            context._guessCountriesMap.setView(countryCoordinates, 4.5);
             await context.sleep(1500);
             if (popup) popup.close();
-            context._map.fitBounds(WORLD_MAP_BOUNDS);
+            context._guessCountriesMap.fitBounds(WORLD_MAP_BOUNDS);
             if (!context._userGuessCountryAttempt) {
               computerAttemptToGuessCountry(context);
             } else {
@@ -1188,7 +1201,7 @@ class GuessCountriesGame {
                 const markerStyle = context._userMarkerStyles[countryCode];
                 marker.setOpacity(markerStyle["opacity"]);
               });
-              context._map.fitBounds(WORLD_MAP_BOUNDS);
+              context._guessCountriesMap.fitBounds(WORLD_MAP_BOUNDS);
               context.enableMapInteraction();
               mapField.textContent = `${
                 localization[model.worldCountries.language]["Computer Map"]
@@ -1313,7 +1326,7 @@ class GuessCountriesGame {
           },
         })
           .bindTooltip(countryTooltip)
-          .addTo(this._map);
+          .addTo(this._guessCountriesMap);
         const marker = L.marker(
           country.latlng ? country.latlng : country.capitalLatLng,
           {
@@ -1338,7 +1351,7 @@ class GuessCountriesGame {
             );
           })
           .bindTooltip(countryTooltip)
-          .addTo(this._map);
+          .addTo(this._guessCountriesMap);
         marker.dataId = countryCode;
         this._popups[countryCode] = countryPopup;
         this._markers.push(marker);
@@ -1348,7 +1361,7 @@ class GuessCountriesGame {
   }
 
   showGameResult(userWon) {
-    this.disableMapInteraction();
+    this.enableMapInteraction();
     const playButton = document.querySelector(".guess-country-game-play");
     playButton.disabled = false;
     this._gameModalResultLabel.textContent =
@@ -1523,12 +1536,12 @@ class GuessCountriesGame {
       marker.style.cursor = "none";
       marker.style.pointerEvents = "none";
     });
-    this._map.dragging.disable();
-    this._map.doubleClickZoom.disable();
-    this._map.scrollWheelZoom.disable();
-    this._map.boxZoom.disable();
-    this._map.keyboard.disable();
-    if (this._map.tap) this._map.tap.disable();
+    this._guessCountriesMap.dragging.disable();
+    this._guessCountriesMap.doubleClickZoom.disable();
+    this._guessCountriesMap.scrollWheelZoom.disable();
+    this._guessCountriesMap.boxZoom.disable();
+    this._guessCountriesMap.keyboard.disable();
+    if (this._guessCountriesMap.tap) this._guessCountriesMap.tap.disable();
     document.getElementById("guessCountriesGameMap").style.cursor = "default";
   }
 
@@ -1551,17 +1564,19 @@ class GuessCountriesGame {
       marker.style.cursor = "pointer";
       marker.style.pointerEvents = "auto";
     });
-    this._map.dragging.enable();
-    this._map.doubleClickZoom.enable();
-    this._map.scrollWheelZoom.enable();
-    this._map.boxZoom.enable();
-    this._map.keyboard.enable();
-    if (this._map.tap) this._map.tap.enable();
+    this._guessCountriesMap.dragging.enable();
+    this._guessCountriesMap.doubleClickZoom.enable();
+    this._guessCountriesMap.scrollWheelZoom.enable();
+    this._guessCountriesMap.boxZoom.enable();
+    this._guessCountriesMap.keyboard.enable();
+    if (this._guessCountriesMap.tap) this._guessCountriesMap.tap.enable();
     document.getElementById("guessCountriesGameMap").style.cursor = "grab";
   }
 
   removeAllCountryBoundaries() {
-    this._countryBondaries.forEach((item) => this._map.removeLayer(item));
+    this._countryBondaries.forEach((item) =>
+      this._guessCountriesMap.removeLayer(item)
+    );
   }
 
   showGame() {
@@ -1573,6 +1588,7 @@ class GuessCountriesGame {
     this._guessCountriesGamePlayContainer.classList.add("not-displayed");
     this._guessCountriesStartContainer.classList.remove("not-displayed");
     this._gameRulesContent.classList.add("not-displayed");
+    this.finishGame(true);
   }
 
   translateElements() {
