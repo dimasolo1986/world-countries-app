@@ -400,7 +400,7 @@ class GuessCountriesGame {
         userCountriesNumber.style.marginLeft = "5px";
         userCountriesNumber.id = "user-countries-number";
         userCountriesNumber.style.fontWeight = "bolder";
-        userCountriesNumber.textContent = this.countriesNumber;
+        userCountriesNumber.textContent = "0";
         container.appendChild(userIconContainer);
         container.appendChild(userCountriesNumber);
         const index =
