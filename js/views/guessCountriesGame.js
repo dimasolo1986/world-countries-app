@@ -999,6 +999,7 @@ class GuessCountriesGame {
             localization[model.worldCountries.language][
               "Your attempt to guess opponent's country"
             ];
+          context._guessCountriesMap.fitBounds(WORLD_MAP_BOUNDS);
           context.enableMapInteraction();
         } else {
           context._userGuessCountryAttempt = false;
