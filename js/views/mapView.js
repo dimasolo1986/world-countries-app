@@ -721,7 +721,7 @@ class mapView {
   }
 
   setMapViewToBounds(bounds) {
-    this._map.fitBounds(bounds);
+    this._map.fitBounds(bounds, { animate: false });
   }
 
   setMapView(latLon, zoomLevel) {

@@ -78,7 +78,9 @@ class MapQuiz {
     this.resetCountryBoundaries();
     this.createCountries();
     this.createMap(GEOGRAPHICAL_CENTER);
-    this._map.fitBounds(WORLD_MAP_BOUNDS);
+    this._map.fitBounds(WORLD_MAP_BOUNDS, {
+      animate: false,
+    });
     this.invalidateSize();
     this.selectRandomCountry();
     this.renderCountryQuestion();
@@ -105,7 +107,9 @@ class MapQuiz {
   startQuizHandler() {
     const startQuiz = function () {
       this.clearQuiz();
-      this._map.fitBounds(WORLD_MAP_BOUNDS);
+      this._map.fitBounds(WORLD_MAP_BOUNDS, {
+        animate: false,
+      });
       this.resetCountryBoundaries();
       this.createCountries();
       this.selectRandomCountry();
@@ -292,7 +296,9 @@ class MapQuiz {
   }
 
   nextQuestionClickHandler(target) {
-    this._map.fitBounds(WORLD_MAP_BOUNDS);
+    this._map.fitBounds(WORLD_MAP_BOUNDS, {
+      animate: false,
+    });
     this.clearTimeout();
     this._correctIncorrectQuizAnswer.classList.add("not-displayed");
     this._questionTimerBonus.classList.add("not-displayed");
@@ -360,7 +366,9 @@ class MapQuiz {
         this._map.zoomOut();
       }
       function reset() {
-        this._map.fitBounds(WORLD_MAP_BOUNDS);
+        this._map.fitBounds(WORLD_MAP_BOUNDS, {
+          animate: false,
+        });
       }
       this._map = L.map("mapCountriesQuiz", {
         contextmenu: true,
@@ -441,7 +449,9 @@ class MapQuiz {
       };
       L.control.standWidthUkraine({ position: "topright" }).addTo(this._map);
       L.control.scalefactor({ position: "topright" }).addTo(this._map);
-      this._map.fitBounds(WORLD_MAP_BOUNDS);
+      this._map.fitBounds(WORLD_MAP_BOUNDS, {
+        animate: false,
+      });
       this.addCountryBoundaries();
     }
   }

@@ -188,7 +188,7 @@ class GuessCountriesGame {
   }
 
   playGameHandler() {
-    this._guessCountriesMap.fitBounds(WORLD_MAP_BOUNDS);
+    this._guessCountriesMap.fitBounds(WORLD_MAP_BOUNDS, { animate: false });
     this.resetCountryBoundaries();
     this._gameModalHeading.innerHTML = "";
     this._gameModalHeadingGuessed.innerHTML = "";
@@ -312,7 +312,7 @@ class GuessCountriesGame {
       this._guessCountriesMap.zoomOut();
     }
     function reset() {
-      this._guessCountriesMap.fitBounds(WORLD_MAP_BOUNDS);
+      this._guessCountriesMap.fitBounds(WORLD_MAP_BOUNDS, { animate: false });
     }
     const streetLayer = L.tileLayer(
       "https://server.arcgisonline.com/ArcGIS/rest/services/World_Street_Map/MapServer/tile/{z}/{y}/{x}"
@@ -619,7 +619,7 @@ class GuessCountriesGame {
     L.control
       .computerSelectedCountriesField({ position: "topright" })
       .addTo(this._guessCountriesMap);
-    this._guessCountriesMap.fitBounds(WORLD_MAP_BOUNDS);
+    this._guessCountriesMap.fitBounds(WORLD_MAP_BOUNDS, { animate: false });
     this.addCountryBoundaries();
   }
 
@@ -999,7 +999,9 @@ class GuessCountriesGame {
             localization[model.worldCountries.language][
               "Your attempt to guess opponent's country"
             ];
-          context._guessCountriesMap.fitBounds(WORLD_MAP_BOUNDS);
+          context._guessCountriesMap.fitBounds(WORLD_MAP_BOUNDS, {
+            animate: false,
+          });
           context.enableMapInteraction();
         } else {
           context._userGuessCountryAttempt = false;
@@ -1076,7 +1078,9 @@ class GuessCountriesGame {
               const style = context._computerMarkerStyles[countryCode];
               marker.setOpacity(style["opacity"]);
             });
-            context._guessCountriesMap.fitBounds(WORLD_MAP_BOUNDS);
+            context._guessCountriesMap.fitBounds(WORLD_MAP_BOUNDS, {
+              animate: false,
+            });
             await context.sleep(1500);
             const computerGuessedCountry =
               context.selectComputerRandomCountry();
@@ -1187,7 +1191,9 @@ class GuessCountriesGame {
             context._guessCountriesMap.setView(countryCoordinates, 4.5);
             await context.sleep(1500);
             if (popup) popup.close();
-            context._guessCountriesMap.fitBounds(WORLD_MAP_BOUNDS);
+            context._guessCountriesMap.fitBounds(WORLD_MAP_BOUNDS, {
+              animate: false,
+            });
             if (!context._userGuessCountryAttempt) {
               computerAttemptToGuessCountry(context);
             } else {
@@ -1202,7 +1208,9 @@ class GuessCountriesGame {
                 const markerStyle = context._userMarkerStyles[countryCode];
                 marker.setOpacity(markerStyle["opacity"]);
               });
-              context._guessCountriesMap.fitBounds(WORLD_MAP_BOUNDS);
+              context._guessCountriesMap.fitBounds(WORLD_MAP_BOUNDS, {
+                animate: false,
+              });
               context.enableMapInteraction();
               mapField.textContent = `${
                 localization[model.worldCountries.language]["Computer Map"]
@@ -1333,7 +1341,7 @@ class GuessCountriesGame {
           {
             icon: L.icon({
               iconUrl: `${country.countryFlag}`,
-              iconSize: [10, 10],
+              iconSize: [12, 12],
             }),
             riseOnHover: true,
             opacity: 0.95,
