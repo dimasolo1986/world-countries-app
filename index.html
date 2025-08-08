@@ -174,6 +174,9 @@
       Тут ви можете знайти всі країни світу на мапі а також пройти різні вікторини."
     />
     <meta name="author" content="Dmytro Solovei, Дмитро Соловей" />
+    <link rel="manifest" href="manifest.json" />
+    <meta name="theme-color" content="#2b5797" />
+
     <meta
       name="google-site-verification"
       content="LoKz4q9NCK9WqjoYvAO7SPG4f0U8nZmw68kY6dqxkhU"
@@ -1755,5 +1758,13 @@
     <script type="module" src="js/leaflet-bootstrap-dropdowns.min.js"></script>
     <script type="module" src="js/leaflet-marker-highlight.min.js"></script>
     <script type="module" src="js/controller.js"></script>
+    <script type="module">
+      if ("serviceWorker" in navigator) {
+        navigator.serviceWorker
+          .register(new URL("/service-worker.js", import.meta.url))
+          .then(() => {})
+          .catch(() => {});
+      }
+    </script>
   </body>
 </html>
