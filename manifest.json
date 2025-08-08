@@ -3,6 +3,7 @@
   "short_name": "Countries Quiz",
   "description": "Guess countries, flags, capitals, coat of arms! Fun geography quizzes and games for all ages.",
   "start_url": "/?source=pwa",
+  "id": "https://www.worldcountriesquiz.com/?source=pwa",
   "display": "standalone",
   "background_color": "#99d9f2",
   "theme_color": "#2b5797",
@@ -28,5 +29,33 @@
       "sizes": "512x512",
       "type": "image/png"
     }
-  ]
+  ],
+  "screenshots": [
+    {
+      "src": "/assets/img/world-countries-and-quizzes.png",
+      "sizes": "1000x435",
+      "type": "image/png"
+    },
+    {
+      "src": "/assets/img/guess-countries-game.png",
+      "sizes": "1000x392",
+      "type": "image/png"
+    },
+    {
+      "src": "/assets/img/country-on-map-quiz.png",
+      "sizes": "1000x533",
+      "type": "image/png"
+    },
+    {
+      "src": "/assets/img/country-name-by-country-on-map-quiz.png",
+      "sizes": "1000x390",
+      "type": "image/png"
+    },
+    {
+      "src": "/assets/img/country-name-by-flag-quiz.png",
+      "sizes": "1000x413",
+      "type": "image/png"
+    }
+  ],
+  "lang": "en"
 }
