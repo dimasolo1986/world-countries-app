@@ -37,9 +37,21 @@
       "type": "image/png"
     },
     {
+      "src": "/assets/img/world-countries-and-quizzes.png",
+      "sizes": "1000x435",
+      "type": "image/png",
+      "form_factor": "wide"
+    },
+    {
       "src": "/assets/img/guess-countries-game-320-126.png",
       "sizes": "320x126",
       "type": "image/png"
+    },
+    {
+      "src": "/assets/img/guess-countries-game.png",
+      "sizes": "1000x392",
+      "type": "image/png",
+      "form_factor": "wide"
     },
     {
       "src": "/assets/img/country-on-map-quiz-320-171.png",
@@ -47,14 +59,32 @@
       "type": "image/png"
     },
     {
+      "src": "/assets/img/country-on-map-quiz.png",
+      "sizes": "1000x533",
+      "type": "image/png",
+      "form_factor": "wide"
+    },
+    {
       "src": "/assets/img/country-name-by-country-on-map-quiz-320-125.png",
       "sizes": "320x125",
       "type": "image/png"
     },
     {
+      "src": "/assets/img/country-name-by-country-on-map-quiz.png",
+      "sizes": "1000x390",
+      "type": "image/png",
+      "form_factor": "wide"
+    },
+    {
       "src": "/assets/img/country-name-by-flag-quiz-320-132.png",
       "sizes": "320x132",
       "type": "image/png"
+    },
+    {
+      "src": "/assets/img/country-name-by-flag-quiz.png",
+      "sizes": "1000x413",
+      "type": "image/png",
+      "form_factor": "wide"
     }
   ],
   "lang": "en"
