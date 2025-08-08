@@ -4,8 +4,8 @@ const OFFLINE_URL = "/offline.html";
 const FILES_TO_CACHE = [
   "/",
   "/assets/img/Dmytro_Solovei.jpg",
-  "/assets/img/donate.jpg",
-  "/assets/img/globe.jpg",
+  "/assets/img/donate.png",
+  "/assets/img/globe.png",
   "/assets/img/icon-fullscreen.svg",
   "/assets/img/logo.png",
   "/assets/img/measure-colored.png",
