@@ -216,7 +216,7 @@ strong {
 
 small,
 .small {
-  font-size: 0.875em;
+  font-size: 0.8em;
 }
 
 a {
@@ -8086,11 +8086,11 @@ body,
   display: flex;
 }
 #layoutSidenav #layoutSidenav_nav {
-  flex-basis: 225px;
+  flex-basis: 205px;
   flex-shrink: 0;
   transition: transform 0.15s ease-in-out;
   z-index: 1038;
-  transform: translateX(-225px);
+  transform: translateX(-205px);
 }
 #layoutSidenav #layoutSidenav_content {
   position: relative;
@@ -8100,7 +8100,7 @@ body,
   min-width: 0;
   flex-grow: 1;
   min-height: calc(100vh - 56px);
-  margin-left: -225px;
+  margin-left: -205px;
 }
 
 .sb-sidenav-toggled #layoutSidenav #layoutSidenav_nav {
@@ -8116,10 +8116,10 @@ body,
     transition: margin 0.15s ease-in-out;
   }
   .sb-sidenav-toggled #layoutSidenav #layoutSidenav_nav {
-    transform: translateX(-225px);
+    transform: translateX(-205px);
   }
   .sb-sidenav-toggled #layoutSidenav #layoutSidenav_content {
-    margin-left: -225px;
+    margin-left: -205px;
   }
   .sb-sidenav-toggled #layoutSidenav #layoutSidenav_content:before {
     display: none;
@@ -8129,7 +8129,7 @@ body,
   z-index: 1039;
 }
 .sb-nav-fixed #layoutSidenav #layoutSidenav_nav {
-  width: 225px;
+  width: 205px;
   height: 100vh;
   z-index: 1038;
 }
@@ -8143,7 +8143,7 @@ body,
   background-color: #555d64;
 }
 .sb-nav-fixed #layoutSidenav #layoutSidenav_content {
-  padding-left: 225px;
+  padding-left: 205px;
   top: 56px;
 }
 
@@ -8300,8 +8300,8 @@ body,
   display: flex;
   align-items: center;
   justify-content: left;
-  padding-top: 7px;
-  padding-bottom: 7px;
+  padding-top: 5px;
+  padding-bottom: 5px;
   padding-left: 5px;
   cursor: pointer;
 }
@@ -8317,8 +8317,8 @@ body,
 }
 
 .side-navigation-country-img {
-  width: 50px;
-  height: 30px;
+  width: 35px;
+  height: 25px;
   cursor: pointer;
   border-radius: 2px;
 }
