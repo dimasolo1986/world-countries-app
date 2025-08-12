@@ -184,7 +184,7 @@ const loadWorldMap = function () {
   mapView.setMapViewToBounds(WORLD_MAP_BOUNDS);
   mapView.showMap();
   mapView.invalidateSize();
-  if (window.screen.width < 650) {
+  if (window.screen.width < 600) {
     topNavigationView.hideSideNavigation();
   } else {
     topNavigationView.showSideNavigation();
