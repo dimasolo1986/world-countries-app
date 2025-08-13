@@ -602,10 +602,10 @@ class GuessCountriesGame {
           );
           const countriesTemplate =
             this.countriesNumber !== countryIndex
-              ? `<span class="computerCountryContainer" id="computerCountry${countryIndex.toString()}" style="margin-right:10px;"><span style="color:grey; border:solid 1px grey; border-radius:50%; display:inline-block; height:13px; width:13px;"></span></span><span class="computerCountryContainer" id="computerCountry${(
+              ? `<span class="computerCountryContainer" id="computerCountry${countryIndex.toString()}" style="margin-right:10px;"><span style="color:grey; border:solid 1px grey;  background-color: lightgrey; border-radius:50%; display:inline-block; height:13px; width:13px;"></span></span><span class="computerCountryContainer" id="computerCountry${(
                   countryIndex + 1
-                ).toString()}"><span style="color:grey; border:solid 1px grey; border-radius:50%; display:inline-block; height:13px; width:13px;"></span></span>`
-              : `<span class="computerCountryContainer" id="computerCountry${countryIndex.toString()}"><span style="color:grey; border:solid 1px grey; border-radius:50%; display:inline-block; height:13px; width:13px;"></span></span>`;
+                ).toString()}"><span style="color:grey; background-color: lightgrey; border:solid 1px grey; border-radius:50%; display:inline-block; height:13px; width:13px;"></span></span>`
+              : `<span class="computerCountryContainer" id="computerCountry${countryIndex.toString()}"><span style="color:grey; background-color: lightgrey; border:solid 1px grey; border-radius:50%; display:inline-block; height:13px; width:13px;"></span></span>`;
           computerCountriesContainer.insertAdjacentHTML(
             "afterbegin",
             countriesTemplate
