@@ -14,8 +14,17 @@ import guessCountriesGame from "./views/guessCountriesGame.js";
 import { localization } from "./localization/ua.js";
 import { COUNTRY_ON_MAP_QUIZ } from "./config.js";
 import { WORLD_MAP_BOUNDS } from "./config.js";
-import { sortData, shareQuizResults } from "./helpers.js";
+import {
+  sortData,
+  shareQuizResults,
+  centerElementsMainLayout,
+  addCardQuizStartContainer,
+  removeCenterElementsMainLayout,
+  removeCardQuizStartContainer,
+} from "./helpers.js";
 const init = function () {
+  removeCardQuizStartContainer();
+  removeCenterElementsMainLayout();
   languageSelectView.init();
   mapView.addHandlerRender(mapCountriesMarkerRender);
   mapView.setSideNavigationView(sideNavigationView);
@@ -173,6 +182,8 @@ const loadWindow = function () {
 };
 
 const loadWorldMap = function () {
+  removeCenterElementsMainLayout();
+  removeCardQuizStartContainer();
   quiz.hideQuiz();
   mapQuiz.hideQuiz();
   aboutView.hideAboutProject();
@@ -193,6 +204,8 @@ const loadWorldMap = function () {
 };
 
 const loadAboutProject = function () {
+  removeCenterElementsMainLayout();
+  removeCardQuizStartContainer();
   mapView.hideMap();
   quiz.hideQuiz();
   mapQuiz.hideQuiz();
@@ -207,6 +220,8 @@ const loadAboutProject = function () {
 };
 
 const loadStatistic = function () {
+  removeCenterElementsMainLayout();
+  removeCardQuizStartContainer();
   mapView.hideMap();
   quiz.hideQuiz();
   mapQuiz.hideQuiz();
@@ -222,6 +237,8 @@ const loadStatistic = function () {
 };
 
 const loadDonateAuthor = function () {
+  removeCenterElementsMainLayout();
+  removeCardQuizStartContainer();
   mapView.hideMap();
   quiz.hideQuiz();
   mapQuiz.hideQuiz();
@@ -236,6 +253,8 @@ const loadDonateAuthor = function () {
 };
 
 const loadGuessCountriesGame = function () {
+  addCardQuizStartContainer();
+  centerElementsMainLayout();
   mapView.hideMap();
   quiz.hideQuiz();
   mapQuiz.hideQuiz();
@@ -256,6 +275,8 @@ const loadGuessCountriesGame = function () {
 };
 
 const loadFlags = function () {
+  removeCenterElementsMainLayout();
+  removeCardQuizStartContainer();
   mapView.hideMap();
   quiz.hideQuiz();
   mapQuiz.hideQuiz();
@@ -280,6 +301,8 @@ const loadQuiz = function (quizId) {
   guessCountriesGame.hideGame();
   donateAuthorView.hideDonateProject();
   if (quizId === COUNTRY_ON_MAP_QUIZ) {
+    removeCenterElementsMainLayout();
+    removeCardQuizStartContainer();
     quiz.hideQuiz();
     mapView.hideMap();
     mapQuiz.showQuiz();
@@ -291,6 +314,8 @@ const loadQuiz = function (quizId) {
       countriesSelectView
     );
   } else {
+    centerElementsMainLayout();
+    addCardQuizStartContainer();
     mapQuiz.hideQuiz();
     quiz.startQuiz(
       quizId,

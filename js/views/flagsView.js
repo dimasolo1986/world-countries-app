@@ -1,6 +1,6 @@
 import { localization } from "../localization/ua.js";
 import { WORLD_MAP_BOUNDS, WAR_AGGRESSOR_COUNTRIES } from "../config.js";
-import { getLanguageCode } from "../helpers.js";
+import { getLanguageCode, removeCenterElementsMainLayout } from "../helpers.js";
 import * as model from "../model.js";
 class flagsView {
   _parentElement = document.querySelector("#countries-flags");
@@ -21,6 +21,7 @@ class flagsView {
     topNavigationView,
     countriesSelectView
   ) {
+    removeCenterElementsMainLayout();
     this.hideFlags();
     mapView.setMapViewToBounds(WORLD_MAP_BOUNDS);
     mapView.showMap();

@@ -417,7 +417,7 @@
           style="
             color: #85c1e9;
             font-family: 'Sacramento', 'Garamond', cursive;
-            font-size: 1.5rem;
+            font-size: 1.4rem;
             margin-right: 5px;
             vertical-align: sub;
           "
@@ -887,151 +887,356 @@
               ></div>
             </div>
             <div
-              style="text-align: center"
-              id="guess-countries-start-container"
+              id="card-game-start-container"
+              class="card card-quiz-start"
+              style="margin-left: 10px; margin-right: 10px"
             >
               <div
-                class="guess-countries-heading"
-                style="text-align: center; margin-top: 5px"
+                style="text-align: center"
+                id="guess-countries-start-container"
               >
-                <div class="countries-game-heading">Guess Countries Game</div>
-              </div>
-              <div
-                class="guess-countries-game-container"
-                style="margin-bottom: 5px"
-              >
-                <select
-                  class="guess-countries-game-countries-on-map-selector form-select form-select-sm rounded-1 border-success"
-                  style="
-                    width: fit-content;
-                    display: inline-block;
-                    font-weight: bolder;
-                    border-color: black;
-                    border-radius: 0;
-                    box-shadow: rgb(67, 181, 0) 0px 30px 60px -12px inset,
-                      rgba(111, 255, 0, 0.253) 0px 18px 36px -18px inset;
-                    cursor: pointer;
-                    margin-bottom: 15px;
-                    font-size: 0.9rem;
-                  "
+                <div
+                  class="guess-countries-heading"
+                  style="text-align: center; margin-top: 5px"
                 >
-                  <option value="Countries on map: All" selected>
-                    Countries on map: All
-                  </option>
-                  <option value="Countries on map: 150">
-                    Countries on map: 150
-                  </option>
-                  <option value="Countries on map: 125">
-                    Countries on map: 125
-                  </option>
-                  <option value="Countries on map: 100">
-                    Countries on map: 100
-                  </option>
-                  <option value="Countries on map: 75">
-                    Countries on map: 75
-                  </option>
-                </select>
-                <br />
-                <select
-                  class="guess-countries-game-selector form-select form-select-sm rounded-1 border-info"
-                  style="
-                    width: fit-content;
-                    display: inline-block;
-                    font-weight: bolder;
-                    border-color: black;
-                    border-radius: 0;
-                    box-shadow: rgb(9, 79, 255, 0.384) 0px 30px 60px -12px inset,
-                      rgb(5, 174, 187, 0.3) 0px 18px 36px -18px inset;
-                    cursor: pointer;
-                    font-size: 0.9rem;
-                    margin-bottom: 10px;
-                  "
-                >
-                  <option value="Countries to select: 5">
-                    Countries to select: 5
-                  </option>
-                  <option value="Countries to select: 10">
-                    Countries to select: 10
-                  </option>
-                  <option value="Countries to select: 15" selected>
-                    Countries to select: 15
-                  </option>
-                  <option value="Countries to select: 20">
-                    Countries to select: 20
-                  </option>
-                  <option value="Countries to select: 25">
-                    Countries to select: 25
-                  </option>
-                </select>
-                <div>
-                  <input
-                    type="checkbox"
-                    id="guess-countries-independent"
-                    name="only-independent"
-                    checked
-                  />
-                  <label
-                    for="guess-countries-independent"
-                    id="guess-countries-independent-label"
-                    style="font-weight: normal; margin-left: 5px"
-                    >Only Independent Countries</label
-                  >
+                  <div class="countries-game-heading">Guess Countries Game</div>
                 </div>
-                <div class="text-center" style="margin-top: 5px">
-                  <div id="gameRulesContainer">
-                    <button
-                      id="gameRulesButton"
-                      class="btn btn-info btn-sm"
-                      style="font-size: 0.8rem"
+                <div
+                  class="guess-countries-game-container"
+                  style="margin-bottom: 5px"
+                >
+                  <select
+                    class="guess-countries-game-countries-on-map-selector form-select form-select-sm rounded-1 border-success"
+                    style="
+                      width: fit-content;
+                      display: inline-block;
+                      font-weight: bolder;
+                      border-color: black;
+                      border-radius: 0;
+                      box-shadow: rgb(67, 181, 0) 0px 30px 60px -12px inset,
+                        rgba(111, 255, 0, 0.253) 0px 18px 36px -18px inset;
+                      cursor: pointer;
+                      margin-bottom: 15px;
+                      font-size: 0.9rem;
+                    "
+                  >
+                    <option value="Countries on map: All" selected>
+                      Countries on map: All
+                    </option>
+                    <option value="Countries on map: 150">
+                      Countries on map: 150
+                    </option>
+                    <option value="Countries on map: 125">
+                      Countries on map: 125
+                    </option>
+                    <option value="Countries on map: 100">
+                      Countries on map: 100
+                    </option>
+                    <option value="Countries on map: 75">
+                      Countries on map: 75
+                    </option>
+                  </select>
+                  <br />
+                  <select
+                    class="guess-countries-game-selector form-select form-select-sm rounded-1 border-info"
+                    style="
+                      width: fit-content;
+                      display: inline-block;
+                      font-weight: bolder;
+                      border-color: black;
+                      border-radius: 0;
+                      box-shadow: rgb(9, 79, 255, 0.384) 0px 30px 60px -12px inset,
+                        rgb(5, 174, 187, 0.3) 0px 18px 36px -18px inset;
+                      cursor: pointer;
+                      font-size: 0.9rem;
+                      margin-bottom: 10px;
+                    "
+                  >
+                    <option value="Countries to select: 5">
+                      Countries to select: 5
+                    </option>
+                    <option value="Countries to select: 10">
+                      Countries to select: 10
+                    </option>
+                    <option value="Countries to select: 15" selected>
+                      Countries to select: 15
+                    </option>
+                    <option value="Countries to select: 20">
+                      Countries to select: 20
+                    </option>
+                    <option value="Countries to select: 25">
+                      Countries to select: 25
+                    </option>
+                  </select>
+                  <div>
+                    <input
+                      type="checkbox"
+                      id="guess-countries-independent"
+                      name="only-independent"
+                      checked
+                    />
+                    <label
+                      for="guess-countries-independent"
+                      id="guess-countries-independent-label"
+                      style="font-weight: normal; margin-left: 5px"
+                      >Only Independent Countries</label
                     >
-                      Game Rules
-                    </button>
-                    <div
-                      id="gameRulesContent"
-                      class="not-displayed"
-                      style="
-                        font-weight: normal;
-                        text-align: justify;
-                        padding: 20px;
-                        padding-top: 5px;
-                      "
-                    >
-                      The game 'Guess Countries' helps to learn the location of
-                      countries in the world. Choose a given number of countries
-                      on the map. The computer will also choose the appropriate
-                      number of countries. Attempts to guess the countries take
-                      place in turn. The one who guesses the opponent's country
-                      gets an additional attempt. The winner is the one who
-                      first guesses all the opponent's countries. Follow the
-                      messages at the top of the screen after the game starts.
+                  </div>
+                  <div class="text-center" style="margin-top: 5px">
+                    <div id="gameRulesContainer">
+                      <button
+                        id="gameRulesButton"
+                        class="btn btn-info btn-sm"
+                        style="font-size: 0.8rem"
+                      >
+                        Game Rules
+                      </button>
+                      <div
+                        id="gameRulesContent"
+                        class="not-displayed"
+                        style="
+                          font-weight: normal;
+                          text-align: justify;
+                          padding: 20px;
+                          padding-top: 5px;
+                        "
+                      >
+                        The game 'Guess Countries' helps to learn the location
+                        of countries in the world. Choose a given number of
+                        countries on the map. The computer will also choose the
+                        appropriate number of countries. Attempts to guess the
+                        countries take place in turn. The one who guesses the
+                        opponent's country gets an additional attempt. The
+                        winner is the one who first guesses all the opponent's
+                        countries. Follow the messages at the top of the screen
+                        after the game starts.
+                      </div>
+                    </div>
+                  </div>
+                </div>
+                <div class="container" id="start-guess-countries-container">
+                  <div class="row">
+                    <div class="col-xs-12 col-sm-12 column">
+                      <button
+                        class="btn btn-lg btn-danger"
+                        style="
+                          background-color: #dc3545;
+                          color: white;
+                          cursor: pointer;
+                          width: 75%;
+                          font-size: 1.7rem;
+                          margin-bottom: 15px;
+                          box-shadow: 0 2px 5px 0 rgba(0, 0, 0, 0.5),
+                            0 2px 10px 0 rgba(0, 0, 0, 0.12) inset;
+                        "
+                        id="start-guess-countries"
+                      >
+                        START
+                      </button>
+                      <br />
+                      <button
+                        class="btn btn-sm btn-warning"
+                        style="
+                          font-size: 0.75rem;
+                          box-shadow: 0 2px 5px #00000080,
+                            inset 0 2px 10px #0000001f;
+                        "
+                        id="return-to-world-map-guess-countries-game"
+                      >
+                        RETURN TO WORLD MAP
+                      </button>
                     </div>
                   </div>
                 </div>
               </div>
-              <div class="container" id="start-guess-countries-container">
+            </div>
+          </div>
+          <div id="quiz" class="container-fluid px-3 not-displayed">
+            <div id="card-quiz-start-container" class="card card-quiz-start">
+              <div
+                class="quiz-heading"
+                style="text-align: center; margin-top: 5px"
+              >
+                <div class="heading">Guess Flag By Country Name</div>
+              </div>
+              <div style="text-align: center">
+                <div class="countries-container">
+                  <select
+                    class="countries-selector form-select form-select-sm rounded-1 border-info"
+                    style="
+                      width: fit-content;
+                      display: inline-block;
+                      font-weight: bolder;
+                      border-color: black;
+                      border-radius: 0;
+                      font-size: 0.9rem;
+                      box-shadow: rgb(9, 79, 255, 0.384) 0px 30px 60px -12px inset,
+                        rgb(5, 174, 187, 0.3) 0px 18px 36px -18px inset;
+                      cursor: pointer;
+                    "
+                  >
+                    <option value="Difficulty: Very Easy">
+                      Difficulty: Very Easy
+                    </option>
+                    <option value="Difficulty: Easy">Difficulty: Easy</option>
+                    <option value="Difficulty: Normal" selected>
+                      Difficulty: Normal
+                    </option>
+                    <option value="Difficulty: Hard">Difficulty: Hard</option>
+                  </select>
+                  <div
+                    class="question-timer rounded-1 border-secondary"
+                    style="
+                      box-shadow: rgba(79, 79, 78, 0.384) 0px 30px 60px -12px inset,
+                        rgba(212, 210, 210, 0.3) 0px 18px 36px -18px inset;
+                      font-size: 0.9rem;
+                    "
+                  >
+                    <span class="question-timer-name">Time: </span>
+                    <span
+                      class="question-timer-seconds"
+                      style="color: darkgreen; font-size: 1.1rem"
+                      >30</span
+                    >
+                  </div>
+                </div>
+                <span
+                  class="question-timer-bonus not-displayed"
+                  style="
+                    color: white;
+                    font-size: 0.8rem;
+                    border-radius: 2px;
+                    background-color: green;
+                    padding-left: 3px;
+                    padding-right: 3px;
+                    font-weight: bolder;
+                  "
+                  >0</span
+                >
+                <div
+                  class="score-container rounded-1 border-success"
+                  style="
+                    box-shadow: rgba(100, 239, 95, 0.384) 0px 30px 60px -12px inset,
+                      rgba(0, 0, 0, 0.3) 0px 18px 36px -18px inset;
+                  "
+                >
+                  <span class="score-name">SCORE: </span>
+                  <span class="score">0</span>
+                </div>
+                <div
+                  class="question-container rounded-1 border-warning"
+                  style="
+                    box-shadow: rgba(255, 255, 0, 0.384) 0px 30px 60px -12px inset,
+                      rgba(0, 0, 0, 0.3) 0px 18px 36px -18px inset;
+                  "
+                >
+                  <span class="question-current-number">1</span>
+                  <span class="question-delimeter" style="font-weight: normal"
+                    >of</span
+                  >
+                  <span class="question-all-number">35</span>
+                </div>
+                <span
+                  class="correct-incorrect-quiz not-displayed"
+                  style="
+                    font-weight: bolder;
+                    color: white;
+                    background-color: green;
+                    margin-left: 5px;
+                    padding-left: 3px;
+                    padding-right: 3px;
+                    border-radius: 2px;
+                    font-size: 0.8rem;
+                  "
+                ></span>
+                <span
+                  class="finished-quiz not-displayed"
+                  style="
+                    font-weight: bolder;
+                    color: white;
+                    background-color: red;
+                    margin-left: 5px;
+                    border-radius: 2px;
+                    padding-left: 3px;
+                    padding-right: 3px;
+                    font-size: 0.8rem;
+                  "
+                  >Finished</span
+                >
+                <span
+                  class="question-timer-time-up not-displayed"
+                  style="
+                    color: white;
+                    font-size: 0.8rem;
+                    border-radius: 2px;
+                    background-color: red;
+                    padding-left: 3px;
+                    padding-right: 3px;
+                    font-weight: bolder;
+                  "
+                  >Time's Up!</span
+                >
+                <br />
+                <div class="question-country-container not-displayed">
+                  <span class="question-country"></span>
+                  <div
+                    id="question-country-on-map"
+                    class="question-country-on-map rounded-1 not-displayed"
+                    style="
+                      width: 250px;
+                      height: 110px;
+                      border: 1px solid black;
+                      margin-bottom: 10px;
+                      margin-top: 15px;
+                      margin-left: auto;
+                      margin-right: auto;
+                    "
+                  ></div>
+                  <img
+                    class="question-img-country border-dark rounded-1 not-displayed"
+                  />
+                  <img
+                    class="question-img-country-emblem rounded-1 not-displayed"
+                    style="
+                      width: 110px;
+                      height: 110px;
+                      border: 0px;
+                      margin-top: 3px;
+                      margin-bottom: 8px;
+                    "
+                  />
+                </div>
+              </div>
+              <div class="container text-center" id="start-quiz-container">
                 <div class="row">
                   <div class="col-xs-12 col-sm-12 column">
                     <button
-                      class="btn btn-lg btn-danger"
+                      class="btn btn-danger btn-lg"
                       style="
                         background-color: #dc3545;
                         color: white;
                         cursor: pointer;
-                        width: 50%;
-                        font-size: 2rem;
+                        width: 75%;
+                        font-size: 1.7rem;
                         margin-bottom: 15px;
+                        margin-top: 20px;
                         box-shadow: 0 2px 5px 0 rgba(0, 0, 0, 0.5),
                           0 2px 10px 0 rgba(0, 0, 0, 0.12) inset;
                       "
-                      id="start-guess-countries"
+                      id="start-quiz"
                     >
                       START
                     </button>
                     <br />
                     <button
-                      class="btn btn-sm btn-outline-warning"
-                      style="font-size: 0.75rem"
-                      id="return-to-world-map-guess-countries-game"
+                      class="btn btn-sm btn-warning"
+                      style="
+                        margin-top: 10px;
+                        font-size: 0.75rem;
+                        box-shadow: 0 2px 5px #00000080,
+                          inset 0 2px 10px #0000001f;
+                      "
+                      id="return-to-world-map-quiz"
                     >
                       RETURN TO WORLD MAP
                     </button>
@@ -1039,196 +1244,10 @@
                 </div>
               </div>
             </div>
-          </div>
-          <div id="quiz" class="container-fluid px-4 not-displayed">
-            <div
-              class="quiz-heading"
-              style="text-align: center; margin-top: 5px"
-            >
-              <div class="heading">Guess Flag By Country Name</div>
-            </div>
-            <div style="text-align: center">
-              <div class="countries-container">
-                <select
-                  class="countries-selector form-select form-select-sm rounded-1 border-info"
-                  style="
-                    width: fit-content;
-                    display: inline-block;
-                    font-weight: bolder;
-                    border-color: black;
-                    border-radius: 0;
-                    box-shadow: rgb(9, 79, 255, 0.384) 0px 30px 60px -12px inset,
-                      rgb(5, 174, 187, 0.3) 0px 18px 36px -18px inset;
-                    cursor: pointer;
-                  "
-                >
-                  <option value="Difficulty: Very Easy">
-                    Difficulty: Very Easy
-                  </option>
-                  <option value="Difficulty: Easy">Difficulty: Easy</option>
-                  <option value="Difficulty: Normal" selected>
-                    Difficulty: Normal
-                  </option>
-                  <option value="Difficulty: Hard">Difficulty: Hard</option>
-                </select>
-                <div
-                  class="question-timer rounded-1 border-secondary"
-                  style="
-                    box-shadow: rgba(79, 79, 78, 0.384) 0px 30px 60px -12px inset,
-                      rgba(212, 210, 210, 0.3) 0px 18px 36px -18px inset;
-                    font-size: 1rem;
-                  "
-                >
-                  <span class="question-timer-name">Time: </span>
-                  <span
-                    class="question-timer-seconds"
-                    style="color: darkgreen; font-size: 1.2rem"
-                    >30</span
-                  >
-                </div>
-              </div>
-              <span
-                class="question-timer-bonus not-displayed"
-                style="
-                  color: white;
-                  font-size: 0.8rem;
-                  border-radius: 2px;
-                  background-color: green;
-                  padding-left: 3px;
-                  padding-right: 3px;
-                  font-weight: bolder;
-                "
-                >0</span
-              >
-              <div
-                class="score-container rounded-1 border-success"
-                style="
-                  box-shadow: rgba(100, 239, 95, 0.384) 0px 30px 60px -12px inset,
-                    rgba(0, 0, 0, 0.3) 0px 18px 36px -18px inset;
-                "
-              >
-                <span class="score-name">SCORE: </span>
-                <span class="score">0</span>
-              </div>
-              <div
-                class="question-container rounded-1 border-warning"
-                style="
-                  box-shadow: rgba(255, 255, 0, 0.384) 0px 30px 60px -12px inset,
-                    rgba(0, 0, 0, 0.3) 0px 18px 36px -18px inset;
-                "
-              >
-                <span class="question-current-number">1</span>
-                <span class="question-delimeter" style="font-weight: normal"
-                  >of</span
-                >
-                <span class="question-all-number">35</span>
-              </div>
-              <span
-                class="correct-incorrect-quiz not-displayed"
-                style="
-                  font-weight: bolder;
-                  color: white;
-                  background-color: green;
-                  margin-left: 5px;
-                  padding-left: 3px;
-                  padding-right: 3px;
-                  border-radius: 2px;
-                  font-size: 0.8rem;
-                "
-              ></span>
-              <span
-                class="finished-quiz not-displayed"
-                style="
-                  font-weight: bolder;
-                  color: white;
-                  background-color: red;
-                  margin-left: 5px;
-                  border-radius: 2px;
-                  padding-left: 3px;
-                  padding-right: 3px;
-                  font-size: 0.8rem;
-                "
-                >Finished</span
-              >
-              <span
-                class="question-timer-time-up not-displayed"
-                style="
-                  color: white;
-                  font-size: 0.8rem;
-                  border-radius: 2px;
-                  background-color: red;
-                  padding-left: 3px;
-                  padding-right: 3px;
-                  font-weight: bolder;
-                "
-                >Time's Up!</span
-              >
-              <br />
-              <div class="question-country-container not-displayed">
-                <span class="question-country"></span>
-                <div
-                  id="question-country-on-map"
-                  class="question-country-on-map rounded-1 not-displayed"
-                  style="
-                    width: 250px;
-                    height: 110px;
-                    border: 1px solid black;
-                    margin-bottom: 10px;
-                    margin-top: 15px;
-                    margin-left: auto;
-                    margin-right: auto;
-                  "
-                ></div>
-                <img
-                  class="question-img-country border-dark rounded-1 not-displayed"
-                />
-                <img
-                  class="question-img-country-emblem rounded-1 not-displayed"
-                  style="
-                    width: 110px;
-                    height: 110px;
-                    border: 0px;
-                    margin-top: 3px;
-                    margin-bottom: 8px;
-                  "
-                />
-              </div>
-            </div>
 
             <section class="wrapper">
               <div class="container-fostrap">
                 <div class="content">
-                  <div class="container" id="start-quiz-container">
-                    <div class="row">
-                      <div class="col-xs-12 col-sm-12 column">
-                        <button
-                          class="btn btn-danger btn-lg"
-                          style="
-                            background-color: #dc3545;
-                            color: white;
-                            cursor: pointer;
-                            width: 50%;
-                            font-size: 2rem;
-                            margin-bottom: 15px;
-                            margin-top: 20px;
-                            box-shadow: 0 2px 5px 0 rgba(0, 0, 0, 0.5),
-                              0 2px 10px 0 rgba(0, 0, 0, 0.12) inset;
-                          "
-                          id="start-quiz"
-                        >
-                          START
-                        </button>
-                        <br />
-                        <button
-                          class="btn btn-lg btn-outline-warning"
-                          style="margin-top: 15px; font-size: 0.75rem"
-                          id="return-to-world-map-quiz"
-                        >
-                          RETURN TO WORLD MAP
-                        </button>
-                      </div>
-                    </div>
-                  </div>
                   <div class="container not-displayed" id="quiz-container">
                     <div class="row">
                       <div class="col-xs-6 col-sm-6 column">
@@ -1312,7 +1331,7 @@
               <button
                 type="button"
                 class="btn btn-sm btn-warning return-donate"
-                style="margin-top: 15px"
+                style="margin-top: 10px"
               >
                 RETURN TO WORLD MAP
               </button>
@@ -1367,13 +1386,23 @@
                   src="assets/img/donate.png"
                   alt="Donate Author"
                   loading="lazy"
-                  style="width: 220px; height: 220px"
+                  style="
+                    width: 200px;
+                    height: 200px;
+                    border-radius: 5px;
+                    border: 1px grey solid;
+                  "
                 />
               </div>
               <a
                 target="_blank"
                 href="https://stand-with-ukraine.pp.ua"
-                style="cursor: pointer; display: block; margin-bottom: 5px"
+                style="
+                  cursor: pointer;
+                  display: block;
+                  margin-bottom: 5px;
+                  margin-top: 5px;
+                "
               >
                 <img
                   src="https://raw.githubusercontent.com/vshymanskyy/StandWithUkraine/main/badges/StandWithUkraine.svg"

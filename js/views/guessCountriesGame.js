@@ -1,7 +1,14 @@
 import { GEOGRAPHICAL_CENTER, WORLD_MAP_BOUNDS } from "../config.js";
 import * as model from "../model.js";
 import { COUNTRIES_GEO } from "../data/countries.geo.js";
-import { getRandomInt, showGameResultWindow } from "../helpers.js";
+import {
+  getRandomInt,
+  removeCenterElementsMainLayout,
+  removeCardQuizStartContainer,
+  showGameResultWindow,
+  addCardQuizStartContainer,
+  centerElementsMainLayout,
+} from "../helpers.js";
 import { localization } from "../localization/ua.js";
 class GuessCountriesGame {
   _mapElement = document.querySelector("#guessCountriesGameMap");
@@ -100,6 +107,8 @@ class GuessCountriesGame {
   }
 
   startGame() {
+    removeCardQuizStartContainer();
+    removeCenterElementsMainLayout();
     this._guessCountriesStartContainer.classList.add("not-displayed");
     this._guessCountriesGamePlayContainer.classList.remove("not-displayed");
     this._countriesNumber = parseInt(
@@ -295,9 +304,13 @@ class GuessCountriesGame {
       );
       if (confirmExit) {
         this.finishGame(true);
+        addCardQuizStartContainer();
+        centerElementsMainLayout();
       }
     } else {
       this.finishGame(true);
+      addCardQuizStartContainer();
+      centerElementsMainLayout();
     }
   }
 
@@ -1604,6 +1617,8 @@ class GuessCountriesGame {
   }
 
   hideGame() {
+    removeCenterElementsMainLayout();
+    removeCardQuizStartContainer();
     this.clearTimeout();
     this._gameElement.classList.add("not-displayed");
     this._guessCountriesGamePlayContainer.classList.add("not-displayed");

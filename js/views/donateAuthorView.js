@@ -1,6 +1,7 @@
 import { localization } from "../localization/ua.js";
 import * as model from "../model.js";
 import { WORLD_MAP_BOUNDS } from "../config.js";
+import { removeCenterElementsMainLayout } from "../helpers.js";
 class donateAuthorView {
   _parentElement = document.querySelector("#donate-author-page");
   _donateAuthorQRCode = document.querySelector("#donate-qr-code");
@@ -22,6 +23,7 @@ class donateAuthorView {
     topNavigationView,
     countriesSelectView
   ) {
+    removeCenterElementsMainLayout();
     this.hideDonateProject();
     mapView.setMapViewToBounds(WORLD_MAP_BOUNDS);
     mapView.showMap();

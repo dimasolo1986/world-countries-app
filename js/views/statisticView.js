@@ -12,6 +12,7 @@ import {
   COUNTRY_ON_MAP_QUIZ,
   COUNTRY_NAME_BY_COUNTRY_ON_MAP,
 } from "../config.js";
+import { removeCenterElementsMainLayout } from "../helpers.js";
 class statisticView {
   _parentElement = document.querySelector("#statistic-quizzes");
   _statisticHeading = document.querySelector(".statistic-name");
@@ -26,6 +27,7 @@ class statisticView {
     topNavigationView,
     countriesSelectView
   ) {
+    removeCenterElementsMainLayout();
     this.hideStatistic();
     mapView.setMapViewToBounds(WORLD_MAP_BOUNDS);
     mapView.showMap();

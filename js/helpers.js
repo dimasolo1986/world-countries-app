@@ -141,6 +141,42 @@ export const currentDateTime = function () {
   return `${date} ${time}`;
 };
 
+export const centerElementsMainLayout = function () {
+  document
+    .getElementById("layoutSidenav_content")
+    .classList.add("justify-content-center", "align-items-center");
+};
+
+export const removeCenterElementsMainLayout = function () {
+  document
+    .getElementById("layoutSidenav_content")
+    .classList.remove("justify-content-center", "align-items-center");
+};
+
+export const addCardQuizStartContainer = function () {
+  document
+    .getElementById("layoutSidenav_content")
+    .classList.add("quiz-background-image");
+  document
+    .getElementById("card-quiz-start-container")
+    .classList.add("card", "card-quiz-start");
+  document
+    .getElementById("card-game-start-container")
+    .classList.add("card", "card-quiz-start");
+};
+
+export const removeCardQuizStartContainer = function () {
+  document
+    .getElementById("layoutSidenav_content")
+    .classList.remove("quiz-background-image");
+  document
+    .getElementById("card-quiz-start-container")
+    .classList.remove("card", "card-quiz-start");
+  document
+    .getElementById("card-game-start-container")
+    .classList.remove("card", "card-quiz-start");
+};
+
 export const getLanguageCode = function () {
   if (model.worldCountries.language === "ua") {
     return "uk";

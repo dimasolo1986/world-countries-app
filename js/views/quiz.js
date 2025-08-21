@@ -17,7 +17,11 @@ import {
   COUNTRY_CAPITAL_BY_COUNTRY_NAME_QUIZ,
   TIME_TO_ANSWER,
 } from "../config.js";
-import { currentDateTime } from "../helpers.js";
+import {
+  currentDateTime,
+  removeCardQuizStartContainer,
+  removeCenterElementsMainLayout,
+} from "../helpers.js";
 class Quiz {
   _quizElement = document.querySelector("#quiz");
   _quizResultModalLabel = document.querySelector("#quizModalResultLabel");
@@ -113,6 +117,7 @@ class Quiz {
       );
     };
     const startQuizCard = function () {
+      removeCardQuizStartContainer();
       this._quizStartContainer.classList.add("not-displayed");
       this._quizContainer.classList.remove("not-displayed");
       this._questionCountryContainer.classList.remove("not-displayed");
@@ -1153,6 +1158,8 @@ class Quiz {
           +this._questionsAllNumber.textContent) ||
       !useConfirm
     ) {
+      removeCenterElementsMainLayout();
+      removeCardQuizStartContainer();
       this.hideQuiz();
       mapView.setMapViewToBounds(WORLD_MAP_BOUNDS);
       mapView.showMap();
@@ -1172,6 +1179,8 @@ class Quiz {
         }`
       )
     ) {
+      removeCenterElementsMainLayout();
+      removeCardQuizStartContainer();
       this.hideQuiz();
       mapView.setMapViewToBounds(WORLD_MAP_BOUNDS);
       mapView.showMap();

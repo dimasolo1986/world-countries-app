@@ -1,6 +1,7 @@
 import { localization } from "../localization/ua.js";
 import * as model from "../model.js";
 import { WORLD_MAP_BOUNDS } from "../config.js";
+import { removeCenterElementsMainLayout } from "../helpers.js";
 class aboutView {
   _parentElement = document.querySelector("#about-project");
   _aboutHeading = document.querySelector(".about-heading");
@@ -98,6 +99,7 @@ class aboutView {
     topNavigationView,
     countriesSelectView
   ) {
+    removeCenterElementsMainLayout();
     this.hideAboutProject();
     mapView.setMapViewToBounds(WORLD_MAP_BOUNDS);
     mapView.showMap();

@@ -112,7 +112,7 @@ body {
   box-sizing: border-box;
   height: 100%;
   width: 100%;
-  background: #fff;
+  background: ghostwhite;
   font-family: "Roboto", sans-serif;
   font-weight: 400;
 }
@@ -310,6 +310,19 @@ h1.heading {
   line-height: 17vh;
   font-weight: bold;
   font-size: 2rem;
+}
+
+.card-quiz-start {
+  width: fit-content;
+  padding: 10px;
+  box-shadow: 0 2px 5px 0 rgba(0, 0, 0, 0.5),
+    0 2px 10px 0 rgba(0, 0, 0, 0.12) inset;
+  background: ghostwhite;
+}
+
+.quiz-background-image {
+  background: url("/assets/img/background-image.png") no-repeat center center;
+  background-size: cover;
 }
 
 .disabled {
