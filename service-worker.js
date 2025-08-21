@@ -15,6 +15,7 @@ const FILES_TO_CACHE = [
   "/assets/img/toggle.png",
   "/assets/img/toggle.svg",
   "/assets/img/zoom-to-start.png",
+  "/assets/img/background-image.png",
   "/css/styles.css",
   "/css/quiz_style.css",
   "/css/leaflet-controls.css",
