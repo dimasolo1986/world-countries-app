@@ -212,6 +212,11 @@ class MapQuiz {
       mapView.invalidateSize();
       sideNavigationView.showSideNavigation();
       topNavigationView.enableSideBarToggle();
+      if (window.screen.width < 600) {
+      topNavigationView.hideSideNavigation();
+    } else {
+      topNavigationView.showSideNavigation();
+    }
       countriesSelectView.enableCountriesSelect();
       sessionStorage.setItem("currentWindow", "map");
       topNavigationView.initItemMenuStyle();
@@ -231,6 +236,11 @@ class MapQuiz {
       mapView.invalidateSize();
       sideNavigationView.showSideNavigation();
       topNavigationView.enableSideBarToggle();
+      if (window.screen.width < 600) {
+      topNavigationView.hideSideNavigation();
+    } else {
+      topNavigationView.showSideNavigation();
+    }
       countriesSelectView.enableCountriesSelect();
       sessionStorage.setItem("currentWindow", "map");
       topNavigationView.initItemMenuStyle();
