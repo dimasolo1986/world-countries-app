@@ -42,7 +42,7 @@ class sideNavigationView {
       const countryFlagNameHtml = `<div style="display: inline;"><img
       src=${countryElement.flags.png}
               class="country-flag-modal"
-              style="width: 45px; height: 35px; border: 1px solid black; border-radius: 2px;"
+              style="width: 45px; height: 35px; border-radius: 2px; box-shadow: 0 2px 5px #00000080, inset 0 2px 10px #0000001f;"
             /> ${
               countryEmblem
                 ? `<div style="display: inline; margin-left: 10px;"><img

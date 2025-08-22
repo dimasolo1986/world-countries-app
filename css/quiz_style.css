@@ -255,11 +255,11 @@ h1.heading {
 }
 
 .right-answer {
-  outline: 8px ridge rgba(2, 207, 43, 0.993);
+  outline: 7px solid green;
 }
 
 .wrong-answer {
-  outline: 8px ridge rgba(241, 1, 1, 0.735);
+  outline: 7px solid red;
 }
 
 .column {
@@ -270,7 +270,7 @@ h1.heading {
 .heading-map,
 .countries-game-heading {
   font-weight: bold;
-  font-size: 1.5rem;
+  font-size: 1.4rem;
   color: cornflowerblue;
   font-family: Cambria, Cochin, Georgia, Times, "Times New Roman", serif;
 }

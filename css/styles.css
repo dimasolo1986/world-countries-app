@@ -8290,6 +8290,7 @@ body,
 
 .leaflet-marker-icon {
   border-radius: 50%;
+  border: 1px lightgrey solid;
 }
 
 .development-place-icon {
@@ -8321,6 +8322,7 @@ body,
   height: 25px;
   cursor: pointer;
   border-radius: 2px;
+  box-shadow: 0 2px 5px #00000080, inset 0 2px 10px #0000001f;
 }
 
 .side-navigation-country-name {
@@ -8375,6 +8377,7 @@ body,
 
 .dropdown-menu {
   font-size: 1.25rem;
+  box-shadow: 0 2px 5px #00000080, inset 0 2px 10px #0000001f;
 }
 
 .dropdown-menu a {

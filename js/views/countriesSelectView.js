@@ -28,7 +28,7 @@ class countriesSelectView {
             const iconElement = document.createElement("img");
             iconElement.textContent = iconElement.setAttribute(
               "style",
-              "height: 19px; width: 19px; position: relative; border: 1px solid; margin-right: 5px; margin-bottom: 2px; border-radius: 50%;"
+              "height: 15px; width: 15px; position: relative; margin-right: 5px; margin-bottom: 2px; border-radius: 50%; box-shadow: 0 1px 1px #00000080, inset 0 2px 10px #0000001f; vertical-align: sub;"
             );
             iconElement.setAttribute("src", src);
             item.childNodes[1].insertBefore(

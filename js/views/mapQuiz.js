@@ -213,10 +213,10 @@ class MapQuiz {
       sideNavigationView.showSideNavigation();
       topNavigationView.enableSideBarToggle();
       if (window.screen.width < 600) {
-      topNavigationView.hideSideNavigation();
-    } else {
-      topNavigationView.showSideNavigation();
-    }
+        topNavigationView.hideSideNavigation();
+      } else {
+        topNavigationView.showSideNavigation();
+      }
       countriesSelectView.enableCountriesSelect();
       sessionStorage.setItem("currentWindow", "map");
       topNavigationView.initItemMenuStyle();
@@ -237,10 +237,10 @@ class MapQuiz {
       sideNavigationView.showSideNavigation();
       topNavigationView.enableSideBarToggle();
       if (window.screen.width < 600) {
-      topNavigationView.hideSideNavigation();
-    } else {
-      topNavigationView.showSideNavigation();
-    }
+        topNavigationView.hideSideNavigation();
+      } else {
+        topNavigationView.showSideNavigation();
+      }
       countriesSelectView.enableCountriesSelect();
       sessionStorage.setItem("currentWindow", "map");
       topNavigationView.initItemMenuStyle();
@@ -443,6 +443,8 @@ class MapQuiz {
           link.href = "https://stand-with-ukraine.pp.ua";
           link.style.opacity = "0.65";
           link.style.cursor = "pointer";
+          link.style.boxShadow =
+            "0 2px 5px #00000080, inset 0 2px 10px #0000001f";
           link.target = "_blank";
           const img = L.DomUtil.create("img");
           img.src =
@@ -537,7 +539,7 @@ class MapQuiz {
               .setContent(
                 `<img src="${
                   context._country.flags.png
-                }" style="width:25px; height:15px; border: 1px solid black; border-radius: 2px;"><span style="font-weight:bold; color:darkgreen; margin-left:5px;">${
+                }" style="width:25px; height:15px; box-shadow:0 2px 5px #00000080, inset 0 2px 10px #0000001f; vertical-align: sub; border-radius: 2px;"><span style="font-weight:bold; color:darkgreen; margin-left:5px;">${
                   localization[model.worldCountries.language]["countries"][
                     context._country.name.common
                   ]
@@ -584,7 +586,7 @@ class MapQuiz {
                 .setContent(
                   `<img src="${
                     context._country.flags.png
-                  }" style="width:25px; height:15px; border: 1px solid black; border-radius: 2px;"><span style="font-weight:bold; color:darkgreen; margin-left:5px;">${
+                  }" style="width:25px; height:15px; box-shadow:0 2px 5px #00000080, inset 0 2px 10px #0000001f; vertical-align: sub; border-radius: 2px;"><span style="font-weight:bold; color:darkgreen; margin-left:5px;">${
                     localization[model.worldCountries.language]["countries"][
                       context._country.name.common
                     ]

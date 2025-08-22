@@ -408,7 +408,9 @@ class GuessCountriesGame {
         container.style.backgroundColor = "white";
         container.style.opacity = "0.7";
         container.style.borderRadius = "2px";
-        container.style.border = "2px solid rgba(0,0,0,0.2)";
+        container.style.border = "0px solid rgba(0,0,0,0.2)";
+        container.style.boxShadow =
+          "0 2px 5px #00000080, inset 0 2px 10px #0000001f";
         const userIconContainer = L.DomUtil.create("span");
         userIconContainer.insertAdjacentHTML(
           "afterbegin",
@@ -455,13 +457,15 @@ class GuessCountriesGame {
         const mapFiled = L.DomUtil.create("div");
         mapFiled.id = "map-field";
         mapFiled.style.backgroundColor = "white";
-        mapFiled.style.border = "rgba(0, 0, 0, 0.2) 2px solid";
+        mapFiled.style.border = "rgba(0, 0, 0, 0.2) 0px solid";
         mapFiled.style.marginTop = "10px";
         mapFiled.style.paddingRight = "3px";
         mapFiled.style.paddingLeft = "3px";
         mapFiled.style.opacity = "0.7";
         mapFiled.style.borderRadius = "2px";
         mapFiled.style.fontWeight = "bolder";
+        mapFiled.style.boxShadow =
+          "0 2px 5px #00000080, inset 0 2px 10px #0000001f";
         mapFiled.textContent =
           localization[model.worldCountries.language]["Your Map"];
         return mapFiled;
@@ -485,6 +489,8 @@ class GuessCountriesGame {
         playButton.style.paddinTop = "0.35rem";
         playButton.style.paddinBottom = "0.35rem";
         playButton.disabled = true;
+        playButton.style.boxShadow =
+          "0 2px 5px #00000080, inset 0 2px 10px #0000001f";
         playButton.textContent =
           localization[model.worldCountries.language]["Play"];
         playButton.addEventListener("click", this.playFunction);
@@ -510,6 +516,8 @@ class GuessCountriesGame {
         finishButton.style.marginTop = "5px";
         finishButton.style.paddinTop = "0.35rem";
         finishButton.style.paddinBottom = "0.35rem";
+        finishButton.style.boxShadow =
+          "0 2px 5px #00000080, inset 0 2px 10px #0000001f";
         finishButton.textContent =
           localization[model.worldCountries.language]["Finish"];
         finishButton.addEventListener("click", this.finishFunction);
@@ -530,9 +538,11 @@ class GuessCountriesGame {
         guessedNotGuessedPanel.style.backgroundColor = "white";
         guessedNotGuessedPanel.style.opacity = "0.7";
         guessedNotGuessedPanel.style.borderRadius = "2px";
-        guessedNotGuessedPanel.style.border = "2px solid rgba(0,0,0,0.2)";
+        guessedNotGuessedPanel.style.border = "0px solid rgba(0,0,0,0.2)";
         guessedNotGuessedPanel.style.marginTop = "5px";
         guessedNotGuessedPanel.style.padding = "3px";
+        guessedNotGuessedPanel.style.boxShadow =
+          "0 2px 5px #00000080, inset 0 2px 10px #0000001f";
         const guessedHtml = `<div><span style="width:7px; height:7px; border-radius:50%; border:1px solid black; margin-right:5px;background-color:red; display:inline-block;"></span><span style="font-size:0.6rem;">${
           localization[model.worldCountries.language]["Guessed Country"]
         }</span></div>`;
@@ -560,11 +570,13 @@ class GuessCountriesGame {
         availableCountriesPanel.style.backgroundColor = "white";
         availableCountriesPanel.style.opacity = "0.7";
         availableCountriesPanel.style.borderRadius = "2px";
-        availableCountriesPanel.style.border = "2px solid rgba(0,0,0,0.2)";
+        availableCountriesPanel.style.border = "0px solid rgba(0,0,0,0.2)";
         availableCountriesPanel.style.marginTop = "5px";
         availableCountriesPanel.style.padding = "3px";
         availableCountriesPanel.style.width = "105px";
         availableCountriesPanel.style.overflow = "hidden";
+        availableCountriesPanel.style.boxShadow =
+          "0 2px 5px #00000080, inset 0 2px 10px #0000001f";
         const availableCountriesHeader = `<div><span style="font-size:0.6rem;">${
           localization[model.worldCountries.language]["Available Countries:"]
         }</span></div>`;
@@ -597,7 +609,9 @@ class GuessCountriesGame {
         container.style.backgroundColor = "white";
         container.style.opacity = "0.7";
         container.style.borderRadius = "2px";
-        container.style.border = "2px solid rgba(0,0,0,0.2)";
+        container.style.border = "0px solid rgba(0,0,0,0.2)";
+        container.style.boxShadow =
+          "0 2px 5px #00000080, inset 0 2px 10px #0000001f";
         const computerIconContainer = L.DomUtil.create("span");
         computerIconContainer.insertAdjacentHTML(
           "afterbegin",
@@ -739,7 +753,7 @@ class GuessCountriesGame {
         const countryImg = document.createElement("img");
         countryImg.src = country.countryFlag;
         countryImg.style =
-          "width:8px; height:8px; border-radius:50%; border:1px solid black; margin-right:5px;display:inline-block;";
+          "width:8px; height:8px; border-radius:50%; border:1px solid black; box-shadow: 0 2px 5px #00000080, inset 0 2px 10px #0000001f; margin-right:5px;display:inline-block;";
         const countryName = document.createElement("span");
         countryName.textContent =
           localization[model.worldCountries.language]["countries"][
@@ -832,7 +846,8 @@ class GuessCountriesGame {
               localization[model.worldCountries.language]["countries"][
                 country.countryName
               ]
-            }" style="width:13px; height:13px;border:solid 1px grey; border-radius:50%; display:inline-block;vertical-align:baseline;">`;
+            }" style="width:13px; height:13px;border:solid 1px grey; border-radius:50%; display:inline-block;vertical-align:baseline; box-shadow: 0 2px 5px #00000080,
+                            inset 0 2px 10px #0000001f;">`;
           }
           if (
             context._userSelectedCountries.length === countriesNumberSelected
@@ -896,7 +911,8 @@ class GuessCountriesGame {
                 localization[model.worldCountries.language]["countries"][
                   country.countryName
                 ]
-              }" style="width:13px; height:13px;border:solid 1px grey; border-radius:50%; display:inline-block;vertical-align:baseline;">`;
+              }" style="width:13px; height:13px;border:solid 1px grey; border-radius:50%; display:inline-block;vertical-align:baseline; box-shadow: 0 2px 5px #00000080,
+                            inset 0 2px 10px #0000001f;">`;
             } else {
               userCountry.innerHTML = `<span style="color:grey; border:solid 1px grey; border-radius:50%; display:inline-block; height:13px; width:13px;"></span>`;
             }
@@ -983,7 +999,7 @@ class GuessCountriesGame {
             localization[model.worldCountries.language]["You guessed"]
           }</span> <img src="${
             country.countryFlag
-          }" style="margin-left:5px; width:20px; height:15px; border-radius:2px; border: solid 1px black"> <span style="margin-left:5px;">${
+          }" style="margin-left:5px; width:20px; height:15px; border-radius:2px; box-shadow: 0 2px 5px #00000080, inset 0 2px 10px #0000001f; vertical-align: sub;"> <span style="margin-left:5px;">${
             localization[model.worldCountries.language]["countries"][
               country.countryName
             ]
@@ -1009,7 +1025,8 @@ class GuessCountriesGame {
               localization[model.worldCountries.language]["countries"][
                 country.countryName
               ]
-            }" style="width:13px; height:13px;border:solid 1px grey; border-radius:50%; display:inline-block;vertical-align:baseline;">`;
+            }" style="width:13px; height:13px;border:solid 1px grey; border-radius:50%; display:inline-block;vertical-align:baseline; box-shadow: 0 2px 5px #00000080,
+                            inset 0 2px 10px #0000001f;">`;
           }
           if (+computerCountriesNumber.textContent === 0) {
             context.showGameResult(true);
@@ -1118,7 +1135,7 @@ class GuessCountriesGame {
                 localization[model.worldCountries.language]["Computer guessed"]
               }</span> <img src="${
                 computerGuessedCountry.countryFlag
-              }" style="margin-left:5px; width:20px; height:15px; border-radius:2px; border: solid 1px black"> <span style="margin-left:5px;">${
+              }" style="margin-left:5px; width:20px; height:15px; border-radius:2px; box-shadow: 0 2px 5px #00000080, inset 0 2px 10px #0000001f; vertical-align: sub;"> <span style="margin-left:5px;">${
                 localization[model.worldCountries.language]["countries"][
                   computerGuessedCountry.countryName
                 ]
@@ -1291,11 +1308,12 @@ class GuessCountriesGame {
           .setContent(
             `<img src="${
               country.countryFlag
-            }" style="width:15px; height:15px; border: 1px solid black; border-radius: 50%;"><span style="font-weight:bold; margin-left:5px;">${
-              localization[model.worldCountries.language]["countries"][
-                country.countryName
-              ]
-            }</span>`
+            }" style="width:15px; height:15px; border-radius: 50%; box-shadow: 0 2px 5px #00000080,
+                            inset 0 2px 10px #0000001f; vertical-align: sub;"><span style="font-weight:bold; margin-left:5px; ">${
+                              localization[model.worldCountries.language][
+                                "countries"
+                              ][country.countryName]
+                            }</span>`
           );
         const countryBoundary = L.geoJson(countryGeo, {
           bubblingMouseEvents: false,
@@ -1431,11 +1449,15 @@ class GuessCountriesGame {
                 localization[model.worldCountries.language]["countries"][
                   this._computerSelectedCountries[countryIndex].countryName
                 ]
-              }" style="height:15px; width:20px; border-radius:2px; border:1px solid black; vertical-align:baseline;"/></td> <td><span style="margin-right: 10px;">${
-                localization[model.worldCountries.language]["countries"][
-                  this._computerSelectedCountries[countryIndex].countryName
-                ]
-              }</span></td><td><img src="${
+              }" style="height:15px; width:20px; border-radius:2px; box-shadow: 0 2px 5px #00000080,
+                            inset 0 2px 10px #0000001f; vertical-align:baseline;"/></td> <td><span style="margin-right: 10px;">${
+                              localization[model.worldCountries.language][
+                                "countries"
+                              ][
+                                this._computerSelectedCountries[countryIndex]
+                                  .countryName
+                              ]
+                            }</span></td><td><img src="${
                 this._computerSelectedCountries[countryIndex + 1].countryFlag
               }" alt="${
                 localization[model.worldCountries.language]["countries"][
@@ -1445,11 +1467,16 @@ class GuessCountriesGame {
                 localization[model.worldCountries.language]["countries"][
                   this._computerSelectedCountries[countryIndex + 1].countryName
                 ]
-              }" style="height:15px; width:20px; border-radius:2px; border:1px solid black; vertical-align:baseline;"/></td> <td><span>${
-                localization[model.worldCountries.language]["countries"][
-                  this._computerSelectedCountries[countryIndex + 1].countryName
-                ]
-              }</span></td></tr>`
+              }" style="height:15px; width:20px; border-radius:2px; box-shadow: 0 2px 5px #00000080,
+                            inset 0 2px 10px #0000001f; vertical-align:baseline;"/></td> <td><span>${
+                              localization[model.worldCountries.language][
+                                "countries"
+                              ][
+                                this._computerSelectedCountries[
+                                  countryIndex + 1
+                                ].countryName
+                              ]
+                            }</span></td></tr>`
             : `<tr><td><img src="${
                 this._computerSelectedCountries[countryIndex].countryFlag
               }" alt="${
@@ -1460,11 +1487,15 @@ class GuessCountriesGame {
                 localization[model.worldCountries.language]["countries"][
                   this._computerSelectedCountries[countryIndex].countryName
                 ]
-              }" style="height:15px; width:20px; border-radius:2px; border:1px solid black; vertical-align:baseline;"/></td><td> <span>${
-                localization[model.worldCountries.language]["countries"][
-                  this._computerSelectedCountries[countryIndex].countryName
-                ]
-              }</span></td></tr>`;
+              }" style="height:15px; width:20px; border-radius:2px; box-shadow: 0 2px 5px #00000080,
+                            inset 0 2px 10px #0000001f; vertical-align:baseline;"/></td><td> <span>${
+                              localization[model.worldCountries.language][
+                                "countries"
+                              ][
+                                this._computerSelectedCountries[countryIndex]
+                                  .countryName
+                              ]
+                            }</span></td></tr>`;
         userCountriesContainer.insertAdjacentHTML(
           "beforeend",
           countriesTemplate
@@ -1505,11 +1536,15 @@ class GuessCountriesGame {
                 localization[model.worldCountries.language]["countries"][
                   this._userSelectedCountries[countryIndex].countryName
                 ]
-              }" style="height:15px; width:20px; border-radius:2px; border:1px solid black; vertical-align:baseline;"/> </td><td><span style="margin-right: 10px;">${
-                localization[model.worldCountries.language]["countries"][
-                  this._userSelectedCountries[countryIndex].countryName
-                ]
-              }</span></td><td><img src="${
+              }" style="height:15px; width:20px; border-radius:2px; box-shadow: 0 2px 5px #00000080,
+                            inset 0 2px 10px #0000001f; vertical-align:baseline;"/> </td><td><span style="margin-right: 10px;">${
+                              localization[model.worldCountries.language][
+                                "countries"
+                              ][
+                                this._userSelectedCountries[countryIndex]
+                                  .countryName
+                              ]
+                            }</span></td><td><img src="${
                 this._userSelectedCountries[countryIndex + 1].countryFlag
               }" alt="${
                 localization[model.worldCountries.language]["countries"][
@@ -1519,11 +1554,15 @@ class GuessCountriesGame {
                 localization[model.worldCountries.language]["countries"][
                   this._userSelectedCountries[countryIndex + 1].countryName
                 ]
-              }" style="height:15px; width:20px; border-radius:2px; border:1px solid black; vertical-align:baseline;"/></td> <td><span>${
-                localization[model.worldCountries.language]["countries"][
-                  this._userSelectedCountries[countryIndex + 1].countryName
-                ]
-              }</span></td></tr>`
+              }" style="height:15px; width:20px; border-radius:2px; box-shadow: 0 2px 5px #00000080,
+                            inset 0 2px 10px #0000001f; vertical-align:baseline;"/></td> <td><span>${
+                              localization[model.worldCountries.language][
+                                "countries"
+                              ][
+                                this._userSelectedCountries[countryIndex + 1]
+                                  .countryName
+                              ]
+                            }</span></td></tr>`
             : `<tr><td><img src="${
                 this._userSelectedCountries[countryIndex].countryFlag
               }" alt="${
@@ -1534,11 +1573,15 @@ class GuessCountriesGame {
                 localization[model.worldCountries.language]["countries"][
                   this._userSelectedCountries[countryIndex].countryName
                 ]
-              }" style="height:15px; width:20px; border-radius:2px; border:1px solid black; vertical-align:baseline;"/></td> <td> <span>${
-                localization[model.worldCountries.language]["countries"][
-                  this._userSelectedCountries[countryIndex].countryName
-                ]
-              }</span></td></tr>`;
+              }" style="height:15px; width:20px; border-radius:2px; box-shadow: 0 2px 5px #00000080,
+                            inset 0 2px 10px #0000001f; vertical-align:baseline;"/></td> <td> <span>${
+                              localization[model.worldCountries.language][
+                                "countries"
+                              ][
+                                this._userSelectedCountries[countryIndex]
+                                  .countryName
+                              ]
+                            }</span></td></tr>`;
         userCountriesContainer.insertAdjacentHTML(
           "beforeend",
           countriesTemplate

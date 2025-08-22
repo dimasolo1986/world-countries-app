@@ -365,6 +365,8 @@ class mapView {
         link.href = "https://stand-with-ukraine.pp.ua";
         link.style.opacity = "0.65";
         link.style.cursor = "pointer";
+        link.style.boxShadow =
+          "0 2px 5px #00000080, inset 0 2px 10px #0000001f";
         link.target = "_blank";
         const img = L.DomUtil.create("img");
         img.src =
@@ -716,7 +718,7 @@ class mapView {
   _createMarkerIcon(country) {
     return L.icon({
       iconUrl: `${country.flags.png}`,
-      iconSize: [15, 15],
+      iconSize: [16, 16],
     });
   }
 
@@ -873,7 +875,7 @@ class mapView {
           })
         ).setPopupContent(`<img src="${
         country.flags.png
-      }" style="width:30px; height:20px; border: 1px solid black; border-radius: 2px;"> ${
+      }" style="width:30px; height:20px; border-radius: 2px; box-shadow: 0 2px 5px #00000080, inset 0 2px 10px #0000001f;"> ${
         country.coatOfArms.png
           ? `<img src="${country.coatOfArms.png}" style="width:30px; height:30px; margin-left: 3px;">`
           : ""

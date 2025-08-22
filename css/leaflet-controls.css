@@ -458,7 +458,7 @@
 }
 .leaflet-container .leaflet-control-mouseposition {
   background-color: rgba(255, 255, 255, 0.7);
-  box-shadow: 0 0 5px #bbb;
+  box-shadow: 0 2px 5px #00000080, inset 0 2px 10px #0000001f;
   padding: 0 5px;
   margin: 0;
   color: #333;
@@ -471,6 +471,7 @@
   opacity: 0.65;
   font-size: 0.75em;
   width: 185px;
+  box-shadow: 0 2px 5px #00000080, inset 0 2px 10px #0000001f;
 }
 .leaflet-control-weather .weatherButton {
   min-width: 185px;
@@ -515,6 +516,7 @@
   font-size: 0.75em;
   width: 185px;
   vertical-align: middle;
+  box-shadow: 0 2px 5px #00000080, inset 0 2px 10px #0000001f;
 }
 .leaflet-control-country-player .playerButton {
   min-width: 185px;
@@ -617,7 +619,7 @@
 
   background: #ffffffb3;
   background: rgba(255, 255, 255, 0.7);
-  box-shadow: 0 0 5px #bbb;
+  box-shadow: 0 2px 5px #00000080, inset 0 2px 10px #0000001f;
 }
 .leaflet-control-scalefactor.leaflet-control {
   margin-left: 5px;
