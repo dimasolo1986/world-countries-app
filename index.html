@@ -740,14 +740,17 @@
                     padding-left: 3px;
                     padding-right: 3px;
                     font-weight: bolder;
+                    box-shadow: 2px 2px 5px rgba(0, 0, 0, 0.3);
                   "
                   >0</span
                 >
                 <div
                   class="score-container-map rounded-1 border-success"
                   style="
-                    box-shadow: rgba(100, 239, 95, 0.384) 0px 30px 60px -12px inset,
-                      rgba(0, 0, 0, 0.3) 0px 18px 36px -18px inset;
+                    box-shadow: 2px 2px 5px rgba(0, 0, 0, 0.3);
+                    background-color: lightgreen;
+                    font-family: Cambria, Cochin, Georgia, Times,
+                      Times New Roman, serif;
                   "
                 >
                   <span class="score-name-map">SCORE: </span>
@@ -756,8 +759,10 @@
                 <div
                   class="question-container-map rounded-1 border-warning"
                   style="
-                    box-shadow: rgba(255, 255, 0, 0.384) 0px 30px 60px -12px inset,
-                      rgba(0, 0, 0, 0.3) 0px 18px 36px -18px inset;
+                    box-shadow: 2px 2px 5px rgba(0, 0, 0, 0.3);
+                    background-color: lightgoldenrodyellow;
+                    font-family: Cambria, Cochin, Georgia, Times,
+                      Times New Roman, serif;
                   "
                 >
                   <span class="question-current-number-map">1</span>
@@ -779,6 +784,7 @@
                     padding-right: 3px;
                     border-radius: 2px;
                     font-size: 0.8rem;
+                    box-shadow: 2px 2px 5px rgba(0, 0, 0, 0.3);
                   "
                 ></span>
                 <span
@@ -811,12 +817,20 @@
                             disabled
                             type="button"
                             class="btn btn-sm btn-success next-map"
+                            style="
+                              box-shadow: 0 2px 5px #00000080,
+                                inset 0 2px 10px #0000001f;
+                            "
                           >
                             NEXT QUESTION
                           </button>
                           <button
                             type="button"
                             class="btn btn-sm btn-secondary do-not-know-map"
+                            style="
+                              box-shadow: 0 2px 5px #00000080,
+                                inset 0 2px 10px #0000001f;
+                            "
                           >
                             DO NOT KNOW
                           </button>
@@ -824,18 +838,30 @@
                             disabled
                             type="button"
                             class="btn btn-sm btn-danger start-map"
+                            style="
+                              box-shadow: 0 2px 5px #00000080,
+                                inset 0 2px 10px #0000001f;
+                            "
                           >
                             START AGAIN
                           </button>
                           <button
                             type="button"
                             class="btn btn-sm btn-primary finish-map"
+                            style="
+                              box-shadow: 0 2px 5px #00000080,
+                                inset 0 2px 10px #0000001f;
+                            "
                           >
                             FINISH
                           </button>
                           <button
                             type="button"
                             class="btn btn-sm btn-warning return-map"
+                            style="
+                              box-shadow: 0 2px 5px #00000080,
+                                inset 0 2px 10px #0000001f;
+                            "
                           >
                             RETURN TO MAP
                           </button>
@@ -906,15 +932,14 @@
                   style="margin-bottom: 5px"
                 >
                   <select
-                    class="guess-countries-game-countries-on-map-selector form-select form-select-sm rounded-1 border-success"
+                    class="guess-countries-game-countries-on-map-selector form-select form-select-sm rounded-1"
                     style="
                       width: fit-content;
                       display: inline-block;
                       font-weight: bolder;
-                      border-color: black;
                       border-radius: 0;
-                      box-shadow: rgb(67, 181, 0) 0px 30px 60px -12px inset,
-                        rgba(111, 255, 0, 0.253) 0px 18px 36px -18px inset;
+                      box-shadow: 0 2px 5px #00000080,
+                        inset 0 2px 10px #0000001f;
                       cursor: pointer;
                       margin-bottom: 15px;
                       font-size: 0.9rem;
@@ -938,15 +963,14 @@
                   </select>
                   <br />
                   <select
-                    class="guess-countries-game-selector form-select form-select-sm rounded-1 border-info"
+                    class="guess-countries-game-selector form-select form-select-sm rounded-1"
                     style="
                       width: fit-content;
                       display: inline-block;
                       font-weight: bolder;
-                      border-color: black;
                       border-radius: 0;
-                      box-shadow: rgb(9, 79, 255, 0.384) 0px 30px 60px -12px inset,
-                        rgb(5, 174, 187, 0.3) 0px 18px 36px -18px inset;
+                      box-shadow: 0 2px 5px #00000080,
+                        inset 0 2px 10px #0000001f;
                       cursor: pointer;
                       font-size: 0.9rem;
                       margin-bottom: 10px;
@@ -987,7 +1011,11 @@
                       <button
                         id="gameRulesButton"
                         class="btn btn-info btn-sm"
-                        style="font-size: 0.8rem"
+                        style="
+                          font-size: 0.8rem;
+                          box-shadow: 0 2px 5px #00000080,
+                            inset 0 2px 10px #0000001f;
+                        "
                       >
                         Game Rules
                       </button>
@@ -1023,7 +1051,6 @@
                           background-color: #dc3545;
                           color: white;
                           cursor: pointer;
-                          width: 75%;
                           font-size: 1.7rem;
                           margin-bottom: 15px;
                           box-shadow: 0 2px 5px 0 rgba(0, 0, 0, 0.5),
@@ -1070,8 +1097,8 @@
                       border-color: black;
                       border-radius: 0;
                       font-size: 0.9rem;
-                      box-shadow: rgb(9, 79, 255, 0.384) 0px 30px 60px -12px inset,
-                        rgb(5, 174, 187, 0.3) 0px 18px 36px -18px inset;
+                      box-shadow: 2px 2px 5px rgba(0, 0, 0, 0.3);
+                      background-color: lightblue;
                       cursor: pointer;
                     "
                   >
@@ -1087,8 +1114,8 @@
                   <div
                     class="question-timer rounded-1 border-secondary"
                     style="
-                      box-shadow: rgba(79, 79, 78, 0.384) 0px 30px 60px -12px inset,
-                        rgba(212, 210, 210, 0.3) 0px 18px 36px -18px inset;
+                      box-shadow: 2px 2px 5px rgba(0, 0, 0, 0.3);
+                      background-color: lightgrey;
                       font-size: 0.9rem;
                     "
                   >
@@ -1110,14 +1137,17 @@
                     padding-left: 3px;
                     padding-right: 3px;
                     font-weight: bolder;
+                    box-shadow: 2px 2px 5px rgba(0, 0, 0, 0.3);
                   "
                   >0</span
                 >
                 <div
                   class="score-container rounded-1 border-success"
                   style="
-                    box-shadow: rgba(100, 239, 95, 0.384) 0px 30px 60px -12px inset,
-                      rgba(0, 0, 0, 0.3) 0px 18px 36px -18px inset;
+                    box-shadow: 2px 2px 5px rgba(0, 0, 0, 0.3);
+                    background-color: lightgreen;
+                    font-family: Cambria, Cochin, Georgia, Times,
+                      Times New Roman, serif;
                   "
                 >
                   <span class="score-name">SCORE: </span>
@@ -1126,8 +1156,10 @@
                 <div
                   class="question-container rounded-1 border-warning"
                   style="
-                    box-shadow: rgba(255, 255, 0, 0.384) 0px 30px 60px -12px inset,
-                      rgba(0, 0, 0, 0.3) 0px 18px 36px -18px inset;
+                    box-shadow: 2px 2px 5px rgba(0, 0, 0, 0.3);
+                    background-color: lightgoldenrodyellow;
+                    font-family: Cambria, Cochin, Georgia, Times,
+                      Times New Roman, serif;
                   "
                 >
                   <span class="question-current-number">1</span>
@@ -1147,6 +1179,7 @@
                     padding-right: 3px;
                     border-radius: 2px;
                     font-size: 0.8rem;
+                    box-shadow: 2px 2px 5px rgba(0, 0, 0, 0.3);
                   "
                 ></span>
                 <span
@@ -1287,12 +1320,20 @@
                           disabled
                           type="button"
                           class="btn btn-sm btn-success btn-lg next"
+                          style="
+                            box-shadow: 0 2px 5px #00000080,
+                              inset 0 2px 10px #0000001f;
+                          "
                         >
                           NEXT QUESTION
                         </button>
                         <button
                           type="button"
                           class="btn btn-sm btn-secondary btn-lg do-not-know"
+                          style="
+                            box-shadow: 0 2px 5px #00000080,
+                              inset 0 2px 10px #0000001f;
+                          "
                         >
                           DO NOT KNOW
                         </button>
@@ -1300,18 +1341,30 @@
                           disabled
                           type="button"
                           class="btn btn-sm btn-danger btn-lg start"
+                          style="
+                            box-shadow: 0 2px 5px #00000080,
+                              inset 0 2px 10px #0000001f;
+                          "
                         >
                           START AGAIN
                         </button>
                         <button
                           type="button"
                           class="btn btn-sm btn-primary btn-lg finish"
+                          style="
+                            box-shadow: 0 2px 5px #00000080,
+                              inset 0 2px 10px #0000001f;
+                          "
                         >
                           FINISH
                         </button>
                         <button
                           type="button"
                           class="btn btn-sm btn-warning btn-lg return"
+                          style="
+                            box-shadow: 0 2px 5px #00000080,
+                              inset 0 2px 10px #0000001f;
+                          "
                         >
                           RETURN TO MAP
                         </button>
@@ -1331,7 +1384,10 @@
               <button
                 type="button"
                 class="btn btn-sm btn-warning return-donate"
-                style="margin-top: 10px"
+                style="
+                  margin-top: 10px;
+                  box-shadow: 0 2px 5px #00000080, inset 0 2px 10px #0000001f;
+                "
               >
                 RETURN TO WORLD MAP
               </button>
@@ -1344,6 +1400,7 @@
                     border-radius: 50%;
                     margin-top: 5px;
                     border: 2px lightgrey solid;
+                    box-shadow: 0 2px 5px #00000080, inset 0 2px 10px #0000001f;
                   "
                   loading="lazy"
                   alt="Author Photo"
@@ -1365,7 +1422,10 @@
                 <button
                   type="button"
                   class="btn btn-sm btn-warning share-donate"
-                  style="font-size: 1rem"
+                  style="
+                    font-size: 1rem;
+                    box-shadow: 0 2px 5px #00000080, inset 0 2px 10px #0000001f;
+                  "
                 >
                   Share
                 </button>
@@ -1373,7 +1433,11 @@
                   target="_blank"
                   href="https://donatello.to/DmytroSolovei"
                   class="btn btn-sm btn-primary donate-link"
-                  style="margin-left: 15px; font-size: 1rem"
+                  style="
+                    margin-left: 15px;
+                    font-size: 1rem;
+                    box-shadow: 0 2px 5px #00000080, inset 0 2px 10px #0000001f;
+                  "
                 >
                   Make Donate
                 </a>
@@ -1391,6 +1455,7 @@
                     height: 200px;
                     border-radius: 5px;
                     border: 1px grey solid;
+                    box-shadow: 0 2px 5px #00000080, inset 0 2px 10px #0000001f;
                   "
                 />
               </div>
@@ -1417,7 +1482,13 @@
             class="container-fluid px-4 not-displayed"
             style="text-align: justify"
           >
-            <button type="button" class="btn btn-sm btn-warning return-about">
+            <button
+              type="button"
+              class="btn btn-sm btn-warning return-about"
+              style="
+                box-shadow: 0 2px 5px #00000080, inset 0 2px 10px #0000001f;
+              "
+            >
               RETURN TO WORLD MAP
             </button>
             <p id="stand-with-ukraine" style="margin-top: 5px">
@@ -1427,6 +1498,9 @@
                 target="_blank"
                 rel="external"
                 ><img
+                  style="
+                    box-shadow: 0 2px 5px #00000080, inset 0 2px 10px #0000001f;
+                  "
                   width="100%"
                   src="https://raw.githubusercontent.com/vshymanskyy/StandWithUkraine/main/banner-direct-single.svg"
               /></a>
@@ -1476,6 +1550,7 @@
                 border: 2px solid;
                 border-radius: 5px;
                 border-color: rgb(136, 138, 139);
+                box-shadow: 0 2px 5px #00000080, inset 0 2px 10px #0000001f;
               "
             />
             <p class="about-developer" style="display: inline">
@@ -1681,7 +1756,10 @@
           >
             <div class="text-center">
               <button
-                style="margin-left: 0"
+                style="
+                  margin-left: 0;
+                  box-shadow: 0 2px 5px #00000080, inset 0 2px 10px #0000001f;
+                "
                 type="button"
                 class="btn btn-sm btn-warning return-flags"
               >
@@ -1695,15 +1773,13 @@
                 >
               </p>
               <select
-                class="flags-selector form-select form-select-sm rounded-1 border-info"
+                class="flags-selector form-select form-select-sm rounded-1"
                 style="
                   width: fit-content;
                   display: inline-block;
                   font-weight: bolder;
-                  border-color: black;
                   border-radius: 0;
-                  box-shadow: rgb(9, 79, 255, 0.384) 0px 30px 60px -12px inset,
-                    rgb(5, 174, 187, 0.3) 0px 18px 36px -18px inset;
+                  box-shadow: 0 2px 5px #00000080, inset 0 2px 10px #0000001f;
                   cursor: pointer;
                 "
               >
@@ -1738,6 +1814,8 @@
                 cursor: pointer;
                 font-size: 1.2rem;
                 opacity: 0.5;
+                box-shadow: 0 2px 5px 0 rgba(0, 0, 0, 0.5),
+                  0 2px 10px 0 rgba(0, 0, 0, 0.12) inset;
               "
             >
               <span>&uarr;</span>
@@ -1751,6 +1829,9 @@
             <button
               type="button"
               class="btn btn-sm btn-warning return-statistic"
+              style="
+                box-shadow: 0 2px 5px #00000080, inset 0 2px 10px #0000001f;
+              "
             >
               RETURN TO WORLD MAP
             </button>
