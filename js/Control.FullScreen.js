@@ -141,6 +141,7 @@
       forcePseudoFullscreen: false,
       fullscreenElement: false,
       addFullScreen: true,
+      game: false,
       zoomResetFunction: () => {},
     },
 
@@ -158,6 +159,9 @@
       }
 
       container.style.marginLeft = "17px";
+      if (this.options.game) {
+        container.style.marginTop = "30px";
+      }
 
       if (this.options.content) {
         content = this.options.content;

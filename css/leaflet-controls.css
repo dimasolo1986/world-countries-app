@@ -962,6 +962,25 @@ img:hover + .light.temporary .flare {
   background: var(--color-temporary);
   transition: all 800ms cubic-bezier(0.68, -0.55, 0.265, 1.55);
 }
+.leaflet-center {
+  position: relative !important;
+  left: 0;
+  right: 0;
+  align-items: center;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+.leaflet-center .leaflet-control {
+  bottom: 0;
+}
+
+.leaflet-control-container .leaflet-control-bottomcenter {
+  position: absolute;
+  bottom: 25px;
+  left: 0;
+  right: 0;
+}
 /* latin-ext */
 @font-face {
   font-family: "Sacramento";
