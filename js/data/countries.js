@@ -43843,7 +43843,7 @@ export const COUNTRIES = [
         common: "法属波利尼西亚",
       },
     },
-    latlng: [17.6797, 149.4068],
+    latlng: [-17.6797, -149.4068],
     landlocked: false,
     area: 4167,
     demonyms: {
