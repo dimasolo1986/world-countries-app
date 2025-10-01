@@ -11160,7 +11160,7 @@ export const COUNTRIES = [
         common: "科科斯",
       },
     },
-    latlng: [12.1642, 96.871],
+    latlng: [-12.1642, 96.871],
     landlocked: false,
     area: 14,
     demonyms: {
