@@ -46293,7 +46293,7 @@ export const COUNTRIES = [
         common: "斯瓦尔巴特",
       },
     },
-    latlng: [78, 20],
+    latlng: [78.22, 15.63],
     landlocked: false,
     area: 61399,
     demonyms: {
