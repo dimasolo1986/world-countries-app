@@ -14847,7 +14847,7 @@ export const COUNTRIES = [
         common: "圣巴泰勒米",
       },
     },
-    latlng: [18.5, -63.41666666],
+    latlng: [17.88, -62.85],
     landlocked: false,
     area: 21,
     demonyms: {
