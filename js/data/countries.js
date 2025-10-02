@@ -8171,7 +8171,7 @@ export const COUNTRIES = [
         common: "图瓦卢",
       },
     },
-    latlng: [-8, 178],
+    latlng: [-8.52, 179.22],
     landlocked: false,
     area: 26,
     demonyms: {
@@ -32008,7 +32008,7 @@ export const COUNTRIES = [
         common: "汤加",
       },
     },
-    latlng: [-20, -175],
+    latlng: [-21.13, -175.2],
     landlocked: false,
     area: 747,
     demonyms: {
