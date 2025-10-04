@@ -561,6 +561,9 @@ export const localization = {
     "The game 'Guess Countries' helps to learn the location of countries in the world. Choose a given number of countries on the map. The computer will also choose the appropriate number of countries. Attempts to guess the countries take place in turn. The one who guesses the opponent's country gets an additional attempt. The winner is the one who first guesses all the opponent's countries. Follow the messages at the top of the screen after the game starts.":
       "Гра 'Вгадай Країни' допомагає вивчати розташування країн у світі. Оберіть задану кількість країн на мапі. Комп'ютер також обере відповідну кількість країн. Спроби відгадати країни відбуваються по черзі. Той, хто вгадав країну суперника отримує додаткову спробу. Виграє той, хто перший відгадає всі країни суперника. Слідкуйте за повідомленнями у верхній частині екрану після початку гри.",
     "Game Rules": "Правила Гри",
+    "Country Alliance Guesser Game": "Гра Вгадай Альянси Країн",
+    "project that helps to study the geography of the countries of the world, neighboring countries, flags and parts of the world in a game format. Choose ten different alliances of countries on the map, as    well as three trap-countries for your opponent. The computer will also choose the appropriate number of alliances of countries and trap-countries. The attempts to guess the countries take place in turn. The one who guesses the opponent's country gets an extra try. The one who guesses all the alliances of the opponent's countries first wins.":
+      "проект, який допомагає вивчати географію країн світу, сусідніх країн, прапорів та частин світу в ігровому форматі. Виберіть десять різних союзів країн на карті, а також три країни-пастки для вашого суперника. Комп'ютер також вибере відповідну кількість союзів країн та країн-пасток. Спроби вгадати країни відбуваються по черзі. Той, хто вгадає країну суперника, отримує додаткову спробу. Перемагає той, хто першим вгадає всі союзи країн суперника.",
     "Games:": "Ігри:",
     "You can't select a war aggressor country!":
       "Не можна вибрати країну-агресора!",
@@ -1282,6 +1285,9 @@ export const localization = {
     "You guessed": "You guessed",
     "Computer guessed": "Computer guessed",
     Play: "Play",
+    "Country Alliance Guesser Game": "Country Alliance Guesser Game",
+    "project that helps to study the geography of the countries of the world, neighboring countries, flags and parts of the world in a game format. Choose ten different alliances of countries on the map, as    well as three trap-countries for your opponent. The computer will also choose the appropriate number of alliances of countries and trap-countries. The attempts to guess the countries take place in turn. The one who guesses the opponent's country gets an extra try. The one who guesses all the alliances of the opponent's countries first wins.":
+      "project that helps to study the geography of the countries of the world, neighboring countries, flags and parts of the world in a game format. Choose ten different alliances of countries on the map, as    well as three trap-countries for your opponent. The computer will also choose the appropriate number of alliances of countries and trap-countries. The attempts to guess the countries take place in turn. The one who guesses the opponent's country gets an extra try. The one who guesses all the alliances of the opponent's countries first wins.",
     "Computer is guessing your country...":
       "Computer is guessing your country...",
     "Your attempt to guess opponent's country":
@@ -2014,6 +2020,9 @@ export const localization = {
     "If you like this project, you can share it with your friends or support it financially. Thank you!":
       "Wenn Ihnen dieses Projekt gefällt, können Sie es mit Ihren Freunden teilen oder finanziell unterstützen. Danke schön!",
     "Make Donate": "Jetzt Spenden",
+    "Country Alliance Guesser Game": "Spiel der Länderallianzen",
+    "project that helps to study the geography of the countries of the world, neighboring countries, flags and parts of the world in a game format. Choose ten different alliances of countries on the map, as    well as three trap-countries for your opponent. The computer will also choose the appropriate number of alliances of countries and trap-countries. The attempts to guess the countries take place in turn. The one who guesses the opponent's country gets an extra try. The one who guesses all the alliances of the opponent's countries first wins.":
+      "projekt, das hilft, die Geographie der Länder der Welt, Nachbarländer, Flaggen und Teile der Welt in einem Spielformat zu studieren. Wählen Sie zehn verschiedene Länderbündnisse auf der Karte sowie drei Fallenländer für Ihren Gegner. Der Computer wählt auch die entsprechende Anzahl von Länderbündnissen und Fallenländern aus. Die Versuche, die Länder zu erraten, finden reihum statt. Wer das Land des Gegners errät, erhält einen zusätzlichen Versuch. Wer zuerst alle Allianzen der gegnerischen Länder errät, hat gewonnen.",
     "QR Code": "QR Code",
     Time: "Zeit:",
     Share: "Teilen",
@@ -2799,6 +2808,9 @@ export const localization = {
       "L'ordinateur n'a pas réussi à deviner votre pays!",
     "Your Map": "Votre carte",
     "Computer Map": "Carte de l'ordinateur",
+    "Country Alliance Guesser Game": "Jeu des Alliances de Pays",
+    "project that helps to study the geography of the countries of the world, neighboring countries, flags and parts of the world in a game format. Choose ten different alliances of countries on the map, as    well as three trap-countries for your opponent. The computer will also choose the appropriate number of alliances of countries and trap-countries. The attempts to guess the countries take place in turn. The one who guesses the opponent's country gets an extra try. The one who guesses all the alliances of the opponent's countries first wins.":
+      "projet permettant d'étudier la géographie des pays du monde, de leurs voisins, de leurs drapeaux et de certaines régions du monde sous forme de jeu. Choisissez dix alliances de pays différentes sur la carte, ainsi que trois pays pièges pour votre adversaire. L'ordinateur choisira également le nombre approprié d'alliances de pays et de pays pièges. Les tentatives pour deviner les pays se déroulent à tour de rôle. Celui qui devine le pays de l'adversaire obtient un essai supplémentaire. Le premier à deviner toutes les alliances des pays adverses gagne.",
     "Countries to select: 5": "Pays à sélectionner: 5",
     "Countries to select: 10": "Pays à sélectionner: 10",
     "Countries to select: 15": "Pays à sélectionner: 15",
@@ -3536,6 +3548,9 @@ export const localization = {
     of: "de",
     Collapse: "Minimizar",
     "Guess Flag": "Adivina la Bandera:",
+    "Country Alliance Guesser Game": "Juego de Alianzas de Países",
+    "project that helps to study the geography of the countries of the world, neighboring countries, flags and parts of the world in a game format. Choose ten different alliances of countries on the map, as    well as three trap-countries for your opponent. The computer will also choose the appropriate number of alliances of countries and trap-countries. The attempts to guess the countries take place in turn. The one who guesses the opponent's country gets an extra try. The one who guesses all the alliances of the opponent's countries first wins.":
+      "un proyecto que te ayuda a estudiar la geografía de los países del mundo, sus vecinos, sus banderas y partes del mundo en formato de juego. Elige diez alianzas diferentes de países en el mapa, además de tres países trampa para tu oponente. La computadora también elegirá el número adecuado de alianzas y países trampa. Los intentos para adivinar los países se realizan por turnos. Quien adivine el país del oponente tiene un intento extra. Quien primero adivine todas las alianzas de países del oponente gana.",
     "Guess Countries Game": "Juego de Adivinar el País",
     "Press 'Play' to start game!": "Pulsa 'Jugar' para comenzar el juego!",
     "Failed attempt to guess country!": "¡Intento fallido de adivinar el país!",
@@ -4288,6 +4303,9 @@ export const localization = {
     Time: "Tempo:",
     Score: "Punteggio:",
     Share: "Condividi",
+    "Country Alliance Guesser Game": "Gioco delle Alleanze tra Paesi",
+    "project that helps to study the geography of the countries of the world, neighboring countries, flags and parts of the world in a game format. Choose ten different alliances of countries on the map, as    well as three trap-countries for your opponent. The computer will also choose the appropriate number of alliances of countries and trap-countries. The attempts to guess the countries take place in turn. The one who guesses the opponent's country gets an extra try. The one who guesses all the alliances of the opponent's countries first wins.":
+      "progetto che aiuta a studiare la geografia dei paesi del mondo, dei paesi confinanti, delle bandiere e di altre parti del mondo in un formato di gioco. Scegli dieci diverse alleanze di paesi sulla mappa, oltre a tre paesi-trappola per il tuo avversario. Il computer sceglierà anche il numero appropriato di alleanze di paesi e paesi-trappola. I tentativi di indovinare i paesi avvengono a turno. Chi indovina il paese dell'avversario ha un tentativo extra. Vince chi indovina per primo tutte le alleanze dei paesi dell'avversario.",
     "CORRECT ANSWERS:": "RISPOSTE CORRETTE:",
     "Correct Answers:": "Risposte Corrette:",
     "RATING:": "VALUTAZIONE:",

@@ -73,6 +73,12 @@ class aboutView {
   _aboutGuessCountryGameName = document.querySelector(
     ".about-guess-countries-game-name"
   );
+  _aboutGuessCountryAllianceGameName = document.querySelector(
+    ".about-country-alliance-guesser"
+  );
+  _aboutGuessCountryAllianceGameDescription = document.querySelector(
+    ".about-guess-countries-alliance-game-description"
+  );
   _aboutGuessCountryGameDescription = document.querySelector(
     ".about-guess-countries-game-description"
   );
@@ -306,6 +312,16 @@ class aboutView {
     this._aboutStatistic.textContent = `${
       localization[model.worldCountries.language][
         "Quiz Passing Statistics shows the last 50 quiz scores and ratings that were passed."
+      ]
+    }`;
+    this._aboutGuessCountryAllianceGameName.textContent = `${
+      localization[model.worldCountries.language][
+        "Country Alliance Guesser Game"
+      ]
+    }`;
+    this._aboutGuessCountryAllianceGameDescription.textContent = `${
+      localization[model.worldCountries.language][
+        "project that helps to study the geography of the countries of the world, neighboring countries, flags and parts of the world in a game format. Choose ten different alliances of countries on the map, as    well as three trap-countries for your opponent. The computer will also choose the appropriate number of alliances of countries and trap-countries. The attempts to guess the countries take place in turn. The one who guesses the opponent's country gets an extra try. The one who guesses all the alliances of the opponent's countries first wins."
       ]
     }`;
   }

@@ -382,6 +382,29 @@ class mapView {
       return new L.Control.StandWidthUkraine(opts);
     };
     L.control.standWidthUkraine({ position: "topright" }).addTo(this._map);
+    L.Control.CountriesGuesser = L.Control.extend({
+      onAdd: function (map) {
+        const link = L.DomUtil.create("a");
+        link.href = "https://www.countriesguesser.com";
+        link.style.opacity = "0.65";
+        link.style.cursor = "pointer";
+        link.style.boxShadow =
+          "0 2px 5px #00000080, inset 0 2px 10px #0000001f";
+        link.target = "_blank";
+        link.style.background = "#789";
+        link.style.color = "white";
+        link.style.textDecoration = "none";
+        link.style.padding = "2px";
+        link.style.borderRadius = "2px";
+        link.textContent = "www.countriesguesser.com";
+        return link;
+      },
+      onRemove: function (map) {},
+    });
+    L.control.countriesGuesser = function (opts) {
+      return new L.Control.CountriesGuesser(opts);
+    };
+    L.control.countriesGuesser({ position: "topright" }).addTo(this._map);
     this._weather = L.control
       .weather({
         position: "topright",
@@ -718,7 +741,7 @@ class mapView {
   _createMarkerIcon(country) {
     return L.icon({
       iconUrl: `${country.flags.png}`,
-      iconSize: [16, 16],
+      iconSize: [15, 15],
     });
   }
 

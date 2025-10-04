@@ -47,6 +47,9 @@ class GuessCountriesGame {
   _returnToMap = document.querySelector(
     "#return-to-world-map-guess-countries-game"
   );
+  _countryAllianceGuesserGame = document.querySelector(
+    ".country-alliance-guesser"
+  );
   _gameRulesContent = document.querySelector("#gameRulesContent");
   _startGameButton = document.querySelector("#start-guess-countries");
   _gameRulesButton = document.querySelector("#gameRulesButton");
@@ -1784,6 +1787,11 @@ class GuessCountriesGame {
     }`;
     this._gameRulesButton.textContent = `${
       localization[model.worldCountries.language]["Game Rules"]
+    }`;
+    this._countryAllianceGuesserGame.textContent = `${
+      localization[model.worldCountries.language][
+        "Country Alliance Guesser Game"
+      ]
     }`;
     this._gameRulesContent.textContent = `${
       localization[model.worldCountries.language][
