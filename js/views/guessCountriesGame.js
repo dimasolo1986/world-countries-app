@@ -1,6 +1,7 @@
 import { GEOGRAPHICAL_CENTER, WORLD_MAP_BOUNDS } from "../config.js";
 import * as model from "../model.js";
 import { COUNTRIES_GEO } from "../data/countries.geo.js";
+import { COUNTRY_BOUNDS } from "../data/countriesBounds.js";
 import {
   getRandomInt,
   removeCenterElementsMainLayout,
@@ -213,7 +214,15 @@ class GuessCountriesGame {
     this._gameStarted = true;
     const playButton = document.querySelector(".guess-country-game-play");
     playButton.disabled = true;
+    const cleanCountrySelection = document.getElementById(
+      "clean-user-countries-selection"
+    );
+    cleanCountrySelection.style.display = "none";
     const mapField = document.getElementById("map-field");
+    const selectedCountryField = document.getElementById(
+      "selected-country-field"
+    );
+    selectedCountryField.classList.add("not-displayed");
     mapField.textContent = `${
       localization[model.worldCountries.language]["Computer Map"]
     }`;
@@ -327,7 +336,7 @@ class GuessCountriesGame {
     }
   }
 
-  createMap(latLon, defaultZoomLevel = 2.35) {
+  createMap(latLon, defaultZoomLevel = 2.4) {
     if (this._guessCountriesMap && this._guessCountriesMap.remove) {
       this._guessCountriesMap.remove();
     }
@@ -408,6 +417,7 @@ class GuessCountriesGame {
       .setPosition("topleft")
       .addTo(this._guessCountriesMap);
     L.Control.UserSelectedCountriesField = L.Control.extend({
+      cleanFunction: this.cleanSelection.bind(this),
       countriesNumber: +this._countriesNumber,
       onAdd: function (map) {
         const container = L.DomUtil.create("div");
@@ -451,6 +461,21 @@ class GuessCountriesGame {
           container.appendChild(userCountriesContainer);
           countryIndex = countryIndex + 2;
         }
+        const clean = L.DomUtil.create("div");
+        clean.style.height = "25px";
+        clean.style.display = "flex";
+        clean.style.justifyContent = "center";
+        clean.style.alignItems = "center";
+        clean.style.cursor = "pointer";
+        clean.title = localization[model.worldCountries.language]["Clean"];
+        clean.id = "clean-user-countries-selection";
+        clean.style.borderTop = "1px dotted black";
+        clean.insertAdjacentHTML(
+          "afterbegin",
+          '<i class="fa-solid fa-trash"></i>'
+        );
+        clean.addEventListener("click", this.cleanFunction);
+        container.appendChild(clean);
         return container;
       },
       onRemove: function (map) {},
@@ -497,6 +522,7 @@ class GuessCountriesGame {
         const mapFiled = L.DomUtil.create("div");
         mapFiled.id = "map-field";
         mapFiled.style.backgroundColor = "white";
+        mapFiled.style.color = "darkblue";
         mapFiled.style.border = "rgba(0, 0, 0, 0.2) 0px solid";
         mapFiled.style.marginTop = "10px";
         mapFiled.style.paddingRight = "3px";
@@ -519,6 +545,34 @@ class GuessCountriesGame {
     };
     L.control
       .mapfield({ position: "topcenter" })
+      .addTo(this._guessCountriesMap);
+    L.Control.SelectedCountryField = L.Control.extend({
+      onAdd: function (map) {
+        const selectedCountryField = L.DomUtil.create("div");
+        selectedCountryField.id = "selected-country-field";
+        selectedCountryField.style.backgroundColor = "white";
+        selectedCountryField.style.boxShadow =
+          "0 2px 5px #00000080, inset 0 2px 10px #0000001f";
+        selectedCountryField.style.paddingRight = "3px";
+        selectedCountryField.style.paddingLeft = "3px";
+        selectedCountryField.style.paddingTop = "2px";
+        selectedCountryField.style.paddingBottom = "2px";
+        selectedCountryField.style.fontSize = "0.5rem";
+        selectedCountryField.style.opacity = "0.7";
+        selectedCountryField.style.borderRadius = "2px";
+        selectedCountryField.style.fontWeight = "bolder";
+        selectedCountryField.style.marginTop = "10px";
+        selectedCountryField.style.color = "darkblue";
+        selectedCountryField.innerHTML = "";
+        return selectedCountryField;
+      },
+      onRemove: function (map) {},
+    });
+    L.control.selectedcountryfield = function (opts) {
+      return new L.Control.SelectedCountryField(opts);
+    };
+    L.control
+      .selectedcountryfield({ position: "topcenter" })
       .addTo(this._guessCountriesMap);
     L.Control.CountriesField = L.Control.extend({
       countries: this._userAvailableCountriesNumber,
@@ -736,6 +790,11 @@ class GuessCountriesGame {
     this.addCountryBoundaries();
   }
 
+  cleanSelection() {
+    this.finishGame(false);
+    this.startGame();
+  }
+
   resetCountryBoundaries() {
     this._countryBondaries.forEach((item) => {
       this._userMarkerStyles[item.options.style.className] = {
@@ -802,10 +861,20 @@ class GuessCountriesGame {
 
   addAvailableCountriesPanel() {
     const setViewCountry = function (country) {
-      this._guessCountriesMap.setView(
-        country.latlng ? country.latlng : country.capitalLatLng,
-        4.5
+      const countryBound = COUNTRY_BOUNDS.find(
+        (bound) => country.countryName === bound.name
       );
+      if (countryBound) {
+        this._guessCountriesMap.fitBounds(countryBound.bounds, {
+          animate: false,
+        });
+      } else {
+        this._guessCountriesMap.setView(
+          country.latlng ? country.latlng : country.capitalLatLng,
+          4.5,
+          { animate: false }
+        );
+      }
     };
     const availableCountriesPanel = document.getElementById(
       "available-countries-panel"
@@ -856,7 +925,11 @@ class GuessCountriesGame {
     ) {
       if (!context._userGuessCountryAttempt) return;
       const playButton = document.querySelector(".guess-country-game-play");
+      const selectedCountryField = document.querySelector(
+        "#selected-country-field"
+      );
       if (!context._gameStarted) {
+        selectedCountryField.classList.remove("not-displayed");
         if (countryCode === "RU") {
           context._guessCountriesMessageField.textContent =
             localization[model.worldCountries.language][
@@ -884,6 +957,23 @@ class GuessCountriesGame {
         const country = context._countries.find(
           (country) => country.cca2 === countryCode
         );
+        selectedCountryField.innerHTML = `<span>${
+          localization[model.worldCountries.language]["You selected"]
+        }</span> <img src="${
+          country.countryFlag
+        }" style="margin-left:2px; width:18px; height:13px; border-radius:2px; box-shadow: 0 2px 5px #00000080, inset 0 2px 10px #0000001f; vertical-align: sub;"> <span style="margin-left:2px;color:${
+          country.countryName !== "Russia" ? "darkblue" : "red"
+        }">${
+          country.countryName !== "Russia"
+            ? localization[model.worldCountries.language]["countries"][
+                country.countryName
+              ]
+            : localization[model.worldCountries.language]["countries"][
+                country.countryName
+              ] +
+              " - " +
+              localization[model.worldCountries.language]["War Aggressor"]
+        }</span>`;
         if (!countryAlreadySelected) {
           context._userSelectedCountries.push(country);
           countryBoundary.setStyle({
@@ -998,6 +1088,7 @@ class GuessCountriesGame {
           });
         };
         if (countryAlreadySelected) {
+          selectedCountryField.innerHTML = "";
           removeCountryIfAlreadySelected(context, countryCode, countryBoundary);
         }
       } else {
@@ -1107,7 +1198,7 @@ class GuessCountriesGame {
             context.showGameResult(true);
             return;
           }
-          await context.sleep(1500);
+          await context.sleep(1200);
           if (popup) popup.close();
           context._guessCountriesMessageField.textContent =
             localization[model.worldCountries.language][
@@ -1146,8 +1237,8 @@ class GuessCountriesGame {
             weight: 1,
             color: "grey",
             fillColor: "grey",
-            fillOpacity: 0.5,
-            opacity: 0.8,
+            fillOpacity: 0,
+            opacity: 0,
             className: countryCode,
           };
           context._userMarkerStyles[countryCode] = {
@@ -1158,7 +1249,7 @@ class GuessCountriesGame {
               "Failed attempt to guess country!"
             ]
           }`;
-          await context.sleep(1500);
+          await context.sleep(1200);
           if (popup) popup.close();
           const computerAttemptToGuessCountry = async function (context) {
             context.disableMapInteraction();
@@ -1197,7 +1288,7 @@ class GuessCountriesGame {
             context._guessCountriesMap.fitBounds(WORLD_MAP_BOUNDS, {
               animate: false,
             });
-            await context.sleep(1500);
+            await context.sleep(700);
             const computerGuessedCountry =
               context.selectComputerRandomCountry();
             const computerCountryBoundary = context._countryBondaries.find(
@@ -1239,7 +1330,7 @@ class GuessCountriesGame {
               }
               context._userGuessCountryAttempt = false;
               if (+userCountriesNumber.textContent === 0) {
-                await context.sleep(1500);
+                await context.sleep(1200);
                 context.showGameResult(false);
                 return;
               }
@@ -1294,8 +1385,8 @@ class GuessCountriesGame {
                 weight: 1,
                 color: "grey",
                 fillColor: "grey",
-                fillOpacity: 0.5,
-                opacity: 0.8,
+                fillOpacity: 0,
+                opacity: 0,
                 className: computerCountryBoundary.options.style.className,
               };
               marker.setOpacity(0);
@@ -1308,8 +1399,19 @@ class GuessCountriesGame {
             const popup =
               context._popups[computerCountryBoundary.options.style.className];
             if (popup) popup.openOn(context._guessCountriesMap);
-            context._guessCountriesMap.setView(countryCoordinates, 4.5);
-            await context.sleep(1500);
+            const countryBound = COUNTRY_BOUNDS.find(
+              (bound) => computerGuessedCountry.countryName === bound.name
+            );
+            if (countryBound) {
+              context._guessCountriesMap.fitBounds(countryBound.bounds, {
+                animate: false,
+              });
+            } else {
+              context._guessCountriesMap.setView(countryCoordinates, 4.5, {
+                animate: false,
+              });
+            }
+            await context.sleep(1200);
             if (popup) popup.close();
             context._guessCountriesMap.fitBounds(WORLD_MAP_BOUNDS, {
               animate: false,
@@ -1370,15 +1472,24 @@ class GuessCountriesGame {
         const countryTooltip = L.tooltip(
           country.latlng ? country.latlng : country.capitalLatLng
         ).setContent(
-          country.countryName !== "Russia"
-            ? localization[model.worldCountries.language]["countries"][
-                country.countryName
-              ]
-            : localization[model.worldCountries.language]["countries"][
-                country.countryName
-              ] +
+          `<img src="${
+            country.countryFlag
+          }" style="width:20px; height:15px; box-shadow: 0 2px 5px #00000080,
+                                         inset 0 2px 10px #0000001f; border-radius: 2px; vertical-align: sub;"><span style="font-weight:bold; margin-left:5px;color:${
+                                           country.countryName !== "Russia"
+                                             ? "darkblue"
+                                             : "red"
+                                         }">${
+            country.countryName !== "Russia"
+              ? localization[model.worldCountries.language]["countries"][
+                  country.countryName
+                ]
+              : localization[model.worldCountries.language]["countries"][
+                  country.countryName
+                ] +
                 " - " +
                 localization[model.worldCountries.language]["War Aggressor"]
+          }</span>`
         );
         countryTooltip.options.sticky = true;
         const countryPopup = L.popup({ closeOnClick: false })

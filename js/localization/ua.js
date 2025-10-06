@@ -510,6 +510,8 @@ export const localization = {
     "If you like this project, you can share it with your friends or support it financially. Thank you!":
       "Якщо Вам подобається цей проект, Ви можете поділитись ним з друзями або підтримати фінансово. Дякую Вам!",
     "Make Donate": "Зробити Донат",
+    "You selected": "Ви вибрали",
+    Clean: "Очистити",
     "QR Code": "QR Код",
     "Guess Flag": "Вгадай Прапор:",
     "RETURN TO MAP": "ПОВЕРНУТИСЯ НА МАПУ",
@@ -1449,6 +1451,8 @@ export const localization = {
     "There Are No Quiz Passing Statistics...":
       "There Are No Quiz Passing Statistics...",
     Close: "Close",
+    Clean: "Clean",
+    "You selected": "You selected",
     "Full Screen": "Full Screen",
     "Exit Fullscreen Mode": "Exit Fullscreen Mode",
     START: "START",
@@ -2225,6 +2229,8 @@ export const localization = {
     "is the capital of": "ist die Hauptstadt von",
     "The capital of": "Die Hauptstadt von",
     Countries: "Länder",
+    "You selected": "Sie haben ausgewählt",
+    Clean: "Saubere",
     Wikipedia: "Wikipedia",
     Reset: "Zurücksetzen",
     Sort: "Sortieren",
@@ -2797,6 +2803,8 @@ export const localization = {
     "You guessed": "Vous l'avez deviné",
     "Computer guessed": "L'ordinateur a deviné",
     Play: "Jouer",
+    "You selected": "Vous avez sélectionné",
+    Clean: "Propre",
     "Already tried this country. Try another one!":
       "Ce pays a déjà été essayé. Essayez-en un autre!",
     "Already guessed this country. Try another one!":
@@ -3540,6 +3548,8 @@ export const localization = {
     "QR Code": "Código QR",
     Time: "Tiempo:",
     Score: "Puntuación:",
+    "You selected": "Usted seleccionó",
+    Clean: "Limpia",
     Share: "Compartir",
     "CORRECT ANSWERS:": "RESPUESTAS CORRECTAS:",
     "Correct Answers:": "Respuestas Correctas:",
@@ -4303,6 +4313,8 @@ export const localization = {
     Time: "Tempo:",
     Score: "Punteggio:",
     Share: "Condividi",
+    Clean: "Pulita",
+    "You selected": "Hai selezionato",
     "Country Alliance Guesser Game": "Gioco delle Alleanze tra Paesi",
     "project that helps to study the geography of the countries of the world, neighboring countries, flags and parts of the world in a game format. Choose ten different alliances of countries on the map, as    well as three trap-countries for your opponent. The computer will also choose the appropriate number of alliances of countries and trap-countries. The attempts to guess the countries take place in turn. The one who guesses the opponent's country gets an extra try. The one who guesses all the alliances of the opponent's countries first wins.":
       "progetto che aiuta a studiare la geografia dei paesi del mondo, dei paesi confinanti, delle bandiere e di altre parti del mondo in un formato di gioco. Scegli dieci diverse alleanze di paesi sulla mappa, oltre a tre paesi-trappola per il tuo avversario. Il computer sceglierà anche il numero appropriato di alleanze di paesi e paesi-trappola. I tentativi di indovinare i paesi avvengono a turno. Chi indovina il paese dell'avversario ha un tentativo extra. Vince chi indovina per primo tutte le alleanze dei paesi dell'avversario.",

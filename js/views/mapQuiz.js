@@ -487,9 +487,10 @@ class MapQuiz {
       item.resetStyle();
       item.setStyle({
         weight: 1,
-        fillColor: "#3388ff",
-        fillOpacity: 0.2,
-        opacity: 1,
+        fillOpacity: 0.1,
+        fillColor: "grey",
+        color: "grey",
+        opacity: 0.5,
       });
       item.bringToBack();
     });
@@ -698,9 +699,11 @@ class MapQuiz {
         const countryBoundary = L.geoJson(countryGeo, {
           style: {
             weight: 1,
-            fillOpacity: 0.2,
+            fillOpacity: 0.1,
+            color: "grey",
+            fillColor: "grey",
             className: countryCode,
-            opacity: 1,
+            opacity: 0.5,
           },
           onEachFeature: function (feature, countryBoundary) {
             countryBoundary.on("mouseover", function () {
@@ -709,8 +712,10 @@ class MapQuiz {
             const mouseOver = function (countryBoundary, context) {
               if (!context._alreadyCountrySelected) {
                 countryBoundary.setStyle({
-                  weight: 3,
-                  fillOpacity: 0.5,
+                  weight: 2,
+                  fillOpacity: 0.7,
+                  fillColor: "#3388ff",
+                  color: "#3388ff",
                   opacity: 1,
                   className: countryCode,
                 });
@@ -724,8 +729,10 @@ class MapQuiz {
               if (!context._alreadyCountrySelected) {
                 countryBoundary.setStyle({
                   weight: 1,
-                  fillOpacity: 0.2,
-                  opacity: 1,
+                  fillOpacity: 0.1,
+                  fillColor: "grey",
+                  color: "grey",
+                  opacity: 0.5,
                   className: countryCode,
                 });
                 countryBoundary.bringToBack();
