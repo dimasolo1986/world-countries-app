@@ -197,6 +197,20 @@ class GuessCountriesGame {
     }
   }
 
+  selectUserRandomCountries(countiesList) {
+    const randomIndex = getRandomInt(0, countiesList.length - 1);
+    const computerCountry = countiesList[randomIndex];
+    while (
+      this._userSelectedCountries.length < this._countriesNumber &&
+      !this._userSelectedCountries.includes(computerCountry) &&
+      computerCountry.countryName !== "Russia"
+    ) {
+      this._userSelectedCountries.push(computerCountry);
+      countiesList.splice(randomIndex, 1);
+      this.selectUserRandomCountries(countiesList);
+    }
+  }
+
   selectComputerRandomCountry() {
     const randomIndex = getRandomInt(0, this._computerCountries.length - 1);
     const computerCountry = this._computerCountries[randomIndex];
@@ -218,6 +232,10 @@ class GuessCountriesGame {
       "clean-user-countries-selection"
     );
     cleanCountrySelection.style.display = "none";
+    const randomCountrySelection = document.getElementById(
+      "random-user-countries-selection"
+    );
+    randomCountrySelection.style.display = "none";
     const mapField = document.getElementById("map-field");
     const selectedCountryField = document.getElementById(
       "selected-country-field"
@@ -418,6 +436,7 @@ class GuessCountriesGame {
       .addTo(this._guessCountriesMap);
     L.Control.UserSelectedCountriesField = L.Control.extend({
       cleanFunction: this.cleanSelection.bind(this),
+      randomFunction: this.randomUserCountriesSelection.bind(this),
       countriesNumber: +this._countriesNumber,
       onAdd: function (map) {
         const container = L.DomUtil.create("div");
@@ -461,6 +480,23 @@ class GuessCountriesGame {
           container.appendChild(userCountriesContainer);
           countryIndex = countryIndex + 2;
         }
+        const random = L.DomUtil.create("div");
+        random.style.height = "25px";
+        random.style.display = "flex";
+        random.style.justifyContent = "center";
+        random.style.alignItems = "center";
+        random.style.cursor = "pointer";
+        random.title =
+          localization[model.worldCountries.language][
+            "Random Countries Selection"
+          ];
+        random.id = "random-user-countries-selection";
+        random.style.borderTop = "1px dotted black";
+        random.insertAdjacentHTML(
+          "afterbegin",
+          '<i class="fa-solid fa-dice"></i>'
+        );
+        random.addEventListener("click", this.randomFunction);
         const clean = L.DomUtil.create("div");
         clean.style.height = "25px";
         clean.style.display = "flex";
@@ -475,6 +511,7 @@ class GuessCountriesGame {
           '<i class="fa-solid fa-trash"></i>'
         );
         clean.addEventListener("click", this.cleanFunction);
+        container.appendChild(random);
         container.appendChild(clean);
         return container;
       },
@@ -670,7 +707,7 @@ class GuessCountriesGame {
         guessedNotGuessedPanel.style.opacity = "0.7";
         guessedNotGuessedPanel.style.borderRadius = "2px";
         guessedNotGuessedPanel.style.border = "0px solid rgba(0,0,0,0.2)";
-        guessedNotGuessedPanel.style.marginTop = "10px";
+        guessedNotGuessedPanel.style.marginTop = "5px";
         guessedNotGuessedPanel.style.padding = "3px";
         guessedNotGuessedPanel.style.boxShadow =
           "0 2px 5px #00000080, inset 0 2px 10px #0000001f";
@@ -736,7 +773,7 @@ class GuessCountriesGame {
         container.id = "computer-selected-countries-container";
         container.classList.add("text-center");
         container.style.width = "50px";
-        container.style.marginTop = "12px";
+        container.style.marginTop = "8px";
         container.style.backgroundColor = "white";
         container.style.opacity = "0.7";
         container.style.borderRadius = "2px";
@@ -793,6 +830,56 @@ class GuessCountriesGame {
   cleanSelection() {
     this.finishGame(false);
     this.startGame();
+  }
+
+  randomUserCountriesSelection() {
+    this.cleanSelection();
+    const userCountryList = this._countries.slice();
+    this.selectUserRandomCountries(userCountryList);
+    const userCountriesNumber = document.getElementById(
+      "user-countries-number"
+    );
+    if (userCountriesNumber) {
+      userCountriesNumber.textContent = this._userSelectedCountries.length;
+    }
+    this._userSelectedCountries.forEach((country, index) => {
+      const countryBoundary = this._countryBondaries.find(
+        (item) => item.options.style.className === country.cca2
+      );
+      if (countryBoundary) {
+        countryBoundary.setStyle({
+          weight: 1,
+          color: "green",
+          fillColor: "green",
+          fillOpacity: 0.5,
+          opacity: 0.8,
+          className: country.cca2,
+        });
+      }
+      const userCountryElemnt = document.getElementById(
+        `userCountry${index + 1}`
+      );
+      if (userCountryElemnt) {
+        userCountryElemnt.innerHTML = `<img id="${country.cca2}" src="${
+          country.countryFlag
+        }" alt="${
+          localization[model.worldCountries.language]["countries"][
+            country.countryName
+          ]
+        }" title="${
+          localization[model.worldCountries.language]["countries"][
+            country.countryName
+          ]
+        }" style="width:13px; height:13px;border:solid 1px grey; border-radius:50%; display:inline-block;vertical-align:baseline; box-shadow: 0 2px 5px #00000080,
+                            inset 0 2px 10px #0000001f;">`;
+      }
+    });
+    this._guessCountriesMessageField.textContent =
+      localization[model.worldCountries.language][
+        "Press 'Play' to start game!"
+      ];
+    const playButton = document.querySelector(".guess-country-game-play");
+    playButton.disabled = false;
   }
 
   resetCountryBoundaries() {

@@ -510,6 +510,7 @@ export const localization = {
     "If you like this project, you can share it with your friends or support it financially. Thank you!":
       "Якщо Вам подобається цей проект, Ви можете поділитись ним з друзями або підтримати фінансово. Дякую Вам!",
     "Make Donate": "Зробити Донат",
+    "Random Countries Selection": "Випадковий Вибір Країн",
     "You selected": "Ви вибрали",
     Clean: "Очистити",
     "QR Code": "QR Код",
@@ -1277,6 +1278,7 @@ export const localization = {
     of: "of",
     "Guess Flag": "Guess Flag:",
     "Guess Countries Game": "Guess Countries Game",
+    "Random Countries Selection": "Random Countries Selection",
     "Press 'Play' to start game!": "Press 'Play' to start game!",
     "Failed attempt to guess country!": "Failed attempt to guess country!",
     "Already guessed this country. Try another one!":
@@ -2024,6 +2026,7 @@ export const localization = {
     "If you like this project, you can share it with your friends or support it financially. Thank you!":
       "Wenn Ihnen dieses Projekt gefällt, können Sie es mit Ihren Freunden teilen oder finanziell unterstützen. Danke schön!",
     "Make Donate": "Jetzt Spenden",
+    "Random Countries Selection": "Zufällige Länderauswahl",
     "Country Alliance Guesser Game": "Spiel der Länderallianzen",
     "project that helps to study the geography of the countries of the world, neighboring countries, flags and parts of the world in a game format. Choose ten different alliances of countries on the map, as    well as three trap-countries for your opponent. The computer will also choose the appropriate number of alliances of countries and trap-countries. The attempts to guess the countries take place in turn. The one who guesses the opponent's country gets an extra try. The one who guesses all the alliances of the opponent's countries first wins.":
       "projekt, das hilft, die Geographie der Länder der Welt, Nachbarländer, Flaggen und Teile der Welt in einem Spielformat zu studieren. Wählen Sie zehn verschiedene Länderbündnisse auf der Karte sowie drei Fallenländer für Ihren Gegner. Der Computer wählt auch die entsprechende Anzahl von Länderbündnissen und Fallenländern aus. Die Versuche, die Länder zu erraten, finden reihum statt. Wer das Land des Gegners errät, erhält einen zusätzlichen Versuch. Wer zuerst alle Allianzen der gegnerischen Länder errät, hat gewonnen.",
@@ -2785,6 +2788,7 @@ export const localization = {
       "Si vous aimez ce projet, vous pouvez le partager avec vos amis ou le soutenir financièrement. Merci!",
     "Make Donate": "Faire un Don",
     "QR Code": "QR Code",
+    "Random Countries Selection": "Sélection aléatoire de pays",
     Time: "Temps:",
     Score: "Score:",
     Share: "Partager",
@@ -3549,6 +3553,7 @@ export const localization = {
     Time: "Tiempo:",
     Score: "Puntuación:",
     "You selected": "Usted seleccionó",
+    "Random Countries Selection": "Selección aleatoria de países",
     Clean: "Limpia",
     Share: "Compartir",
     "CORRECT ANSWERS:": "RESPUESTAS CORRECTAS:",
@@ -4315,6 +4320,7 @@ export const localization = {
     Share: "Condividi",
     Clean: "Pulita",
     "You selected": "Hai selezionato",
+    "Random Countries Selection": "Selezione casuale dei paesi",
     "Country Alliance Guesser Game": "Gioco delle Alleanze tra Paesi",
     "project that helps to study the geography of the countries of the world, neighboring countries, flags and parts of the world in a game format. Choose ten different alliances of countries on the map, as    well as three trap-countries for your opponent. The computer will also choose the appropriate number of alliances of countries and trap-countries. The attempts to guess the countries take place in turn. The one who guesses the opponent's country gets an extra try. The one who guesses all the alliances of the opponent's countries first wins.":
       "progetto che aiuta a studiare la geografia dei paesi del mondo, dei paesi confinanti, delle bandiere e di altre parti del mondo in un formato di gioco. Scegli dieci diverse alleanze di paesi sulla mappa, oltre a tre paesi-trappola per il tuo avversario. Il computer sceglierà anche il numero appropriato di alleanze di paesi e paesi-trappola. I tentativi di indovinare i paesi avvengono a turno. Chi indovina il paese dell'avversario ha un tentativo extra. Vince chi indovina per primo tutte le alleanze dei paesi dell'avversario.",

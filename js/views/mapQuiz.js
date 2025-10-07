@@ -486,7 +486,7 @@ class MapQuiz {
     this._countryBondaries.forEach((item) => {
       item.resetStyle();
       item.setStyle({
-        weight: 1,
+        weight: 1.5,
         fillOpacity: 0.1,
         fillColor: "grey",
         color: "grey",
@@ -698,7 +698,7 @@ class MapQuiz {
         );
         const countryBoundary = L.geoJson(countryGeo, {
           style: {
-            weight: 1,
+            weight: 1.5,
             fillOpacity: 0.1,
             color: "grey",
             fillColor: "grey",
@@ -728,7 +728,7 @@ class MapQuiz {
             const mouseOut = function (countryBoundary, context) {
               if (!context._alreadyCountrySelected) {
                 countryBoundary.setStyle({
-                  weight: 1,
+                  weight: 1.5,
                   fillOpacity: 0.1,
                   fillColor: "grey",
                   color: "grey",
