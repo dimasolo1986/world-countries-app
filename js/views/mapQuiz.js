@@ -363,7 +363,7 @@ class MapQuiz {
     return currentQuestionNumber;
   }
 
-  createMap(latLon, defaultZoomLevel = 1.8) {
+  createMap(latLon, defaultZoomLevel = 1.9) {
     if (!this._map) {
       function centerMap(e) {
         this._map.panTo(e.latlng);
