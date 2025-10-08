@@ -707,7 +707,7 @@ class GuessCountriesGame {
         guessedNotGuessedPanel.style.opacity = "0.7";
         guessedNotGuessedPanel.style.borderRadius = "2px";
         guessedNotGuessedPanel.style.border = "0px solid rgba(0,0,0,0.2)";
-        guessedNotGuessedPanel.style.marginTop = "5px";
+        guessedNotGuessedPanel.style.marginTop = "10px";
         guessedNotGuessedPanel.style.padding = "3px";
         guessedNotGuessedPanel.style.boxShadow =
           "0 2px 5px #00000080, inset 0 2px 10px #0000001f";
@@ -773,7 +773,7 @@ class GuessCountriesGame {
         container.id = "computer-selected-countries-container";
         container.classList.add("text-center");
         container.style.width = "50px";
-        container.style.marginTop = "8px";
+        container.style.marginTop = "12px";
         container.style.backgroundColor = "white";
         container.style.opacity = "0.7";
         container.style.borderRadius = "2px";

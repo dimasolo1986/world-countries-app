@@ -877,15 +877,24 @@ class mapView {
         })
         .addTo(this._map)
         .bindTooltip(
-          country.name.common !== "Russia"
-            ? localization[model.worldCountries.language]["countries"][
-                country.name.common
-              ]
-            : localization[model.worldCountries.language]["countries"][
-                country.name.common
-              ] +
+          `<img src="${
+            country.flags.png
+          }" style="width:20px; height:15px; box-shadow: 0 2px 5px #00000080,
+                                         inset 0 2px 10px #0000001f; border-radius: 2px; vertical-align: sub;"><span style="font-weight:bold; margin-left:5px;color:${
+                                           country.name.common !== "Russia"
+                                             ? "darkblue"
+                                             : "red"
+                                         }">${
+            country.name.common !== "Russia"
+              ? localization[model.worldCountries.language]["countries"][
+                  country.name.common
+                ]
+              : localization[model.worldCountries.language]["countries"][
+                  country.name.common
+                ] +
                 " - " +
                 localization[model.worldCountries.language]["War Aggressor"]
+          }</span>`
         )
         .bindPopup(
           L.popup({
