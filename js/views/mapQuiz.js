@@ -762,7 +762,8 @@ class MapQuiz {
           country.independent &&
           country.area > 15000 &&
           country.subregion !== "Polynesia" &&
-          country.subregion !== "Melanesia"
+          country.subregion !== "Melanesia" &&
+          country.name.common !== "Russia"
       );
   }
 

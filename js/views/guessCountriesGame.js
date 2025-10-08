@@ -150,7 +150,9 @@ class GuessCountriesGame {
     this._userAvailableCountriesNumber = this._countries.length;
     this._computerAvailableCountriesNumber = this._countries.length;
     this._computerCountries = this._countries.slice();
-    const computerCountryList = this._countries.slice();
+    const computerCountryList = this._countries
+      .slice()
+      .filter((country) => country.countryName !== "Russia");
     this.selectComputerRandomCountries(computerCountryList);
     this.createMap(GEOGRAPHICAL_CENTER);
     this._guessCountriesMessageField = document.querySelector(
@@ -188,8 +190,7 @@ class GuessCountriesGame {
     const computerCountry = countiesList[randomIndex];
     while (
       this._computerSelectedCountries.length < this._countriesNumber &&
-      !this._computerSelectedCountries.includes(computerCountry) &&
-      computerCountry.countryName !== "Russia"
+      !this._computerSelectedCountries.includes(computerCountry)
     ) {
       this._computerSelectedCountries.push(computerCountry);
       countiesList.splice(randomIndex, 1);
@@ -202,8 +203,7 @@ class GuessCountriesGame {
     const computerCountry = countiesList[randomIndex];
     while (
       this._userSelectedCountries.length < this._countriesNumber &&
-      !this._userSelectedCountries.includes(computerCountry) &&
-      computerCountry.countryName !== "Russia"
+      !this._userSelectedCountries.includes(computerCountry)
     ) {
       this._userSelectedCountries.push(computerCountry);
       countiesList.splice(randomIndex, 1);
@@ -834,7 +834,9 @@ class GuessCountriesGame {
 
   randomUserCountriesSelection() {
     this.cleanSelection();
-    const userCountryList = this._countries.slice();
+    const userCountryList = this._countries
+      .slice()
+      .filter((country) => country.countryName !== "Russia");
     this.selectUserRandomCountries(userCountryList);
     const userCountriesNumber = document.getElementById(
       "user-countries-number"
