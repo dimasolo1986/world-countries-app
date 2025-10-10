@@ -44,6 +44,7 @@ class topNavigationView {
   );
   _countryOnMapQuizLink = document.querySelector("#country-on-map-quiz-link");
   _aboutLink = document.querySelector("#about");
+  _videosLink = document.querySelector("#videos-link");
   _statisticLink = document.querySelector("#statistic");
   _flagsLink = document.querySelector("#countries-flags-link");
   _donateLink = document.querySelector("#donate-author");
@@ -68,6 +69,9 @@ class topNavigationView {
           break;
         case "about-project":
           this._aboutLink.closest("li").style.backgroundColor = "lightgrey";
+          break;
+        case "videos":
+          this._videosLink.closest("li").style.backgroundColor = "lightgrey";
           break;
         case "statistic":
           this._statisticLink.closest("li").style.backgroundColor = "lightgrey";
@@ -225,6 +229,21 @@ class topNavigationView {
       .addEventListener("click", handlerAboutClick.bind(this, this._aboutLink));
   }
 
+  addHandlerVideosClick(handler) {
+    const handlerVideosClick = function (link) {
+      this.resetItemMenuStyle();
+      link.closest("li").style.backgroundColor = "lightgrey";
+      sessionStorage.setItem("currentWindow", "videos");
+      handler();
+    };
+    this._videosLink
+      .closest("li")
+      .addEventListener(
+        "click",
+        handlerVideosClick.bind(this, this._videosLink)
+      );
+  }
+
   addHandlerStatisticClick(handler) {
     const handlerStatisticClick = function (link) {
       this.resetItemMenuStyle();
@@ -324,6 +343,9 @@ class topNavigationView {
     }`;
     this._aboutLink.textContent = `${
       localization[model.worldCountries.language]["About Project"]
+    }`;
+    this._videosLink.textContent = `${
+      localization[model.worldCountries.language]["Videos"]
     }`;
     this._statisticLink.textContent = `${
       localization[model.worldCountries.language]["Quiz Passing Statistics"]

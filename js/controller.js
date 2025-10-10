@@ -9,6 +9,7 @@ import mapQuiz from "./views/mapQuiz.js";
 import aboutView from "./views/aboutView.js";
 import statisticView from "./views/statisticView.js";
 import flagsView from "./views/flagsView.js";
+import videosView from "./views/videosView.js";
 import donateAuthorView from "./views/donateAuthorView.js";
 import guessCountriesGame from "./views/guessCountriesGame.js";
 import { localization } from "./localization/ua.js";
@@ -42,6 +43,7 @@ const init = function () {
   languageSelectView.addHandlerSelect(languageSelectHandler);
   topNavigationView.addHandlerWorldMapClick(worldMapHandlerClick);
   topNavigationView.addHandlerAboutClick(aboutProjectHandlerClick);
+  topNavigationView.addHandlerVideosClick(videosProjectHandlerClick);
   topNavigationView.addHandlerStatisticClick(statisticHandlerClick);
   topNavigationView.addHandlerFlagsClick(flagsHandlerClick);
   topNavigationView.addHandlerDonateAuthorClick(donateAuthorClick);
@@ -49,6 +51,12 @@ const init = function () {
   topNavigationView.addHandlerQuizClick(quizSelectionHandler);
   topNavigationView.initItemMenuStyle();
   aboutView.addReturnToMapHandlerClick(
+    mapView,
+    sideNavigationView,
+    topNavigationView,
+    countriesSelectView
+  );
+  videosView.addReturnToMapHandlerClick(
     mapView,
     sideNavigationView,
     topNavigationView,
@@ -172,6 +180,9 @@ const loadWindow = function () {
       case "flags":
         loadFlags();
         break;
+      case "videos":
+        loadVideos();
+        break;
       default:
         loadQuiz(savedWindow);
         break;
@@ -190,6 +201,7 @@ const loadWorldMap = function () {
   statisticView.hideStatistic();
   donateAuthorView.hideDonateProject();
   flagsView.hideFlags();
+  videosView.hideVideosProject();
   guessCountriesGame.hideGame();
   countriesSelectView.enableCountriesSelect();
   mapView.setMapViewToBounds(WORLD_MAP_BOUNDS);
@@ -212,6 +224,7 @@ const loadAboutProject = function () {
   donateAuthorView.hideDonateProject();
   countriesSelectView.disableCountriesSelect();
   statisticView.hideStatistic();
+  videosView.hideVideosProject();
   flagsView.hideFlags();
   guessCountriesGame.hideGame();
   aboutView.showAboutProjectInfo();
@@ -229,6 +242,7 @@ const loadStatistic = function () {
   countriesSelectView.disableCountriesSelect();
   aboutView.hideAboutProject();
   statisticView.showStatistic();
+  videosView.hideVideosProject();
   flagsView.hideFlags();
   guessCountriesGame.hideGame();
   statisticView.renderStatisticData();
@@ -245,6 +259,7 @@ const loadDonateAuthor = function () {
   countriesSelectView.disableCountriesSelect();
   aboutView.hideAboutProject();
   statisticView.hideStatistic();
+  videosView.hideVideosProject();
   donateAuthorView.showDonateInfo();
   guessCountriesGame.hideGame();
   flagsView.hideFlags();
@@ -260,6 +275,7 @@ const loadGuessCountriesGame = function () {
   mapQuiz.hideQuiz();
   countriesSelectView.disableCountriesSelect();
   aboutView.hideAboutProject();
+  videosView.hideVideosProject();
   statisticView.hideStatistic();
   donateAuthorView.hideDonateProject();
   guessCountriesGame.showGame();
@@ -274,6 +290,23 @@ const loadGuessCountriesGame = function () {
   topNavigationView.disableSideBarToggle();
 };
 
+const loadVideos = function () {
+  removeCenterElementsMainLayout();
+  removeCardQuizStartContainer();
+  mapView.hideMap();
+  quiz.hideQuiz();
+  mapQuiz.hideQuiz();
+  donateAuthorView.hideDonateProject();
+  countriesSelectView.disableCountriesSelect();
+  statisticView.hideStatistic();
+  videosView.showVideosProjectInfo();
+  flagsView.hideFlags();
+  aboutView.hideAboutProject();
+  guessCountriesGame.hideGame();
+  topNavigationView.hideSideNavigation();
+  topNavigationView.disableSideBarToggle();
+};
+
 const loadFlags = function () {
   removeCenterElementsMainLayout();
   removeCardQuizStartContainer();
@@ -284,6 +317,7 @@ const loadFlags = function () {
   aboutView.hideAboutProject();
   statisticView.hideStatistic();
   donateAuthorView.hideDonateProject();
+  videosView.hideVideosProject();
   guessCountriesGame.hideGame();
   flagsView.showFlags();
   flagsView.setFlagsRegionDefaultValue();
@@ -297,6 +331,7 @@ const loadQuiz = function (quizId) {
   countriesSelectView.disableCountriesSelect();
   aboutView.hideAboutProject();
   statisticView.hideStatistic();
+  videosView.hideVideosProject();
   flagsView.hideFlags();
   guessCountriesGame.hideGame();
   donateAuthorView.hideDonateProject();
@@ -337,6 +372,10 @@ const aboutProjectHandlerClick = function () {
   loadAboutProject();
 };
 
+const videosProjectHandlerClick = function () {
+  loadVideos();
+};
+
 const statisticHandlerClick = function () {
   loadStatistic();
 };
@@ -369,6 +408,7 @@ const translateAllElements = function () {
   flagsView.translateElements();
   donateAuthorView.translateElements();
   guessCountriesGame.translateElements();
+  videosView.translateElements();
 };
 
 const languageSelectHandler = function (language) {
