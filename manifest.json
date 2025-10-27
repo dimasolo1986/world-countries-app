@@ -3,7 +3,7 @@
   "short_name": "Countries Quiz",
   "description": "Guess countries, flags, capitals, coat of arms! Fun geography quizzes and games for all ages.",
   "start_url": "/?source=pwa",
-  "id": "https://www.worldcountriesquiz.com/?source=pwa",
+  "id": "/",
   "display": "standalone",
   "background_color": "#99d9f2",
   "theme_color": "#2b5797",

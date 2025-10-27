@@ -90,17 +90,39 @@ self.addEventListener("activate", (event) => {
 });
 
 self.addEventListener("fetch", (event) => {
+  const { request } = event;
+  if (!request.url.startsWith(self.location.origin)) return;
   event.respondWith(
-    caches.match(event.request).then((cachedResponse) => {
-      if (cachedResponse) {
-        return cachedResponse;
-      }
+    caches.match(request).then((cachedResponse) => {
+      if (cachedResponse) return cachedResponse;
 
-      return fetch(event.request).catch(() => {
-        if (event.request.mode === "navigate") {
-          return caches.match("/offline.html");
-        }
-      });
+      return fetch(request)
+        .then((networkResponse) => {
+          if (
+            networkResponse &&
+            networkResponse.ok &&
+            networkResponse.status === 200
+          ) {
+            const copy = networkResponse.clone();
+            caches
+              .open(CACHE_NAME)
+              .then((cache) => cache.put(request, copy))
+              .catch((err) => {});
+          }
+          return networkResponse;
+        })
+        .catch(() => {
+          if (request.mode === "navigate") {
+            return caches.match(OFFLINE_URL);
+          }
+          return new Response("", { status: 503, statusText: "Offline" });
+        });
     })
   );
+});
+
+self.addEventListener("message", (event) => {
+  if (event.data === "SKIP_WAITING") {
+    self.skipWaiting();
+  }
 });
