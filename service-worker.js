@@ -92,7 +92,7 @@ self.addEventListener("activate", (event) => {
 self.addEventListener("fetch", (event) => {
   const { request } = event;
   if (!request.url.startsWith(self.location.origin)) return;
-  if (url.endsWith(".mp4")) return;
+  if (request.url.endsWith(".mp4")) return;
   event.respondWith(
     caches.match(request).then((cachedResponse) => {
       if (cachedResponse) return cachedResponse;
