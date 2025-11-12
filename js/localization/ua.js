@@ -507,8 +507,8 @@ export const localization = {
     Score: "Рахунок: ",
     Share: "Поділитися",
     "Support Project": "Підтримати Проект",
-    "If you like this project, you can share it with your friends or support it financially. Thank you!":
-      "Якщо Вам подобається цей проект, Ви можете поділитись ним з друзями або підтримати фінансово. Дякую Вам!",
+    "If you like this project, you can share it with your friends or support it financially (money is spent on the development of educational projects and support for Ukraine's right to exist on the world map). Thank you!":
+      "Якщо Вам подобається цей проект, Ви можете поділитись ним з друзями або підтримати фінансово (гроші витрачаються на розвиток освітніх проектів та підтримку права України існувати на мапі світу). Дякую Вам!",
     "Make Donate": "Зробити Донат",
     "Random Countries Selection": "Випадковий Вибір Країн",
     "You selected": "Ви вибрали",
@@ -1269,8 +1269,8 @@ export const localization = {
     Score: "Score:",
     Share: "Share",
     "Support Project": "Support Project",
-    "If you like this project, you can share it with your friends or support it financially. Thank you!":
-      "If you like this project, you can share it with your friends or support it financially. Thank you!",
+    "If you like this project, you can share it with your friends or support it financially (money is spent on the development of educational projects and support for Ukraine's right to exist on the world map). Thank you!":
+      "If you like this project, you can share it with your friends or support it financially (money is spent on the development of educational projects and support for Ukraine's right to exist on the world map). Thank you!",
     "Make Donate": "Make Donate",
     "QR Code": "QR Code",
     "CORRECT ANSWERS:": "CORRECT ANSWERS:",
@@ -2029,8 +2029,8 @@ export const localization = {
     "VIDEOS:": "VIDEOS:",
     Videos: "Videos",
     "Support Project": "Projekt Unterstützen",
-    "If you like this project, you can share it with your friends or support it financially. Thank you!":
-      "Wenn Ihnen dieses Projekt gefällt, können Sie es mit Ihren Freunden teilen oder finanziell unterstützen. Danke schön!",
+    "If you like this project, you can share it with your friends or support it financially (money is spent on the development of educational projects and support for Ukraine's right to exist on the world map). Thank you!":
+      "Wenn Ihnen dieses Projekt gefällt, können Sie es mit Ihren Freunden teilen oder finanziell unterstützen (Das Geld wird für die Entwicklung von Bildungsprojekten und die Unterstützung des Existenzrechts der Ukraine auf der Weltkarte ausgegeben). Danke schön!",
     "Make Donate": "Jetzt Spenden",
     "Random Countries Selection": "Zufällige Länderauswahl",
     "Country Alliance Guesser Game": "Spiel der Länderallianzen",
@@ -2790,8 +2790,8 @@ export const localization = {
     Points: "Points",
     SCORE: "SCORE:",
     "Support Project": "Soutenir le Projet",
-    "If you like this project, you can share it with your friends or support it financially. Thank you!":
-      "Si vous aimez ce projet, vous pouvez le partager avec vos amis ou le soutenir financièrement. Merci!",
+    "If you like this project, you can share it with your friends or support it financially (money is spent on the development of educational projects and support for Ukraine's right to exist on the world map). Thank you!":
+      "Si vous aimez ce projet, vous pouvez le partager avec vos amis ou le soutenir financièrement (l'argent est dépensé pour le développement de projets éducatifs et pour soutenir le droit de l'Ukraine à exister sur la carte du monde). Merci!",
     "Make Donate": "Faire un Don",
     "QR Code": "QR Code",
     "Random Countries Selection": "Sélection aléatoire de pays",
@@ -3554,8 +3554,8 @@ export const localization = {
     Points: "Puntos",
     SCORE: "PUNTUACIÓN:",
     "Support Project": "Apoyar el Proyecto",
-    "If you like this project, you can share it with your friends or support it financially. Thank you!":
-      "Si te gusta este proyecto, puedes compartirlo con tus amigos o apoyarlo económicamente. Gracias!",
+    "If you like this project, you can share it with your friends or support it financially (money is spent on the development of educational projects and support for Ukraine's right to exist on the world map). Thank you!":
+      "Si te gusta este proyecto, puedes compartirlo con tus amigos o apoyarlo económicamente (El dinero se gasta en desarrollar proyectos educativos y apoyar el derecho de Ucrania a existir en el mapa mundial). Gracias!",
     "Make Donate": "Hacer una Donación",
     "QR Code": "Código QR",
     "VIDEOS:": "VIDEOS:",
@@ -4321,8 +4321,8 @@ export const localization = {
     Points: "Punti",
     SCORE: "PUNTEGGIO:",
     "Support Project": "Sostieni il Progetto",
-    "If you like this project, you can share it with your friends or support it financially. Thank you!":
-      "Se ti piace questo progetto, puoi condividerlo con i tuoi amici o sostenerlo economicamente. Grazie!",
+    "If you like this project, you can share it with your friends or support it financially (money is spent on the development of educational projects and support for Ukraine's right to exist on the world map). Thank you!":
+      "Se ti piace questo progetto, puoi condividerlo con i tuoi amici o sostenerlo economicamente (Il denaro viene speso per lo sviluppo di progetti educativi e per sostenere il diritto dell'Ucraina a essere presente sulla mappa del mondo). Grazie!",
     "Make Donate": "Fai una Donazione",
     "QR Code": "Codice QR",
     Time: "Tempo:",

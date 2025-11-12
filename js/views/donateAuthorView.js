@@ -9,7 +9,6 @@ class donateAuthorView {
   _donateText = document.querySelector(".donate-text");
   _donateShareWebSite = document.querySelector(".share-donate");
   _donateQrCodeText = document.querySelector("#donate-qr-code-text");
-  _donateCardText = document.querySelector("#donate-card-number");
 
   _donateReturnToMap = document.querySelector(".return-donate");
 
@@ -115,14 +114,11 @@ class donateAuthorView {
     }`;
     this._donateText.textContent = `${
       localization[model.worldCountries.language][
-        "If you like this project, you can share it with your friends or support it financially. Thank you!"
+        "If you like this project, you can share it with your friends or support it financially (money is spent on the development of educational projects and support for Ukraine's right to exist on the world map). Thank you!"
       ]
     }`;
     this._donateQrCodeText.textContent = `${
       localization[model.worldCountries.language]["QR Code"]
-    }`;
-    this._donateCardText.textContent = `${
-      localization[model.worldCountries.language]["Card number (UAH):"]
     }`;
   }
 }
