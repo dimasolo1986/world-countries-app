@@ -497,6 +497,12 @@ class GuessCountriesGame {
           '<i class="fa-solid fa-dice"></i>'
         );
         random.addEventListener("click", this.randomFunction);
+        random.addEventListener("mouseover", () => {
+          random.style.backgroundColor = "lightgreen";
+        });
+        random.addEventListener("mouseout", () => {
+          random.style.backgroundColor = "white";
+        });
         const clean = L.DomUtil.create("div");
         clean.style.height = "25px";
         clean.style.display = "flex";
@@ -511,6 +517,12 @@ class GuessCountriesGame {
           '<i class="fa-solid fa-trash"></i>'
         );
         clean.addEventListener("click", this.cleanFunction);
+        clean.addEventListener("mouseover", () => {
+          clean.style.backgroundColor = "red";
+        });
+        clean.addEventListener("mouseout", () => {
+          clean.style.backgroundColor = "white";
+        });
         container.appendChild(random);
         container.appendChild(clean);
         return container;
@@ -650,6 +662,7 @@ class GuessCountriesGame {
         playButton.classList.add("btn");
         playButton.classList.add("btn-sm");
         playButton.classList.add("btn-danger");
+        playButton.classList.add("rounded-pill");
         playButton.classList.add("guess-country-game-play");
         playButton.style.marginTop = "12px";
         playButton.style.paddinTop = "0.35rem";
@@ -679,6 +692,7 @@ class GuessCountriesGame {
         finishButton.classList.add("btn");
         finishButton.classList.add("btn-sm");
         finishButton.classList.add("btn-primary");
+        finishButton.classList.add("rounded-pill");
         finishButton.classList.add("guess-country-game-finish");
         finishButton.style.marginTop = "5px";
         finishButton.style.paddinTop = "0.35rem";
