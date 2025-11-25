@@ -209,7 +209,7 @@ class mapView {
         label: "&#10138; ",
       },
     };
-    this.addDevelopmentPlaceMarker();
+    // this.addDevelopmentPlaceMarker();
     this._measure = L.control.ruler(measureOptions).addTo(this._map);
     L.control.layers(baseMaps).setPosition("topleft").addTo(this._map);
     L.control
@@ -677,8 +677,8 @@ class mapView {
           "Country Capital By Flag Quiz"
         ];
     }
-    this.removeDevelopmentPlaceMarker();
-    this.addDevelopmentPlaceMarker();
+    // this.removeDevelopmentPlaceMarker();
+    // this.addDevelopmentPlaceMarker();
   }
 
   invalidateSize() {
