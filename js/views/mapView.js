@@ -135,29 +135,33 @@ class mapView {
       contextmenu: true,
       contextmenuItems: [
         {
-          text: localization[model.worldCountries.language]["Show Coordinates"],
+          text:
+            "🎯 " +
+            localization[model.worldCountries.language]["Show Coordinates"],
           callback: showCoordinates,
           context: this,
         },
         "-",
         {
-          text: localization[model.worldCountries.language]["Center Map Here"],
+          text:
+            "📍 " +
+            localization[model.worldCountries.language]["Center Map Here"],
           callback: centerMap,
           context: this,
         },
         "-",
         {
-          text: localization[model.worldCountries.language]["Zoom In"],
+          text: "➕ " + localization[model.worldCountries.language]["Zoom In"],
           callback: zoomIn,
           context: this,
         },
         {
-          text: localization[model.worldCountries.language]["Zoom Out"],
+          text: "➖ " + localization[model.worldCountries.language]["Zoom Out"],
           callback: zoomOut,
           context: this,
         },
         {
-          text: localization[model.worldCountries.language]["Reset"],
+          text: "🔍 " + localization[model.worldCountries.language]["Reset"],
           callback: reset,
           context: this,
         },
@@ -396,7 +400,7 @@ class mapView {
         link.style.textDecoration = "none";
         link.style.padding = "2px";
         link.style.borderRadius = "2px";
-        link.textContent = "www.countriesguesser.com";
+        link.textContent = "🌍 www.countriesguesser.com";
         return link;
       },
       onRemove: function (map) {},
@@ -581,15 +585,15 @@ class mapView {
     );
     if (contextMenuItems) {
       contextMenuItems[0].textContent =
-        localization[model.worldCountries.language]["Show Coordinates"];
+        "🎯 " + localization[model.worldCountries.language]["Show Coordinates"];
       contextMenuItems[1].textContent =
-        localization[model.worldCountries.language]["Center Map Here"];
+        "📍 " + localization[model.worldCountries.language]["Center Map Here"];
       contextMenuItems[2].textContent =
-        localization[model.worldCountries.language]["Zoom In"];
+        "➕ " + localization[model.worldCountries.language]["Zoom In"];
       contextMenuItems[3].textContent =
-        localization[model.worldCountries.language]["Zoom Out"];
+        "➖ " + localization[model.worldCountries.language]["Zoom Out"];
       contextMenuItems[4].textContent =
-        localization[model.worldCountries.language]["Reset"];
+        "🔍 " + localization[model.worldCountries.language]["Reset"];
     }
     const countryOnMapQuiz = document.querySelector(
       "#country-on-map-quiz-menu"

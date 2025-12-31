@@ -241,7 +241,7 @@ class GuessCountriesGame {
       "selected-country-field"
     );
     selectedCountryField.classList.add("not-displayed");
-    mapField.textContent = `${
+    mapField.textContent = `🗺️ ${
       localization[model.worldCountries.language]["Computer Map"]
     }`;
     this._guessCountriesMessageField.textContent =
@@ -386,23 +386,25 @@ class GuessCountriesGame {
       layers: [streetLayer],
       contextmenuItems: [
         {
-          text: localization[model.worldCountries.language]["Center Map Here"],
+          text:
+            "📍 " +
+            localization[model.worldCountries.language]["Center Map Here"],
           callback: centerMap,
           context: this,
         },
         "-",
         {
-          text: localization[model.worldCountries.language]["Zoom In"],
+          text: "➕ " + localization[model.worldCountries.language]["Zoom In"],
           callback: zoomIn,
           context: this,
         },
         {
-          text: localization[model.worldCountries.language]["Zoom Out"],
+          text: "➖ " + localization[model.worldCountries.language]["Zoom Out"],
           callback: zoomOut,
           context: this,
         },
         {
-          text: localization[model.worldCountries.language]["Reset"],
+          text: "🔍 " + localization[model.worldCountries.language]["Reset"],
           callback: reset,
           context: this,
         },
@@ -583,7 +585,7 @@ class GuessCountriesGame {
         mapFiled.style.boxShadow =
           "0 2px 5px #00000080, inset 0 2px 10px #0000001f";
         mapFiled.textContent =
-          localization[model.worldCountries.language]["Your Map"];
+          "🗺️ " + localization[model.worldCountries.language]["Your Map"];
         return mapFiled;
       },
 
@@ -639,6 +641,7 @@ class GuessCountriesGame {
         countriesField.style.fontSize = "0.5rem";
         countriesField.style.marginTop = "30px";
         countriesField.textContent =
+          "🌍 " +
           localization[model.worldCountries.language]["Available Countries:"] +
           " ";
         const countriesNumberField = L.DomUtil.create("span");
@@ -672,7 +675,7 @@ class GuessCountriesGame {
         playButton.style.boxShadow =
           "0 2px 5px #00000080, inset 0 2px 10px #0000001f";
         playButton.textContent =
-          localization[model.worldCountries.language]["Play"];
+          "🕹️ " + localization[model.worldCountries.language]["Play"];
         playButton.addEventListener("click", this.playFunction);
         return playButton;
       },
@@ -701,7 +704,7 @@ class GuessCountriesGame {
         finishButton.style.boxShadow =
           "0 2px 5px #00000080, inset 0 2px 10px #0000001f";
         finishButton.textContent =
-          localization[model.worldCountries.language]["Finish"];
+          "⛔ " + localization[model.worldCountries.language]["Finish"];
         finishButton.addEventListener("click", this.finishFunction);
         return finishButton;
       },
@@ -759,7 +762,7 @@ class GuessCountriesGame {
         availableCountriesPanel.style.overflow = "hidden";
         availableCountriesPanel.style.boxShadow =
           "0 2px 5px #00000080, inset 0 2px 10px #0000001f";
-        const availableCountriesHeader = `<div class="text-center"><span style="font-size:0.6rem;font-weight:bold;">${
+        const availableCountriesHeader = `<div class="text-center"><span style="font-size:0.6rem;font-weight:bold;">🌍 ${
           localization[model.worldCountries.language]["Available Countries:"]
         }</span></div>`;
         availableCountriesPanel.insertAdjacentHTML(
@@ -1196,7 +1199,7 @@ class GuessCountriesGame {
         }
       } else {
         const mapField = document.getElementById("map-field");
-        mapField.textContent = `${
+        mapField.textContent = `🗺️ ${
           localization[model.worldCountries.language]["Computer Map"]
         }`;
         context._countries = context._countries.filter(
@@ -1364,7 +1367,7 @@ class GuessCountriesGame {
             document.getElementById("countries-number-field").textContent =
               context._userAvailableCountriesNumber;
             const mapField = document.getElementById("map-field");
-            mapField.textContent = `${
+            mapField.textContent = `🗺️ ${
               localization[model.worldCountries.language]["Your Map"]
             }`;
             const availableCountriesPanel = document.getElementById(
@@ -1537,7 +1540,7 @@ class GuessCountriesGame {
                 animate: false,
               });
               context.enableMapInteraction();
-              mapField.textContent = `${
+              mapField.textContent = `🗺️ ${
                 localization[model.worldCountries.language]["Computer Map"]
               }`;
               context._guessCountriesMessageField.textContent =
@@ -1982,15 +1985,15 @@ class GuessCountriesGame {
     );
     if (contextMenuItems.length > 5) {
       contextMenuItems[5].textContent =
-        localization[model.worldCountries.language]["Center Map Here"];
+        "📍 " + localization[model.worldCountries.language]["Center Map Here"];
       contextMenuItems[6].textContent =
-        localization[model.worldCountries.language]["Zoom In"];
+        "➕ " + localization[model.worldCountries.language]["Zoom In"];
       contextMenuItems[7].textContent =
-        localization[model.worldCountries.language]["Zoom Out"];
+        "➖ " + localization[model.worldCountries.language]["Zoom Out"];
       contextMenuItems[8].textContent =
-        localization[model.worldCountries.language]["Reset"];
+        "🔍 " + localization[model.worldCountries.language]["Reset"];
     }
-    this._guessCountriesGameHeading.textContent = `${
+    this._guessCountriesGameHeading.textContent = `🎲 ${
       localization[model.worldCountries.language]["Guess Countries Game"]
     }`;
     this._returnToMap.textContent = `${
@@ -1999,7 +2002,7 @@ class GuessCountriesGame {
     this._gameStartCard.textContent = `${
       localization[model.worldCountries.language]["START"]
     }`;
-    this._gameRulesButton.textContent = `${
+    this._gameRulesButton.textContent = `📄 ${
       localization[model.worldCountries.language]["Game Rules"]
     }`;
     this._countryAllianceGuesserGame.textContent = `${
