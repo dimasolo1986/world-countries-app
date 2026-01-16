@@ -535,7 +535,10 @@ class MapQuiz {
             ? context._country.latlng
             : context._country.capitalInfo.latlng;
           if (countryCoordinates) {
-            context._countryMarker = L.popup({ closeOnClick: false })
+            context._countryMarker = L.popup({
+              closeOnClick: false,
+              closeButton: false,
+            })
               .setLatLng(countryCoordinates)
               .setContent(
                 `<img src="${
@@ -582,7 +585,10 @@ class MapQuiz {
             : context._country.capitalInfo.latlng;
           if (countryCoordinates) {
             context._timeout = setTimeout(() => {
-              context._countryMarker = L.popup({ closeOnClick: false })
+              context._countryMarker = L.popup({
+                closeOnClick: false,
+                closeButton: false,
+              })
                 .setLatLng(countryCoordinates)
                 .setContent(
                   `<img src="${

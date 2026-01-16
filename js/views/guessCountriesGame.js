@@ -1598,25 +1598,30 @@ class GuessCountriesGame {
           }</span>`
         );
         countryTooltip.options.sticky = true;
-        const countryPopup = L.popup({ closeOnClick: false })
+        const countryPopup = L.popup({
+          closeOnClick: false,
+          closeButton: false,
+        })
           .setLatLng(country.latlng ? country.latlng : country.capitalLatLng)
           .setContent(
             `<img src="${
               country.countryFlag
             }" style="width:20px; height:15px; border-radius:2px; box-shadow: 0 2px 5px #00000080,
-                            inset 0 2px 10px #0000001f; vertical-align: sub;"><span style="font-weight:bold; margin-left:5px; ">${
+                            inset 0 2px 10px #0000001f; vertical-align: sub;"><span style="font-weight:bold; margin-left:5px; color:${
                               country.countryName !== "Russia"
-                                ? localization[model.worldCountries.language][
-                                    "countries"
-                                  ][country.countryName]
-                                : localization[model.worldCountries.language][
-                                    "countries"
-                                  ][country.countryName] +
-                                  " - " +
-                                  localization[model.worldCountries.language][
-                                    "War Aggressor"
-                                  ]
-                            }</span>`
+                                ? "darkblue"
+                                : "red"
+                            }">${
+              country.countryName !== "Russia"
+                ? localization[model.worldCountries.language]["countries"][
+                    country.countryName
+                  ]
+                : localization[model.worldCountries.language]["countries"][
+                    country.countryName
+                  ] +
+                  " - " +
+                  localization[model.worldCountries.language]["War Aggressor"]
+            }</span>`
           );
         const countryBoundary = L.geoJson(countryGeo, {
           bubblingMouseEvents: false,
@@ -1904,18 +1909,13 @@ class GuessCountriesGame {
   }
 
   disableMapInteraction() {
-    this._countryBondaries.forEach((countryBoundary) => {
-      const countryBoundaryEl = document.querySelector(
-        `.${countryBoundary.options.style.className}`
-      );
-      countryBoundaryEl.style.cursor = "none";
-      countryBoundaryEl.style.pointerEvents = "none";
-    });
-    const markers = document.querySelectorAll("img.leaflet-marker-icon");
-    markers.forEach((marker) => {
-      marker.style.cursor = "none";
-      marker.style.pointerEvents = "none";
-    });
+    document.getElementById("guessCountriesGameMap").style.cursor = "default";
+    const countryBoundaries = document.querySelector(".leaflet-overlay-pane");
+    countryBoundaries.style.pointerEvents = "none";
+    countryBoundaries.setAttribute("inert", "");
+    const markers = document.querySelector(".leaflet-marker-pane");
+    markers.style.pointerEvents = "none";
+    markers.setAttribute("inert", "");
     if (this._guessCountriesMap) {
       this._guessCountriesMap.dragging.disable();
       this._guessCountriesMap.doubleClickZoom.disable();
@@ -1923,29 +1923,17 @@ class GuessCountriesGame {
       this._guessCountriesMap.boxZoom.disable();
       this._guessCountriesMap.keyboard.disable();
       if (this._guessCountriesMap.tap) this._guessCountriesMap.tap.disable();
-      document.getElementById("guessCountriesGameMap").style.cursor = "default";
     }
   }
 
   enableMapInteraction() {
-    this._countryBondaries.forEach((countryBoundary) => {
-      if (
-        !this._userAlreadyGuessedCountries.includes(
-          countryBoundary.options.style.className
-        )
-      ) {
-        const countryBoundaryEl = document.querySelector(
-          `.${countryBoundary.options.style.className}`
-        );
-        countryBoundaryEl.style.cursor = "pointer";
-        countryBoundaryEl.style.pointerEvents = "auto";
-      }
-    });
-    const markers = document.querySelectorAll("img.leaflet-marker-icon");
-    markers.forEach((marker) => {
-      marker.style.cursor = "pointer";
-      marker.style.pointerEvents = "auto";
-    });
+    document.getElementById("guessCountriesGameMap").style.cursor = "grab";
+    const countryBoundaries = document.querySelector(".leaflet-overlay-pane");
+    countryBoundaries.style.pointerEvents = "auto";
+    countryBoundaries.removeAttribute("inert");
+    const markers = document.querySelector(".leaflet-marker-pane");
+    markers.style.pointerEvents = "auto";
+    markers.removeAttribute("inert");
     if (this._guessCountriesMap) {
       this._guessCountriesMap.dragging.enable();
       this._guessCountriesMap.doubleClickZoom.enable();
@@ -1953,7 +1941,6 @@ class GuessCountriesGame {
       this._guessCountriesMap.boxZoom.enable();
       this._guessCountriesMap.keyboard.enable();
       if (this._guessCountriesMap.tap) this._guessCountriesMap.tap.enable();
-      document.getElementById("guessCountriesGameMap").style.cursor = "grab";
     }
   }
 
