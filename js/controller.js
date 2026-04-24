@@ -213,6 +213,7 @@ const loadWorldMap = function () {
     topNavigationView.showSideNavigation();
   }
   topNavigationView.enableSideBarToggle();
+  if (window.gtag) gtag("event", "world_map_view");
 };
 
 const loadAboutProject = function () {
@@ -230,6 +231,7 @@ const loadAboutProject = function () {
   aboutView.showAboutProjectInfo();
   topNavigationView.hideSideNavigation();
   topNavigationView.disableSideBarToggle();
+  if (window.gtag) gtag("event", "about_project_view");
 };
 
 const loadStatistic = function () {
@@ -248,6 +250,7 @@ const loadStatistic = function () {
   statisticView.renderStatisticData();
   topNavigationView.hideSideNavigation();
   topNavigationView.disableSideBarToggle();
+  if (window.gtag) gtag("event", "statistic_project_view");
 };
 
 const loadDonateAuthor = function () {
@@ -265,6 +268,7 @@ const loadDonateAuthor = function () {
   flagsView.hideFlags();
   topNavigationView.hideSideNavigation();
   topNavigationView.disableSideBarToggle();
+  if (window.gtag) gtag("event", "donate_project_view");
 };
 
 const loadGuessCountriesGame = function () {
@@ -288,6 +292,7 @@ const loadGuessCountriesGame = function () {
   flagsView.hideFlags();
   topNavigationView.hideSideNavigation();
   topNavigationView.disableSideBarToggle();
+  if (window.gtag) gtag("event", "guess_countries_game");
 };
 
 const loadVideos = function () {
@@ -305,6 +310,7 @@ const loadVideos = function () {
   guessCountriesGame.hideGame();
   topNavigationView.hideSideNavigation();
   topNavigationView.disableSideBarToggle();
+  if (window.gtag) gtag("event", "videos_view");
 };
 
 const loadFlags = function () {
@@ -324,6 +330,7 @@ const loadFlags = function () {
   flagsView.renderFlagsData();
   topNavigationView.hideSideNavigation();
   topNavigationView.disableSideBarToggle();
+   if (window.gtag) gtag("event", "flags_view");
 };
 
 const loadQuiz = function (quizId) {
@@ -362,6 +369,7 @@ const loadQuiz = function (quizId) {
     );
   }
   topNavigationView.disableSideBarToggle();
+  if (window.gtag) gtag("event", `${quizId}`);
 };
 
 const worldMapHandlerClick = function () {
