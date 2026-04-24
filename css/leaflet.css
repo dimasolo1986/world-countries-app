@@ -270,6 +270,10 @@ svg.leaflet-image-layer.leaflet-interactive path {
   pointer-events: auto;
 }
 
+.leaflet-marker-icon {
+  box-shadow: 0 2px 2px 0 rgba(0, 0, 0, 0.5), 0 2px 2px 0 rgba(0, 0, 0, 0.12) inset;
+}
+
 /* visual tweaks */
 
 .leaflet-container {
