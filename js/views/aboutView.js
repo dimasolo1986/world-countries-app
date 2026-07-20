@@ -9,89 +9,89 @@ class aboutView {
   _aboutStatistic = document.querySelector(".statistic-info");
   _aboutProjectName = document.querySelector(".about-project-name");
   _aboutProjectDescription = document.querySelector(
-    ".about-project-description"
+    ".about-project-description",
   );
   _aboutAvailableQuizzes = document.querySelector(".about-available-quizzes");
   _aboutFlagByCountryQuizName = document.querySelector(
-    ".about-flag-by-country-quiz-name"
+    ".about-flag-by-country-quiz-name",
   );
   _aboutCountryNameByFlagQuizName = document.querySelector(
-    ".about-country-name-by-flag-quiz-name"
+    ".about-country-name-by-flag-quiz-name",
   );
   _aboutCountryNameByFlagQuizDescription = document.querySelector(
-    ".about-country-name-by-flag-quiz-description"
+    ".about-country-name-by-flag-quiz-description",
   );
   _aboutCountryNameByEmblemQuizName = document.querySelector(
-    ".about-country-name-by-emblem-quiz-name"
+    ".about-country-name-by-emblem-quiz-name",
   );
   _aboutCountryNameByEmblemQuizDescription = document.querySelector(
-    ".about-country-name-by-emblem-description"
+    ".about-country-name-by-emblem-description",
   );
   _aboutFlagByCountryQuizDescription = document.querySelector(
-    ".about-flag-by-country-quiz-description"
+    ".about-flag-by-country-quiz-description",
   );
   _aboutCountryCapitalByFlagQuizName = document.querySelector(
-    ".about-country-capital-by-flag-quiz-name"
+    ".about-country-capital-by-flag-quiz-name",
   );
   _aboutCountryCapitalByFlagQuizDescription = document.querySelector(
-    ".about-country-capital-by-flag-quiz-description"
+    ".about-country-capital-by-flag-quiz-description",
   );
   _aboutFalgByCountryCapitalQuizName = document.querySelector(
-    ".about-flag-by-country-capital-quiz-name"
+    ".about-flag-by-country-capital-quiz-name",
   );
   _aboutFalgByCountryCapitalQuizDescription = document.querySelector(
-    ".about-flag-by-country-capital-description"
+    ".about-flag-by-country-capital-description",
   );
   _aboutCountryNameByCapitalQuizName = document.querySelector(
-    ".about-country-name-by-capital-quiz-name"
+    ".about-country-name-by-capital-quiz-name",
   );
   _aboutCountryNameByCapitalQuizDescription = document.querySelector(
-    ".about-country-name-by-capital-quiz-description"
+    ".about-country-name-by-capital-quiz-description",
   );
   _aboutCountryCapitalByCountryNameQuizName = document.querySelector(
-    ".about-capital-by-country-name-quiz-name"
+    ".about-capital-by-country-name-quiz-name",
   );
   _aboutCountryCapitalByCountryNameQuizDescription = document.querySelector(
-    ".about-capital-by-country-name-quiz-description"
+    ".about-capital-by-country-name-quiz-description",
   );
   _aboutCountryOnMapQuizName = document.querySelector(
-    ".about-country-on-map-name"
+    ".about-country-on-map-name",
   );
   _aboutCountryOnMapQuizDescription = document.querySelector(
-    ".about-country-on-map-description"
+    ".about-country-on-map-description",
   );
   _aboutCountryNameOnCountryMapQuizName = document.querySelector(
-    ".about-country-name-by-country-on-map-quiz-name"
+    ".about-country-name-by-country-on-map-quiz-name",
   );
   _aboutCountryNameOnCountryMapQuizDescription = document.querySelector(
-    ".about-name-by-country-on-map-description"
+    ".about-name-by-country-on-map-description",
   );
   _aboutQuizzesQuestionsAndPoints = document.querySelector(
-    ".about-questions-points"
+    ".about-questions-points",
   );
   _aboutAvailableGames = document.querySelector(".about-available-games");
   _aboutGuessCountryGameName = document.querySelector(
-    ".about-guess-countries-game-name"
+    ".about-guess-countries-game-name",
   );
   _aboutGuessCountryAllianceGameName = document.querySelector(
-    ".about-country-alliance-guesser"
+    ".about-country-alliance-guesser",
   );
   _aboutGuessCountryAllianceGameDescription = document.querySelector(
-    ".about-guess-countries-alliance-game-description"
+    ".about-guess-countries-alliance-game-description",
   );
   _aboutGuessCountryGameDescription = document.querySelector(
-    ".about-guess-countries-game-description"
+    ".about-guess-countries-game-description",
   );
   _aboutDeveloper = document.querySelector(".about-developer");
   _aboutDeveloperLink = document.querySelector(".about-developer-link");
   _aboutDeveloperEmailDescription = document.querySelector(
-    ".about-developer-email-description"
+    ".about-developer-email-description",
   );
   _aboutUkraineHelpDescription = document.querySelector(
-    ".about-ukraine-help-description"
+    ".about-ukraine-help-description",
   );
   _aboutDonateAuthorText = document.querySelector(
-    ".about-developer-donate-author-description"
+    ".about-developer-donate-author-description",
   );
   _aboutUkraineHelpLink = document.querySelector(".about-ukraine-help-link");
   _aboutMapLibrary = document.querySelector(".about-map-library");
@@ -103,7 +103,7 @@ class aboutView {
     mapView,
     sideNavigationView,
     topNavigationView,
-    countriesSelectView
+    countriesSelectView,
   ) {
     removeCenterElementsMainLayout();
     this.hideAboutProject();
@@ -126,7 +126,7 @@ class aboutView {
     mapView,
     sideNavigationView,
     topNavigationView,
-    countriesSelectView
+    countriesSelectView,
   ) {
     if (!this._returnToMapListenerAdded) {
       this._aboutReturnToMap.addEventListener(
@@ -136,8 +136,8 @@ class aboutView {
           mapView,
           sideNavigationView,
           topNavigationView,
-          countriesSelectView
-        )
+          countriesSelectView,
+        ),
       );
       this._returnToMapListenerAdded = true;
     }
@@ -200,7 +200,7 @@ class aboutView {
       ]
     }`;
     this._aboutDeveloperLink.textContent = `${
-      localization[model.worldCountries.language]["Dmytro Solovei"]
+      localization[model.worldCountries.language]["Dima Solovei"]
     }`;
     this._aboutDeveloperLink.href = `
         https://dimasolo.pythonanywhere.com/${model.worldCountries.language}/home`;

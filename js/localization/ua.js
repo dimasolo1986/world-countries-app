@@ -655,7 +655,7 @@ export const localization = {
       "Ви можете підтримати Україну в боротьбі з військовою агресією Росії:",
     "Quizzes:": "Вікторини:",
     Quizzes: "Вікторини",
-    "Dmytro Solovei": "Дмитро Соловей",
+    "Dima Solovei": "Діма Соловей",
     "You can reach me by e-mail:":
       "Ви можете зв'язатися зі мною електронною поштою:",
     "Time's Up!": "Час Минув!",
@@ -1423,7 +1423,7 @@ export const localization = {
       "Project was created by Software Developer from Ukraine -",
     "You can support Ukraine in the fight against Russia's military aggression:":
       "You can support Ukraine in the fight against Russia's military aggression:",
-    "Dmytro Solovei": "Dmytro Solovei",
+    "Dima Solovei": "Dima Solovei",
     "You can reach me by e-mail:": "You can reach me by e-mail:",
     "Time's Up!": "Time's Up!",
     "Center Map Here": "Center Map Here",
@@ -2186,7 +2186,7 @@ export const localization = {
       "Das Projekt wurde von einem Softwareentwickler aus der Ukraine erstellt -",
     "You can support Ukraine in the fight against Russia's military aggression:":
       "Sie können die Ukraine im Kampf gegen die militärische Aggression Russlands unterstützen:",
-    "Dmytro Solovei": "Dmytro Solovei",
+    "Dima Solovei": "Dima Solovei",
     "You can reach me by e-mail:": "Sie können mich per E-Mail erreichen:",
     "Time's Up!": "Zeit ist um!",
     "Center Map Here": "Karte hier zentrieren",
@@ -2952,7 +2952,7 @@ export const localization = {
       "Le projet a été créé par un développeur de logiciels d'Ukraine -",
     "You can support Ukraine in the fight against Russia's military aggression:":
       "Vous pouvez soutenir l'Ukraine dans la lutte contre l'agression militaire de la Russie :",
-    "Dmytro Solovei": "Dmytro Solovei",
+    "Dima Solovei": "Dima Solovei",
     "You can reach me by e-mail:": "Vous pouvez me joindre par e-mail :",
     "Time's Up!": "Le temps est écoulé!",
     "Center Map Here": "Centrer la carte ici",
@@ -3715,7 +3715,7 @@ export const localization = {
       "El proyecto fue creado por un desarrollador de software de Ucrania -",
     "You can support Ukraine in the fight against Russia's military aggression:":
       "Puedes apoyar a Ucrania en la lucha contra la agresión militar de Rusia:",
-    "Dmytro Solovei": "Dmytro Solovei",
+    "Dima Solovei": "Dima Solovei",
     "You can reach me by e-mail:": "Puedes contactarme por correo electrónico:",
     "Time's Up!": "¡Se acabó el tiempo!",
     "Center Map Here": "Centrar el Mapa Aquí",
@@ -4482,7 +4482,7 @@ export const localization = {
       "Il progetto è stato creato da uno sviluppatore software ucraino -",
     "You can support Ukraine in the fight against Russia's military aggression:":
       "Puoi supportare l'Ucraina nella lotta contro l'aggressione militare della Russia:",
-    "Dmytro Solovei": "Dmytro Solovei",
+    "Dima Solovei": "Dima Solovei",
     "You can reach me by e-mail:": "Puoi contattarmi via e-mail:",
     "Time's Up!": "Tempo Scaduto!",
     "Center Map Here": "Centra Mappa Qui",
