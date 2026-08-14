@@ -25,7 +25,18 @@ const loadLanguage = function () {
 export const loadAllCountries = function () {
   sortData(COUNTRIES);
   worldCountries.countries = COUNTRIES;
+  worldCountries.countries.forEach((country) => {
+    preloadImage(country.flags.png);
+    preloadImage(country.coatOfArms.png);
+  });
   worldCountries.selectedCountries = COUNTRIES;
+};
+
+const preloadImage = function (src) {
+  if (!src) return src;
+  const img = new Image();
+  img.src = src;
+  return src;
 };
 
 init();

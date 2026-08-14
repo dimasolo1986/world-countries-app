@@ -54,37 +54,37 @@ const init = function () {
     mapView,
     sideNavigationView,
     topNavigationView,
-    countriesSelectView
+    countriesSelectView,
   );
   videosView.addReturnToMapHandlerClick(
     mapView,
     sideNavigationView,
     topNavigationView,
-    countriesSelectView
+    countriesSelectView,
   );
   statisticView.addReturnToMapHandlerClick(
     mapView,
     sideNavigationView,
     topNavigationView,
-    countriesSelectView
+    countriesSelectView,
   );
   flagsView.addReturnToMapHandlerClick(
     mapView,
     sideNavigationView,
     topNavigationView,
-    countriesSelectView
+    countriesSelectView,
   );
   donateAuthorView.addReturnToMapHandlerClick(
     mapView,
     sideNavigationView,
     topNavigationView,
-    countriesSelectView
+    countriesSelectView,
   );
   guessCountriesGame.returnToMapButtonHandler(
     mapView,
     sideNavigationView,
     topNavigationView,
-    countriesSelectView
+    countriesSelectView,
   );
   donateAuthorView.addShareWebSiteHandlerClick();
   flagsView.flagsRegionSelectHandler();
@@ -132,7 +132,7 @@ const init = function () {
       });
     }
     const shareWebSiteCountryInfo = document.getElementById(
-      "shareCountryInfoModal"
+      "shareCountryInfoModal",
     );
     if (shareWebSiteCountryInfo) {
       shareWebSiteCountryInfo.addEventListener("click", function () {
@@ -287,7 +287,7 @@ const loadGuessCountriesGame = function () {
     mapView,
     sideNavigationView,
     topNavigationView,
-    countriesSelectView
+    countriesSelectView,
   );
   flagsView.hideFlags();
   topNavigationView.hideSideNavigation();
@@ -330,7 +330,7 @@ const loadFlags = function () {
   flagsView.renderFlagsData();
   topNavigationView.hideSideNavigation();
   topNavigationView.disableSideBarToggle();
-   if (window.gtag) gtag("event", "flags_view");
+  if (window.gtag) gtag("event", "flags_view");
 };
 
 const loadQuiz = function (quizId) {
@@ -353,7 +353,7 @@ const loadQuiz = function (quizId) {
       statisticView,
       sideNavigationView,
       topNavigationView,
-      countriesSelectView
+      countriesSelectView,
     );
   } else {
     centerElementsMainLayout();
@@ -365,7 +365,7 @@ const loadQuiz = function (quizId) {
       statisticView,
       sideNavigationView,
       topNavigationView,
-      countriesSelectView
+      countriesSelectView,
     );
   }
   topNavigationView.disableSideBarToggle();
@@ -433,7 +433,7 @@ const languageSelectHandler = function (language) {
 const renderAll = function () {
   mapView.renderCountriesMarkers(model.worldCountries.countries);
   sideNavigationView.renderSideNavigationCountries(
-    model.worldCountries.countries
+    model.worldCountries.countries,
   );
   countriesSelectView.renderOptions(model.worldCountries);
 };
@@ -453,7 +453,7 @@ const countriesSortHandler = function (sortDirection) {
   sideNavigationView.renderSideNavigationCountries(
     model.worldCountries.selectedCountries.length !== 0
       ? model.worldCountries.selectedCountries
-      : model.worldCountries.countries
+      : model.worldCountries.countries,
   );
 };
 
@@ -469,17 +469,17 @@ const countriesSelectionHandler = function (selectedCountriesNames) {
         (country) =>
           localization[model.worldCountries.language]["countries"][
             country.name.common
-          ] === countryName
+          ] === countryName,
       );
       if (country) model.worldCountries.selectedCountries.push(country);
     });
     sideNavigationView.renderSideNavigationCountries(
-      model.worldCountries.selectedCountries
+      model.worldCountries.selectedCountries,
     );
     mapView.renderCountriesMarkers(model.worldCountries.selectedCountries);
   } else {
     sideNavigationView.renderSideNavigationCountries(
-      model.worldCountries.countries
+      model.worldCountries.countries,
     );
     mapView.renderCountriesMarkers(model.worldCountries.countries);
   }
@@ -491,7 +491,7 @@ const mapCountriesMarkerRender = function () {
 
 const sideNavigationCountriesRender = function () {
   sideNavigationView.renderSideNavigationCountries(
-    model.worldCountries.countries
+    model.worldCountries.countries,
   );
 };
 

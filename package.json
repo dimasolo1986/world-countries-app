@@ -5,16 +5,25 @@
   "default": "index.html",
   "scripts": {
     "start": "parcel index.html",
-    "build": "parcel build index.html --dist-dir ./dist"
+    "build": "parcel build index.html --dist-dir ./dist --public-url ./ --no-source-maps",
+    "deploy": "npm run build && gh-pages -d dist --cname www.worldcountriesquiz.com"
   },
   "author": "Dmytro Solovei",
   "license": "ISC",
+  "browserslist": [
+    "> 0.2%",
+    "not dead",
+    "ios_saf >= 10",
+    "safari >= 10",
+    "chrome >= 60"
+  ],
   "devDependencies": {
     "@parcel/packager-raw-url": "^2.16.4",
     "@parcel/transformer-jsonld": "^2.16.4",
     "@parcel/transformer-webmanifest": "^2.16.4",
     "parcel": "^2.16.4",
-    "process": "^0.11.10"
+    "process": "^0.11.10",
+    "gh-pages": "^6.3.0"
   },
   "dependencies": {
     "leaflet": "^1.9.4"
