@@ -71,8 +71,9 @@ class mapView {
       this._notifications.push(notification);
       notification.info(
         localization[model.worldCountries.language]["Coordinates"],
-        `${localization[model.worldCountries.language]["Latitude"]}, ${localization[model.worldCountries.language]["Longitude"]
-        }: ${e.latlng.lat.toFixed(5)}, ${e.latlng.lng.toFixed(5)}`
+        `${localization[model.worldCountries.language]["Latitude"]}, ${
+          localization[model.worldCountries.language]["Longitude"]
+        }: ${e.latlng.lat.toFixed(5)}, ${e.latlng.lng.toFixed(5)}`,
       );
     }
     function zoomIn() {
@@ -93,35 +94,35 @@ class mapView {
       this.setMapViewToBounds(WORLD_MAP_BOUNDS);
     }
     const streetLayer = L.tileLayer(
-      "https://server.arcgisonline.com/ArcGIS/rest/services/World_Street_Map/MapServer/tile/{z}/{y}/{x}"
+      "https://server.arcgisonline.com/ArcGIS/rest/services/World_Street_Map/MapServer/tile/{z}/{y}/{x}",
     );
     const natGeoWorldMap = L.tileLayer(
       "https://server.arcgisonline.com/ArcGIS/rest/services/NatGeo_World_Map/MapServer/tile/{z}/{y}/{x}",
       {
         attribution:
           "Tiles &copy; Esri &mdash; National Geographic, Esri, DeLorme, NAVTEQ, UNEP-WCMC, USGS, NASA, ESA, METI, NRCAN, GEBCO, NOAA, iPC",
-      }
+      },
     );
     const openStreetMap = L.tileLayer(
       "https://tile.openstreetmap.org/{z}/{x}/{y}.png",
       {
         attribution:
           '&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors',
-      }
+      },
     );
     const worldTopoMap = L.tileLayer(
       "https://server.arcgisonline.com/ArcGIS/rest/services/World_Topo_Map/MapServer/tile/{z}/{y}/{x}",
       {
         attribution:
           "Tiles &copy; Esri &mdash; Esri, DeLorme, NAVTEQ, TomTom, Intermap, iPC, USGS, FAO, NPS, NRCAN, GeoBase, Kadaster NL, Ordnance Survey, Esri Japan, METI, Esri China (Hong Kong), and the GIS User Community",
-      }
+      },
     );
     const siteliteLayer = L.tileLayer(
       "https://server.arcgisonline.com/ArcGIS/rest/services/World_Imagery/MapServer/tile/{z}/{y}/{x}",
       {
         attribution:
           "Tiles &copy; Esri &mdash; Source: Esri, i-cubed, USDA, USGS, AEX, GeoEye, Getmapping, Aerogrid, IGN, IGP, UPR-EGP, and the GIS User Community",
-      }
+      },
     );
     const baseMaps = {
       WorldStreetMap: streetLayer,
@@ -221,10 +222,11 @@ class mapView {
         className: "quiz-menu-map",
         menuItems: [
           {
-            html: `<span id="guess-countries-game-menu">${localization[model.worldCountries.language][
-              "Guess Countries Game"
+            html: `<span id="guess-countries-game-menu">${
+              localization[model.worldCountries.language][
+                "Guess Countries Game"
               ]
-              }</span>`,
+            }</span>`,
             afterClick: () => {
               loadGuessCountryGame(GUESS_COUNTRY_GAME);
               sessionStorage.setItem("currentWindow", "guess-countries-game");
@@ -232,22 +234,24 @@ class mapView {
             },
           },
           {
-            html: `<span id="country-name-on-map-quiz-menu">${localization[model.worldCountries.language][
-              "Country Name By Country On Map Quiz"
+            html: `<span id="country-name-on-map-quiz-menu">${
+              localization[model.worldCountries.language][
+                "Country Name By Country On Map Quiz"
               ]
-              }</span>`,
+            }</span>`,
             afterClick: () => {
               loadQuizOnMap(COUNTRY_NAME_BY_COUNTRY_ON_MAP);
               sessionStorage.setItem(
                 "currentWindow",
-                "country-name-by-country-on-map"
+                "country-name-by-country-on-map",
               );
               this._topNavigationView.initItemMenuStyle();
             },
           },
           {
-            html: `<span id="country-on-map-quiz-menu">${localization[model.worldCountries.language]["Country On Map Quiz"]
-              }</span>`,
+            html: `<span id="country-on-map-quiz-menu">${
+              localization[model.worldCountries.language]["Country On Map Quiz"]
+            }</span>`,
             afterClick: () => {
               loadQuizOnMap(COUNTRY_ON_MAP_QUIZ);
               sessionStorage.setItem("currentWindow", "country-on-map-quiz");
@@ -255,24 +259,26 @@ class mapView {
             },
           },
           {
-            html: `<span id="flag-by-country-name-quiz-menu">${localization[model.worldCountries.language][
-              "Flag By Country Name Quiz"
+            html: `<span id="flag-by-country-name-quiz-menu">${
+              localization[model.worldCountries.language][
+                "Flag By Country Name Quiz"
               ]
-              }</span>`,
+            }</span>`,
             afterClick: () => {
               loadQuizOnMap(FLAG_BY_COUNTRY_NAME_QUIZ);
               sessionStorage.setItem(
                 "currentWindow",
-                "flag-by-country-name-quiz"
+                "flag-by-country-name-quiz",
               );
               this._topNavigationView.initItemMenuStyle();
             },
           },
           {
-            html: `<span id="flag-by-country-capital-quiz-menu">${localization[model.worldCountries.language][
-              "Flag By Country Capital Quiz"
+            html: `<span id="flag-by-country-capital-quiz-menu">${
+              localization[model.worldCountries.language][
+                "Flag By Country Capital Quiz"
               ]
-              }</span>`,
+            }</span>`,
             afterClick: () => {
               loadQuizOnMap(FLAG_BY_COUNTRY_CAPITAL_QUIZ);
               sessionStorage.setItem("currentWindow", "flag-by-capital-quiz");
@@ -280,71 +286,76 @@ class mapView {
             },
           },
           {
-            html: `<span id="capital-by-country-name-quiz-menu">${localization[model.worldCountries.language][
-              "Capital By Country Name Quiz"
+            html: `<span id="capital-by-country-name-quiz-menu">${
+              localization[model.worldCountries.language][
+                "Capital By Country Name Quiz"
               ]
-              }</span>`,
+            }</span>`,
             afterClick: () => {
               loadQuizOnMap(COUNTRY_CAPITAL_BY_COUNTRY_NAME_QUIZ);
               sessionStorage.setItem(
                 "currentWindow",
-                "capital-by-country-name-quiz"
+                "capital-by-country-name-quiz",
               );
               this._topNavigationView.initItemMenuStyle();
             },
           },
           {
-            html: `<span id="country-name-by-capital-quiz-menu">${localization[model.worldCountries.language][
-              "Country Name By Capital Quiz"
+            html: `<span id="country-name-by-capital-quiz-menu">${
+              localization[model.worldCountries.language][
+                "Country Name By Capital Quiz"
               ]
-              }</span>`,
+            }</span>`,
             afterClick: () => {
               loadQuizOnMap(COUNTRY_NAME_BY_CAPITAL_QUIZ);
               sessionStorage.setItem(
                 "currentWindow",
-                "country-name-by-capital-quiz"
+                "country-name-by-capital-quiz",
               );
               this._topNavigationView.initItemMenuStyle();
             },
           },
           {
-            html: `<span id="country-name-by-flag-quiz-menu">${localization[model.worldCountries.language][
-              "Country Name By Flag Quiz"
+            html: `<span id="country-name-by-flag-quiz-menu">${
+              localization[model.worldCountries.language][
+                "Country Name By Flag Quiz"
               ]
-              }</span>`,
+            }</span>`,
             afterClick: () => {
               loadQuizOnMap(COUNTRY_NAME_BY_FLAG_QUIZ);
               sessionStorage.setItem(
                 "currentWindow",
-                "country-name-by-flag-quiz"
+                "country-name-by-flag-quiz",
               );
               this._topNavigationView.initItemMenuStyle();
             },
           },
           {
-            html: `<span id="country-capital-by-flag-quiz-menu">${localization[model.worldCountries.language][
-              "Country Capital By Flag Quiz"
+            html: `<span id="country-capital-by-flag-quiz-menu">${
+              localization[model.worldCountries.language][
+                "Country Capital By Flag Quiz"
               ]
-              }</span>`,
+            }</span>`,
             afterClick: () => {
               loadQuizOnMap(COUNTRY_CAPITAL_BY_FLAG_QUIZ);
               sessionStorage.setItem(
                 "currentWindow",
-                "country-capital-by-flag-quiz"
+                "country-capital-by-flag-quiz",
               );
               this._topNavigationView.initItemMenuStyle();
             },
           },
           {
-            html: `<span id="country-name-by-emblem-quiz-menu">${localization[model.worldCountries.language][
-              "Country Name By Coat Of Arms Quiz"
+            html: `<span id="country-name-by-emblem-quiz-menu">${
+              localization[model.worldCountries.language][
+                "Country Name By Coat Of Arms Quiz"
               ]
-              }</span>`,
+            }</span>`,
             afterClick: () => {
               loadQuizOnMap(COUNTRY_NAME_BY_EMBLEM_QUIZ);
               sessionStorage.setItem(
                 "currentWindow",
-                "country-name-by-emblem-quiz"
+                "country-name-by-emblem-quiz",
               );
               this._topNavigationView.initItemMenuStyle();
             },
@@ -369,7 +380,7 @@ class mapView {
         link.appendChild(img);
         return link;
       },
-      onRemove: function (map) { },
+      onRemove: function (map) {},
     });
     L.control.standWidthUkraine = function (opts) {
       return new L.Control.StandWidthUkraine(opts);
@@ -392,7 +403,7 @@ class mapView {
         link.textContent = "🌍 www.countriesguesser.com";
         return link;
       },
-      onRemove: function (map) { },
+      onRemove: function (map) {},
     });
     L.control.countriesGuesser = function (opts) {
       return new L.Control.CountriesGuesser(opts);
@@ -404,36 +415,57 @@ class mapView {
         apiKey: "4f9049379479c8c94ece03f020cdccab",
         lang: "en",
         units: "metric",
-        template: `<div class="weatherButton">${localization[model.worldCountries.language][
-          "Weather in the center of the map"
+        template: `<div class="weatherButton">${
+          localization[model.worldCountries.language][
+            "Weather in the center of the map"
           ]
-          }</div><div class="weatherIcon"><img class="weatherIconImg" src=""></div><div class="weatherCoordinates"><span id="coordinates">${localization[model.worldCountries.language]["Coordinates"]
-          }</span>: <span class="weatherCoordinatesValue"></span></div><div class="weatherTemperature"><span id="tempreture">${localization[model.worldCountries.language]["Temreture"]
-          }</span>: <span class="weatherTemperatureValue"></span></div><div class="weatherHumidity"><span id="humidity">${localization[model.worldCountries.language]["Humidity"]
-          }</span>: <span class="weatherHumidityValue"></span></div><div class="weatherWind"><span id="wind">${localization[model.worldCountries.language]["Wind"]
-          }</span>: <span class="weatherWindValue"></span><span id="windUnit">${localization[model.worldCountries.language]["m/s"]
-          }</span></div><button class="collapseButtonWeather" title="${localization[model.worldCountries.language]["Collapse"]
-          }">⬆</button>`,
+        }</div><div class="weatherIcon"><img class="weatherIconImg" src=""></div><div class="weatherCoordinates"><span id="coordinates">${
+          localization[model.worldCountries.language]["Coordinates"]
+        }</span>: <span class="weatherCoordinatesValue"></span></div><div class="weatherTemperature"><span id="tempreture">${
+          localization[model.worldCountries.language]["Temreture"]
+        }</span>: <span class="weatherTemperatureValue"></span></div><div class="weatherHumidity"><span id="humidity">${
+          localization[model.worldCountries.language]["Humidity"]
+        }</span>: <span class="weatherHumidityValue"></span></div><div class="weatherWind"><span id="wind">${
+          localization[model.worldCountries.language]["Wind"]
+        }</span>: <span class="weatherWindValue"></span><span id="windUnit">${
+          localization[model.worldCountries.language]["m/s"]
+        }</span></div><button class="collapseButtonWeather" title="${
+          localization[model.worldCountries.language]["Collapse"]
+        }">⬆</button>`,
       })
       .addTo(this._map);
     this._countryPlayer = L.control
       .player({
-        template: `<div id="countryPlayerHeading" class="playerButton">${localization[model.worldCountries.language]["Play World Countries"]
-          }</div><div class="playerButtonStart" title="${localization[model.worldCountries.language]["Start"]
-          }">▶️</div><div class="playerButtonPause" title="${localization[model.worldCountries.language]["Pause"]
-          }">⏸️</div><div class="playerButtonEnd" title="${localization[model.worldCountries.language]["Stop"]
-          }">⏹️</div>
-        <label id="playerSelectLabel" title="${localization[model.worldCountries.language]["Country Display Time"]
-          }" for="playerSelect">&#128338;:</label><select id="playerSelect" class="playerDelaySelect"><option value="3" selected>3 sec.</option><option value="5">5 sec.</option><option value="10">10 sec.</option><option value="20">20 sec.</option><option value="30">30 sec.</option><option value="60">60 sec.</option><option value="90">90 sec.</option></select><div class="playerCountriesSelect"><select id="playerCountriesSelect"><option value="All Countries" selected>${localization[model.worldCountries.language]["All Countries"]
-          }</option><option value="Europe">${localization[model.worldCountries.language]["Europe"]
-          }</option><option value="Americas">${localization[model.worldCountries.language]["Americas"]
-          }</option><option value="Africa">${localization[model.worldCountries.language]["Africa"]
-          }</option><option value="Asia">${localization[model.worldCountries.language]["Asia"]
-          }</option><option value="Oceania">${localization[model.worldCountries.language]["Oceania"]
-          }</option><option value="Antarctic">${localization[model.worldCountries.language]["Antarctic"]
-          }</option></select></div><div class="playerFooter"><span id="countryCount">1</span><span id="allCountriesNumber"> : ${model.worldCountries.countries.length
-          }</span></div><button class="collapseButtonCountryPlayer" title="${localization[model.worldCountries.language]["Collapse"]
-          }">⬆</button>`,
+        template: `<div id="countryPlayerHeading" class="playerButton">${
+          localization[model.worldCountries.language]["Play World Countries"]
+        }</div><div class="playerButtonStart" title="${
+          localization[model.worldCountries.language]["Start"]
+        }">▶️</div><div class="playerButtonPause" title="${
+          localization[model.worldCountries.language]["Pause"]
+        }">⏸️</div><div class="playerButtonEnd" title="${
+          localization[model.worldCountries.language]["Stop"]
+        }">⏹️</div>
+        <label id="playerSelectLabel" title="${
+          localization[model.worldCountries.language]["Country Display Time"]
+        }" for="playerSelect">&#128338;:</label><select id="playerSelect" class="playerDelaySelect"><option value="3" selected>3 sec.</option><option value="5">5 sec.</option><option value="10">10 sec.</option><option value="20">20 sec.</option><option value="30">30 sec.</option><option value="60">60 sec.</option><option value="90">90 sec.</option></select><div class="playerCountriesSelect"><select id="playerCountriesSelect"><option value="All Countries" selected>${
+          localization[model.worldCountries.language]["All Countries"]
+        }</option><option value="Europe">${
+          localization[model.worldCountries.language]["Europe"]
+        }</option><option value="Americas">${
+          localization[model.worldCountries.language]["Americas"]
+        }</option><option value="Africa">${
+          localization[model.worldCountries.language]["Africa"]
+        }</option><option value="Asia">${
+          localization[model.worldCountries.language]["Asia"]
+        }</option><option value="Oceania">${
+          localization[model.worldCountries.language]["Oceania"]
+        }</option><option value="Antarctic">${
+          localization[model.worldCountries.language]["Antarctic"]
+        }</option></select></div><div class="playerFooter"><span id="countryCount">1</span><span id="allCountriesNumber"> : ${
+          model.worldCountries.countries.length
+        }</span></div><button class="collapseButtonCountryPlayer" title="${
+          localization[model.worldCountries.language]["Collapse"]
+        }">⬆</button>`,
         model: model.worldCountries,
         mapView: this,
         countryBounds: COUNTRY_BOUNDS,
@@ -485,14 +517,14 @@ class mapView {
         localization[model.worldCountries.language]["Country Display Time"];
     }
     const collapseButton = document.querySelector(
-      ".collapseButtonCountryPlayer"
+      ".collapseButtonCountryPlayer",
     );
     if (collapseButton) {
       collapseButton.title =
         localization[model.worldCountries.language]["Collapse"];
     }
     const playerCountriesSelectOptions = document.querySelectorAll(
-      "#playerCountriesSelect option"
+      "#playerCountriesSelect option",
     );
     if (playerCountriesSelectOptions) {
       playerCountriesSelectOptions.forEach((option) => {
@@ -510,7 +542,7 @@ class mapView {
     if (weatherHeading) {
       weatherHeading.textContent =
         localization[model.worldCountries.language][
-        "Weather in the center of the map"
+          "Weather in the center of the map"
         ];
     }
     const weatherCoordinates = document.querySelector("#coordinates");
@@ -549,7 +581,7 @@ class mapView {
     this.translateCountryPlayer();
     this.translateWeather();
     const contextMenuItems = document.querySelectorAll(
-      ".leaflet-contextmenu-item"
+      ".leaflet-contextmenu-item",
     );
     if (contextMenuItems) {
       contextMenuItems[0].textContent =
@@ -564,89 +596,89 @@ class mapView {
         "🔍 " + localization[model.worldCountries.language]["Reset"];
     }
     const countryOnMapQuiz = document.querySelector(
-      "#country-on-map-quiz-menu"
+      "#country-on-map-quiz-menu",
     );
     if (countryOnMapQuiz) {
       countryOnMapQuiz.textContent =
         localization[model.worldCountries.language]["Country On Map Quiz"];
     }
     const countryNameOnMapQuiz = document.querySelector(
-      "#country-name-on-map-quiz-menu"
+      "#country-name-on-map-quiz-menu",
     );
     if (countryNameOnMapQuiz) {
       countryNameOnMapQuiz.textContent =
         localization[model.worldCountries.language][
-        "Country Name By Country On Map Quiz"
+          "Country Name By Country On Map Quiz"
         ];
     }
     const flagByCountryNameQuiz = document.querySelector(
-      "#flag-by-country-name-quiz-menu"
+      "#flag-by-country-name-quiz-menu",
     );
     if (flagByCountryNameQuiz) {
       flagByCountryNameQuiz.textContent =
         localization[model.worldCountries.language][
-        "Flag By Country Name Quiz"
+          "Flag By Country Name Quiz"
         ];
     }
     const guessCountriesGame = document.querySelector(
-      "#guess-countries-game-menu"
+      "#guess-countries-game-menu",
     );
     if (guessCountriesGame) {
       guessCountriesGame.textContent =
         localization[model.worldCountries.language]["Guess Countries Game"];
     }
     const flagByCountryCapitalQuiz = document.querySelector(
-      "#flag-by-country-capital-quiz-menu"
+      "#flag-by-country-capital-quiz-menu",
     );
     if (flagByCountryCapitalQuiz) {
       flagByCountryCapitalQuiz.textContent =
         localization[model.worldCountries.language][
-        "Flag By Country Capital Quiz"
+          "Flag By Country Capital Quiz"
         ];
     }
     const countryNameByCapitalQuiz = document.querySelector(
-      "#country-name-by-capital-quiz-menu"
+      "#country-name-by-capital-quiz-menu",
     );
     if (countryNameByCapitalQuiz) {
       countryNameByCapitalQuiz.textContent =
         localization[model.worldCountries.language][
-        "Country Name By Capital Quiz"
+          "Country Name By Capital Quiz"
         ];
     }
     const countryCapitalByCountryNameQuiz = document.querySelector(
-      "#capital-by-country-name-quiz-menu"
+      "#capital-by-country-name-quiz-menu",
     );
     if (countryCapitalByCountryNameQuiz) {
       countryCapitalByCountryNameQuiz.textContent =
         localization[model.worldCountries.language][
-        "Capital By Country Name Quiz"
+          "Capital By Country Name Quiz"
         ];
     }
     const countryNameByFlagQuiz = document.querySelector(
-      "#country-name-by-flag-quiz-menu"
+      "#country-name-by-flag-quiz-menu",
     );
     if (countryNameByFlagQuiz) {
       countryNameByFlagQuiz.textContent =
         localization[model.worldCountries.language][
-        "Country Name By Flag Quiz"
+          "Country Name By Flag Quiz"
         ];
     }
     const countryNameByEmblemQuiz = document.querySelector(
-      "#country-name-by-emblem-quiz-menu"
+      "#country-name-by-emblem-quiz-menu",
     );
     if (countryNameByEmblemQuiz) {
       countryNameByEmblemQuiz.textContent =
         localization[model.worldCountries.language][
-        "Country Name By Coat Of Arms Quiz"
+          "Country Name By Coat Of Arms Quiz"
         ];
     }
     const countryCapitalByFlagQuiz = document.querySelector(
-      "#country-capital-by-flag-quiz-menu"
+      "#country-capital-by-flag-quiz-menu",
     );
     if (countryCapitalByFlagQuiz) {
       countryCapitalByFlagQuiz.textContent =
         localization[model.worldCountries.language][
-        "Country Capital By Flag Quiz"
+          "Country Capital By Flag Quiz"
         ];
     }
     // this.removeDevelopmentPlaceMarker();
@@ -731,7 +763,7 @@ class mapView {
         latLon,
         coatOfArms.png
           ? { icon: this.createCapitalMarkerIcon(coatOfArms.png) }
-          : {}
+          : {},
       )
         .addTo(this._map)
         .bindTooltip(capital);
@@ -741,7 +773,7 @@ class mapView {
     const marker = this._markers.find(
       (marker) =>
         marker.getLatLng().lat === latLon[0] &&
-        marker.getLatLng().lng === latLon[1]
+        marker.getLatLng().lng === latLon[1],
     );
     if (marker) {
       marker.openPopup();
@@ -759,8 +791,8 @@ class mapView {
     })
       .bindTooltip(
         localization[model.worldCountries.language][
-        "Slavutych, Ukraine - birthplace of the project"
-        ]
+          "Slavutych, Ukraine - birthplace of the project"
+        ],
       )
       .addTo(this._map);
   }
@@ -792,7 +824,7 @@ class mapView {
       const countryGeo = {};
       countryGeo.type = COUNTRIES_GEO.type;
       countryGeo.features = COUNTRIES_GEO.features.filter(
-        (feature) => feature.properties.country_a2 === countryCode
+        (feature) => feature.properties.country_a2 === countryCode,
       );
       this._countryBoundary = L.geoJson(countryGeo, {
         bubblingMouseEvents: false,
@@ -800,7 +832,7 @@ class mapView {
         fillOpacity: 0.5,
         opacity: 1,
       })
-        .on("click", () => { })
+        .on("click", () => {})
         .addTo(this._map);
     }
   }
@@ -839,7 +871,7 @@ class mapView {
           alt: localization[model.worldCountries.language]["countries"][
             country.name.common
           ],
-        }
+        },
       )
         .on("mouseover", function () {
           this.setOpacity(1);
@@ -849,21 +881,36 @@ class mapView {
         })
         .addTo(this._map)
         .bindTooltip(
-          `<img src="${country.flags.png
+          `<img src="${
+            country.flags.png
           }" style="width:20px; height:15px; box-shadow: 0 2px 5px #00000080,
-                                         inset 0 2px 10px #0000001f; border-radius: 2px; vertical-align: sub;"><span style="font-weight:bold; margin-left:5px;color:${country.name.common !== "Russia"
-            ? "darkblue"
-            : "red"
-          }">${country.name.common !== "Russia"
-            ? localization[model.worldCountries.language]["countries"][
-            country.name.common
-            ]
-            : localization[model.worldCountries.language]["countries"][
-            country.name.common
-            ] +
-            " - " +
-            localization[model.worldCountries.language]["War Aggressor"]
-          }</span>`
+                                         inset 0 2px 10px #0000001f; border-radius: 2px; vertical-align: sub;">${
+                                           country.coatOfArms.png
+                                             ? `<img src="${
+                                                 country.coatOfArms.png
+                                               }" style="margin-left:5px; width:15px; height:15px; vertical-align: sub;">`
+                                             : ""
+                                         }<span style="font-weight:bold; margin-left:5px;color:${
+                                           country.name.common !== "Russia"
+                                             ? "darkblue"
+                                             : "red"
+                                         }">${
+                                           country.name.common !== "Russia"
+                                             ? localization[
+                                                 model.worldCountries.language
+                                               ]["countries"][
+                                                 country.name.common
+                                               ]
+                                             : localization[
+                                                 model.worldCountries.language
+                                               ]["countries"][
+                                                 country.name.common
+                                               ] +
+                                               " - " +
+                                               localization[
+                                                 model.worldCountries.language
+                                               ]["War Aggressor"]
+                                         }</span>`,
         )
         .bindPopup(
           L.popup({
@@ -873,67 +920,82 @@ class mapView {
             autoClose: true,
             closeOnClick: true,
             className: `${country.name.common}-popup`,
-          })
-        ).setPopupContent(`<img src="${country.flags.png
-          }" style="width:30px; height:20px; border-radius: 2px; box-shadow: 0 2px 5px #00000080, inset 0 2px 10px #0000001f;"> ${country.coatOfArms.png
-            ? `<img src="${country.coatOfArms.png}" style="width:30px; height:30px; margin-left: 3px;">`
-            : ""
-          }
-        <span style="font-weight:bold">${localization[model.worldCountries.language]["countries"][
-          country.name.common
+          }),
+        ).setPopupContent(`<img src="${
+        country.flags.png
+      }" style="width:30px; height:20px; border-radius: 2px; box-shadow: 0 2px 5px #00000080, inset 0 2px 10px #0000001f;"> ${
+        country.coatOfArms.png
+          ? `<img src="${country.coatOfArms.png}" style="width:30px; height:30px; margin-left: 3px;">`
+          : ""
+      }
+        <span style="font-weight:bold">${
+          localization[model.worldCountries.language]["countries"][
+            country.name.common
           ]
-          }</span> <br />
+        }</span> <br />
        
-        ${WAR_AGGRESSOR_COUNTRIES.includes(country.name.common)
-            ? `<span style="color: red">${localization[model.worldCountries.language]["War Aggressor"]
-            }</span><br>`
+        ${
+          WAR_AGGRESSOR_COUNTRIES.includes(country.name.common)
+            ? `<span style="color: red">${
+                localization[model.worldCountries.language]["War Aggressor"]
+              }</span><br>`
             : ""
-          }
-        <span>${localization[model.worldCountries.language]["Capital"]
-          }: </span><span style="font-weight:bold">${country.capital
+        }
+        <span>${
+          localization[model.worldCountries.language]["Capital"]
+        }: </span><span style="font-weight:bold">${
+          country.capital
             ? localization[model.worldCountries.language]["capitals"][
-            country.capital[0]
-            ]
+                country.capital[0]
+              ]
             : " "
-          }</span>
+        }</span>
       <br />
-       <span>${localization[model.worldCountries.language]["Independent"]
-          }: </span><span>${country.independent
-            ? localization[model.worldCountries.language]["Yes"]
-            : localization[model.worldCountries.language]["No"]
-          }</span>
+       <span>${
+         localization[model.worldCountries.language]["Independent"]
+       }: </span><span>${
+         country.independent
+           ? localization[model.worldCountries.language]["Yes"]
+           : localization[model.worldCountries.language]["No"]
+       }</span>
       <br />
-        <span>${localization[model.worldCountries.language]["Region"]}: ${country.region
+        <span>${localization[model.worldCountries.language]["Region"]}: ${
+          country.region
             ? localization[model.worldCountries.language][country.region]
             : " -"
-          }</span><br />
-        <span>${localization[model.worldCountries.language]["Subregion"]}: ${country.subregion
+        }</span><br />
+        <span>${localization[model.worldCountries.language]["Subregion"]}: ${
+          country.subregion
             ? localization[model.worldCountries.language][country.subregion]
             : " -"
-          }</span><br />
-        <span>${localization[model.worldCountries.language]["Area"]}: ${country.area
+        }</span><br />
+        <span>${localization[model.worldCountries.language]["Area"]}: ${
+          country.area
             ? country.area.toLocaleString() +
-            " " +
-            localization[model.worldCountries.language]["square km"]
+              " " +
+              localization[model.worldCountries.language]["square km"]
             : " -"
-          }</span><br />
-        <span>${localization[model.worldCountries.language]["Population"]}: ${country.population
+        }</span><br />
+        <span>${localization[model.worldCountries.language]["Population"]}: ${
+          country.population
             ? country.population.toLocaleString() +
-            " " +
-            localization[model.worldCountries.language]["people"]
+              " " +
+              localization[model.worldCountries.language]["people"]
             : " -"
-          }</span><br />
-      <a class="side-navigation-country-link hover-effect" style="color:#85C1E9; text-decoration: none;" href="https://${getLanguageCode()}.wikipedia.org/wiki/${localization[model.worldCountries.language]["countries"][
+        }</span><br />
+      <a class="side-navigation-country-link hover-effect" style="color:#85C1E9; text-decoration: none;" href="https://${getLanguageCode()}.wikipedia.org/wiki/${
+        localization[model.worldCountries.language]["countries"][
           country.name.common
-          ]
-          }" target="_blank" rel="external">${localization[model.worldCountries.language]["Wikipedia"]
-          }</a>`);
+        ]
+      }" target="_blank" rel="external">${
+        localization[model.worldCountries.language]["Wikipedia"]
+      }</a>`);
       marker.on("mouseover", function () {
         if (!this.isPopupOpen()) this.openTooltip();
       });
       marker.on(
         "mouseover",
-        addCountryBoundary.bind(this, country, "mouse", false)
+        addCountryBoundary.bind(this, country, "mouse", false),
       );
       marker.on("mouseout", removeCountryBoundary.bind(this, "mouse"));
       marker.on("click", function () {
@@ -941,7 +1003,7 @@ class mapView {
       });
       marker.on(
         "click",
-        addCountryBoundary.bind(this, country, "marker", true)
+        addCountryBoundary.bind(this, country, "marker", true),
       );
       marker.on(
         "click",
@@ -951,7 +1013,7 @@ class mapView {
           }
           this._markers.forEach((marker) => marker.disablePermanentHighlight());
           marker.enablePermanentHighlight();
-        }.bind(this)
+        }.bind(this),
       );
       function addCountryBoundary(country, type, isCountrySelected) {
         if (this._countryPlayer._isPlaying) {
@@ -962,7 +1024,7 @@ class mapView {
           this.removeCapitalMarker();
           this.addCountryBoundary(country);
           const sideNavigationCountries = document.querySelector(
-            ".sb-sidenav-menu .nav"
+            ".sb-sidenav-menu .nav",
           );
           if (sideNavigationCountries) {
             if (type !== "mouse") {
@@ -970,12 +1032,12 @@ class mapView {
                 if (country.name.common === child.dataset.country) {
                   this._sideNavigationView._selectedCountry = country;
                   child.classList.add(
-                    "selected-side-navigation-country-container"
+                    "selected-side-navigation-country-container",
                   );
                   child.scrollIntoView();
                 } else {
                   child.classList.remove(
-                    "selected-side-navigation-country-container"
+                    "selected-side-navigation-country-container",
                   );
                 }
               });
@@ -992,12 +1054,12 @@ class mapView {
           return;
         }
         const sideNavigationCountries = document.querySelector(
-          ".sb-sidenav-menu .nav"
+          ".sb-sidenav-menu .nav",
         );
         if (sideNavigationCountries) {
           sideNavigationCountries.childNodes.forEach((child) => {
             child.classList.remove(
-              "selected-side-navigation-country-container"
+              "selected-side-navigation-country-container",
             );
           });
         }
